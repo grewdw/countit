@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let currentProgressController = CurrentProgressController()
-        let primaryNavController = PrimaryNavController(rootViewController: currentProgressController)
+        let currentProgressController = ProgressTableController()
+        let navigationController = UINavigationController(rootViewController: currentProgressController)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = primaryNavController
+        window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
         return true
     }
