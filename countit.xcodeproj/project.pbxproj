@@ -7,14 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */; };
+		1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */; };
+		1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */; };
+		1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */; };
+		1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */; };
+		1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B42421B8510300920CF4 /* TextFieldView.swift */; };
+		1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */; };
+		1D76F05F21BBF3EF00A53853 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F05E21BBF3EF00A53853 /* FormView.swift */; };
+		1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06121BBF81800A53853 /* NewItemForm.swift */; };
+		1D76F06921BC214600A53853 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06821BC214600A53853 /* FormController.swift */; };
+		1D76F06B21BC218B00A53853 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06A21BC218B00A53853 /* Form.swift */; };
+		1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */; };
+		1D76F07021BC52C800A53853 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06F21BC52C800A53853 /* TableController.swift */; };
+		1D76F07221BC530600A53853 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F07121BC530600A53853 /* TableView.swift */; };
 		1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */; };
 		1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900621B5BFD000C11CD7 /* ViewController.swift */; };
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
 		1DB3900F21B5BFD200C11CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */; };
 		1DB3901D21B5BFD200C11CD7 /* countitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3901C21B5BFD200C11CD7 /* countitTests.swift */; };
 		1DB3902821B5BFD200C11CD7 /* countitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3902721B5BFD200C11CD7 /* countitUITests.swift */; };
-		1DB3903B21B5C0F500C11CD7 /* PrimaryNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903A21B5C0F500C11CD7 /* PrimaryNavController.swift */; };
-		1DB3903D21B5C19600C11CD7 /* CurrentProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903C21B5C19600C11CD7 /* CurrentProgressController.swift */; };
+		1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */; };
 		1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */; };
 		1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +50,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormController.swift; sourceTree = "<group>"; };
+		1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemFormView.swift; sourceTree = "<group>"; };
+		1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonBuilder.swift; sourceTree = "<group>"; };
+		1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemBuilder.swift; sourceTree = "<group>"; };
+		1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
+		1D49B42421B8510300920CF4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewBuilder.swift; sourceTree = "<group>"; };
+		1D76F05E21BBF3EF00A53853 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		1D76F06121BBF81800A53853 /* NewItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemForm.swift; sourceTree = "<group>"; };
+		1D76F06821BC214600A53853 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
+		1D76F06A21BC218B00A53853 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableView.swift; sourceTree = "<group>"; };
+		1D76F06F21BC52C800A53853 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		1D76F07121BC530600A53853 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		1DB3900121B5BFD000C11CD7 /* countit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB3900621B5BFD000C11CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,8 +76,7 @@
 		1DB3902321B5BFD200C11CD7 /* countitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = countitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3902721B5BFD200C11CD7 /* countitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countitUITests.swift; sourceTree = "<group>"; };
 		1DB3902921B5BFD200C11CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DB3903A21B5C0F500C11CD7 /* PrimaryNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryNavController.swift; sourceTree = "<group>"; };
-		1DB3903C21B5C19600C11CD7 /* CurrentProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressController.swift; sourceTree = "<group>"; };
+		1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableController.swift; sourceTree = "<group>"; };
 		1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableCellView.swift; sourceTree = "<group>"; };
 		1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +106,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D49B41821B7FFAC00920CF4 /* UIElementBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */,
+				1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */,
+				1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */,
+			);
+			path = UIElementBuilders;
+			sourceTree = "<group>";
+		};
+		1D49B41D21B8003600920CF4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		1D76F06021BBF80900A53853 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				1D76F06A21BC218B00A53853 /* Form.swift */,
+				1D76F06C21BC22BE00A53853 /* Implementations */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		1D76F06321BC1FEB00A53853 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				1D76F07121BC530600A53853 /* TableView.swift */,
+				1D76F07321BC533800A53853 /* Implementations */,
+				1D76F06521BC1FF900A53853 /* Cells */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
+		1D76F06421BC1FF100A53853 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				1D76F05E21BBF3EF00A53853 /* FormView.swift */,
+				1D76F06721BC207D00A53853 /* Implementations */,
+				1D76F06621BC201B00A53853 /* Fields */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		1D76F06521BC1FF900A53853 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1D76F06621BC201B00A53853 /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				1D49B42421B8510300920CF4 /* TextFieldView.swift */,
+			);
+			path = Fields;
+			sourceTree = "<group>";
+		};
+		1D76F06721BC207D00A53853 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		1D76F06C21BC22BE00A53853 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				1D76F06121BBF81800A53853 /* NewItemForm.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		1D76F07321BC533800A53853 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		1DB38FF821B5BFD000C11CD7 = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +251,11 @@
 		1DB3903521B5C05B00C11CD7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D76F06421BC1FF100A53853 /* Forms */,
+				1D76F06321BC1FEB00A53853 /* Tables */,
+				1D49B41821B7FFAC00920CF4 /* UIElementBuilders */,
+				1D49B41D21B8003600920CF4 /* Enums */,
 				1DB3904021B6AC2000C11CD7 /* Extensions */,
-				1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +263,7 @@
 		1DB3903621B5C06A00C11CD7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D76F06021BBF80900A53853 /* Forms */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,8 +271,10 @@
 		1DB3903721B5C07300C11CD7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1DB3903A21B5C0F500C11CD7 /* PrimaryNavController.swift */,
-				1DB3903C21B5C19600C11CD7 /* CurrentProgressController.swift */,
+				1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */,
+				1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */,
+				1D76F06821BC214600A53853 /* FormController.swift */,
+				1D76F06F21BC52C800A53853 /* TableController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,13 +430,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D76F07021BC52C800A53853 /* TableController.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
+				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
-				1DB3903D21B5C19600C11CD7 /* CurrentProgressController.swift in Sources */,
+				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
+				1D76F06B21BC218B00A53853 /* Form.swift in Sources */,
+				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
+				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
+				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
+				1D76F07221BC530600A53853 /* TableView.swift in Sources */,
 				1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */,
-				1DB3903B21B5C0F500C11CD7 /* PrimaryNavController.swift in Sources */,
+				1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */,
+				1D76F05F21BBF3EF00A53853 /* FormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
+				1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */,
+				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
+				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
+				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
+				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
