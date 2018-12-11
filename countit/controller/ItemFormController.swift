@@ -10,7 +10,10 @@ import UIKit
 
 class ItemFormController: UIViewController {
     
-    init() {
+    private final let itemService: ItemService
+    
+    init(itemService: ItemService) {
+        self.itemService = itemService
         super.init(nibName: nil, bundle: nil)
         self.view.addSubview(NewItemFormView(frame: self.view.bounds))
     }
