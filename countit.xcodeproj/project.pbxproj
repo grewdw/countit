@@ -17,7 +17,6 @@
 		1D76F05F21BBF3EF00A53853 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F05E21BBF3EF00A53853 /* FormView.swift */; };
 		1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06121BBF81800A53853 /* NewItemForm.swift */; };
 		1D76F06921BC214600A53853 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06821BC214600A53853 /* FormController.swift */; };
-		1D76F06B21BC218B00A53853 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06A21BC218B00A53853 /* Form.swift */; };
 		1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */; };
 		1D76F07021BC52C800A53853 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06F21BC52C800A53853 /* TableController.swift */; };
 		1D76F07221BC530600A53853 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F07121BC530600A53853 /* TableView.swift */; };
@@ -27,7 +26,11 @@
 		1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */; };
 		1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DE21C061E3000E3621 /* ItemRepository.swift */; };
 		1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */; };
-		1D7D37E521C062AF000E3621 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E421C062AF000E3621 /* ItemEntity.swift */; };
+		1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */; };
+		1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E921C2F328000E3621 /* ControllersType.swift */; };
+		1D7D37EC21C30041000E3621 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EB21C30041000E3621 /* Form.swift */; };
+		1D7D37EF21C306B2000E3621 /* ItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37ED21C306B2000E3621 /* ItemEntity+CoreDataClass.swift */; };
+		1D7D37F021C306B2000E3621 /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EE21C306B2000E3621 /* ItemEntity+CoreDataProperties.swift */; };
 		1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */; };
 		1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900621B5BFD000C11CD7 /* ViewController.swift */; };
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
@@ -67,7 +70,6 @@
 		1D76F05E21BBF3EF00A53853 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		1D76F06121BBF81800A53853 /* NewItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemForm.swift; sourceTree = "<group>"; };
 		1D76F06821BC214600A53853 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
-		1D76F06A21BC218B00A53853 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableView.swift; sourceTree = "<group>"; };
 		1D76F06F21BC52C800A53853 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		1D76F07121BC530600A53853 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -77,7 +79,11 @@
 		1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceImpl.swift; sourceTree = "<group>"; };
 		1D7D37DE21C061E3000E3621 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
-		1D7D37E421C062AF000E3621 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerResolver.swift; sourceTree = "<group>"; };
+		1D7D37E921C2F328000E3621 /* ControllersType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersType.swift; sourceTree = "<group>"; };
+		1D7D37EB21C30041000E3621 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		1D7D37ED21C306B2000E3621 /* ItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1D7D37EE21C306B2000E3621 /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1DB3900121B5BFD000C11CD7 /* countit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB3900621B5BFD000C11CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +147,8 @@
 		1D76F06021BBF80900A53853 /* forms */ = {
 			isa = PBXGroup;
 			children = (
-				1D76F06A21BC218B00A53853 /* Form.swift */,
-				1D76F06C21BC22BE00A53853 /* implementations */,
+				1D76F06121BBF81800A53853 /* NewItemForm.swift */,
+				1D7D37EB21C30041000E3621 /* Form.swift */,
 			);
 			path = forms;
 			sourceTree = "<group>";
@@ -191,14 +197,6 @@
 			path = implementations;
 			sourceTree = "<group>";
 		};
-		1D76F06C21BC22BE00A53853 /* implementations */ = {
-			isa = PBXGroup;
-			children = (
-				1D76F06121BBF81800A53853 /* NewItemForm.swift */,
-			);
-			path = implementations;
-			sourceTree = "<group>";
-		};
 		1D76F07321BC533800A53853 /* implementations */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,9 +240,18 @@
 		1D7D37E321C06299000E3621 /* entities */ = {
 			isa = PBXGroup;
 			children = (
-				1D7D37E421C062AF000E3621 /* ItemEntity.swift */,
+				1D7D37ED21C306B2000E3621 /* ItemEntity+CoreDataClass.swift */,
+				1D7D37EE21C306B2000E3621 /* ItemEntity+CoreDataProperties.swift */,
 			);
 			path = entities;
+			sourceTree = "<group>";
+		};
+		1D7D37E821C2F31A000E3621 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				1D7D37E921C2F328000E3621 /* ControllersType.swift */,
+			);
+			path = enums;
 			sourceTree = "<group>";
 		};
 		1DB38FF821B5BFD000C11CD7 = {
@@ -328,10 +335,12 @@
 		1DB3903721B5C07300C11CD7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				1D7D37E821C2F31A000E3621 /* enums */,
 				1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */,
 				1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */,
 				1D76F06821BC214600A53853 /* FormController.swift */,
 				1D76F06F21BC52C800A53853 /* TableController.swift */,
+				1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -494,11 +503,12 @@
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
 				1D76F07021BC52C800A53853 /* TableController.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
+				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
 				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
-				1D76F06B21BC218B00A53853 /* Form.swift in Sources */,
+				1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */,
 				1D7D37DA21C060BF000E3621 /* ItemId.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
 				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
@@ -512,11 +522,13 @@
 				1D76F05F21BBF3EF00A53853 /* FormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
-				1D7D37E521C062AF000E3621 /* ItemEntity.swift in Sources */,
 				1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
+				1D7D37EF21C306B2000E3621 /* ItemEntity+CoreDataClass.swift in Sources */,
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
+				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
 				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
+				1D7D37F021C306B2000E3621 /* ItemEntity+CoreDataProperties.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

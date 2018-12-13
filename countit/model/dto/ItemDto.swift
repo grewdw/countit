@@ -12,10 +12,10 @@ class ItemDto {
     
     let id: ItemId?
     let name: String
-    let description: String
+    let description: String?
     
-    init(name: String, description: String) {
-        self.id = nil
+    init(_ id: ItemId?, _ name: String, _ description: String?) {
+        self.id = id
         self.name = name
         self.description = description
     }

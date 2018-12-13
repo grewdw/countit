@@ -15,6 +15,8 @@ protocol FormView {
     var formDelegate: FormController? { get set }
     var editable: Bool { get set }
     
+    func initialiseNavBar(for controller: FormController)
+    
     func getForm() -> formType
     
     func updateForm(_ form: formType)

@@ -12,5 +12,5 @@ protocol TableView {
     
     var tableDelegate: TableController? { get set }
     
-    func initialiseNavBar(controller: TableController)
+    func initialiseNavBar(for controller: TableController)
 }

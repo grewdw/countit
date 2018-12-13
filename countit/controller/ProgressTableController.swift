@@ -11,17 +11,19 @@ import UIKit
 class ProgressTableController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableController {
     
     let items: [String] = ["item1", "item2", "item3"]
+    private let controllerResolver: ControllerResolver
     
     override func viewDidLoad() {
         let tableView = CurrentProgressTableView(frame: self.view.bounds)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableDelegate = self
-        tableView.initialiseNavBar(controller: self)
+        tableView.initialiseNavBar(for: self)
         self.view = tableView
     }
     
-    init() {
+    init(_ controllerResolver: ControllerResolver) {
+        self.controllerResolver = controllerResolver
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,7 +50,9 @@ class ProgressTableController: UIViewController, UITableViewDelegate, UITableVie
     
     func addButtonPressed() {
         if let parentController = self.parent as? UINavigationController {
-            parentController.pushViewController(ItemFormController(), animated: true)
+            if let itemFormController = controllerResolver.get(ControllerType.ITEM_FORM_CONTROLLER) {
+                parentController.pushViewController(itemFormController, animated: true)
+            }
         }
     }
 }

@@ -8,18 +8,46 @@
 
 import UIKit
 
-class ItemFormController: UIViewController {
+class ItemFormController: UIViewController, FormController {
     
-    private final let itemService: ItemService
+    private let itemService: ItemService
+    private let controllerResolver: ControllerResolver
     
-    init(itemService: ItemService) {
+    override func viewDidLoad() {
+        let newItemFormView = NewItemFormView(frame: self.view.bounds)
+        newItemFormView.initialiseNavBar(for: self)
+        newItemFormView.formDelegate = self
+        self.view.addSubview(newItemFormView)
+    }
+    
+    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
+        self.controllerResolver = controllerResolver
         self.itemService = itemService
         super.init(nibName: nil, bundle: nil)
-        self.view.addSubview(NewItemFormView(frame: self.view.bounds))
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func submitForm(_ form: Form) {
+        if let itemForm = validateForm(form: form) {
+            itemService.saveItem(ItemDto(itemForm.getId(), itemForm.getName()!, itemForm.getDescription()))
+        }
+    }
+    
+    private func validateForm(form: Form) -> NewItemForm? {
+        if let itemForm = form as? NewItemForm {
+            return itemForm.isValid() ? itemForm : nil
+        }
+        else {
+            return nil
+        }
+    }
+    
+    func cancelForm() {
+    }
+    
+    func buttonPressed(_ button: NavBarButtonType) {
+    }
 }

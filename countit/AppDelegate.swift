@@ -19,9 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemRepository = ItemRepositoryImpl()
         let itemService = ItemServiceImpl(itemRepository: itemRepository)
         
-        let currentProgressController = ProgressTableController()
-        let itemFormController = ItemFormController(itemService: itemService)
-        let navigationController = UINavigationController(rootViewController: currentProgressController)
+        let controllerResolver = ControllerResolver()
+        controllerResolver.add(controller: ProgressTableController(
+            controllerResolver), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
+        controllerResolver.add(controller: ItemFormController(controllerResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
+
+        let navigationController = UINavigationController(rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = navigationController

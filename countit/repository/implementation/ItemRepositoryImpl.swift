@@ -18,8 +18,9 @@ class ItemRepositoryImpl: ItemRepository {
     }
     
     func saveItem(itemDto: ItemDto) {
-        let itemEntity = ItemEntity(of: itemDto, context: context)
-        var success: Bool = saveContext()
+        _ = ItemEntity(of: itemDto, context: context)
+        saveContext()
+        print("success")
     }
     
     private func saveContext() -> Bool {

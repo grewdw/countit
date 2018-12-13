@@ -9,8 +9,12 @@
 import UIKit
 
 class NewItemFormView: UIScrollView, FormView {
-   
+    
     typealias formType = NewItemForm
+    
+    private let DEFAULT_FORM_TITLE = "NEW ITEM"
+    
+    var form: formType?
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -49,8 +53,13 @@ class NewItemFormView: UIScrollView, FormView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func initialiseNavBar(for controller: FormController) {
+        NavigationItemBuilder.setNavBar(title: form?.getName() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)
+    }
+    
+    
     func getForm() -> formType {
-        return NewItemForm()
+        return getFormData()
     }
     
     func updateForm(_ form: formType) {
@@ -59,5 +68,27 @@ class NewItemFormView: UIScrollView, FormView {
     
     func clearForm() {
         
+    }
+    
+    private func getFormData() -> NewItemForm {
+        let name = nameField.fieldText.text
+        let description = descriptionField.fieldText.text
+        
+        if let itemId = form?.getId() {
+            return NewItemForm(itemId, name, description)
+        }
+        else {
+            return NewItemForm(name, description)
+        }
+    }
+}
+
+extension NewItemFormView: NavBarButtonDelegate {
+    
+    @objc func saveButtonPressed() {
+        
+        if let controller = formDelegate {
+            controller.submitForm(getFormData())
+        }
     }
 }
