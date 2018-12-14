@@ -10,9 +10,9 @@ import UIKit
 
 class NewItemFormView: UIScrollView {
     
-    private let DEFAULT_FORM_TITLE = "NEW ITEM"
+    private let DEFAULT_FORM_TITLE = "ADD ITEM"
     
-    var form: formType?
+    var form: NewItemForm?
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -58,23 +58,22 @@ class NewItemFormView: UIScrollView {
 
 extension NewItemFormView: FormView {
     
-    typealias formType = NewItemForm
-    
     func initialiseNavBar(for controller: FormController) {
         NavigationItemBuilder.setNavBar(title: form?.getName() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)
     }
     
     
-    func getForm() -> formType {
+    func getForm() -> Form {
         return getFormData()
     }
     
-    func updateForm(_ form: formType) {
+    func updateForm(_ form: Form) {
         
     }
     
     func clearForm() {
-        
+        nameField.fieldText.text = ""
+        descriptionField.fieldText.text = ""
     }
     
     private func getFormData() -> NewItemForm {

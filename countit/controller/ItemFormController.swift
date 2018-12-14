@@ -10,6 +10,8 @@ import UIKit
 
 class ItemFormController: UIViewController {
     
+    private var formView: FormView?
+    
     private let itemService: ItemService
     private let controllerResolver: ControllerResolver
     
@@ -17,7 +19,8 @@ class ItemFormController: UIViewController {
         let newItemFormView = NewItemFormView(frame: self.view.bounds)
         newItemFormView.initialiseNavBar(for: self)
         newItemFormView.formDelegate = self
-        self.view.addSubview(newItemFormView)
+        self.formView = newItemFormView
+        self.view = newItemFormView
     }
     
     init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
@@ -34,17 +37,11 @@ class ItemFormController: UIViewController {
 extension ItemFormController: FormController {
     
     func submitForm(_ form: Form) {
-        if let itemForm = validateForm(form: form) {
-            itemService.saveItem(ItemDto(itemForm.getId(), itemForm.getName()!, itemForm.getDescription()))
-        }
-    }
-    
-    private func validateForm(form: Form) -> NewItemForm? {
-        if let itemForm = form as? NewItemForm {
-            return itemForm.isValid() ? itemForm : nil
-        }
-        else {
-            return nil
+        let itemForm = form as! NewItemForm
+        if itemService.saveItem(ItemDto(itemForm.getId(), itemForm.getName()!, itemForm.getDescription())) {
+            let navController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController
+            navController?.popViewController(animated: true)
+            formView?.clearForm()
         }
     }
     

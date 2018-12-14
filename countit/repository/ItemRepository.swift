@@ -10,5 +10,5 @@ import Foundation
 
 protocol ItemRepository {
     
-    func saveItem(itemDto: ItemDto)
+    func saveItem(itemDto: ItemDto) -> Bool
 }

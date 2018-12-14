@@ -10,16 +10,14 @@ import UIKit
 
 protocol FormView {
     
-    associatedtype formType
-    
     var formDelegate: FormController? { get set }
     var editable: Bool { get set }
     
     func initialiseNavBar(for controller: FormController)
     
-    func getForm() -> formType
+    func getForm() -> Form
     
-    func updateForm(_ form: formType)
+    func updateForm(_ form: Form)
     
     func clearForm()
 }

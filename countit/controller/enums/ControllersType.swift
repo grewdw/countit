@@ -12,4 +12,5 @@ enum ControllerType {
     
     case PROGRESS_TABLE_CONTROLLER
     case ITEM_FORM_CONTROLLER
+    case PRIMARY_NAV_CONTROLLER
 }

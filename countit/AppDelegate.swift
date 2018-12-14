@@ -23,11 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controllerResolver.add(controller: ProgressTableController(
             controllerResolver), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
         controllerResolver.add(controller: ItemFormController(controllerResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
-
-        let navigationController = UINavigationController(rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!)
+        controllerResolver.add(controller: UINavigationController(rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = navigationController
+        window!.rootViewController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER)
         window!.makeKeyAndVisible()
         return true
     }

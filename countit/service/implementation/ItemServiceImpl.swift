@@ -16,7 +16,7 @@ class ItemServiceImpl: ItemService {
         self.itemRepository = itemRepository
     }
     
-    func saveItem(_ item: ItemDto) {
-        itemRepository.saveItem(itemDto: item)
+    func saveItem(_ item: ItemDto) -> Bool {
+        return itemRepository.saveItem(itemDto: item)
     }
 }
