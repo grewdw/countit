@@ -8,9 +8,11 @@
 
 import UIKit
 
-class NewItemFormView: UIScrollView, FormView {
-   
-    typealias formType = NewItemForm
+class NewItemFormView: UIScrollView {
+    
+    private let DEFAULT_FORM_TITLE = "ADD ITEM"
+    
+    var form: NewItemForm?
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -22,12 +24,16 @@ class NewItemFormView: UIScrollView, FormView {
        
         nameField = TextFieldViewBuilder(frame: .zero)
             .withFieldName("Name")
-            .withFieldText("").build()
+            .withFieldText("")
+            .withFieldTextPlaceholder("Enter item name")
+            .build()
         nameField.translatesAutoresizingMaskIntoConstraints = false
         
         descriptionField = TextFieldViewBuilder(frame: .zero)
             .withFieldName("Description")
-            .withFieldText("Enter description here").build()
+            .withFieldText("")
+            .withFieldTextPlaceholder("Enter item description")
+            .build()
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
         
         super.init(frame: frame)
@@ -48,16 +54,47 @@ class NewItemFormView: UIScrollView, FormView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension NewItemFormView: FormView {
     
-    func getForm() -> formType {
-        return NewItemForm()
+    func initialiseNavBar(for controller: FormController) {
+        NavigationItemBuilder.setNavBar(title: form?.getName() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)
     }
     
-    func updateForm(_ form: formType) {
+    
+    func getForm() -> Form {
+        return getFormData()
+    }
+    
+    func updateForm(_ form: Form) {
         
     }
     
     func clearForm() {
+        nameField.fieldText.text = ""
+        descriptionField.fieldText.text = ""
+    }
+    
+    private func getFormData() -> NewItemForm {
+        let name = nameField.fieldText.text
+        let description = descriptionField.fieldText.text
         
+        if let itemId = form?.getId() {
+            return NewItemForm(itemId, name, description)
+        }
+        else {
+            return NewItemForm(name, description)
+        }
+    }
+}
+
+extension NewItemFormView: NavBarButtonDelegate {
+    
+    @objc func saveButtonPressed() {
+        
+        if let controller = formDelegate {
+            controller.submitForm(getFormData())
+        }
     }
 }

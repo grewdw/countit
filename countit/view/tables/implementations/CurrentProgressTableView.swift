@@ -13,10 +13,8 @@ class CurrentProgressTableView: UITableView, TableView, NavBarButtonDelegate {
     let NAV_ITEM_TITLE = "COUNT IT"
     var tableDelegate: TableController?
     
-    func initialiseNavBar(controller: TableController) {
-        if let controller = tableDelegate as? UIViewController {
-            NavigationItemBuilder.setNavBar(title: NAV_ITEM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.ADD, rightButtonTarget: self, controller: controller)
-        }
+    func initialiseNavBar(for controller: TableController) {
+        NavigationItemBuilder.setNavBar(title: NAV_ITEM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.ADD, rightButtonTarget: self, controller: controller as! UIViewController)
     }
     
     @objc func addButtonPressed() {

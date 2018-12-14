@@ -19,7 +19,8 @@ class TextFieldView: UIStackView {
          _ alignment: UIStackView.Alignment,
          _ spacing: CGFloat,
          _ fieldNameString: String?,
-         _ fieldTextString: String?) {
+         _ fieldTextString: String?,
+         _ fieldTextPlaceholder: String?) {
         
         super.init(frame: frame)
         self.axis = axis
@@ -32,6 +33,8 @@ class TextFieldView: UIStackView {
         
         fieldName.backgroundColor = UIColor.green
         fieldText.backgroundColor = UIColor.red
+        
+        fieldText.placeholder = fieldTextPlaceholder
         
         self.addArrangedSubview(fieldName)
         self.addArrangedSubview(fieldText)

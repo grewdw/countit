@@ -17,6 +17,7 @@ class TextFieldViewBuilder {
     var spacing: CGFloat
     var fieldName: String?
     var fieldText: String?
+    var fieldTextPlaceholder: String?
     
     init (frame: CGRect) {
         self.frame = frame
@@ -26,6 +27,7 @@ class TextFieldViewBuilder {
         self.spacing = 5
         self.fieldName = nil
         self.fieldText = nil
+        self.fieldTextPlaceholder = nil
     }
     
     func withAxis(_ axis: NSLayoutConstraint.Axis) -> TextFieldViewBuilder {
@@ -56,7 +58,12 @@ class TextFieldViewBuilder {
         return self
     }
     
+    func withFieldTextPlaceholder(_ fieldTextPlaceholder: String) -> TextFieldViewBuilder {
+        self.fieldTextPlaceholder = fieldTextPlaceholder
+        return self
+    }
+    
     func build() -> TextFieldView {
-        return TextFieldView(frame: frame, axis, distribution, alignment, spacing, fieldName, fieldText)
+        return TextFieldView(frame: frame, axis, distribution, alignment, spacing, fieldName, fieldText, fieldTextPlaceholder)
     }
 }

@@ -16,11 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let currentProgressController = ProgressTableController()
-        let navigationController = UINavigationController(rootViewController: currentProgressController)
+        let itemRepository = ItemRepositoryImpl()
+        let itemService = ItemServiceImpl(itemRepository: itemRepository)
+        
+        let controllerResolver = ControllerResolver()
+        controllerResolver.add(controller: ProgressTableController(
+            controllerResolver), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
+        controllerResolver.add(controller: ItemFormController(controllerResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
+        controllerResolver.add(controller: UINavigationController(rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = navigationController
+        window!.rootViewController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER)
         window!.makeKeyAndVisible()
         return true
     }
@@ -58,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
+        
         let container = NSPersistentContainer(name: "countit")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
