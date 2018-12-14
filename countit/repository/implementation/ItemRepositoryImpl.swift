@@ -18,7 +18,12 @@ class ItemRepositoryImpl: ItemRepository {
     }
     
     func saveItem(itemDto: ItemDto) {
-        _ = ItemEntity(of: itemDto, context: context)
+        let item = ItemEntity(context: context)
+        if let id = itemDto.id?.get() {
+            item.id = id
+        }
+        item.name = itemDto.name
+        item.itemDescription = itemDto.description
         saveContext()
         print("success")
     }

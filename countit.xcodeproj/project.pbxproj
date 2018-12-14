@@ -29,8 +29,6 @@
 		1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */; };
 		1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E921C2F328000E3621 /* ControllersType.swift */; };
 		1D7D37EC21C30041000E3621 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EB21C30041000E3621 /* Form.swift */; };
-		1D7D37EF21C306B2000E3621 /* ItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37ED21C306B2000E3621 /* ItemEntity+CoreDataClass.swift */; };
-		1D7D37F021C306B2000E3621 /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EE21C306B2000E3621 /* ItemEntity+CoreDataProperties.swift */; };
 		1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */; };
 		1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900621B5BFD000C11CD7 /* ViewController.swift */; };
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
@@ -82,8 +80,6 @@
 		1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerResolver.swift; sourceTree = "<group>"; };
 		1D7D37E921C2F328000E3621 /* ControllersType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersType.swift; sourceTree = "<group>"; };
 		1D7D37EB21C30041000E3621 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
-		1D7D37ED21C306B2000E3621 /* ItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1D7D37EE21C306B2000E3621 /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1DB3900121B5BFD000C11CD7 /* countit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB3900621B5BFD000C11CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -240,8 +236,6 @@
 		1D7D37E321C06299000E3621 /* entities */ = {
 			isa = PBXGroup;
 			children = (
-				1D7D37ED21C306B2000E3621 /* ItemEntity+CoreDataClass.swift */,
-				1D7D37EE21C306B2000E3621 /* ItemEntity+CoreDataProperties.swift */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -524,11 +518,9 @@
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
 				1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
-				1D7D37EF21C306B2000E3621 /* ItemEntity+CoreDataClass.swift in Sources */,
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
 				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
-				1D7D37F021C306B2000E3621 /* ItemEntity+CoreDataProperties.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
