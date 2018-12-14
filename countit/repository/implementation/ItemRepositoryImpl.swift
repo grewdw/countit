@@ -18,14 +18,23 @@ class ItemRepositoryImpl: ItemRepository {
     }
     
     func saveItem(itemDto: ItemDto) {
-        let item = ItemEntity(context: context)
-        if let id = itemDto.id?.get() {
-            item.id = id
+        if let id = itemDto.getId() {
+            updateItem(id, itemDto)
         }
-        item.name = itemDto.name
-        item.itemDescription = itemDto.description
+        else {
+            createItem(itemDto)
+        }
+    }
+    
+    private func createItem(_ item: ItemDto) {
+        let newItem = ItemEntity(context: context)
+        newItem.name = item.getName()
+        newItem.itemDescription = item.getDescription()
         saveContext()
-        print("success")
+    }
+    
+    private func updateItem(_ id: NSManagedObjectID, _ item: ItemDto) {
+        
     }
     
     private func saveContext() -> Bool {

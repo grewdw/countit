@@ -22,7 +22,6 @@
 		1D76F07221BC530600A53853 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F07121BC530600A53853 /* TableView.swift */; };
 		1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D321C05E81000E3621 /* ItemService.swift */; };
 		1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D521C05EE6000E3621 /* ItemDto.swift */; };
-		1D7D37DA21C060BF000E3621 /* ItemId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D921C060BF000E3621 /* ItemId.swift */; };
 		1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */; };
 		1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DE21C061E3000E3621 /* ItemRepository.swift */; };
 		1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */; };
@@ -73,7 +72,6 @@
 		1D76F07121BC530600A53853 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		1D7D37D321C05E81000E3621 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
 		1D7D37D521C05EE6000E3621 /* ItemDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDto.swift; sourceTree = "<group>"; };
-		1D7D37D921C060BF000E3621 /* ItemId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemId.swift; sourceTree = "<group>"; };
 		1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceImpl.swift; sourceTree = "<group>"; };
 		1D7D37DE21C061E3000E3621 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -209,14 +207,6 @@
 			path = dto;
 			sourceTree = "<group>";
 		};
-		1D7D37D821C06048000E3621 /* utills */ = {
-			isa = PBXGroup;
-			children = (
-				1D7D37D921C060BF000E3621 /* ItemId.swift */,
-			);
-			path = utills;
-			sourceTree = "<group>";
-		};
 		1D7D37DB21C06152000E3621 /* implementation */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,7 +311,6 @@
 				1D7D37E321C06299000E3621 /* entities */,
 				1D7D37D721C05F01000E3621 /* dto */,
 				1D76F06021BBF80900A53853 /* forms */,
-				1D7D37D821C06048000E3621 /* utills */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -503,7 +492,6 @@
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
 				1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */,
-				1D7D37DA21C060BF000E3621 /* ItemId.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
 				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,

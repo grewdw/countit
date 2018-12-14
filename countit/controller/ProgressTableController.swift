@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgressTableController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableController {
+class ProgressTableController: UIViewController {
     
     let items: [String] = ["item1", "item2", "item3"]
     private let controllerResolver: ControllerResolver
@@ -30,6 +30,9 @@ class ProgressTableController: UIViewController, UITableViewDelegate, UITableVie
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -38,6 +41,9 @@ class ProgressTableController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return CurrentProgressTableCellView(items[indexPath.row])
     }
+}
+
+extension ProgressTableController: TableController {
     
     func buttonPressed(_ button: NavBarButtonType) {
         switch button {

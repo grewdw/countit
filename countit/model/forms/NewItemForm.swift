@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import CoreData
 
 class NewItemForm: Form {
     
-    private var id: ItemId?
+    private var id: NSManagedObjectID?
     private var name: String?
     private var description: String?
     
@@ -23,13 +24,13 @@ class NewItemForm: Form {
         self.description = description
     }
     
-    init(_ id: ItemId, _ name: String?, _ description: String?) {
+    init(_ id: NSManagedObjectID, _ name: String?, _ description: String?) {
         self.id = id
         self.name = name
         self.description = description
     }
     
-    func getId() -> ItemId? {
+    func getId() -> NSManagedObjectID? {
         return id
     }
     

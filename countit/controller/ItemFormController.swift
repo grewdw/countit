@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemFormController: UIViewController, FormController {
+class ItemFormController: UIViewController {
     
     private let itemService: ItemService
     private let controllerResolver: ControllerResolver
@@ -29,6 +29,9 @@ class ItemFormController: UIViewController, FormController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ItemFormController: FormController {
     
     func submitForm(_ form: Form) {
         if let itemForm = validateForm(form: form) {
