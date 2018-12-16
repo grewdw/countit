@@ -12,7 +12,7 @@ class NewItemFormView: UIScrollView {
     
     private let DEFAULT_FORM_TITLE = "ADD ITEM"
     
-    var form: NewItemForm?
+    var form: NewItemForm? { didSet { updateForm() }}
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -49,6 +49,10 @@ class NewItemFormView: UIScrollView {
             descriptionField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 6),
         ])
+        
+        if form != nil {
+            updateForm()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,7 +63,7 @@ class NewItemFormView: UIScrollView {
 extension NewItemFormView {
     
     func initialiseNavBar(for controller: FormController) {
-        NavigationItemBuilder.setNavBar(title: form?.getName() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)
+        NavigationItemBuilder.setNavBar(title: form?.getName()?.uppercased() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)
     }
     
     
@@ -67,8 +71,18 @@ extension NewItemFormView {
         return getFormData()
     }
     
-    func updateForm(_ form: Form) {
+    func setForm(form: NewItemForm) {
+        self.form = form
+    }
         
+    func updateForm() {
+        if let itemForm = form {
+            nameField.fieldText.text = itemForm.getName()
+            descriptionField.fieldText.text = itemForm.getDescription()
+            if formDelegate != nil {
+                initialiseNavBar(for: formDelegate!)
+            }
+        }
     }
     
     func clearForm() {

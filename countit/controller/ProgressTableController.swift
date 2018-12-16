@@ -68,7 +68,25 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return CurrentProgressTableCellView(items[indexPath.row].getName())
+        let cell = CurrentProgressTableCellView(items[indexPath.row].getName())
+        cell.accessoryType = UITableViewCell.AccessoryType.detailButton
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        toItemController(item: items[indexPath.row])
+    }
+    
+    private func toItemController(item: ItemDto?) {
+        if let parentController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController {
+            if let itemFormController = controllerResolver.get(ControllerType.ITEM_FORM_CONTROLLER) as? FormController {
+                if let itemToAdd = item {
+                    itemFormController.with(item: itemToAdd)
+                }
+                parentController.pushViewController(itemFormController as! UIViewController, animated: true)
+            }
+        }
+        
     }
 }
 
@@ -84,11 +102,7 @@ extension ProgressTableController: TableController {
     }
     
     func addButtonPressed() {
-        if let parentController = self.parent as? UINavigationController {
-            if let itemFormController = controllerResolver.get(ControllerType.ITEM_FORM_CONTROLLER) {
-                parentController.pushViewController(itemFormController, animated: true)
-            }
-        }
+        toItemController(item: nil)
     }
 }
 

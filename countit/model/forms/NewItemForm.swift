@@ -30,6 +30,12 @@ class NewItemForm: Form {
         self.description = description
     }
     
+    init(_ dto: ItemDto) {
+        self.id = dto.getId()
+        self.name = dto.getName()
+        self.description = dto.getDescription()
+    }
+    
     func getId() -> NSManagedObjectID? {
         return id
     }
