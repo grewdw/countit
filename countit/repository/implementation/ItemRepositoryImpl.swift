@@ -17,7 +17,8 @@ class ItemRepositoryImpl: ItemRepository {
     init () {
     }
     
-    func createItem(item: ItemEntity) -> Bool {
+    func createItem(item: ItemDto) -> Bool {
+        itemEntityFrom(itemDto: item)
         return saveContext()
     }
     
@@ -30,16 +31,7 @@ class ItemRepositoryImpl: ItemRepository {
         }
         return false
     }
-    
-    private func saveContext() -> Bool {
-        do {
-            try context.save()
-            return true
-        } catch {
-            return false
-        }
-    }
-    
+
     func getItem(with id: NSManagedObjectID) -> ItemDto? {
         let item: ItemEntity? = getItem(with: id)
         if item != nil {
@@ -52,14 +44,38 @@ class ItemRepositoryImpl: ItemRepository {
         return context.object(with: id) as? ItemEntity ?? nil
     }
     
-    func getItems() -> [ItemEntity] {
+    func getItems() -> [ItemDto] {
         let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
         do {
             let items: [ItemEntity] = try context.fetch(request)
-            return items
+            return itemEntityArrayToDto(items)
         } catch {
-            return [ItemEntity]()
+            return [ItemDto]()
         }
-        
     }
+    
+    private func itemEntityFrom(itemDto: ItemDto) -> ItemEntity {
+        let item = ItemEntity(context: context)
+        item.name = itemDto.getName()
+        item.itemDescription = itemDto.getDescription()
+        return item
+    }
+    
+    private func itemEntityArrayToDto(_ entities: [ItemEntity]) -> [ItemDto] {
+        var itemDtos: [ItemDto] = []
+        for item in entities {
+            itemDtos.append(ItemDto(itemEntity: item))
+        }
+        return itemDtos
+    }
+    
+    private func saveContext() -> Bool {
+        do {
+            try context.save()
+            return true
+        } catch {
+            return false
+        }
+    }
+    
 }

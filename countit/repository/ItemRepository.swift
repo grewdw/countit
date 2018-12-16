@@ -11,11 +11,11 @@ import CoreData
 
 protocol ItemRepository {
     
-    func createItem(item: ItemEntity) -> Bool
+    func createItem(item: ItemDto) -> Bool
     
     func updateItem(id: NSManagedObjectID, updatedItem: ItemDto) -> Bool
     
     func getItem(with id: NSManagedObjectID) -> ItemDto?
     
-    func getItems() -> [ItemEntity]
+    func getItems() -> [ItemDto]
 }
