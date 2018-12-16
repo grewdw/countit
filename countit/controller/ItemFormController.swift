@@ -11,27 +11,29 @@ import Foundation
 
 class ItemFormController: UIViewController {
     
-    private var formView: FormView?
+    private var formView: NewItemFormView?
     
     private let itemService: ItemService
     private let controllerResolver: ControllerResolver
+    private let viewResolver: ViewResolver
     
-    override func viewDidLoad() {
-        let newItemFormView = NewItemFormView(frame: self.view.bounds)
-        newItemFormView.initialiseNavBar(for: self)
-        newItemFormView.formDelegate = self
-        self.formView = newItemFormView
-        self.view = newItemFormView
-    }
-    
-    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
+    init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService) {
         self.controllerResolver = controllerResolver
+        self.viewResolver = viewResolver
         self.itemService = itemService
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        let newItemFormView = viewResolver.getNewItemFormView(frame: self.view.bounds)
+        newItemFormView.initialiseNavBar(for: self)
+        newItemFormView.formDelegate = self
+        self.formView = newItemFormView
+        self.view = newItemFormView
     }
 }
 
@@ -50,12 +52,5 @@ extension ItemFormController: FormController {
     }
     
     func buttonPressed(_ button: NavBarButtonType) {
-    }
-}
-
-extension ItemFormController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        print("will show")
     }
 }

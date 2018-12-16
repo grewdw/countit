@@ -14,12 +14,10 @@
 		1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */; };
 		1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B42421B8510300920CF4 /* TextFieldView.swift */; };
 		1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */; };
-		1D76F05F21BBF3EF00A53853 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F05E21BBF3EF00A53853 /* FormView.swift */; };
 		1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06121BBF81800A53853 /* NewItemForm.swift */; };
 		1D76F06921BC214600A53853 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06821BC214600A53853 /* FormController.swift */; };
 		1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */; };
 		1D76F07021BC52C800A53853 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06F21BC52C800A53853 /* TableController.swift */; };
-		1D76F07221BC530600A53853 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F07121BC530600A53853 /* TableView.swift */; };
 		1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D321C05E81000E3621 /* ItemService.swift */; };
 		1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D521C05EE6000E3621 /* ItemDto.swift */; };
 		1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */; };
@@ -28,6 +26,7 @@
 		1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */; };
 		1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E921C2F328000E3621 /* ControllersType.swift */; };
 		1D7D37EC21C30041000E3621 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EB21C30041000E3621 /* Form.swift */; };
+		1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8C4321C698AD009427FE /* ViewResolver.swift */; };
 		1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */; };
 		1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900621B5BFD000C11CD7 /* ViewController.swift */; };
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
@@ -64,12 +63,10 @@
 		1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
 		1D49B42421B8510300920CF4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewBuilder.swift; sourceTree = "<group>"; };
-		1D76F05E21BBF3EF00A53853 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		1D76F06121BBF81800A53853 /* NewItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemForm.swift; sourceTree = "<group>"; };
 		1D76F06821BC214600A53853 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
 		1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableView.swift; sourceTree = "<group>"; };
 		1D76F06F21BC52C800A53853 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
-		1D76F07121BC530600A53853 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		1D7D37D321C05E81000E3621 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
 		1D7D37D521C05EE6000E3621 /* ItemDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDto.swift; sourceTree = "<group>"; };
 		1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceImpl.swift; sourceTree = "<group>"; };
@@ -78,6 +75,7 @@
 		1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerResolver.swift; sourceTree = "<group>"; };
 		1D7D37E921C2F328000E3621 /* ControllersType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersType.swift; sourceTree = "<group>"; };
 		1D7D37EB21C30041000E3621 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		1D9B8C4321C698AD009427FE /* ViewResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewResolver.swift; path = countit/View/ViewResolver.swift; sourceTree = SOURCE_ROOT; };
 		1DB3900121B5BFD000C11CD7 /* countit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB3900621B5BFD000C11CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,8 +148,7 @@
 		1D76F06321BC1FEB00A53853 /* tables */ = {
 			isa = PBXGroup;
 			children = (
-				1D76F07121BC530600A53853 /* TableView.swift */,
-				1D76F07321BC533800A53853 /* implementations */,
+				1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */,
 				1D76F06521BC1FF900A53853 /* cells */,
 			);
 			path = tables;
@@ -160,8 +157,7 @@
 		1D76F06421BC1FF100A53853 /* forms */ = {
 			isa = PBXGroup;
 			children = (
-				1D76F05E21BBF3EF00A53853 /* FormView.swift */,
-				1D76F06721BC207D00A53853 /* implementations */,
+				1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */,
 				1D76F06621BC201B00A53853 /* fields */,
 			);
 			path = forms;
@@ -181,22 +177,6 @@
 				1D49B42421B8510300920CF4 /* TextFieldView.swift */,
 			);
 			path = fields;
-			sourceTree = "<group>";
-		};
-		1D76F06721BC207D00A53853 /* implementations */ = {
-			isa = PBXGroup;
-			children = (
-				1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */,
-			);
-			path = implementations;
-			sourceTree = "<group>";
-		};
-		1D76F07321BC533800A53853 /* implementations */ = {
-			isa = PBXGroup;
-			children = (
-				1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */,
-			);
-			path = implementations;
 			sourceTree = "<group>";
 		};
 		1D7D37D721C05F01000E3621 /* dto */ = {
@@ -301,6 +281,7 @@
 				1D49B41821B7FFAC00920CF4 /* uielementbuilders */,
 				1D49B41D21B8003600920CF4 /* enums */,
 				1DB3904021B6AC2000C11CD7 /* extensions */,
+				1D9B8C4321C698AD009427FE /* ViewResolver.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -485,6 +466,7 @@
 			files = (
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
 				1D76F07021BC52C800A53853 /* TableController.swift in Sources */,
+				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
 				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
@@ -497,11 +479,9 @@
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
 				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
 				1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */,
-				1D76F07221BC530600A53853 /* TableView.swift in Sources */,
 				1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */,
 				1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */,
 				1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */,
-				1D76F05F21BBF3EF00A53853 /* FormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
 				1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */,
