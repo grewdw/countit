@@ -10,11 +10,27 @@ import UIKit
 
 class ProgressTableController: UIViewController {
     
-    let items: [String] = ["item1", "item2", "item3"]
     private let controllerResolver: ControllerResolver
+    private let itemService: ItemService
+    
+    private let refreshControl = UIRefreshControl()
+    
+    var items: [ItemDto] = []
+    var tableView: UITableView?
     
     override func viewDidLoad() {
+        getItems()
+        initiateView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        refreshTable()
+    }
+
+    func initiateView() {
         let tableView = CurrentProgressTableView(frame: self.view.bounds)
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableDelegate = self
@@ -22,8 +38,16 @@ class ProgressTableController: UIViewController {
         self.view = tableView
     }
     
-    init(_ controllerResolver: ControllerResolver) {
+    @objc func refreshTable() {
+        getItems()
+        let table = self.view as? UITableView
+        table?.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
         self.controllerResolver = controllerResolver
+        self.itemService = itemService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,12 +58,16 @@ class ProgressTableController: UIViewController {
 
 extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     
+    func getItems() {
+        items = itemService.getItems()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return CurrentProgressTableCellView(items[indexPath.row])
+        return CurrentProgressTableCellView(items[indexPath.row].getName())
     }
 }
 
@@ -60,5 +88,14 @@ extension ProgressTableController: TableController {
                 parentController.pushViewController(itemFormController, animated: true)
             }
         }
+    }
+}
+
+extension ProgressTableController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        print("will show")
+        getItems()
+        tableView?.reloadData()
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ItemFormController: UIViewController {
     
@@ -49,5 +50,12 @@ extension ItemFormController: FormController {
     }
     
     func buttonPressed(_ button: NavBarButtonType) {
+    }
+}
+
+extension ItemFormController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        print("will show")
     }
 }

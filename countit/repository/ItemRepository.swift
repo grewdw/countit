@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import CoreData
 
 protocol ItemRepository {
     
-    func saveItem(itemDto: ItemDto) -> Bool
+    func createItem(item: ItemEntity) -> Bool
+    
+    func updateItem(id: NSManagedObjectID, item: ItemEntity) -> Bool
+    
+    func getItems() -> [ItemEntity]
 }

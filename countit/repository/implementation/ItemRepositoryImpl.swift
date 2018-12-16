@@ -17,23 +17,11 @@ class ItemRepositoryImpl: ItemRepository {
     init () {
     }
     
-    func saveItem(itemDto: ItemDto) -> Bool {
-        if let id = itemDto.getId() {
-            return updateItem(id, itemDto)
-        }
-        else {
-            return createItem(itemDto)
-        }
-    }
-    
-    private func createItem(_ item: ItemDto) -> Bool {
-        let newItem = ItemEntity(context: context)
-        newItem.name = item.getName()
-        newItem.itemDescription = item.getDescription()
+    func createItem(item: ItemEntity) -> Bool {
         return saveContext()
     }
     
-    private func updateItem(_ id: NSManagedObjectID, _ item: ItemDto) -> Bool {
+    func updateItem(id: NSManagedObjectID, item: ItemEntity) -> Bool {
        return true
     }
     
@@ -43,6 +31,16 @@ class ItemRepositoryImpl: ItemRepository {
             return true
         } catch {
             return false
+        }
+    }
+    
+    func getItems() -> [ItemEntity] {
+        let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
+        do {
+            let items: [ItemEntity] = try context.fetch(request)
+            return items
+        } catch {
+            return [ItemEntity]()
         }
         
     }
