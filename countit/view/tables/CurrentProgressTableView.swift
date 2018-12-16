@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrentProgressTableView: UITableView, TableView, NavBarButtonDelegate {
+class CurrentProgressTableView: UITableView, NavBarButtonDelegate {
 
     let NAV_ITEM_TITLE = "COUNT IT"
     var tableDelegate: TableController?

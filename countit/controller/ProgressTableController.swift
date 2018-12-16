@@ -11,12 +11,23 @@ import UIKit
 class ProgressTableController: UIViewController {
     
     private let controllerResolver: ControllerResolver
+    private let viewResolver: ViewResolver
     private let itemService: ItemService
     
     private let refreshControl = UIRefreshControl()
     
     var items: [ItemDto] = []
-    var tableView: UITableView?
+    
+    init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService) {
+        self.controllerResolver = controllerResolver
+        self.viewResolver = viewResolver
+        self.itemService = itemService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         getItems()
@@ -28,7 +39,7 @@ class ProgressTableController: UIViewController {
     }
 
     func initiateView() {
-        let tableView = CurrentProgressTableView(frame: self.view.bounds)
+        let tableView = viewResolver.getCurrentProgressTableView(frame: self.view.bounds)
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         tableView.dataSource = self
@@ -37,29 +48,19 @@ class ProgressTableController: UIViewController {
         tableView.initialiseNavBar(for: self)
         self.view = tableView
     }
-    
-    @objc func refreshTable() {
-        getItems()
-        let table = self.view as? UITableView
-        table?.reloadData()
-        refreshControl.endRefreshing()
-    }
-    
-    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
-        self.controllerResolver = controllerResolver
-        self.itemService = itemService
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     
     func getItems() {
         items = itemService.getItems()
+    }
+    
+    @objc func refreshTable() {
+        getItems()
+        let table = self.view as? UITableView
+        table?.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,11 +92,3 @@ extension ProgressTableController: TableController {
     }
 }
 
-extension ProgressTableController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        print("will show")
-        getItems()
-        tableView?.reloadData()
-    }
-}

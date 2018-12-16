@@ -56,7 +56,7 @@ class NewItemFormView: UIScrollView {
     }
 }
 
-extension NewItemFormView: FormView {
+extension NewItemFormView {
     
     func initialiseNavBar(for controller: FormController) {
         NavigationItemBuilder.setNavBar(title: form?.getName() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)

@@ -16,13 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        
         let itemRepository = ItemRepositoryImpl()
         let itemService = ItemServiceImpl(itemRepository: itemRepository)
         
+        let viewResolver = ViewResolver()
         let controllerResolver = ControllerResolver()
         controllerResolver.add(controller: ProgressTableController(
-            controllerResolver, itemService), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
-        controllerResolver.add(controller: ItemFormController(controllerResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
+            controllerResolver, viewResolver, itemService), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
+        controllerResolver.add(controller: ItemFormController(controllerResolver, viewResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
         controllerResolver.add(controller: UINavigationController(rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
         
         window = UIWindow(frame: UIScreen.main.bounds)
