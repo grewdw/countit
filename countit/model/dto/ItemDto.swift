@@ -21,6 +21,12 @@ class ItemDto {
         self.description = description
     }
     
+    init(itemEntity: ItemEntity) {
+        self.id = itemEntity.objectID
+        self.name = itemEntity.name!
+        self.description = itemEntity.itemDescription
+    }
+    
     func getId() -> NSManagedObjectID? {
         return id
     }
