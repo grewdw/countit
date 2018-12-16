@@ -12,7 +12,7 @@ class NewItemFormView: UIScrollView {
     
     private let DEFAULT_FORM_TITLE = "ADD ITEM"
     
-    var form: NewItemForm?
+    var form: NewItemForm? { didSet { updateForm() }}
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -49,6 +49,10 @@ class NewItemFormView: UIScrollView {
             descriptionField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 6),
         ])
+        
+        if form != nil {
+            updateForm()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,8 +71,15 @@ extension NewItemFormView {
         return getFormData()
     }
     
-    func updateForm(_ form: Form) {
+    func setForm(form: NewItemForm) {
+        self.form = form
+    }
         
+    func updateForm() {
+        if let itemForm = form {
+            nameField.fieldText.text = itemForm.getName()
+            descriptionField.fieldText.text = itemForm.getDescription()
+        }
     }
     
     func clearForm() {

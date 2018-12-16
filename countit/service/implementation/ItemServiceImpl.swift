@@ -22,7 +22,7 @@ class ItemServiceImpl: ItemService {
     
     func saveItem(_ item: ItemDto) -> Bool {
         if let id = item.getId() {
-            return true
+            return itemRepository.updateItem(id: id, updatedItem: item)
         }
         else {
             let newItem = ItemEntity(context: context)

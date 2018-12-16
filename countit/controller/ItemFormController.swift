@@ -13,6 +13,8 @@ class ItemFormController: UIViewController {
     
     private var formView: NewItemFormView?
     
+    private var selectedItem: ItemDto?
+    
     private let itemService: ItemService
     private let controllerResolver: ControllerResolver
     private let viewResolver: ViewResolver
@@ -35,6 +37,16 @@ class ItemFormController: UIViewController {
         self.formView = newItemFormView
         self.view = newItemFormView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if selectedItem != nil {
+            displayForm()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        formView?.clearForm()
+    }
 }
 
 extension ItemFormController: FormController {
@@ -46,6 +58,15 @@ extension ItemFormController: FormController {
             navController?.popViewController(animated: true)
             formView?.clearForm()
         }
+    }
+    
+    func with(item: ItemDto) {
+        selectedItem = item
+    }
+    
+    private func displayForm() {
+        let itemForm = NewItemForm(selectedItem!)
+        formView?.setForm(form: itemForm)
     }
     
     func cancelForm() {

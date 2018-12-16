@@ -13,7 +13,9 @@ protocol ItemRepository {
     
     func createItem(item: ItemEntity) -> Bool
     
-    func updateItem(id: NSManagedObjectID, item: ItemEntity) -> Bool
+    func updateItem(id: NSManagedObjectID, updatedItem: ItemDto) -> Bool
+    
+    func getItem(with id: NSManagedObjectID) -> ItemDto?
     
     func getItems() -> [ItemEntity]
 }

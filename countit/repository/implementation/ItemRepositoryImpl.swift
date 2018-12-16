@@ -21,8 +21,14 @@ class ItemRepositoryImpl: ItemRepository {
         return saveContext()
     }
     
-    func updateItem(id: NSManagedObjectID, item: ItemEntity) -> Bool {
-       return true
+    func updateItem(id: NSManagedObjectID, updatedItem: ItemDto) -> Bool {
+        let item: ItemEntity? = getItem(with: id)
+        if item != nil {
+            item!.name = updatedItem.getName()
+            item!.itemDescription = updatedItem.getDescription()
+            return saveContext()
+        }
+        return false
     }
     
     private func saveContext() -> Bool {
@@ -32,6 +38,18 @@ class ItemRepositoryImpl: ItemRepository {
         } catch {
             return false
         }
+    }
+    
+    func getItem(with id: NSManagedObjectID) -> ItemDto? {
+        let item: ItemEntity? = getItem(with: id)
+        if item != nil {
+            return ItemDto(itemEntity: item!)
+        }
+        return nil
+    }
+    
+    private func getItem(with id: NSManagedObjectID) -> ItemEntity? {
+        return context.object(with: id) as? ItemEntity ?? nil
     }
     
     func getItems() -> [ItemEntity] {
