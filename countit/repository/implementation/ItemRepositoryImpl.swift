@@ -17,16 +17,18 @@ class ItemRepositoryImpl: ItemRepository {
     init () {
     }
     
-    func createItem(item: ItemDto) -> Bool {
-        itemEntityFrom(itemDto: item)
+    func create(item: ItemDto, atPosition position: Int) -> Bool {
+        let item = itemEntityFrom(itemDto: item)
+        item.listPosition = Int16(position)
         return saveContext()
     }
     
-    func updateItem(id: NSManagedObjectID, updatedItem: ItemDto) -> Bool {
-        let item: ItemEntity? = getItem(with: id)
-        if item != nil {
-            item!.name = updatedItem.getName()
-            item!.itemDescription = updatedItem.getDescription()
+    func update(item: ItemDto, with id: NSManagedObjectID) -> Bool {
+        let itemEntity: ItemEntity? = getItem(with: id)
+        if itemEntity != nil {
+            itemEntity!.name = item.getName()
+            itemEntity!.itemDescription = item.getDescription()
+            itemEntity!.listPosition = Int16(item.getListPosition()!)
             return saveContext()
         }
         return false
@@ -46,11 +48,23 @@ class ItemRepositoryImpl: ItemRepository {
     
     func getItems() -> [ItemDto] {
         let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "listPosition", ascending: true)]
+        return itemEntityArrayToDto(getItems(with: request))
+    }
+    
+    func getLowestListPosition() -> ItemDto? {
+        let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
+        request.fetchLimit = 1
+        request.sortDescriptors = [NSSortDescriptor(key: "listPosition", ascending: false)]
+        return ItemDto(itemEntity: getItems(with: request)[0])
+    }
+    
+    private func getItems(with request: NSFetchRequest<ItemEntity>) -> [ItemEntity] {
         do {
             let items: [ItemEntity] = try context.fetch(request)
-            return itemEntityArrayToDto(items)
+            return items
         } catch {
-            return [ItemDto]()
+            return [ItemEntity]()
         }
     }
     

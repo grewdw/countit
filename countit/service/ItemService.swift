@@ -16,4 +16,6 @@ protocol ItemService {
     func getItem(id: NSManagedObjectID) -> ItemDto?
     
     func getItems() -> [ItemDto]
+    
+    func persistTableOrder(for items: [ItemDto])
 }

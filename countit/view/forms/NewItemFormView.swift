@@ -91,15 +91,12 @@ extension NewItemFormView {
     }
     
     private func getFormData() -> ItemForm {
+        let id = form?.getId()
         let name = nameField.fieldText.text
         let description = descriptionField.fieldText.text
+        let listPosition = form?.getListPosition()
         
-        if let itemId = form?.getId() {
-            return ItemForm(itemId, name, description)
-        }
-        else {
-            return ItemForm(name, description)
-        }
+        return ItemForm(id, name, description, listPosition)
     }
 }
 
