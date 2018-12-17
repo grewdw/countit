@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class NewItemForm: Form {
+class ItemForm: Form {
     
     private var id: NSManagedObjectID?
     private var name: String?

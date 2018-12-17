@@ -14,7 +14,7 @@
 		1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */; };
 		1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B42421B8510300920CF4 /* TextFieldView.swift */; };
 		1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */; };
-		1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06121BBF81800A53853 /* NewItemForm.swift */; };
+		1D76F06221BBF81800A53853 /* ItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06121BBF81800A53853 /* ItemForm.swift */; };
 		1D76F06921BC214600A53853 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06821BC214600A53853 /* FormController.swift */; };
 		1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */; };
 		1D76F07021BC52C800A53853 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06F21BC52C800A53853 /* TableController.swift */; };
@@ -63,7 +63,7 @@
 		1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
 		1D49B42421B8510300920CF4 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		1D49B42721B853F800920CF4 /* TextFieldViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewBuilder.swift; sourceTree = "<group>"; };
-		1D76F06121BBF81800A53853 /* NewItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemForm.swift; sourceTree = "<group>"; };
+		1D76F06121BBF81800A53853 /* ItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemForm.swift; sourceTree = "<group>"; };
 		1D76F06821BC214600A53853 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
 		1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableView.swift; sourceTree = "<group>"; };
 		1D76F06F21BC52C800A53853 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		1D76F06021BBF80900A53853 /* forms */ = {
 			isa = PBXGroup;
 			children = (
-				1D76F06121BBF81800A53853 /* NewItemForm.swift */,
+				1D76F06121BBF81800A53853 /* ItemForm.swift */,
 				1D7D37EB21C30041000E3621 /* Form.swift */,
 			);
 			path = forms;
@@ -484,7 +484,7 @@
 				1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
-				1D76F06221BBF81800A53853 /* NewItemForm.swift in Sources */,
+				1D76F06221BBF81800A53853 /* ItemForm.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,

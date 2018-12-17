@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import CoreData
 
 protocol ItemService {
     
     func saveItem(_ item: ItemDto) -> Bool
+    
+    func getItem(id: NSManagedObjectID) -> ItemDto?
     
     func getItems() -> [ItemDto]
 }

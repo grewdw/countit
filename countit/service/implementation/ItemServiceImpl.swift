@@ -12,8 +12,6 @@ import UIKit
 
 class ItemServiceImpl: ItemService {
     
-    private final let context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     private final var itemRepository: ItemRepository
     
     init (itemRepository: ItemRepository) {
@@ -27,6 +25,10 @@ class ItemServiceImpl: ItemService {
         else {
             return itemRepository.createItem(item: item)
         }
+    }
+    
+    func getItem(id: NSManagedObjectID) -> ItemDto? {
+        return itemRepository.getItem(with: id)
     }
     
     func getItems() -> [ItemDto] {
