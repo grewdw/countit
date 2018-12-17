@@ -12,7 +12,7 @@ class NewItemFormView: UIScrollView {
     
     private let DEFAULT_FORM_TITLE = "ADD ITEM"
     
-    var form: NewItemForm? { didSet { updateForm() }}
+    var form: ItemForm? { didSet { updateForm() }}
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -71,7 +71,7 @@ extension NewItemFormView {
         return getFormData()
     }
     
-    func setForm(form: NewItemForm) {
+    func setForm(form: ItemForm) {
         self.form = form
     }
         
@@ -83,23 +83,23 @@ extension NewItemFormView {
                 initialiseNavBar(for: formDelegate!)
             }
         }
+        else {
+            nameField.fieldText.text = ""
+            descriptionField.fieldText.text = ""
+        }
     }
     
     func clearForm() {
-        nameField.fieldText.text = ""
-        descriptionField.fieldText.text = ""
+        form = nil
     }
     
-    private func getFormData() -> NewItemForm {
+    private func getFormData() -> ItemForm {
+        let id = form?.getId()
         let name = nameField.fieldText.text
         let description = descriptionField.fieldText.text
+        let listPosition = form?.getListPosition()
         
-        if let itemId = form?.getId() {
-            return NewItemForm(itemId, name, description)
-        }
-        else {
-            return NewItemForm(name, description)
-        }
+        return ItemForm(id, name, description, listPosition)
     }
 }
 

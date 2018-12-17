@@ -46,14 +46,15 @@ class ItemFormController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         formView?.clearForm()
+        selectedItem = nil
     }
 }
 
 extension ItemFormController: FormController {
     
     func submitForm(_ form: Form) {
-        let itemForm = form as! NewItemForm
-        if itemService.saveItem(ItemDto(itemForm.getId(), itemForm.getName()!, itemForm.getDescription())) {
+        let itemForm = form as! ItemForm
+        if itemService.saveItem(ItemDto(itemForm.getId(), itemForm.getName()!, itemForm.getDescription(), itemForm.getListPosition())) {
             let navController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController
             navController?.popViewController(animated: true)
             formView?.clearForm()
@@ -65,7 +66,7 @@ extension ItemFormController: FormController {
     }
     
     private func displayForm() {
-        let itemForm = NewItemForm(selectedItem!)
+        let itemForm = ItemForm(selectedItem!)
         formView?.setForm(form: itemForm)
     }
     

@@ -14,17 +14,20 @@ class ItemDto {
     private let id: NSManagedObjectID?
     private let name: String
     private let description: String?
+    private var listPosition: Int?
     
-    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?) {
+    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ listPosition: Int?) {
         self.id = id
         self.name = name
         self.description = description
+        self.listPosition = listPosition
     }
     
     init(itemEntity: ItemEntity) {
         self.id = itemEntity.objectID
         self.name = itemEntity.name!
         self.description = itemEntity.itemDescription
+        self.listPosition = Int(itemEntity.listPosition)
     }
     
     func getId() -> NSManagedObjectID? {
@@ -37,5 +40,13 @@ class ItemDto {
     
     func getDescription() -> String? {
         return description
+    }
+    
+    func getListPosition() -> Int? {
+        return listPosition
+    }
+    
+    func setListPosition(newPosition: Int) {
+        self.listPosition = newPosition
     }
 }

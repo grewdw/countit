@@ -9,11 +9,12 @@
 import Foundation
 import CoreData
 
-class NewItemForm: Form {
+class ItemForm: Form {
     
     private var id: NSManagedObjectID?
     private var name: String?
     private var description: String?
+    private var listPosition: Int?
     
     init(_ name: String) {
         self.name = name
@@ -24,16 +25,24 @@ class NewItemForm: Form {
         self.description = description
     }
     
-    init(_ id: NSManagedObjectID, _ name: String?, _ description: String?) {
+    init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?) {
         self.id = id
         self.name = name
         self.description = description
+    }
+    
+    init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?, _ listPosition: Int?) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.listPosition = listPosition
     }
     
     init(_ dto: ItemDto) {
         self.id = dto.getId()
         self.name = dto.getName()
         self.description = dto.getDescription()
+        self.listPosition = dto.getListPosition()
     }
     
     func getId() -> NSManagedObjectID? {
@@ -46,6 +55,10 @@ class NewItemForm: Form {
     
     func getDescription() -> String? {
         return description
+    }
+    
+    func getListPosition() -> Int? {
+        return self.listPosition
     }
     
     func isValid() -> Bool {

@@ -12,8 +12,6 @@ import UIKit
 
 class ItemServiceImpl: ItemService {
     
-    private final let context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     private final var itemRepository: ItemRepository
     
     init (itemRepository: ItemRepository) {
@@ -22,14 +20,29 @@ class ItemServiceImpl: ItemService {
     
     func saveItem(_ item: ItemDto) -> Bool {
         if let id = item.getId() {
-            return itemRepository.updateItem(id: id, updatedItem: item)
+            return itemRepository.update(item: item, with: id)
         }
         else {
-            return itemRepository.createItem(item: item)
+            let previousLowestPosition = itemRepository.getLowestListPosition()?.getListPosition()
+            let newLowestPosition = previousLowestPosition != nil ? previousLowestPosition! + 1 : 0
+            return itemRepository.create(item: item, atPosition: newLowestPosition)
         }
+    }
+    
+    func getItem(id: NSManagedObjectID) -> ItemDto? {
+        return itemRepository.getItem(with: id)
     }
     
     func getItems() -> [ItemDto] {
         return itemRepository.getItems()
+    }
+    
+    func persistTableOrder(for items: [ItemDto]) {
+        let itemCount = items.count - 1
+        
+        for position in 0...itemCount {
+            items[position].setListPosition(newPosition: position)
+            itemRepository.update(item: items[position], with: items[position].getId()!)
+        }
     }
 }
