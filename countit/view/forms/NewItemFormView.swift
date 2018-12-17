@@ -83,11 +83,14 @@ extension NewItemFormView {
                 initialiseNavBar(for: formDelegate!)
             }
         }
+        else {
+            nameField.fieldText.text = ""
+            descriptionField.fieldText.text = ""
+        }
     }
     
     func clearForm() {
-        nameField.fieldText.text = ""
-        descriptionField.fieldText.text = ""
+        form = nil
     }
     
     private func getFormData() -> ItemForm {

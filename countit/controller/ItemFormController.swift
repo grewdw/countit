@@ -46,6 +46,7 @@ class ItemFormController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         formView?.clearForm()
+        selectedItem = nil
     }
 }
 
