@@ -16,6 +16,8 @@ class ItemForm: Form {
     private var description: String?
     private var listPosition: Int?
     
+    private var fieldErrors: [ItemFormFields] = []
+    
     init(_ name: String) {
         self.name = name
     }
@@ -62,6 +64,22 @@ class ItemForm: Form {
     }
     
     func isValid() -> Bool {
-        return true
-    }    
+        if name != nil && name != "" {
+            return true
+        }
+        else {
+            fieldErrors.append(ItemFormFields.NAME)
+            return false
+        }
+    }
+    
+    func getFieldErrors() -> [ItemFormFields] {
+        return fieldErrors
+    }
+}
+
+enum ItemFormFields {
+    
+    case NAME
+    case DESCRIPTION
 }
