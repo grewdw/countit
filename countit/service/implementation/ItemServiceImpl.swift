@@ -45,4 +45,8 @@ class ItemServiceImpl: ItemService {
             itemRepository.update(item: items[position], with: items[position].getId()!)
         }
     }
+    
+    func delete(itemWithId id: NSManagedObjectID) -> Bool {
+        return itemRepository.delete(itemWithId: id)
+    }
 }
