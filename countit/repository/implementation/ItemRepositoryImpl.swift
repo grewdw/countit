@@ -59,6 +59,16 @@ class ItemRepositoryImpl: ItemRepository {
         return ItemDto(itemEntity: getItems(with: request)[0])
     }
     
+    func delete(itemWithId id: NSManagedObjectID) -> Bool {
+        if let item = context.object(with: id) as? ItemEntity {
+            context.delete(context.object(with: item.objectID))
+            return saveContext()
+        }
+        else {
+            return false
+        }
+    }
+    
     private func getItems(with request: NSFetchRequest<ItemEntity>) -> [ItemEntity] {
         do {
             let items: [ItemEntity] = try context.fetch(request)

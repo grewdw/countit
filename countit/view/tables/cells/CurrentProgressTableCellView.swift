@@ -12,6 +12,9 @@ class CurrentProgressTableCellView: UITableViewCell {
     
     var name = UILabel()
     
+    let CELL_SPACING_TOP: CGFloat = 10
+    let CELL_SPACING_BOTTOM: CGFloat = -10
+    
     convenience init(_ itemName: String) {
         self.init(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "currentProgressCell")
         initialiseNameField(itemName)
@@ -28,8 +31,17 @@ class CurrentProgressTableCellView: UITableViewCell {
     func initialiseNameField(_ itemName: String) {
         self.addSubview(name)
         name.text = itemName
-        name.textAlignment = NSTextAlignment.center
-        name.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0, enableInsets: true)
+        name.numberOfLines = 0
+        name.textAlignment = .center
+        
+        name.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            name.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 2/3),
+            name.topAnchor.constraint(equalTo: self.topAnchor, constant: CELL_SPACING_TOP),
+            name.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CELL_SPACING_BOTTOM),
+            name.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
     }
 }
 

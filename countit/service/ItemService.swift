@@ -18,4 +18,6 @@ protocol ItemService {
     func getItems() -> [ItemDto]
     
     func persistTableOrder(for items: [ItemDto])
+    
+    func delete(itemWithId _id: NSManagedObjectID) -> Bool
 }

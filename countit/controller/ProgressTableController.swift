@@ -48,6 +48,8 @@ class ProgressTableController: UIViewController {
         tableView.delegate = self
         tableView.tableDelegate = self
         tableView.initialiseNavBar(for: self)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
         self.view = tableView
     }
 }
@@ -88,7 +90,16 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
                 parentController.pushViewController(itemFormController as! UIViewController, animated: true)
             }
         }
-        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let itemId = items[indexPath.row].getId() {
+                self.items.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                itemService.delete(itemWithId: itemId)
+            }
+        }
     }
 }
 
