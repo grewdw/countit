@@ -18,6 +18,8 @@ class TextFieldViewBuilder {
     var fieldName: String?
     var fieldText: String?
     var fieldTextPlaceholder: String?
+    var fieldErrorText: String?
+    var textFieldDelegate: UITextFieldDelegate?
     
     init (frame: CGRect) {
         self.frame = frame
@@ -28,42 +30,56 @@ class TextFieldViewBuilder {
         self.fieldName = nil
         self.fieldText = nil
         self.fieldTextPlaceholder = nil
+        self.fieldErrorText = nil
+        self.textFieldDelegate = nil
     }
     
-    func withAxis(_ axis: NSLayoutConstraint.Axis) -> TextFieldViewBuilder {
+    func with(axis: NSLayoutConstraint.Axis) -> TextFieldViewBuilder {
         self.axis = axis
         return self
     }
     
-    func withDistribution(_ distribution: UIStackView.Distribution) -> TextFieldViewBuilder {
+    func with(distribution: UIStackView.Distribution) -> TextFieldViewBuilder {
         self.distribution = distribution
         return self
     }
     
-    func withAlignment(_ alignment: UIStackView.Alignment) {
+    func with(alignment: UIStackView.Alignment) -> TextFieldViewBuilder {
         self.alignment = alignment
+        return self
     }
     
-    func withSpacing(_ spacing: CGFloat) {
+    func with(spacing: CGFloat) -> TextFieldViewBuilder {
         self.spacing = spacing
-    }
-    
-    func withFieldName(_ fieldName: String) -> TextFieldViewBuilder {
-        self.fieldName = fieldName
         return self
     }
     
-    func withFieldText(_ fieldText: String) -> TextFieldViewBuilder {
-        self.fieldText = fieldText
+    func with(fieldName text: String) -> TextFieldViewBuilder {
+        self.fieldName = text
         return self
     }
     
-    func withFieldTextPlaceholder(_ fieldTextPlaceholder: String) -> TextFieldViewBuilder {
-        self.fieldTextPlaceholder = fieldTextPlaceholder
+    func with(fieldText text: String) -> TextFieldViewBuilder {
+        self.fieldText = text
+        return self
+    }
+    
+    func with(fieldTextPlaceholder text: String) -> TextFieldViewBuilder {
+        self.fieldTextPlaceholder = text
+        return self
+    }
+    
+    func with(fieldErrorText text: String) -> TextFieldViewBuilder {
+        self.fieldErrorText = text
+        return self
+    }
+    
+    func with(textFieldDelegate delegate: UITextFieldDelegate) -> TextFieldViewBuilder {
+        self.textFieldDelegate = delegate
         return self
     }
     
     func build() -> TextFieldView {
-        return TextFieldView(frame: frame, axis, distribution, alignment, spacing, fieldName, fieldText, fieldTextPlaceholder)
+        return TextFieldView(frame: frame, axis, distribution, alignment, spacing, fieldName, fieldText, fieldTextPlaceholder, fieldErrorText, textFieldDelegate)
     }
 }

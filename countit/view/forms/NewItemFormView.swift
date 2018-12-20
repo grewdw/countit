@@ -20,34 +20,43 @@ class NewItemFormView: UIScrollView {
     let nameField: TextFieldView
     let descriptionField: TextFieldView
     
+    var fields: [ItemFormFields: TextFieldView] = [:]
+    
     override init(frame: CGRect) {
        
         nameField = TextFieldViewBuilder(frame: .zero)
-            .withFieldName("Name")
-            .withFieldText("")
-            .withFieldTextPlaceholder("Enter item name")
+            .with(spacing: 10)
+            .with(fieldName: "Name")
+            .with(fieldText: "")
+            .with(fieldTextPlaceholder: "Enter item name")
+            .with(fieldErrorText: "* Must provide a name")
             .build()
         nameField.translatesAutoresizingMaskIntoConstraints = false
+        fields.updateValue(nameField, forKey: ItemFormFields.NAME)
         
         descriptionField = TextFieldViewBuilder(frame: .zero)
-            .withFieldName("Description")
-            .withFieldText("")
-            .withFieldTextPlaceholder("Enter item description")
+            .with(spacing: 10)
+            .with(fieldName: "Description")
+            .with(fieldText: "")
+            .with(fieldTextPlaceholder: "Enter item description")
             .build()
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
+        fields.updateValue(descriptionField, forKey: ItemFormFields.DESCRIPTION)
         
         super.init(frame: frame)
+        
+        nameField.fieldText.delegate = self
         
         self.backgroundColor = UIColor.white
         self.addSubview(nameField)
         self.addSubview(descriptionField)
         NSLayoutConstraint.activate([
-            nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/2),
+            nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
             nameField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            nameField.centerYAnchor.constraint(equalTo: self.topAnchor, constant: frame.height / 6),
-            descriptionField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/2),
+            nameField.centerYAnchor.constraint(equalTo: self.topAnchor, constant: frame.height / 10),
+            descriptionField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
             descriptionField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 6),
+            descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 10),
         ])
         
         if form != nil {
@@ -78,6 +87,7 @@ extension NewItemFormView {
     func updateForm() {
         if let itemForm = form {
             nameField.fieldText.text = itemForm.getName()
+            nameField.removeErrorMessage()
             descriptionField.fieldText.text = itemForm.getDescription()
             if formDelegate != nil {
                 initialiseNavBar(for: formDelegate!)
@@ -85,6 +95,7 @@ extension NewItemFormView {
         }
         else {
             nameField.fieldText.text = ""
+            nameField.removeErrorMessage()
             descriptionField.fieldText.text = ""
         }
     }
@@ -108,7 +119,30 @@ extension NewItemFormView: NavBarButtonDelegate {
     @objc func saveButtonPressed() {
         
         if let controller = formDelegate {
-            controller.submitForm(getFormData())
+            let form = getFormData()
+            if form.isValid() {
+                controller.submitForm(getFormData())
+            }
+            else {
+                let errors = form.getFieldErrors()
+                for error in errors {
+                    fields[error]?.displayErrorMessage()
+                }
+            }
+            
         }
+    }
+}
+
+extension NewItemFormView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if nameField.displayingError {
+            nameField.removeErrorMessage()
+        }
+        else if string == "" && range.location == 0 && range.length == 1 {
+            nameField.displayErrorMessage()
+        }
+        return true
     }
 }
