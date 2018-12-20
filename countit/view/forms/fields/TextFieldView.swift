@@ -37,18 +37,31 @@ class TextFieldView: UIStackView, UITextFieldDelegate {
         fieldName.text = fieldNameString
         fieldText.text = fieldTextString
         
-        fieldText.delegate = textFieldDelegate
-        self.fieldErrorText = fieldErrorText
-        
-        fieldName.backgroundColor = UIColor.green
+        fieldName.textAlignment = .left
+        fieldName.adjustsFontSizeToFitWidth = true
+        fieldName.font = UIFont.boldSystemFont(ofSize: 30)
         
         fieldText.borderStyle = .roundedRect
-        
         fieldText.placeholder = fieldTextPlaceholder
+        fieldText.delegate = textFieldDelegate
+        
+        fieldError.textColor = .red
+        fieldError.textAlignment = .left
+        self.fieldErrorText = fieldErrorText
+        
+        fieldName.translatesAutoresizingMaskIntoConstraints = false
+        fieldText.translatesAutoresizingMaskIntoConstraints = false
+        fieldError.translatesAutoresizingMaskIntoConstraints = false
         
         self.addArrangedSubview(fieldName)
         self.addArrangedSubview(fieldText)
         self.addArrangedSubview(fieldError)
+        
+        NSLayoutConstraint.activate([
+            fieldName.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
+            fieldText.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
+            fieldError.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
+        ])
     }
     
     required init(coder: NSCoder) {

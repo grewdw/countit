@@ -44,12 +44,14 @@ class TextFieldViewBuilder {
         return self
     }
     
-    func with(alignment: UIStackView.Alignment) {
+    func with(alignment: UIStackView.Alignment) -> TextFieldViewBuilder {
         self.alignment = alignment
+        return self
     }
     
-    func with(spacing: CGFloat) {
+    func with(spacing: CGFloat) -> TextFieldViewBuilder {
         self.spacing = spacing
+        return self
     }
     
     func with(fieldName text: String) -> TextFieldViewBuilder {

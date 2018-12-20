@@ -25,15 +25,17 @@ class NewItemFormView: UIScrollView {
     override init(frame: CGRect) {
        
         nameField = TextFieldViewBuilder(frame: .zero)
+            .with(spacing: 15)
             .with(fieldName: "Name")
             .with(fieldText: "")
             .with(fieldTextPlaceholder: "Enter item name")
-            .with(fieldErrorText: "Must provide a name")
+            .with(fieldErrorText: "* Must provide a name")
             .build()
         nameField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(nameField, forKey: ItemFormFields.NAME)
         
         descriptionField = TextFieldViewBuilder(frame: .zero)
+            .with(spacing: 15)
             .with(fieldName: "Description")
             .with(fieldText: "")
             .with(fieldTextPlaceholder: "Enter item description")
@@ -49,12 +51,12 @@ class NewItemFormView: UIScrollView {
         self.addSubview(nameField)
         self.addSubview(descriptionField)
         NSLayoutConstraint.activate([
-            nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/2),
+            nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
             nameField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            nameField.centerYAnchor.constraint(equalTo: self.topAnchor, constant: frame.height / 6),
-            descriptionField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/2),
+            nameField.centerYAnchor.constraint(equalTo: self.topAnchor, constant: frame.height / 10),
+            descriptionField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
             descriptionField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 6),
+            descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 10),
         ])
         
         if form != nil {
