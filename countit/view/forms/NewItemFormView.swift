@@ -25,7 +25,7 @@ class NewItemFormView: UIScrollView {
     override init(frame: CGRect) {
        
         nameField = TextFieldViewBuilder(frame: .zero)
-            .with(spacing: 15)
+            .with(spacing: 10)
             .with(fieldName: "Name")
             .with(fieldText: "")
             .with(fieldTextPlaceholder: "Enter item name")
@@ -35,7 +35,7 @@ class NewItemFormView: UIScrollView {
         fields.updateValue(nameField, forKey: ItemFormFields.NAME)
         
         descriptionField = TextFieldViewBuilder(frame: .zero)
-            .with(spacing: 15)
+            .with(spacing: 10)
             .with(fieldName: "Description")
             .with(fieldText: "")
             .with(fieldTextPlaceholder: "Enter item description")

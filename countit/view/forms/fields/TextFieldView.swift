@@ -47,6 +47,7 @@ class TextFieldView: UIStackView, UITextFieldDelegate {
         
         fieldError.textColor = .red
         fieldError.textAlignment = .left
+        fieldError.font = UIFont.italicSystemFont(ofSize: 12)
         self.fieldErrorText = fieldErrorText
         
         fieldName.translatesAutoresizingMaskIntoConstraints = false
