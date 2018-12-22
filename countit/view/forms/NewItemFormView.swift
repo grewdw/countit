@@ -71,8 +71,11 @@ class NewItemFormView: UIScrollView {
 
 extension NewItemFormView {
     
-    func initialiseNavBar(for controller: FormController) {
-        NavigationItemBuilder.setNavBar(title: form?.getName()?.uppercased() ?? DEFAULT_FORM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.SAVE, rightButtonTarget: self, controller: controller as! UIViewController)
+    func initialiseNavBar(for controller: UIViewController) {
+        NavigationItemBuilder(for: controller)
+            .with(title: form?.getName()?.uppercased() ?? DEFAULT_FORM_TITLE)
+            .with(rightButton: .SAVE, forTarget: self)
+            .build()
     }
     
     
@@ -90,7 +93,7 @@ extension NewItemFormView {
             nameField.removeErrorMessage()
             descriptionField.fieldText.text = itemForm.getDescription()
             if formDelegate != nil {
-                initialiseNavBar(for: formDelegate!)
+                initialiseNavBar(for: formDelegate as! UIViewController)
             }
         }
         else {

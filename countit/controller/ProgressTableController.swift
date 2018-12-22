@@ -35,7 +35,6 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         getItems()
         initiateView()
-        initiateSearchBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,19 +50,10 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableDelegate = self
-        tableView.initialiseNavBarWithSearch(for: self)
+        tableView.initialiseNavBarWithSearch(for: self, searchResultsUpdater: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 22.0
         self.view = tableView
-    }
-
-    func initiateSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search items"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
     }
 }
 

@@ -10,13 +10,55 @@ import UIKit
 
 class NavigationItemBuilder {
     
-    static func setNavBar(title: String?, leftButton: NavBarButtonType?, leftButtonTarget: NavBarButtonDelegate, rightButton: NavBarButtonType?, rightButtonTarget: NavBarButtonDelegate, controller: UIViewController) {
-        controller.navigationItem.title = title
-        controller.navigationItem.leftBarButtonItem = getBarButton(leftButton, leftButtonTarget)
-        controller.navigationItem.rightBarButtonItem = getBarButton(rightButton, rightButtonTarget)
+    var controller: UIViewController
+    var title: String? = nil
+    var leftButton: NavBarButtonType?
+    var rightButton: NavBarButtonType?
+    var leftButtonTarget: NavBarButtonDelegate?
+    var rightButtonTarget: NavBarButtonDelegate?
+    var searchController: UISearchController?
+    
+    init(for controller: UIViewController) {
+        self.controller = controller
     }
     
-    private static func getBarButton(_ buttonType: NavBarButtonType?, _ target: NavBarButtonDelegate) -> UIBarButtonItem? {
+    func with(title: String) -> NavigationItemBuilder {
+        self.title = title
+        return self
+    }
+    
+    func with(leftButton: NavBarButtonType, forTarget leftButtonTarget: NavBarButtonDelegate) -> NavigationItemBuilder {
+        self.leftButton = leftButton
+        self.leftButtonTarget = leftButtonTarget
+        return self
+    }
+    
+    func with(rightButton: NavBarButtonType, forTarget rightButtonTarget: NavBarButtonDelegate) -> NavigationItemBuilder {
+        self.rightButton = rightButton
+        self.rightButtonTarget = rightButtonTarget
+        return self
+    }
+    
+    func withSearchController(searchResultsUpdater: UISearchResultsUpdating, placeholder: String?) -> NavigationItemBuilder {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController!.searchResultsUpdater = searchResultsUpdater
+        searchController!.obscuresBackgroundDuringPresentation = false
+        searchController!.searchBar.placeholder = placeholder
+        return self
+    }
+    
+    func build() {
+        controller.navigationItem.title = title
+        if leftButton != nil {
+            controller.navigationItem.leftBarButtonItem = getBarButton(leftButton!, leftButtonTarget!)
+        }
+        if rightButton != nil {
+            controller.navigationItem.rightBarButtonItem = getBarButton(rightButton!, rightButtonTarget!)
+        }
+        controller.navigationItem.searchController = searchController
+    }
+    
+    private func getBarButton(_ buttonType: NavBarButtonType?, _ target: NavBarButtonDelegate) -> UIBarButtonItem? {
         if let button = buttonType {
             switch button {
             case NavBarButtonType.ADD :

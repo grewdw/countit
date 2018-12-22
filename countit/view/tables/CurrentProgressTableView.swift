@@ -13,15 +13,18 @@ class CurrentProgressTableView: UITableView, NavBarButtonDelegate {
     let NAV_ITEM_TITLE = "COUNT IT"
     var tableDelegate: TableController?
     
-    func initialiseNavBar(for controller: TableController) {
-        NavigationItemBuilder.setNavBar(title: NAV_ITEM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.ADD, rightButtonTarget: self, controller: controller as! UIViewController)
+    func initialiseNavBar(for controller: UIViewController) {
+        NavigationItemBuilder(for: controller)
+            .with(rightButton: .ADD, forTarget: controller as! NavBarButtonDelegate)
+            .build()
     }
     
-    func initialiseNavBarWithSearch(for controller: TableController) {
-        NavigationItemBuilder.setNavBar(title: NAV_ITEM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.ADD, rightButtonTarget: self, controller: controller as! UIViewController)
-        let searchBar = UISearchBar()
-        searchBar.delegate = controller as? UISearchBarDelegate
-        self.addSubview(searchBar)
+    func initialiseNavBarWithSearch(for controller: UIViewController, searchResultsUpdater: UISearchResultsUpdating) {
+        NavigationItemBuilder(for: controller)
+            .with(title: NAV_ITEM_TITLE)
+            .with(rightButton: .ADD, forTarget: self)
+            .withSearchController(searchResultsUpdater: searchResultsUpdater, placeholder: "Search items")
+            .build()
     }
     
     @objc func addButtonPressed() {
