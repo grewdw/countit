@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgressTableController: UIViewController {
+class ProgressTableController: UIViewController, UISearchBarDelegate {
     
     private let controllerResolver: ControllerResolver
     private let viewResolver: ViewResolver
@@ -17,6 +17,9 @@ class ProgressTableController: UIViewController {
     private let refreshControl = UIRefreshControl()
     
     var items: [ItemDto] = []
+    var filteredItems: [ItemDto] = []
+    
+    var filteringItems: Bool = false
     
     init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService) {
         self.controllerResolver = controllerResolver
@@ -47,9 +50,9 @@ class ProgressTableController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableDelegate = self
-        tableView.initialiseNavBar(for: self)
+        tableView.initialiseNavBarWithSearch(for: self, searchResultsUpdater: self)
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44.0
+        tableView.estimatedRowHeight = 22.0
         self.view = tableView
     }
 }
@@ -62,23 +65,38 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func refreshTable() {
         getItems()
-        let table = self.view as? UITableView
-        table?.reloadData()
+        reloadTableData()
         refreshControl.endRefreshing()
     }
     
+    func filterItems(containing searchText: String) {
+        filteredItems = items.filter({( item : ItemDto) -> Bool in
+        return item.getName().lowercased().contains(searchText.lowercased())
+        })
+        reloadTableData()
+    }
+    
+    private func reloadTableData() {
+        let table = self.view as? UITableView
+        table?.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return filteringItems ? filteredItems.count : items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CurrentProgressTableCellView(items[indexPath.row].getName())
+        let itemsArray = filteringItems ? filteredItems : items
+        
+        let cell = CurrentProgressTableCellView(itemsArray[indexPath.row].getName())
         cell.accessoryType = UITableViewCell.AccessoryType.detailButton
         return cell
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        toItemController(item: items[indexPath.row])
+        let itemsArray = filteringItems ? filteredItems : items
+        
+        toItemController(item: itemsArray[indexPath.row])
     }
     
     private func toItemController(item: ItemDto?) {
@@ -164,25 +182,28 @@ extension ProgressTableController {
                 //swap(&self.wayPoints[(indexPath?.row)!], &self.wayPoints[(Path.initialIndexPath?.row)!])
                 tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                 Path.initialIndexPath = indexPath
-                itemService.persistTableOrder(for: items)
+                if !filteringItems {
+                  itemService.persistTableOrder(for: items)
+                }
             }
             
         default:
-            let cell = tableView.cellForRow(at: Path.initialIndexPath!) as! CurrentProgressTableCellView
-            cell.isHidden = false
-            cell.alpha = 0.0
-            UIView.animate(withDuration: 0.25, animations: {
-                My.cellSnapShot?.center = cell.center
-                My.cellSnapShot?.transform = .identity
-                My.cellSnapShot?.alpha = 0.0
-                cell.alpha = 1.0
-            }, completion: { (finished) -> Void in
-                if finished {
-                    Path.initialIndexPath = nil
-                    My.cellSnapShot?.removeFromSuperview()
-                    My.cellSnapShot = nil
-                }
-            })
+            if let cell = tableView.cellForRow(at: Path.initialIndexPath!) as? CurrentProgressTableCellView {
+                cell.isHidden = false
+                cell.alpha = 0.0
+                UIView.animate(withDuration: 0.25, animations: {
+                    My.cellSnapShot?.center = cell.center
+                    My.cellSnapShot?.transform = .identity
+                    My.cellSnapShot?.alpha = 0.0
+                    cell.alpha = 1.0
+                }, completion: { (finished) -> Void in
+                    if finished {
+                        Path.initialIndexPath = nil
+                        My.cellSnapShot?.removeFromSuperview()
+                        My.cellSnapShot = nil
+                    }
+                })
+            }
         }
     }
     
@@ -210,3 +231,15 @@ extension ProgressTableController {
     }
 }
 
+extension ProgressTableController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text?.isEmpty ?? false || searchController.searchBar.text == "" {
+            filteringItems = false
+            refreshTable()
+        } else {
+            filteringItems = true
+            filterItems(containing: searchController.searchBar.text!)
+        }
+    }
+}
