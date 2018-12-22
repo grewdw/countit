@@ -17,6 +17,13 @@ class CurrentProgressTableView: UITableView, NavBarButtonDelegate {
         NavigationItemBuilder.setNavBar(title: NAV_ITEM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.ADD, rightButtonTarget: self, controller: controller as! UIViewController)
     }
     
+    func initialiseNavBarWithSearch(for controller: TableController) {
+        NavigationItemBuilder.setNavBar(title: NAV_ITEM_TITLE, leftButton: nil, leftButtonTarget: self, rightButton: NavBarButtonType.ADD, rightButtonTarget: self, controller: controller as! UIViewController)
+        let searchBar = UISearchBar()
+        searchBar.delegate = controller as? UISearchBarDelegate
+        self.addSubview(searchBar)
+    }
+    
     @objc func addButtonPressed() {
         if let controller = tableDelegate {
             controller.buttonPressed(NavBarButtonType.ADD)
