@@ -39,7 +39,7 @@ class CreateItems: XCTestCase {
     func testCreateNewItem() {
 //        Given
         let item = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        target!.saveItem(item)
+        let _ = target!.saveItem(item)
         
 //        When
         let items = target!.getItems()
@@ -51,14 +51,29 @@ class CreateItems: XCTestCase {
         XCTAssert(items[0].getListPosition() == 0)
     }
     
+    func testCreateNewItemNoDescription() {
+        //        Given
+        let item = ItemDto(nil, ITEM_NAME_ONE, nil, nil)
+        let _ = target!.saveItem(item)
+        
+        //        When
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 1)
+        XCTAssert(items[0].getName() == ITEM_NAME_ONE)
+        XCTAssert(items[0].getDescription() == nil)
+        XCTAssert(items[0].getListPosition() == 0)
+    }
+    
     func testCreateMultipleItems() {
         //        Given
         let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
         let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, nil)
         let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
-        target!.saveItem(itemOne)
-        target!.saveItem(itemTwo)
-        target!.saveItem(itemThree)
+        let _ = target!.saveItem(itemOne)
+        let _ = target!.saveItem(itemTwo)
+        let _ = target!.saveItem(itemThree)
         
         //        When
         let items = target!.getItems()
@@ -83,9 +98,9 @@ class CreateItems: XCTestCase {
         let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
         let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, 0)
         let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
-        target!.saveItem(itemOne)
-        target!.saveItem(itemTwo)
-        target!.saveItem(itemThree)
+        let _ = target!.saveItem(itemOne)
+        let _ = target!.saveItem(itemTwo)
+        let _ = target!.saveItem(itemThree)
         
         //        When
         let items = target!.getItems()

@@ -12,9 +12,10 @@ import Foundation
 
 class ItemRepositoryImpl: ItemRepository {
     
-    private final let context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let context: NSManagedObjectContext
     
-    init () {
+    init (context: NSManagedObjectContext) {
+        self.context = context
     }
     
     func create(item: ItemDto, atPosition position: Int) -> Bool {
@@ -28,7 +29,15 @@ class ItemRepositoryImpl: ItemRepository {
         if itemEntity != nil {
             itemEntity!.name = item.getName()
             itemEntity!.itemDescription = item.getDescription()
-            itemEntity!.listPosition = Int16(item.getListPosition()!)
+            return saveContext()
+        }
+        return false
+    }
+    
+    func updateItemWith(id: NSManagedObjectID, toListPosition position: Int) -> Bool {
+        let itemEntity: ItemEntity? = getItem(with: id)
+        if itemEntity != nil {
+            itemEntity!.listPosition = Int16(position)
             return saveContext()
         }
         return false
@@ -36,10 +45,10 @@ class ItemRepositoryImpl: ItemRepository {
 
     func getItem(with id: NSManagedObjectID) -> ItemDto? {
         let item: ItemEntity? = getItem(with: id)
-        if item != nil {
-            return ItemDto(itemEntity: item!)
+        if item == nil || item?.name == nil {
+            return nil
         }
-        return nil
+        return ItemDto(itemEntity: item!)
     }
     
     private func getItem(with id: NSManagedObjectID) -> ItemEntity? {
@@ -56,7 +65,14 @@ class ItemRepositoryImpl: ItemRepository {
         let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
         request.fetchLimit = 1
         request.sortDescriptors = [NSSortDescriptor(key: "listPosition", ascending: false)]
-        return ItemDto(itemEntity: getItems(with: request)[0])
+        let resultsArray = getItems(with: request)
+        
+        if resultsArray.count != 0 {
+            return ItemDto(itemEntity: resultsArray[0])
+        }
+        else {
+            return nil
+        }
     }
     
     func delete(itemWithId id: NSManagedObjectID) -> Bool {

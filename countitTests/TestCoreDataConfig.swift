@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class CoreDataConfig {
+class TestCoreDataConfig {
     
     public static func getCoreDataContext() -> NSManagedObjectContext {
         
@@ -19,7 +19,7 @@ class CoreDataConfig {
         }()
         
         let persistantContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "CoreDataUnitTesting", managedObjectModel: managedObjectModel)
+            let container = NSPersistentContainer(name: "countit", managedObjectModel: managedObjectModel)
             let description = NSPersistentStoreDescription()
             description.type = NSInMemoryStoreType
             description.shouldAddStoreAsynchronously = false

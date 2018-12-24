@@ -38,11 +38,15 @@ class ItemServiceImpl: ItemService {
     }
     
     func persistTableOrder(for items: [ItemDto]) {
-        let itemCount = items.count - 1
-        
-        for position in 0...itemCount {
-            items[position].setListPosition(newPosition: position)
-            itemRepository.update(item: items[position], with: items[position].getId()!)
+        if items.count > 0 {
+            var listPosition = 0
+            for position in 0...items.count-1 {
+                if let itemId = items[position].getId() {
+                    items[position].setListPosition(newPosition: listPosition)
+                    let _ = itemRepository.updateItemWith(id: itemId, toListPosition: listPosition)
+                    listPosition += 1
+                }
+            }
         }
     }
     

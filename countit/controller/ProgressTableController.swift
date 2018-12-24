@@ -115,7 +115,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
             if let itemId = items[indexPath.row].getId() {
                 self.items.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
-                itemService.delete(itemWithId: itemId)
+                let _ = itemService.delete(itemWithId: itemId)
             }
         }
     }
