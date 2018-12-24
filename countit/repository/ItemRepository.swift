@@ -15,6 +15,8 @@ protocol ItemRepository {
     
     func update(item: ItemDto, with id: NSManagedObjectID) -> Bool
     
+    func updateItemWith(id: NSManagedObjectID, toListPosition position: Int) -> Bool
+    
     func getItem(with id: NSManagedObjectID) -> ItemDto?
     
     func getItems() -> [ItemDto]
