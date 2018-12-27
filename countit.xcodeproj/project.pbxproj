@@ -32,7 +32,7 @@
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
 		1DB3900F21B5BFD200C11CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */; };
 		1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */; };
-		1DB3902821B5BFD200C11CD7 /* countitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3902721B5BFD200C11CD7 /* countitUITests.swift */; };
+		1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3902721B5BFD200C11CD7 /* CreateItems.swift */; };
 		1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */; };
 		1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */; };
 		1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */; };
@@ -41,6 +41,9 @@
 		1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B7E21D00982002F09CF /* UpdateItems.swift */; };
 		1DEB4B8121D00991002F09CF /* ReadItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8021D00991002F09CF /* ReadItems.swift */; };
 		1DEB4B8321D009B6002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8221D009B6002F09CF /* DeleteItems.swift */; };
+		1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */; };
+		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
+		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +94,7 @@
 		1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItems.swift; sourceTree = "<group>"; };
 		1DB3901E21B5BFD200C11CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB3902321B5BFD200C11CD7 /* countitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = countitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DB3902721B5BFD200C11CD7 /* countitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countitUITests.swift; sourceTree = "<group>"; };
+		1DB3902721B5BFD200C11CD7 /* CreateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItems.swift; sourceTree = "<group>"; };
 		1DB3902921B5BFD200C11CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableController.swift; sourceTree = "<group>"; };
 		1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableCellView.swift; sourceTree = "<group>"; };
@@ -101,6 +104,9 @@
 		1DEB4B7E21D00982002F09CF /* UpdateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItems.swift; sourceTree = "<group>"; };
 		1DEB4B8021D00991002F09CF /* ReadItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItems.swift; sourceTree = "<group>"; };
 		1DEB4B8221D009B6002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
+		1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItems.swift; sourceTree = "<group>"; };
+		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
+		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,7 +285,10 @@
 		1DB3902621B5BFD200C11CD7 /* countitUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1DB3902721B5BFD200C11CD7 /* countitUITests.swift */,
+				1DB3902721B5BFD200C11CD7 /* CreateItems.swift */,
+				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
+				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
+				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
 				1DB3902921B5BFD200C11CD7 /* Info.plist */,
 			);
 			path = countitUITests;
@@ -533,7 +542,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DB3902821B5BFD200C11CD7 /* countitUITests.swift in Sources */,
+				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
+				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
+				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
+				1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

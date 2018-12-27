@@ -7,9 +7,8 @@
 //
 
 import XCTest
-import countit
 
-class countitUITests: XCTestCase {
+class CreateItems: XCTestCase {
 
     let ITEM_NAME_ONE = "TestItemNameOne"
     let ITEM_NAME_TWO = "TestItemNameTwo"
