@@ -28,7 +28,6 @@
 		1D7D37EC21C30041000E3621 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EB21C30041000E3621 /* Form.swift */; };
 		1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8C4321C698AD009427FE /* ViewResolver.swift */; };
 		1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */; };
-		1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900621B5BFD000C11CD7 /* ViewController.swift */; };
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
 		1DB3900F21B5BFD200C11CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */; };
 		1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */; };
@@ -45,6 +44,7 @@
 		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
 		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
+		1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,6 @@
 		1D9B8C4321C698AD009427FE /* ViewResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewResolver.swift; path = countit/View/ViewResolver.swift; sourceTree = SOURCE_ROOT; };
 		1DB3900121B5BFD000C11CD7 /* countit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1DB3900621B5BFD000C11CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1DB3900C21B5BFD000C11CD7 /* countit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = countit.xcdatamodel; sourceTree = "<group>"; };
 		1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DB3901321B5BFD200C11CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
 		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
+		1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +265,6 @@
 				1DB3903821B5C07900C11CD7 /* service */,
 				1DB3903921B5C08800C11CD7 /* repository */,
 				1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */,
-				1DB3900621B5BFD000C11CD7 /* ViewController.swift */,
 				1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */,
 				1DB3901321B5BFD200C11CD7 /* Info.plist */,
 				1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */,
@@ -277,9 +276,9 @@
 		1DB3901B21B5BFD200C11CD7 /* countitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1DEB4B8F21D54F1C002F09CF /* Config */,
 				1DEB4B7D21D0094E002F09CF /* ItemService */,
 				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
-				1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */,
 			);
 			path = countitTests;
 			sourceTree = "<group>";
@@ -287,12 +286,13 @@
 		1DB3902621B5BFD200C11CD7 /* countitUITests */ = {
 			isa = PBXGroup;
 			children = (
+				1DEB4B9021D54F2D002F09CF /* Config */,
+				1DEB4B8E21D54EF0002F09CF /* Extensions */,
 				1DB3902721B5BFD200C11CD7 /* CreateItems.swift */,
 				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
 				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
 				1DB3902921B5BFD200C11CD7 /* Info.plist */,
-				1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */,
 			);
 			path = countitUITests;
 			sourceTree = "<group>";
@@ -368,6 +368,30 @@
 				1DEB4B8221D009B6002F09CF /* DeleteItems.swift */,
 			);
 			path = ItemService;
+			sourceTree = "<group>";
+		};
+		1DEB4B8E21D54EF0002F09CF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */,
+				1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1DEB4B8F21D54F1C002F09CF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		1DEB4B9021D54F2D002F09CF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,7 +538,6 @@
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
 				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
 				1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */,
-				1DB3900721B5BFD000C11CD7 /* ViewController.swift in Sources */,
 				1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */,
 				1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
@@ -546,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
+				1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
 				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
 				1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */,
