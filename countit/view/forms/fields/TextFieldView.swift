@@ -37,6 +37,10 @@ class TextFieldView: UIStackView, UITextFieldDelegate {
         fieldName.text = fieldNameString
         fieldText.text = fieldTextString
         
+        fieldName.accessibilityIdentifier = "fieldName"
+        fieldText.accessibilityIdentifier = "fieldText"
+        fieldError.accessibilityIdentifier = "fieldError"
+        
         fieldName.textAlignment = .left
         fieldName.adjustsFontSizeToFitWidth = true
         fieldName.font = UIFont.boldSystemFont(ofSize: 30)
@@ -77,5 +81,13 @@ class TextFieldView: UIStackView, UITextFieldDelegate {
     func removeErrorMessage() {
         fieldError.text = ""
         displayingError = false
+    }
+    
+    func getValue() -> String? {
+        return fieldText.text
+    }
+    
+    func set(value: String?) {
+        fieldText.text = value
     }
 }

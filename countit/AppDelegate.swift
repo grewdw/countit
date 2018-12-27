@@ -15,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+ 
+        let isSQLDatabase = ProcessInfo.processInfo.arguments.contains("test") ? false : true
         
-        let context = CoreDataConfig.getCoreDataContext()
+        let context = CoreDataConfig.getCoreDataContext(isSQLDatabase: isSQLDatabase)
         
         let itemRepository = ItemRepositoryImpl(context: context)
         let itemService = ItemServiceImpl(itemRepository: itemRepository)

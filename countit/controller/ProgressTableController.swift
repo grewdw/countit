@@ -46,6 +46,7 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized(gestureRecognizer:)))
+        tableView.accessibilityIdentifier = "ItemTable"
         tableView.addGestureRecognizer(longpress)
         tableView.dataSource = self
         tableView.delegate = self
@@ -89,6 +90,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
         let itemsArray = filteringItems ? filteredItems : items
         
         let cell = CurrentProgressTableCellView(itemsArray[indexPath.row].getName())
+        cell.accessibilityIdentifier = "Cell" + String(indexPath.row)
         cell.accessoryType = UITableViewCell.AccessoryType.detailButton
         return cell
     }
