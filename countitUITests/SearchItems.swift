@@ -9,26 +9,42 @@
 import XCTest
 
 class SearchItems: XCTestCase {
-
+    
+    let ITEM_NAME_ONE = "TestItemNameOne"
+    let ITEM_NAME_TWO = "TestItemNameTwo"
+    
+    let ITEM_DESCRIPTION_ONE = "TestItemDescriptionOne"
+    let ITEM_DESCRIPTION_TWO = "TestItemDescriptionTwo"
+    
+    let ERROR_MESSAGE = "* Must provide a name"
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        
         continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        let app = XCUIApplication()
+        app.launchArguments = ["test"]
+        app.launch()
+        
+        app.navigationBars["COUNT IT"].buttons["Add"].tap()
+        let nameField = app.otherElements["nameField"].textFields["fieldText"]
+        let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
+        
+        nameField.tap()
+        nameField.typeText(ITEM_NAME_ONE)
+        descriptionField.tap()
+        descriptionField.typeText(ITEM_DESCRIPTION_ONE)
+        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
+        
+        app.navigationBars["COUNT IT"].buttons["Add"].tap()
+        nameField.tap()
+        nameField.typeText(ITEM_NAME_TWO)
+        descriptionField.tap()
+        descriptionField.typeText(ITEM_DESCRIPTION_TWO)
+        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
 }

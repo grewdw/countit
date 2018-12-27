@@ -58,8 +58,6 @@ class DeleteItems: XCTestCase {
         
         // verify one item remains
         XCTAssertTrue(itemTable.cells.count == 1)
-        itemTable.swipeDown()
-        XCTAssertTrue(itemTable.cells.count == 1)
     }
     
     func testDeleteSecondItem() {
@@ -72,8 +70,6 @@ class DeleteItems: XCTestCase {
         itemTable.cells["Cell1"].buttons["Delete"].tap()
         
         // verify one item remains
-        XCTAssertTrue(itemTable.cells.count == 1)
-        itemTable.swipeDown()
         XCTAssertTrue(itemTable.cells.count == 1)
     }
     
@@ -92,8 +88,6 @@ class DeleteItems: XCTestCase {
         
         // verify no items remain
         XCTAssertTrue(itemTable.cells.count == 0)
-        itemTable.swipeDown()
-        XCTAssertTrue(itemTable.cells.count == 0)
     }
     
     func testCancelDelete() {
@@ -108,8 +102,6 @@ class DeleteItems: XCTestCase {
         itemTable.cells["Cell0"].swipeRight()
         
         // verify both items remain
-        XCTAssertTrue(itemTable.cells.count == 2)
-        itemTable.swipeDown()
         XCTAssertTrue(itemTable.cells.count == 2)
     }
 }

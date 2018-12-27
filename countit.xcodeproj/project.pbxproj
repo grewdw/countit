@@ -44,6 +44,7 @@
 		1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */; };
 		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
 		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
+		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItems.swift; sourceTree = "<group>"; };
 		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
 		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
+		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
 				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
 				1DB3902921B5BFD200C11CD7 /* Info.plist */,
+				1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */,
 			);
 			path = countitUITests;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
 				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
+				1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */,
 				1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
