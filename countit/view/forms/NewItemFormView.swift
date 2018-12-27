@@ -31,6 +31,7 @@ class NewItemFormView: UIScrollView {
             .with(fieldTextPlaceholder: "Enter item name")
             .with(fieldErrorText: "* Must provide a name")
             .build()
+        nameField.accessibilityIdentifier = "nameField"
         nameField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(nameField, forKey: ItemFormFields.NAME)
         
@@ -40,6 +41,7 @@ class NewItemFormView: UIScrollView {
             .with(fieldText: "")
             .with(fieldTextPlaceholder: "Enter item description")
             .build()
+        descriptionField.accessibilityIdentifier = "descriptionField"
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(descriptionField, forKey: ItemFormFields.DESCRIPTION)
         
@@ -89,17 +91,17 @@ extension NewItemFormView {
         
     func updateForm() {
         if let itemForm = form {
-            nameField.fieldText.text = itemForm.getName()
+            nameField.set(value: itemForm.getName())
             nameField.removeErrorMessage()
-            descriptionField.fieldText.text = itemForm.getDescription()
+            descriptionField.set(value: itemForm.getDescription())
             if formDelegate != nil {
                 initialiseNavBar(for: formDelegate as! UIViewController)
             }
         }
         else {
-            nameField.fieldText.text = ""
+            nameField.set(value: "")
             nameField.removeErrorMessage()
-            descriptionField.fieldText.text = ""
+            descriptionField.set(value: "")
         }
     }
     
@@ -109,8 +111,8 @@ extension NewItemFormView {
     
     private func getFormData() -> ItemForm {
         let id = form?.getId()
-        let name = nameField.fieldText.text
-        let description = descriptionField.fieldText.text
+        let name = nameField.getValue()
+        let description = descriptionField.getValue()
         let listPosition = form?.getListPosition()
         
         return ItemForm(id, name, description, listPosition)

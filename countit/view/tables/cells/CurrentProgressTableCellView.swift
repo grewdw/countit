@@ -31,6 +31,7 @@ class CurrentProgressTableCellView: UITableViewCell {
     func initialiseNameField(_ itemName: String) {
         self.addSubview(name)
         name.text = itemName
+        name.accessibilityIdentifier = "itemName"
         name.numberOfLines = 0
         name.textAlignment = .center
         
