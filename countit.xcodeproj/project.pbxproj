@@ -45,6 +45,7 @@
 		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
 		1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */; };
+		1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
 		1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
+		1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServicePerformanceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,8 +278,8 @@
 		1DB3901B21B5BFD200C11CD7 /* countitTests */ = {
 			isa = PBXGroup;
 			children = (
-				1DEB4B8F21D54F1C002F09CF /* Config */,
-				1DEB4B7D21D0094E002F09CF /* ItemService */,
+				1DEB4B8F21D54F1C002F09CF /* config */,
+				1DEB4B7D21D0094E002F09CF /* itemservice */,
 				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
 			);
 			path = countitTests;
@@ -286,8 +288,8 @@
 		1DB3902621B5BFD200C11CD7 /* countitUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1DEB4B9021D54F2D002F09CF /* Config */,
-				1DEB4B8E21D54EF0002F09CF /* Extensions */,
+				1DEB4B9021D54F2D002F09CF /* config */,
+				1DEB4B8E21D54EF0002F09CF /* extensions */,
 				1DB3902721B5BFD200C11CD7 /* CreateItems.swift */,
 				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
@@ -359,39 +361,56 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
-		1DEB4B7D21D0094E002F09CF /* ItemService */ = {
+		1DEB4B7D21D0094E002F09CF /* itemservice */ = {
 			isa = PBXGroup;
 			children = (
+				1DEB4B9221D6700E002F09CF /* performance */,
+				1DEB4B9121D67006002F09CF /* contract */,
 				1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */,
 				1DEB4B7E21D00982002F09CF /* UpdateItems.swift */,
 				1DEB4B8021D00991002F09CF /* ReadItems.swift */,
 				1DEB4B8221D009B6002F09CF /* DeleteItems.swift */,
 			);
-			path = ItemService;
+			path = itemservice;
 			sourceTree = "<group>";
 		};
-		1DEB4B8E21D54EF0002F09CF /* Extensions */ = {
+		1DEB4B8E21D54EF0002F09CF /* extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */,
 				1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */,
 			);
-			path = Extensions;
+			path = extensions;
 			sourceTree = "<group>";
 		};
-		1DEB4B8F21D54F1C002F09CF /* Config */ = {
+		1DEB4B8F21D54F1C002F09CF /* config */ = {
 			isa = PBXGroup;
 			children = (
 				1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */,
 			);
-			path = Config;
+			path = config;
 			sourceTree = "<group>";
 		};
-		1DEB4B9021D54F2D002F09CF /* Config */ = {
+		1DEB4B9021D54F2D002F09CF /* config */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Config;
+			path = config;
+			sourceTree = "<group>";
+		};
+		1DEB4B9121D67006002F09CF /* contract */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = contract;
+			sourceTree = "<group>";
+		};
+		1DEB4B9221D6700E002F09CF /* performance */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */,
+			);
+			path = performance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */,
 				1DEB4B8121D00991002F09CF /* ReadItems.swift in Sources */,
 				1DEB4B7C21CFFB07002F09CF /* TestCoreDataConfig.swift in Sources */,
 				1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */,
