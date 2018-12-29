@@ -24,12 +24,14 @@ class ItemServicePerformanceTests: XCTestCase {
     
     let UPDATED_ITEM_NAME = "updatedItemName"
     
+    var counter: Int = 0
+    
     override func setUp() {
         context = TestCoreDataConfig.getCoreDataContext()
         itemRepository = ItemRepositoryImpl(context: context!)
         target = ItemServiceImpl(itemRepository: itemRepository!)
         
-        for count in 1...1000 {
+        for count in 1...10000 {
             dataLoadItem(number: count)
         }
         
@@ -47,34 +49,48 @@ class ItemServicePerformanceTests: XCTestCase {
     }
 
     func testGetItems() {
-        self.measure {
-            
-        }
-        items = target!.getItems()
+        self.measureMetrics([.wallClockTime], automaticallyStartMeasuring: false, for: {
+            updateTestVariables()
+            startMeasuring()
+            items = target!.getItems()
+            stopMeasuring()
+        })
     }
     
     func testGetItem() {
-        self.measure {
+        self.measureMetrics([.wallClockTime], automaticallyStartMeasuring: false, for: {
+            updateTestVariables()
+            startMeasuring()
             let _ = target!.getItem(id: item!.getId()!)
-        }
+            stopMeasuring()
+        })
     }
     
     func testUpdateItem() {
-        self.measure {
+        self.measureMetrics([.wallClockTime], automaticallyStartMeasuring: false, for: {
+            updateTestVariables()
+            startMeasuring()
             let _ = target!.saveItem(updatedItem!)
-        }
+            stopMeasuring()
+        })
     }
     
     func testDeleteItem() {
-        self.measure {
+        self.measureMetrics([.wallClockTime], automaticallyStartMeasuring: false, for: {
+            updateTestVariables()
+            startMeasuring()
             let _ = target!.delete(itemWithId: itemId!)
-        }
+            stopMeasuring()
+        })
     }
     
     func testCreateItem() {
-        self.measure {
+        self.measureMetrics([.wallClockTime], automaticallyStartMeasuring: false, for: {
+            updateTestVariables()
+            startMeasuring()
             let _ = target!.saveItem(newItem)
-        }
+            stopMeasuring()
+        })
     }
     
     private func dataLoadItem(number: Int) {
@@ -85,8 +101,9 @@ class ItemServicePerformanceTests: XCTestCase {
         items = target!.getItems()
         if let itemArray = items {
             item = itemArray[itemArray.count-1]
-            updatedItem = ItemDto(item?.getId(), UPDATED_ITEM_NAME, item?.getDescription(), item?.getListPosition())
+            updatedItem = ItemDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), item?.getListPosition())
             itemId = item!.getId()
+            counter += 1
         }
     }
 }
