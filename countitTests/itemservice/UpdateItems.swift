@@ -32,14 +32,16 @@ class UpdateItems: XCTestCase {
     
     var ITEM_ONE: ItemDto?
     
+    let COUNT_TARGET_VALUE = 5
+    
     override func setUp() {
         context = TestCoreDataConfig.getCoreDataContext()
         itemRepository = ItemRepositoryImpl(context: context!)
         target = ItemServiceImpl(itemRepository: itemRepository!)
         
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, 0)
-        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         let _ = target!.saveItem(itemTwo)
         let _ = target!.saveItem(itemThree)
@@ -56,7 +58,7 @@ class UpdateItems: XCTestCase {
     func testChangeName() {
         
         //        Given
-        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE_NEW, ITEM_ONE?.getDescription(), nil)
+        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE_NEW, ITEM_ONE?.getDescription(), CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -72,7 +74,7 @@ class UpdateItems: XCTestCase {
     func testChangeNameNoDescription() {
         
         //        Given
-        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE_NEW, nil, nil)
+        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE_NEW, nil, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -88,7 +90,7 @@ class UpdateItems: XCTestCase {
     func testChangeDescription() {
         
         //        Given
-        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE_NEW, nil)
+        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE_NEW, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -104,7 +106,7 @@ class UpdateItems: XCTestCase {
     func testChangeListPositionDoesNotUpdate() {
         
         //        Given
-        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, 3)
+        let updatedItem = ItemDto(ITEM_ONE?.getId(), ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), 3)
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -146,7 +148,7 @@ class UpdateItems: XCTestCase {
     func testPersistOrderChange_includesNewItem() {
         //        Given
         var initialOrderItems = target!.getItems()
-        let itemFour = ItemDto(nil, ITEM_NAME_FOUR, ITEM_DESCRIPTION_FOUR, nil)
+        let itemFour = ItemDto(nil, ITEM_NAME_FOUR, ITEM_DESCRIPTION_FOUR, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         initialOrderItems.append(itemFour)
         initialOrderItems.swapAt(0, 2)
         initialOrderItems.swapAt(1, 2)

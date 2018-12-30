@@ -53,8 +53,8 @@ class ItemFormController: UIViewController {
 extension ItemFormController: FormController {
     
     func submitForm(_ form: Form) {
-        let itemForm = form as! ItemForm
-        if itemService.saveItem(ItemDto(itemForm.getId(), itemForm.getName()!, itemForm.getDescription(), itemForm.getListPosition())) {
+        let formToSubmit = form as! ItemForm
+        if itemService.saveItem(ItemDto(itemForm: formToSubmit)) {
             let navController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController
             navController?.popViewController(animated: true)
             formView?.clearForm()

@@ -24,6 +24,8 @@ class ReadItems: XCTestCase {
     let ITEM_DESCRIPTION_TWO = "testItemDescriptionTwo"
     let ITEM_DESCRIPTION_THREE = "testItemDescriptionThree"
     
+    let COUNT_TARGET_VALUE = 5
+    
     override func setUp() {
         context = TestCoreDataConfig.getCoreDataContext()
         itemRepository = ItemRepositoryImpl(context: context!)
@@ -39,7 +41,7 @@ class ReadItems: XCTestCase {
     func testGetSingleItemOneExists() {
         
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         
         let itemId = target!.getItems()[0].getId()!
@@ -55,9 +57,9 @@ class ReadItems: XCTestCase {
     func testGetSingleItemMultipleExist() {
 
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, 0)
-        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), 0)
+        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         let _ = target!.saveItem(itemTwo)
         let _ = target!.saveItem(itemThree)
@@ -74,7 +76,7 @@ class ReadItems: XCTestCase {
     
     func testGetSingleItemNoneExist() {
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         let itemId = target!.getItems()[0].getId()!
         let _ = target!.delete(itemWithId: itemId)
@@ -89,7 +91,7 @@ class ReadItems: XCTestCase {
     func testGetMultipleItemsOneExists() {
         
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         
         //        When
@@ -105,9 +107,9 @@ class ReadItems: XCTestCase {
     func testGetMultipleItemsMultipleExist() {
         
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, nil)
-        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         let _ = target!.saveItem(itemTwo)
         let _ = target!.saveItem(itemThree)

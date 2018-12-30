@@ -46,6 +46,12 @@
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
 		1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */; };
 		1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */; };
+		1DEB4B9821D8C9C0002F09CF /* CountTargetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9721D8C9C0002F09CF /* CountTargetFormView.swift */; };
+		1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */; };
+		1DEB4B9C21D93809002F09CF /* CountTargetForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9B21D93809002F09CF /* CountTargetForm.swift */; };
+		1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9E21D93921002F09CF /* TargetDirection.swift */; };
+		1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */; };
+		1DEB4BA321D946DB002F09CF /* CountTargetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA221D946DB002F09CF /* CountTargetDto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +117,12 @@
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
 		1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServicePerformanceTests.swift; sourceTree = "<group>"; };
+		1DEB4B9721D8C9C0002F09CF /* CountTargetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountTargetFormView.swift; path = countit/View/Forms/CountTargetFormView.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextSelectorFieldView.swift; path = countit/View/Forms/Fields/TextSelectorFieldView.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4B9B21D93809002F09CF /* CountTargetForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountTargetForm.swift; path = countit/model/Forms/CountTargetForm.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4B9E21D93921002F09CF /* TargetDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDirection.swift; sourceTree = "<group>"; };
+		1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePeriod.swift; sourceTree = "<group>"; };
+		1DEB4BA221D946DB002F09CF /* CountTargetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTargetDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +173,7 @@
 			children = (
 				1D76F06121BBF81800A53853 /* ItemForm.swift */,
 				1D7D37EB21C30041000E3621 /* Form.swift */,
+				1DEB4B9B21D93809002F09CF /* CountTargetForm.swift */,
 			);
 			path = forms;
 			sourceTree = "<group>";
@@ -178,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */,
+				1DEB4B9721D8C9C0002F09CF /* CountTargetFormView.swift */,
 				1D76F06621BC201B00A53853 /* fields */,
 			);
 			path = forms;
@@ -195,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				1D49B42421B8510300920CF4 /* TextFieldView.swift */,
+				1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */,
 			);
 			path = fields;
 			sourceTree = "<group>";
@@ -203,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7D37D521C05EE6000E3621 /* ItemDto.swift */,
+				1DEB4BA221D946DB002F09CF /* CountTargetDto.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -315,6 +331,7 @@
 		1DB3903621B5C06A00C11CD7 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1DEB4B9D21D9390D002F09CF /* enums */,
 				1D7D37E321C06299000E3621 /* entities */,
 				1D7D37D721C05F01000E3621 /* dto */,
 				1D76F06021BBF80900A53853 /* forms */,
@@ -411,6 +428,15 @@
 				1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */,
 			);
 			path = performance;
+			sourceTree = "<group>";
+		};
+		1DEB4B9D21D9390D002F09CF /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4B9E21D93921002F09CF /* TargetDirection.swift */,
+				1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */,
+			);
+			path = enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -544,15 +570,20 @@
 			files = (
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
 				1D76F07021BC52C800A53853 /* TableController.swift in Sources */,
+				1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */,
 				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
+				1DEB4BA321D946DB002F09CF /* CountTargetDto.swift in Sources */,
 				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
+				1DEB4B9C21D93809002F09CF /* CountTargetForm.swift in Sources */,
+				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
 				1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
+				1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */,
 				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
 				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
@@ -566,6 +597,7 @@
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
 				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
+				1DEB4B9821D8C9C0002F09CF /* CountTargetFormView.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 				1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */,
 			);

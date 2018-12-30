@@ -24,6 +24,8 @@ class CreateItems: XCTestCase {
     let ITEM_DESCRIPTION_TWO = "testItemDescriptionTwo"
     let ITEM_DESCRIPTION_THREE = "testItemDescriptionThree"
     
+    let COUNT_TARGET_VALUE = 5
+    
     override func setUp() {
         context = TestCoreDataConfig.getCoreDataContext()
         itemRepository = ItemRepositoryImpl(context: context!)
@@ -38,7 +40,7 @@ class CreateItems: XCTestCase {
 
     func testCreateNewItem() {
 //        Given
-        let item = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
+        let item = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(item)
         
 //        When
@@ -53,7 +55,7 @@ class CreateItems: XCTestCase {
     
     func testCreateNewItemNoDescription() {
         //        Given
-        let item = ItemDto(nil, ITEM_NAME_ONE, nil, nil)
+        let item = ItemDto(nil, ITEM_NAME_ONE, nil, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(item)
         
         //        When
@@ -68,9 +70,9 @@ class CreateItems: XCTestCase {
     
     func testCreateMultipleItems() {
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, nil)
-        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         let _ = target!.saveItem(itemTwo)
         let _ = target!.saveItem(itemThree)
@@ -95,9 +97,9 @@ class CreateItems: XCTestCase {
 
     func testCreateItems_ListPositionGivenAndOverwritten() {
         //        Given
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, 0)
-        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, nil)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), 0)
+        let itemThree = ItemDto(nil, ITEM_NAME_THREE, ITEM_DESCRIPTION_THREE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
         let _ = target!.saveItem(itemOne)
         let _ = target!.saveItem(itemTwo)
         let _ = target!.saveItem(itemThree)

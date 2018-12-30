@@ -19,6 +19,7 @@ class NewItemFormView: UIScrollView {
   
     let nameField: TextFieldView
     let descriptionField: TextFieldView
+    let targetFields: CountTargetFormView
     
     var fields: [ItemFormFields: TextFieldView] = [:]
     
@@ -45,6 +46,10 @@ class NewItemFormView: UIScrollView {
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(descriptionField, forKey: ItemFormFields.DESCRIPTION)
         
+        targetFields = CountTargetFormView(frame: .zero)
+        targetFields.accessibilityIdentifier = "targetFields"
+        targetFields.translatesAutoresizingMaskIntoConstraints = false
+        
         super.init(frame: frame)
         
         nameField.fieldText.delegate = self
@@ -52,13 +57,18 @@ class NewItemFormView: UIScrollView {
         self.backgroundColor = UIColor.white
         self.addSubview(nameField)
         self.addSubview(descriptionField)
+        self.addSubview(targetFields)
         NSLayoutConstraint.activate([
             nameField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
             nameField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            nameField.centerYAnchor.constraint(equalTo: self.topAnchor, constant: frame.height / 10),
+            nameField.topAnchor.constraint(equalTo: self.topAnchor, constant: frame.height / 20),
             descriptionField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
             descriptionField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            descriptionField.centerYAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 10),
+            descriptionField.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: frame.height / 20),
+            targetFields.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 3/4),
+            targetFields.heightAnchor.constraint(equalToConstant: 200),
+            targetFields.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            targetFields.topAnchor.constraint(equalTo: descriptionField.bottomAnchor, constant: frame.height / 20),
         ])
         
         if form != nil {
@@ -94,6 +104,7 @@ extension NewItemFormView {
             nameField.set(value: itemForm.getName())
             nameField.removeErrorMessage()
             descriptionField.set(value: itemForm.getDescription())
+            targetFields.setValuesTo(form: itemForm.getCountTargetForm())
             if formDelegate != nil {
                 initialiseNavBar(for: formDelegate as! UIViewController)
             }
@@ -102,6 +113,7 @@ extension NewItemFormView {
             nameField.set(value: "")
             nameField.removeErrorMessage()
             descriptionField.set(value: "")
+            targetFields.setValuesToDefault()
         }
     }
     
@@ -113,9 +125,10 @@ extension NewItemFormView {
         let id = form?.getId()
         let name = nameField.getValue()
         let description = descriptionField.getValue()
+        let countTargetForm = targetFields.getFormData()
         let listPosition = form?.getListPosition()
         
-        return ItemForm(id, name, description, listPosition)
+        return ItemForm(id, name, description, countTargetForm, listPosition)
     }
 }
 

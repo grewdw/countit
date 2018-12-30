@@ -22,6 +22,8 @@ class DeleteItems: XCTestCase {
     let ITEM_DESCRIPTION_ONE = "testItemDescriptionOne"
     let ITEM_DESCRIPTION_TWO = "testItemDescriptionTwo"
     
+    let COUNT_TARGET_VALUE = 5
+    
     var ITEM_ID_ONE: NSManagedObjectID?
     var ITEM_ID_TWO: NSManagedObjectID?
     
@@ -30,8 +32,8 @@ class DeleteItems: XCTestCase {
         itemRepository = ItemRepositoryImpl(context: context!)
         target = ItemServiceImpl(itemRepository: itemRepository!)
         
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, 0)
+        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), nil)
+        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, CountTargetDto(direction: .AT_LEAST, value: COUNT_TARGET_VALUE, timePeriod: .DAY), 0)
         let _ = target!.saveItem(itemOne)
         let _ = target!.saveItem(itemTwo)
         
