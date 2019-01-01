@@ -1,5 +1,5 @@
 //
-//  CountTargetDto.swift
+//  CountTargetForm.swift
 //  countit
 //
 //  Created by David Grew on 30/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CountTargetDto {
+class TargetForm: Form {
     
     private var direction: TargetDirection
     private var value: Int
@@ -20,10 +20,10 @@ class CountTargetDto {
         self.timePeriod = timePeriod
     }
     
-    init(countTargetForm: CountTargetForm) {
-        self.direction = countTargetForm.getDirection()
-        self.value = countTargetForm.getValue()
-        self.timePeriod = countTargetForm.getTimePeriod()
+    init(targetDto: TargetDto) {
+        self.direction = targetDto.getDirection()
+        self.value = targetDto.getValue()
+        self.timePeriod = targetDto.getTimePeriod()
     }
     
     func getDirection() -> TargetDirection {

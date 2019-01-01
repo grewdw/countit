@@ -1,0 +1,154 @@
+//
+//  UpdateItems.swift
+//  countitTests
+//
+//  Created by David Grew on 23/12/2018.
+//  Copyright © 2018 David Grew. All rights reserved.
+//
+
+import XCTest
+import CoreData
+@testable import countit
+
+class UpdateItems: ItemServiceContractTestBase {
+    
+    var ITEM_ONE: ItemDto?
+    
+    override func setUp() {
+        target = CommonSteps.getItemService()
+        
+        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
+        let itemTwo = ItemBuilder().with(name: ITEM_NAME_TWO).with(description: ITEM_DESCRIPTION_TWO).build()
+        let itemThree = ItemBuilder().with(name: ITEM_NAME_THREE).with(description: ITEM_DESCRIPTION_THREE).build()
+        let _ = target!.saveItem(itemOne)
+        let _ = target!.saveItem(itemTwo)
+        let _ = target!.saveItem(itemThree)
+        
+        ITEM_ONE = target!.getItems()[0]
+    }
+    
+    func testChangeName() {
+        
+        //        Given
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getTargetDto())!).build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE_NEW, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+    }
+    
+    func testChangeNameNoDescription() {
+        
+        //        Given
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(target: (ITEM_ONE?.getTargetDto())!).build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE_NEW, description: nil, listPosition: 0)
+    }
+    
+    func testChangeDescription() {
+        
+        //        Given
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: ITEM_DESCRIPTION_ONE_NEW).with(target: (ITEM_ONE?.getTargetDto())!).build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE_NEW, listPosition: 0)
+    }
+    
+    func testChangeListPositionDoesNotUpdate() {
+        
+        //        Given
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getTargetDto())!).with(listPosition: LIST_POSITION_NEW).build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+    }
+    
+    func testPersistOrderChange() {
+        
+        //        Given
+        var initialOrderItems = target!.getItems()
+        initialOrderItems.swapAt(0, 2)
+        initialOrderItems.swapAt(1, 2)
+        
+        //        When
+        target!.persistTableOrder(for: initialOrderItems)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_THREE, description: ITEM_DESCRIPTION_THREE, listPosition: 0)
+        assert(item: items[1], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 1)
+        assert(item: items[2], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 2)
+    }
+    
+    func testPersistOrderChange_includesNewItem() {
+        //        Given
+        var initialOrderItems = target!.getItems()
+        let itemFour = ItemBuilder().with(name: ITEM_NAME_FOUR).with(description: ITEM_DESCRIPTION_FOUR).build()
+        initialOrderItems.append(itemFour)
+        initialOrderItems.swapAt(0, 2)
+        initialOrderItems.swapAt(1, 2)
+        
+        //        When
+        target!.persistTableOrder(for: initialOrderItems)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_THREE, description: ITEM_DESCRIPTION_THREE, listPosition: 0)
+        assert(item: items[1], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 1)
+        assert(item: items[2], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 2)
+    }
+    
+    func testPersistOrderChangeWithEmptyArray() {
+        
+        //        Given
+        let emptyItemArray: [ItemDto] = []
+        
+        //        When
+        target!.persistTableOrder(for: emptyItemArray)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assert(item: items[1], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 1)
+        assert(item: items[2], hasName: ITEM_NAME_THREE, description: ITEM_DESCRIPTION_THREE, listPosition: 2)
+    }
+    
+    func testPersistOrderChangeSingleItemArray() {
+        
+        //        Given
+        let singleItemArray: [ItemDto] = [ITEM_ONE!]
+        
+        //        When
+        target!.persistTableOrder(for: singleItemArray)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assert(item: items[1], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 1)
+        assert(item: items[2], hasName: ITEM_NAME_THREE, description: ITEM_DESCRIPTION_THREE, listPosition: 2)
+    }
+}

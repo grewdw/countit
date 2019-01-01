@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountTargetFormView: UIStackView {
+class TargetFormView: UIStackView {
     
     let title = UILabel()
     let direction = TextSelectorFieldView(frame: .zero, textOptions: ["At least", "At most"])
@@ -54,7 +54,7 @@ class CountTargetFormView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setValuesTo(form: CountTargetForm) {
+    func setValuesTo(form: TargetForm) {
         direction.setSelectedValue(to: form.getDirection().rawValue)
         value.text = String(form.getValue())
         timePeriod.setSelectedValue(to: form.getTimePeriod().rawValue)
@@ -66,8 +66,8 @@ class CountTargetFormView: UIStackView {
         timePeriod.setSelectedValue(to: TargetTimePeriod.DAY.rawValue)
     }
     
-    func getFormData() -> CountTargetForm {
-        return CountTargetForm(direction: getDirection(), value: Int(value.text!)!, timePeriod: getTimePeriod())
+    func getFormData() -> TargetForm {
+        return TargetForm(direction: getDirection(), value: Int(value.text!)!, timePeriod: getTimePeriod())
     }
     
     private func getDirection() -> TargetDirection {

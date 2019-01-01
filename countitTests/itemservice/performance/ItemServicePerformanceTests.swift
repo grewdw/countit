@@ -20,8 +20,8 @@ class ItemServicePerformanceTests: XCTestCase {
     var item: ItemDto?
     var updatedItem: ItemDto?
     var itemId: NSManagedObjectID?
-    let countTarget = CountTargetDto(direction: TargetDirection.AT_LEAST, value: 5, timePeriod: TargetTimePeriod.DAY)
-    let newItem = ItemDto(nil, "newItem", nil, CountTargetDto(direction: TargetDirection.AT_LEAST, value: 5, timePeriod: TargetTimePeriod.DAY), nil)
+    let countTarget = TargetDto(direction: TargetDirection.AT_LEAST, value: 5, timePeriod: TargetTimePeriod.DAY)
+    let newItem = ItemDto(nil, "newItem", nil, TargetDto(direction: TargetDirection.AT_LEAST, value: 5, timePeriod: TargetTimePeriod.DAY), nil)
     
     let UPDATED_ITEM_NAME = "updatedItemName"
     
@@ -102,7 +102,7 @@ class ItemServicePerformanceTests: XCTestCase {
         items = target!.getItems()
         if let itemArray = items {
             item = itemArray[itemArray.count-1]
-            updatedItem = ItemDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), item?.getCountTarget() ?? countTarget, item?.getListPosition())
+            updatedItem = ItemDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), item?.getTargetDto() ?? countTarget, item?.getListPosition())
             itemId = item!.getId()
             counter += 1
         }

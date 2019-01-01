@@ -19,7 +19,7 @@ class NewItemFormView: UIScrollView {
   
     let nameField: TextFieldView
     let descriptionField: TextFieldView
-    let targetFields: CountTargetFormView
+    let targetFields: TargetFormView
     
     var fields: [ItemFormFields: TextFieldView] = [:]
     
@@ -46,7 +46,7 @@ class NewItemFormView: UIScrollView {
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(descriptionField, forKey: ItemFormFields.DESCRIPTION)
         
-        targetFields = CountTargetFormView(frame: .zero)
+        targetFields = TargetFormView(frame: .zero)
         targetFields.accessibilityIdentifier = "targetFields"
         targetFields.translatesAutoresizingMaskIntoConstraints = false
         
@@ -104,7 +104,7 @@ extension NewItemFormView {
             nameField.set(value: itemForm.getName())
             nameField.removeErrorMessage()
             descriptionField.set(value: itemForm.getDescription())
-            targetFields.setValuesTo(form: itemForm.getCountTargetForm())
+            targetFields.setValuesTo(form: itemForm.getTargetForm())
             if formDelegate != nil {
                 initialiseNavBar(for: formDelegate as! UIViewController)
             }
@@ -114,6 +114,9 @@ extension NewItemFormView {
             nameField.removeErrorMessage()
             descriptionField.set(value: "")
             targetFields.setValuesToDefault()
+            if formDelegate != nil {
+                initialiseNavBar(for: formDelegate as! UIViewController)
+            }
         }
     }
     

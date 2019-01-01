@@ -14,14 +14,14 @@ class ItemDto {
     private let id: NSManagedObjectID?
     private let name: String
     private let description: String?
-    private let countTarget: CountTargetDto
+    private let targetDto: TargetDto
     private var listPosition: Int?
     
-    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ countTarget: CountTargetDto, _ listPosition: Int?) {
+    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ targetDto: TargetDto, _ listPosition: Int?) {
         self.id = id
         self.name = name
         self.description = description
-        self.countTarget = countTarget
+        self.targetDto = targetDto
         self.listPosition = listPosition
     }
     
@@ -29,7 +29,7 @@ class ItemDto {
         self.id = itemForm.getId()
         self.name = itemForm.getName()!
         self.description = itemForm.getDescription()
-        self.countTarget = CountTargetDto(countTargetForm: itemForm.getCountTargetForm())
+        self.targetDto = TargetDto(targetForm: itemForm.getTargetForm())
         self.listPosition = itemForm.getListPosition()
     }
     
@@ -38,7 +38,7 @@ class ItemDto {
         self.name = itemEntity.name!
         self.description = itemEntity.itemDescription
         // TODO: Needs changing
-        self.countTarget = CountTargetDto(direction: .AT_LEAST, value: 0, timePeriod: .DAY)
+        self.targetDto = TargetDto(direction: .AT_LEAST, value: 0, timePeriod: .DAY)
         self.listPosition = Int(itemEntity.listPosition)
     }
     
@@ -58,8 +58,8 @@ class ItemDto {
         return listPosition
     }
     
-    func getCountTarget() -> CountTargetDto {
-        return countTarget
+    func getTargetDto() -> TargetDto {
+        return targetDto
     }
     
     func setListPosition(newPosition: Int) {

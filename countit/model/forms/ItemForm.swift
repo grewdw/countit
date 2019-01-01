@@ -14,16 +14,16 @@ class ItemForm: Form {
     private var id: NSManagedObjectID?
     private var name: String?
     private var description: String?
-    private var countTargetForm: CountTargetForm
+    private var targetForm: TargetForm
     private var listPosition: Int?
     
     private var fieldErrors: [ItemFormFields] = []
 
-    init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?, _ countTargetForm: CountTargetForm, _ listPosition: Int?) {
+    init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?, _ targetForm: TargetForm, _ listPosition: Int?) {
         self.id = id
         self.name = name
         self.description = description
-        self.countTargetForm = countTargetForm
+        self.targetForm = targetForm
         self.listPosition = listPosition
     }
     
@@ -31,7 +31,7 @@ class ItemForm: Form {
         self.id = dto.getId()
         self.name = dto.getName()
         self.description = dto.getDescription()
-        self.countTargetForm = CountTargetForm(countTargetDto: dto.getCountTarget())
+        self.targetForm = TargetForm(targetDto: dto.getTargetDto())
         self.listPosition = dto.getListPosition()
     }
     
@@ -47,8 +47,8 @@ class ItemForm: Form {
         return description
     }
     
-    func getCountTargetForm() -> CountTargetForm {
-        return countTargetForm
+    func getTargetForm() -> TargetForm {
+        return targetForm
     }
     
     func getListPosition() -> Int? {
