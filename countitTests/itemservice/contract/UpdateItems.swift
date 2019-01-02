@@ -17,12 +17,7 @@ class UpdateItems: ItemServiceContractTestBase {
     override func setUp() {
         target = CommonSteps.getItemService()
         
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let itemTwo = ItemBuilder().with(name: ITEM_NAME_TWO).with(description: ITEM_DESCRIPTION_TWO).build()
-        let itemThree = ItemBuilder().with(name: ITEM_NAME_THREE).with(description: ITEM_DESCRIPTION_THREE).build()
-        let _ = target!.saveItem(itemOne)
-        let _ = target!.saveItem(itemTwo)
-        let _ = target!.saveItem(itemThree)
+        createThreeItems(withService: target!)
         
         ITEM_ONE = target!.getItems()[0]
     }

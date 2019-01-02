@@ -19,8 +19,10 @@ class ItemRepositoryImpl: ItemRepository {
     }
     
     func create(item: ItemDto, atPosition position: Int) -> Bool {
-        let item = itemEntityFrom(itemDto: item)
-        item.listPosition = Int16(position)
+        let itemEntity = itemEntityFrom(itemDto: item)
+        itemEntity.listPosition = Int16(position)
+        let targetEntity = targetEntityFrom(targetDto: item.getTargetDto())
+        itemEntity.addToTarget(targetEntity)
         return saveContext()
     }
     
@@ -48,7 +50,8 @@ class ItemRepositoryImpl: ItemRepository {
         if item == nil || item?.name == nil {
             return nil
         }
-        return ItemDto(itemEntity: item!)
+        let target = item?.target?.anyObject() as? TargetEntity
+        return ItemDto(itemEntity: item!, targetEntity: target!)
     }
     
     private func getItem(with id: NSManagedObjectID) -> ItemEntity? {
@@ -61,14 +64,14 @@ class ItemRepositoryImpl: ItemRepository {
         return itemEntityArrayToDto(getItems(with: request))
     }
     
-    func getLowestListPosition() -> ItemDto? {
+    func getLowestListPosition() -> Int? {
         let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
         request.fetchLimit = 1
         request.sortDescriptors = [NSSortDescriptor(key: "listPosition", ascending: false)]
         let resultsArray = getItems(with: request)
         
         if resultsArray.count != 0 {
-            return ItemDto(itemEntity: resultsArray[0])
+            return Int(resultsArray[0].listPosition)
         }
         else {
             return nil
@@ -101,10 +104,18 @@ class ItemRepositoryImpl: ItemRepository {
         return item
     }
     
+    private func targetEntityFrom(targetDto: TargetDto) -> TargetEntity {
+        let target = TargetEntity(context: context)
+        target.direction = targetDto.getDirection().rawValue
+        target.value = Int32(targetDto.getValue())
+        target.timePeriod = targetDto.getTimePeriod().rawValue
+        return target
+    }
+    
     private func itemEntityArrayToDto(_ entities: [ItemEntity]) -> [ItemDto] {
         var itemDtos: [ItemDto] = []
         for item in entities {
-            itemDtos.append(ItemDto(itemEntity: item))
+            itemDtos.append(ItemDto(itemEntity: item, targetEntity: item.target?.anyObject() as! TargetEntity))
         }
         return itemDtos
     }

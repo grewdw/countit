@@ -33,12 +33,14 @@ class ItemDto {
         self.listPosition = itemForm.getListPosition()
     }
     
-    init(itemEntity: ItemEntity) {
+    init(itemEntity: ItemEntity, targetEntity: TargetEntity) {
         self.id = itemEntity.objectID
         self.name = itemEntity.name!
         self.description = itemEntity.itemDescription
-        // TODO: Needs changing
-        self.targetDto = TargetDto(direction: .AT_LEAST, value: 0, timePeriod: .DAY)
+        self.targetDto = TargetDto(
+            direction: TargetDirection(rawValue: targetEntity.direction!)!,
+            value: Int(targetEntity.value),
+            timePeriod: TargetTimePeriod(rawValue: targetEntity.timePeriod!)!)
         self.listPosition = Int(itemEntity.listPosition)
     }
     

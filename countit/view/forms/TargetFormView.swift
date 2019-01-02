@@ -29,8 +29,13 @@ class TargetFormView: UIStackView {
         title.font = UIFont.boldSystemFont(ofSize: 30)
         
         value.borderStyle = .roundedRect
-        value.text = "0"
         value.textAlignment = .center
+        value.keyboardType = .numberPad
+        value.placeholder = "0"
+        
+        direction.accessibilityIdentifier = "targetDirection"
+        value.accessibilityIdentifier = "targetValue"
+        timePeriod.accessibilityIdentifier = "targetTimePeriod"
         
         title.translatesAutoresizingMaskIntoConstraints = false
         direction.translatesAutoresizingMaskIntoConstraints = false
@@ -62,12 +67,12 @@ class TargetFormView: UIStackView {
     
     func setValuesToDefault() {
         direction.setSelectedValue(to: TargetDirection.AT_LEAST.rawValue)
-        value.text = "0"
+        value.text = ""
         timePeriod.setSelectedValue(to: TargetTimePeriod.DAY.rawValue)
     }
     
     func getFormData() -> TargetForm {
-        return TargetForm(direction: getDirection(), value: Int(value.text!)!, timePeriod: getTimePeriod())
+        return TargetForm(direction: getDirection(), value: Int(value.text!) ?? 0, timePeriod: getTimePeriod())
     }
     
     private func getDirection() -> TargetDirection {
@@ -78,4 +83,5 @@ class TargetFormView: UIStackView {
         return TargetTimePeriod(rawValue: timePeriod.selectedValue ?? "Day")!
     }
 }
+
 

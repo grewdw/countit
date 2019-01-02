@@ -18,10 +18,7 @@ class DeleteItems: ItemServiceContractTestBase {
     override func setUp() {
         target = CommonSteps.getItemService()
         
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let itemTwo = ItemBuilder().with(name: ITEM_NAME_TWO).with(description: ITEM_DESCRIPTION_TWO).build()
-        let _ = target!.saveItem(itemOne)
-        let _ = target!.saveItem(itemTwo)
+        createTwoItems(withService: target!)
         
         let items = target!.getItems()
         ITEM_ID_ONE = items[0].getId()

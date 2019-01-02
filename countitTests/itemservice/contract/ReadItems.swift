@@ -15,8 +15,7 @@ class ReadItems: ItemServiceContractTestBase {
     func testGetSingleItemOneExists() {
         
         //        Given
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let _ = target!.saveItem(itemOne)
+        createItemOne(withDescription: true, usingService: target!)
         
         let itemId = target!.getItems()[0].getId()!
         
@@ -24,19 +23,14 @@ class ReadItems: ItemServiceContractTestBase {
         let item = target!.getItem(id: itemId)
         
         //        Then
-        XCTAssert(item!.getName() == ITEM_NAME_ONE)
-        XCTAssert(item!.getDescription() == ITEM_DESCRIPTION_ONE)
+        assert(item: item!, hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: item!, hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
     }
     
     func testGetSingleItemMultipleExist() {
 
         //        Given
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let itemTwo = ItemBuilder().with(name: ITEM_NAME_TWO).with(description: ITEM_DESCRIPTION_TWO).build()
-        let itemThree = ItemBuilder().with(name: ITEM_NAME_THREE).with(description: ITEM_DESCRIPTION_THREE).build()
-        let _ = target!.saveItem(itemOne)
-        let _ = target!.saveItem(itemTwo)
-        let _ = target!.saveItem(itemThree)
+        createThreeItems(withService: target!)
         
         let itemId = target!.getItems()[1].getId()!
         
@@ -45,12 +39,12 @@ class ReadItems: ItemServiceContractTestBase {
         
         //        Then
         assert(item: item!, hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 1)
+        assertTargetFor(item: item!, hasDirection: ITEM_TARGET_DIRECTION_TWO, value: ITEM_TARGET_VALUE_TWO, timePeriod: ITEM_TARGET_TIMEPERIOD_TWO)
     }
     
     func testGetSingleItemNoneExist() {
         //        Given
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let _ = target!.saveItem(itemOne)
+        createItemOne(withDescription: true, usingService: target!)
         let itemId = target!.getItems()[0].getId()!
         let _ = target!.delete(itemWithId: itemId)
         
@@ -64,8 +58,7 @@ class ReadItems: ItemServiceContractTestBase {
     func testGetMultipleItemsOneExists() {
         
         //        Given
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let _ = target!.saveItem(itemOne)
+        createItemOne(withDescription: true, usingService: target!)
         
         //        When
         let items = target!.getItems()
@@ -73,17 +66,13 @@ class ReadItems: ItemServiceContractTestBase {
         //        Then
         XCTAssert(items.count == 1)
         assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
     }
     
     func testGetMultipleItemsMultipleExist() {
         
         //        Given
-        let itemOne = ItemBuilder().with(name: ITEM_NAME_ONE).with(description: ITEM_DESCRIPTION_ONE).build()
-        let itemTwo = ItemBuilder().with(name: ITEM_NAME_TWO).with(description: ITEM_DESCRIPTION_TWO).build()
-        let itemThree = ItemBuilder().with(name: ITEM_NAME_THREE).with(description: ITEM_DESCRIPTION_THREE).build()
-        let _ = target!.saveItem(itemOne)
-        let _ = target!.saveItem(itemTwo)
-        let _ = target!.saveItem(itemThree)
+        createThreeItems(withService: target!)
         
         //        When
         let items = target!.getItems()
@@ -91,8 +80,11 @@ class ReadItems: ItemServiceContractTestBase {
         //        Then
         XCTAssert(items.count == 3)
         assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
         assert(item: items[1], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 1)
+        assertTargetFor(item: items[1], hasDirection: ITEM_TARGET_DIRECTION_TWO, value: ITEM_TARGET_VALUE_TWO, timePeriod: ITEM_TARGET_TIMEPERIOD_TWO)
         assert(item: items[2], hasName: ITEM_NAME_THREE, description: ITEM_DESCRIPTION_THREE, listPosition: 2)
+        assertTargetFor(item: items[2], hasDirection: ITEM_TARGET_DIRECTION_THREE, value: ITEM_TARGET_VALUE_THREE, timePeriod: ITEM_TARGET_TIMEPERIOD_THREE)
     }
 
     func testGetItemsNoneExist() {

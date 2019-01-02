@@ -16,6 +16,9 @@ class CreateItems: XCTestCase {
     let ITEM_DESCRIPTION_ONE = "TestItemDescriptionOne"
     let ITEM_DESCRIPTION_TWO = "TestItemDescriptionTwo"
     
+    let ITEM_TARGET_VALUE_ONE = "10"
+    let ITEM_TARGET_VALUE_ZERO = "0"
+    
     let ERROR_MESSAGE = "* Must provide a name"
     
     override func setUp() {
@@ -41,6 +44,37 @@ class CreateItems: XCTestCase {
         app.navigationBars["COUNT IT"].buttons["Add"].tap()
         let nameField = app.otherElements["nameField"].textFields["fieldText"]
         let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
+        let targetValue = app.textFields["targetValue"]
+        
+        
+        nameField.tap()
+        nameField.typeText(ITEM_NAME_ONE)
+        descriptionField.tap()
+        descriptionField.typeText(ITEM_DESCRIPTION_ONE)
+        targetValue.tap()
+        targetValue.typeText(ITEM_TARGET_VALUE_ONE)
+        
+        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
+        
+        let itemTable = app.tables["ItemTable"]
+        
+        XCTAssertTrue(itemTable.cells["Cell0"].exists, "item not found in item table")
+        
+        itemTable.cells["Cell0"].buttons["More Info"].tap()
+        
+        XCTAssertTrue(itemTable.cells.count == 1)
+        XCTAssertEqual(nameField.value as? String, ITEM_NAME_ONE, "item name not correct in cell")
+        XCTAssertEqual(descriptionField.value as? String, ITEM_DESCRIPTION_ONE, "item description not correct in cell")
+        XCTAssertEqual(targetValue.value as? String, ITEM_TARGET_VALUE_ONE, "target value not correct in cell")
+    }
+    
+    func testCreateSingleItemTargetValueDefaultsToZero() {
+        let app = XCUIApplication()
+        app.navigationBars["COUNT IT"].buttons["Add"].tap()
+        let nameField = app.otherElements["nameField"].textFields["fieldText"]
+        let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
+        let targetValue = app.textFields["targetValue"]
+        
         
         nameField.tap()
         nameField.typeText(ITEM_NAME_ONE)
@@ -58,6 +92,7 @@ class CreateItems: XCTestCase {
         XCTAssertTrue(itemTable.cells.count == 1)
         XCTAssertEqual(nameField.value as? String, ITEM_NAME_ONE, "item name not correct in cell")
         XCTAssertEqual(descriptionField.value as? String, ITEM_DESCRIPTION_ONE, "item description not correct in cell")
+        XCTAssertEqual(targetValue.value as? String, ITEM_TARGET_VALUE_ZERO, "target value not correct in cell")
     }
     
     func testCreateMultipleItems() {

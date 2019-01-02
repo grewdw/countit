@@ -23,8 +23,8 @@ class ItemServiceImpl: ItemService {
             return itemRepository.update(item: item, with: id)
         }
         else {
-            let previousLowestPosition = itemRepository.getLowestListPosition()?.getListPosition()
-            let newLowestPosition = previousLowestPosition != nil ? previousLowestPosition! + 1 : 0
+            let previousLowestPosition = itemRepository.getLowestListPosition()
+            let newLowestPosition = previousLowestPosition != nil ? previousLowestPosition!+1 : 0
             return itemRepository.create(item: item, atPosition: newLowestPosition)
         }
     }

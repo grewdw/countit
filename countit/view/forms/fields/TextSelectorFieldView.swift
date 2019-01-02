@@ -24,6 +24,7 @@ class TextSelectorFieldView: UIStackView {
         for option in 0...textOptions.count-1 {
             let newButton = UIButton()
             let text = textOptions[option]
+            newButton.accessibilityIdentifier = text
             if option == 0 {
                 selectedFormatFor(button: newButton, text: text)
                 selectedValue = text

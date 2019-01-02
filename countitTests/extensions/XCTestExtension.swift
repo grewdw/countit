@@ -18,4 +18,11 @@ extension XCTestCase {
         XCTAssert(item.getDescription() == description)
         XCTAssert(item.getListPosition() == listPosition)
     }
+    
+    func assertTargetFor(item: ItemDto, hasDirection direction: TargetDirection, value: Int, timePeriod: TargetTimePeriod) {
+        let targetDto = item.getTargetDto()
+        XCTAssert(targetDto.getDirection() == direction)
+        XCTAssert(targetDto.getValue() == value)
+        XCTAssert(targetDto.getTimePeriod() == timePeriod)
+    }
 }

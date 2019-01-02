@@ -4,8 +4,16 @@
         <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="listPosition" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="target" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TargetEntity" inverseName="item" inverseEntity="TargetEntity" syncable="YES"/>
+    </entity>
+    <entity name="TargetEntity" representedClassName="TargetEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="direction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timePeriod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="target" inverseEntity="ItemEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ItemEntity" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="ItemEntity" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="TargetEntity" positionX="134.0546875" positionY="-17.765625" width="128" height="103"/>
     </elements>
 </model>

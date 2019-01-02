@@ -122,6 +122,8 @@ extension NewItemFormView {
     
     func clearForm() {
         form = nil
+        nameField.resignFirstResponder()
+        descriptionField.resignFirstResponder()
     }
     
     private func getFormData() -> ItemForm {
