@@ -46,6 +46,17 @@
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
 		1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */; };
 		1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */; };
+		1DEB4B9821D8C9C0002F09CF /* TargetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */; };
+		1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */; };
+		1DEB4B9C21D93809002F09CF /* TargetForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9B21D93809002F09CF /* TargetForm.swift */; };
+		1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9E21D93921002F09CF /* TargetDirection.swift */; };
+		1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */; };
+		1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA221D946DB002F09CF /* TargetDto.swift */; };
+		1DEB4BA621DBF2A3002F09CF /* ItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA521DBF2A3002F09CF /* ItemBuilder.swift */; };
+		1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */; };
+		1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */; };
+		1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */; };
+		1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +122,17 @@
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
 		1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServicePerformanceTests.swift; sourceTree = "<group>"; };
+		1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TargetFormView.swift; path = countit/View/Forms/TargetFormView.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextSelectorFieldView.swift; path = countit/View/Forms/Fields/TextSelectorFieldView.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4B9B21D93809002F09CF /* TargetForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TargetForm.swift; path = countit/model/Forms/TargetForm.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4B9E21D93921002F09CF /* TargetDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDirection.swift; sourceTree = "<group>"; };
+		1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePeriod.swift; sourceTree = "<group>"; };
+		1DEB4BA221D946DB002F09CF /* TargetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDto.swift; sourceTree = "<group>"; };
+		1DEB4BA521DBF2A3002F09CF /* ItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBuilder.swift; sourceTree = "<group>"; };
+		1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetBuilder.swift; sourceTree = "<group>"; };
+		1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSteps.swift; sourceTree = "<group>"; };
+		1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceContractTestBase.swift; sourceTree = "<group>"; };
+		1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +183,7 @@
 			children = (
 				1D76F06121BBF81800A53853 /* ItemForm.swift */,
 				1D7D37EB21C30041000E3621 /* Form.swift */,
+				1DEB4B9B21D93809002F09CF /* TargetForm.swift */,
 			);
 			path = forms;
 			sourceTree = "<group>";
@@ -178,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				1D49B41621B7FD3100920CF4 /* NewItemFormView.swift */,
+				1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */,
 				1D76F06621BC201B00A53853 /* fields */,
 			);
 			path = forms;
@@ -195,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				1D49B42421B8510300920CF4 /* TextFieldView.swift */,
+				1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */,
 			);
 			path = fields;
 			sourceTree = "<group>";
@@ -203,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7D37D521C05EE6000E3621 /* ItemDto.swift */,
+				1DEB4BA221D946DB002F09CF /* TargetDto.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -278,6 +304,9 @@
 		1DB3901B21B5BFD200C11CD7 /* countitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1DEB4BAE21DC0079002F09CF /* extensions */,
+				1DEB4BA921DBFC2F002F09CF /* utils */,
+				1DEB4BA421DBF294002F09CF /* builders */,
 				1DEB4B8F21D54F1C002F09CF /* config */,
 				1DEB4B7D21D0094E002F09CF /* itemservice */,
 				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
@@ -315,6 +344,7 @@
 		1DB3903621B5C06A00C11CD7 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1DEB4B9D21D9390D002F09CF /* enums */,
 				1D7D37E321C06299000E3621 /* entities */,
 				1D7D37D721C05F01000E3621 /* dto */,
 				1D76F06021BBF80900A53853 /* forms */,
@@ -366,10 +396,6 @@
 			children = (
 				1DEB4B9221D6700E002F09CF /* performance */,
 				1DEB4B9121D67006002F09CF /* contract */,
-				1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */,
-				1DEB4B7E21D00982002F09CF /* UpdateItems.swift */,
-				1DEB4B8021D00991002F09CF /* ReadItems.swift */,
-				1DEB4B8221D009B6002F09CF /* DeleteItems.swift */,
 			);
 			path = itemservice;
 			sourceTree = "<group>";
@@ -401,6 +427,11 @@
 		1DEB4B9121D67006002F09CF /* contract */ = {
 			isa = PBXGroup;
 			children = (
+				1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */,
+				1DEB4B7E21D00982002F09CF /* UpdateItems.swift */,
+				1DEB4B8021D00991002F09CF /* ReadItems.swift */,
+				1DEB4B8221D009B6002F09CF /* DeleteItems.swift */,
+				1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */,
 			);
 			path = contract;
 			sourceTree = "<group>";
@@ -411,6 +442,40 @@
 				1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */,
 			);
 			path = performance;
+			sourceTree = "<group>";
+		};
+		1DEB4B9D21D9390D002F09CF /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4B9E21D93921002F09CF /* TargetDirection.swift */,
+				1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		1DEB4BA421DBF294002F09CF /* builders */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4BA521DBF2A3002F09CF /* ItemBuilder.swift */,
+				1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */,
+			);
+			path = builders;
+			sourceTree = "<group>";
+		};
+		1DEB4BA921DBFC2F002F09CF /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		1DEB4BAE21DC0079002F09CF /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -544,15 +609,20 @@
 			files = (
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
 				1D76F07021BC52C800A53853 /* TableController.swift in Sources */,
+				1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */,
 				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
+				1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */,
 				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
+				1DEB4B9C21D93809002F09CF /* TargetForm.swift in Sources */,
+				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
 				1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
+				1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */,
 				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
 				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
@@ -566,6 +636,7 @@
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
 				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
+				1DEB4B9821D8C9C0002F09CF /* TargetFormView.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 				1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */,
 			);
@@ -576,8 +647,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */,
+				1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */,
+				1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */,
 				1DEB4B8121D00991002F09CF /* ReadItems.swift in Sources */,
+				1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */,
 				1DEB4B7C21CFFB07002F09CF /* TestCoreDataConfig.swift in Sources */,
+				1DEB4BA621DBF2A3002F09CF /* ItemBuilder.swift in Sources */,
+				1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */,
 				1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */,
 				1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */,
 				1DEB4B8321D009B6002F09CF /* DeleteItems.swift in Sources */,

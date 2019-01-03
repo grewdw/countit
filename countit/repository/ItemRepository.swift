@@ -21,7 +21,7 @@ protocol ItemRepository {
     
     func getItems() -> [ItemDto]
     
-    func getLowestListPosition() -> ItemDto?
+    func getLowestListPosition() -> Int?
     
     func delete(itemWithId _id: NSManagedObjectID) -> Bool
 }

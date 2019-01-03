@@ -10,40 +10,19 @@ import XCTest
 import CoreData
 @testable import countit
 
-class DeleteItems: XCTestCase {
-    
-    var context: NSManagedObjectContext?
-    var itemRepository: ItemRepository?
-    var target: ItemService?
-    
-    let ITEM_NAME_ONE = "testItemOne"
-    let ITEM_NAME_TWO = "testItemTwo"
-    
-    let ITEM_DESCRIPTION_ONE = "testItemDescriptionOne"
-    let ITEM_DESCRIPTION_TWO = "testItemDescriptionTwo"
+class DeleteItems: ItemServiceContractTestBase {
     
     var ITEM_ID_ONE: NSManagedObjectID?
     var ITEM_ID_TWO: NSManagedObjectID?
     
     override func setUp() {
-        context = TestCoreDataConfig.getCoreDataContext()
-        itemRepository = ItemRepositoryImpl(context: context!)
-        target = ItemServiceImpl(itemRepository: itemRepository!)
+        target = CommonSteps.getItemService()
         
-        let itemOne = ItemDto(nil, ITEM_NAME_ONE, ITEM_DESCRIPTION_ONE, nil)
-        let itemTwo = ItemDto(nil, ITEM_NAME_TWO, ITEM_DESCRIPTION_TWO, 0)
-        let _ = target!.saveItem(itemOne)
-        let _ = target!.saveItem(itemTwo)
+        createTwoItems(withService: target!)
         
         let items = target!.getItems()
         ITEM_ID_ONE = items[0].getId()
         ITEM_ID_TWO = items[1].getId()
-    }
-    
-    override func tearDown() {
-        context = nil
-        itemRepository = nil
-        target = nil
     }
     
     func testDeleteOneItem() {
@@ -55,9 +34,7 @@ class DeleteItems: XCTestCase {
         
         //        Then
         XCTAssert(deleteSuccessful)
-        XCTAssert(items.count == 1)
-        XCTAssert(items[0].getName() == ITEM_NAME_TWO)
-        XCTAssert(items[0].getDescription() == ITEM_DESCRIPTION_TWO)
+        assert(item: items[0], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 1)
     }
     
     func testDeleteTwoItems() {

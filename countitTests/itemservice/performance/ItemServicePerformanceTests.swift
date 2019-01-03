@@ -20,7 +20,8 @@ class ItemServicePerformanceTests: XCTestCase {
     var item: ItemDto?
     var updatedItem: ItemDto?
     var itemId: NSManagedObjectID?
-    let newItem = ItemDto(nil, "newItem", nil, nil)
+    let countTarget = TargetDto(direction: TargetDirection.AT_LEAST, value: 5, timePeriod: TargetTimePeriod.DAY)
+    let newItem = ItemDto(nil, "newItem", nil, TargetDto(direction: TargetDirection.AT_LEAST, value: 5, timePeriod: TargetTimePeriod.DAY), nil)
     
     let UPDATED_ITEM_NAME = "updatedItemName"
     
@@ -31,7 +32,7 @@ class ItemServicePerformanceTests: XCTestCase {
         itemRepository = ItemRepositoryImpl(context: context!)
         target = ItemServiceImpl(itemRepository: itemRepository!)
         
-        for count in 1...10000 {
+        for count in 1...1000 {
             dataLoadItem(number: count)
         }
         
@@ -94,14 +95,14 @@ class ItemServicePerformanceTests: XCTestCase {
     }
     
     private func dataLoadItem(number: Int) {
-        let _ = target!.saveItem(ItemDto(nil, "item" + String(number), nil, nil))
+        let _ = target!.saveItem(ItemDto(nil, "item" + String(number), nil, countTarget, nil))
     }
     
     private func updateTestVariables() {
         items = target!.getItems()
         if let itemArray = items {
             item = itemArray[itemArray.count-1]
-            updatedItem = ItemDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), item?.getListPosition())
+            updatedItem = ItemDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), item?.getTargetDto() ?? countTarget, item?.getListPosition())
             itemId = item!.getId()
             counter += 1
         }
