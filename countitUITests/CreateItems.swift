@@ -51,6 +51,7 @@ class CreateItems: XCTestCase {
         nameField.typeText(ITEM_NAME_ONE)
         descriptionField.tap()
         descriptionField.typeText(ITEM_DESCRIPTION_ONE)
+        descriptionField.typeText(String(XCUIKeyboardKey.return.rawValue))
         targetValue.tap()
         targetValue.typeText(ITEM_TARGET_VALUE_ONE)
         

@@ -12,7 +12,7 @@ class NewItemFormView: UIScrollView {
     
     private let DEFAULT_FORM_TITLE = "ADD ITEM"
     
-    var form: ItemForm? { didSet { updateForm() }}
+    var form: ItemForm?
     
     var formDelegate: FormController?
     var editable: Bool = false
@@ -23,7 +23,7 @@ class NewItemFormView: UIScrollView {
     
     var fields: [ItemFormFields: TextFieldView] = [:]
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, form: ItemForm?) {
        
         nameField = TextFieldViewBuilder(frame: .zero)
             .with(spacing: 10)
@@ -53,6 +53,10 @@ class NewItemFormView: UIScrollView {
         super.init(frame: frame)
         
         nameField.fieldText.delegate = self
+        descriptionField.fieldText.delegate = self
+        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing(_:))))
+        self.keyboardDismissMode = .onDrag
         
         self.backgroundColor = UIColor.white
         self.addSubview(nameField)
@@ -72,6 +76,7 @@ class NewItemFormView: UIScrollView {
         ])
         
         if form != nil {
+            self.form = form
             updateForm()
         }
     }
@@ -119,13 +124,7 @@ extension NewItemFormView {
             }
         }
     }
-    
-    func clearForm() {
-        form = nil
-        nameField.resignFirstResponder()
-        descriptionField.resignFirstResponder()
-    }
-    
+
     private func getFormData() -> ItemForm {
         let id = form?.getId()
         let name = nameField.getValue()
@@ -166,6 +165,11 @@ extension NewItemFormView: UITextFieldDelegate {
         else if string == "" && range.location == 0 && range.length == 1 {
             nameField.displayErrorMessage()
         }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

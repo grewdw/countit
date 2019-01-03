@@ -31,22 +31,26 @@ class ItemFormController: UIViewController {
     }
     
     override func viewDidLoad() {
-        let newItemFormView = viewResolver.getNewItemFormView(frame: self.view.bounds)
+        instantiateView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        instantiateView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        selectedItem = nil
+        view = nil
+    }
+    
+    private func instantiateView() {
+        let form = selectedItem != nil ? ItemForm(selectedItem!) : nil
+        let newItemFormView = viewResolver.getNewItemFormView(frame: self.view.bounds, form: form)
         newItemFormView.initialiseNavBar(for: self)
         newItemFormView.formDelegate = self
         self.formView = newItemFormView
         self.view = newItemFormView
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if selectedItem != nil {
-            displayForm()
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        formView?.clearForm()
-        selectedItem = nil
     }
 }
 
@@ -57,19 +61,13 @@ extension ItemFormController: FormController {
         if itemService.saveItem(ItemDto(itemForm: formToSubmit)) {
             let navController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController
             navController?.popViewController(animated: true)
-            formView?.clearForm()
         }
     }
     
     func with(item: ItemDto) {
         selectedItem = item
     }
-    
-    private func displayForm() {
-        let itemForm = ItemForm(selectedItem!)
-        formView?.setForm(form: itemForm)
-    }
-    
+
     func cancelForm() {
     }
     
