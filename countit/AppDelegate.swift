@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let context = CoreDataConfig.getCoreDataContext(isSQLDatabase: isSQLDatabase)
         
+        let clock = Clock()
+        
         let itemRepository = ItemRepositoryImpl(context: context)
-        let itemService = ItemServiceImpl(itemRepository: itemRepository)
+        let itemService = ItemServiceImpl(itemRepository: itemRepository, clock: clock)
         
         let viewResolver = ViewResolver()
         let controllerResolver = ControllerResolver()

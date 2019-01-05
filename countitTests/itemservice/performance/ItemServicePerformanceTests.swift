@@ -14,6 +14,7 @@ class ItemServicePerformanceTests: XCTestCase {
 
     var context: NSManagedObjectContext?
     var itemRepository: ItemRepository?
+    var clock: Clock?
     var target: ItemService?
     
     var items: [ItemDto]?
@@ -32,7 +33,8 @@ class ItemServicePerformanceTests: XCTestCase {
     override func setUp() {
         context = TestCoreDataConfig.getCoreDataContext()
         itemRepository = ItemRepositoryImpl(context: context!)
-        target = ItemServiceImpl(itemRepository: itemRepository!)
+        clock = Clock()
+        target = ItemServiceImpl(itemRepository: itemRepository!, clock: clock!)
         
         for count in 1...1000 {
             dataLoadItem(number: count)

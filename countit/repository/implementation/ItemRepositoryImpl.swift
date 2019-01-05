@@ -23,31 +23,35 @@ class ItemRepositoryImpl: ItemRepository {
 // create functions
 extension ItemRepositoryImpl {
     
-    func createWithTarget(item: ItemDto, atPosition position: Int) -> Bool {
+    func createWithTarget(item: ItemDto, atPosition position: Int, withTimestamp timestamp: NSDate) -> Bool {
         let itemEntity = itemEntityFrom(itemDto: item)
         itemEntity.listPosition = Int16(position)
-        let targetEntity = targetEntityFrom(targetDto: item.getCurrentTargetDto())
-        targetEntity.current = true
-        itemEntity.addToTarget(targetEntity)
+        createNewTarget(item: itemEntity, target: item.getCurrentTargetDto(), timestamp: timestamp)
         return saveContext()
     }
     
-    func create(target: TargetDto, forItem itemId: NSManagedObjectID) -> Bool {
+    func create(target: TargetDto, forItem itemId: NSManagedObjectID, withTimestamp timestamp: NSDate) -> Bool {
         if let item: ItemEntity = getItem(with: itemId) {
-            if let currentTarget: TargetEntity = getCurrentTargetFor(item: item) {
-                currentTarget.current = false
-                let newTarget = targetEntityFrom(targetDto: target)
-                newTarget.current = true
-                item.addToTarget(newTarget)
-                return saveContext()
-            }
-            else {
-                return false
-            }
+            setPastTargetToNotCurrent(item: item)
+            createNewTarget(item: item, target: target, timestamp: timestamp)
+            return saveContext()
         }
         else {
             return false
         }
+    }
+    
+    private func setPastTargetToNotCurrent(item: ItemEntity) {
+        if let currentTarget: TargetEntity = getCurrentTargetFor(item: item) {
+            currentTarget.current = false
+        }
+    }
+    
+    private func createNewTarget(item: ItemEntity, target: TargetDto, timestamp: NSDate) {
+        let newTarget = targetEntityFrom(targetDto: target)
+        newTarget.current = true
+        newTarget.createdTimestamp = timestamp as Date
+        item.addToTarget(newTarget)
     }
 }
 

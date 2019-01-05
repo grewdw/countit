@@ -11,9 +11,9 @@ import CoreData
 
 protocol ItemRepository {
     
-    func createWithTarget(item: ItemDto, atPosition position: Int) -> Bool
+    func createWithTarget(item: ItemDto, atPosition position: Int, withTimestamp timestamp: NSDate) -> Bool
     
-    func create(target: TargetDto, forItem itemId: NSManagedObjectID)  -> Bool
+    func create(target: TargetDto, forItem itemId: NSManagedObjectID, withTimestamp timestamp: NSDate) -> Bool
     
     func update(item: ItemDto, with id: NSManagedObjectID) -> Bool
     
