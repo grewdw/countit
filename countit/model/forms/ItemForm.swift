@@ -31,7 +31,7 @@ class ItemForm: Form {
         self.id = dto.getId()
         self.name = dto.getName()
         self.description = dto.getDescription()
-        self.targetForm = TargetForm(targetDto: dto.getTargetDto())
+        self.targetForm = TargetForm(targetDto: dto.getCurrentTargetDto())
         self.listPosition = dto.getListPosition()
     }
     

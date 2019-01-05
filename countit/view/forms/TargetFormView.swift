@@ -63,6 +63,8 @@ class TargetFormView: UIStackView {
         direction.setSelectedValue(to: form.getDirection().rawValue)
         value.text = String(form.getValue())
         timePeriod.setSelectedValue(to: form.getTimePeriod().rawValue)
+        direction.set(editable: false)
+        timePeriod.set(editable: false)
     }
     
     func setValuesToDefault() {
@@ -76,11 +78,11 @@ class TargetFormView: UIStackView {
     }
     
     private func getDirection() -> TargetDirection {
-        return TargetDirection(rawValue: direction.selectedValue ?? "At least")!
+        return TargetDirection(rawValue: direction.getSelectedValue() ?? "At least")!
     }
     
     private func getTimePeriod() -> TargetTimePeriod {
-        return TargetTimePeriod(rawValue: timePeriod.selectedValue ?? "Day")!
+        return TargetTimePeriod(rawValue: timePeriod.getSelectedValue() ?? "Day")!
     }
 }
 
