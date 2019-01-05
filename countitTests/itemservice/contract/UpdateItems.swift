@@ -25,7 +25,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeName() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getTargetDto())!).build()
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getCurrentTargetDto())!).build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -34,12 +34,13 @@ class UpdateItems: ItemServiceContractTestBase {
         //        Then
         XCTAssert(items.count == 3)
         assert(item: items[0], hasName: ITEM_NAME_ONE_NEW, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
     }
     
     func testChangeNameNoDescription() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(target: (ITEM_ONE?.getTargetDto())!).build()
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(target: (ITEM_ONE?.getCurrentTargetDto())!).build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -48,12 +49,13 @@ class UpdateItems: ItemServiceContractTestBase {
         //        Then
         XCTAssert(items.count == 3)
         assert(item: items[0], hasName: ITEM_NAME_ONE_NEW, description: nil, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
     }
     
     func testChangeDescription() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: ITEM_DESCRIPTION_ONE_NEW).with(target: (ITEM_ONE?.getTargetDto())!).build()
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: ITEM_DESCRIPTION_ONE_NEW).with(target: (ITEM_ONE?.getCurrentTargetDto())!).build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -62,12 +64,118 @@ class UpdateItems: ItemServiceContractTestBase {
         //        Then
         XCTAssert(items.count == 3)
         assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE_NEW, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+    }
+    
+    func testChangeTargetValueUpdates() {
+        
+        //        Given
+        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+        let updatedItem = ItemBuilder()
+            .with(id: (ITEM_ONE?.getId())!)
+            .with(name: (ITEM_ONE?.getName())!)
+            .with(description: (ITEM_ONE?.getDescription())!)
+            .with(target: newTarget)
+            .build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+    }
+    
+    func testChangeTargetTimePeriodDoesNotUpdateWithValueChange() {
+        
+        //        Given
+        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE_NEW)
+        let updatedItem = ItemBuilder()
+            .with(id: (ITEM_ONE?.getId())!)
+            .with(name: (ITEM_ONE?.getName())!)
+            .with(description: (ITEM_ONE?.getDescription())!)
+            .with(target: newTarget)
+            .build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+    }
+    
+    func testChangeTargetTimePeriodDoesNotUpdateWithoutValueChange() {
+        
+        //        Given
+        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE_NEW)
+        let updatedItem = ItemBuilder()
+            .with(id: (ITEM_ONE?.getId())!)
+            .with(name: (ITEM_ONE?.getName())!)
+            .with(description: (ITEM_ONE?.getDescription())!)
+            .with(target: newTarget)
+            .build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+    }
+    
+    func testChangeTargetDirectionDoesNotUpdateWithValueChange() {
+        
+        //        Given
+        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE_NEW, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+        let updatedItem = ItemBuilder()
+            .with(id: (ITEM_ONE?.getId())!)
+            .with(name: (ITEM_ONE?.getName())!)
+            .with(description: (ITEM_ONE?.getDescription())!)
+            .with(target: newTarget)
+            .build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+    }
+    
+    func testChangeTargetDirectionDoesNotUpdateWithoutValueChange() {
+        
+        //        Given
+        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE_NEW, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
+        let updatedItem = ItemBuilder()
+            .with(id: (ITEM_ONE?.getId())!)
+            .with(name: (ITEM_ONE?.getName())!)
+            .with(description: (ITEM_ONE?.getDescription())!)
+            .with(target: newTarget)
+            .build()
+        
+        //        When
+        let _ = target!.saveItem(updatedItem)
+        let items = target!.getItems()
+        
+        //        Then
+        XCTAssert(items.count == 3)
+        assert(item: items[0], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 0)
+        assertTargetFor(item: items[0], hasDirection: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
     }
     
     func testChangeListPositionDoesNotUpdate() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getTargetDto())!).with(listPosition: LIST_POSITION_NEW).build()
+        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getCurrentTargetDto())!).with(listPosition: LIST_POSITION_NEW).build()
         
         //        When
         let _ = target!.saveItem(updatedItem)

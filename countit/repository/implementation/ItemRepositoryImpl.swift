@@ -105,6 +105,9 @@ extension ItemRepositoryImpl {
     func getItemsWithCurrentTargets() -> [ItemDto] {
         var itemEntities = getItems()
         var targetEntities = [TargetEntity]()
+        if itemEntities.count == 0 {
+            return [ItemDto]()
+        }
         for item in 0 ... itemEntities.count - 1 {
             if let target = getCurrentTargetFor(item: itemEntities[item]) {
                 targetEntities.append(target)
@@ -143,8 +146,9 @@ extension ItemRepositoryImpl {
     
     private func getCurrentTargetFor(item: ItemEntity) -> TargetEntity? {
         let request: NSFetchRequest<TargetEntity> = TargetEntity.fetchRequest()
-        request.predicate = NSPredicate(format: "item == %@ AND ANY current == true", item)
-        return getTargets(with: request)[0]
+        request.predicate = NSPredicate(format: "item == %@ AND current == true", item)
+        let targets = getTargets(with: request)
+        return targets.count != 0 ? targets[0] : nil
     }
     
     private func getItems(with request: NSFetchRequest<ItemEntity>) -> [ItemEntity] {
