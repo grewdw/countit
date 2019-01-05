@@ -20,7 +20,7 @@ extension XCTestCase {
     }
     
     func assertTargetFor(item: ItemDto, hasDirection direction: TargetDirection, value: Int, timePeriod: TargetTimePeriod) {
-        let targetDto = item.getTargetDto()
+        let targetDto = item.getCurrentTargetDto()
         XCTAssert(targetDto.getDirection() == direction)
         XCTAssert(targetDto.getValue() == value)
         XCTAssert(targetDto.getTimePeriod() == timePeriod)

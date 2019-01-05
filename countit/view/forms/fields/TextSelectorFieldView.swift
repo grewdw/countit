@@ -10,8 +10,9 @@ import UIKit
 
 class TextSelectorFieldView: UIStackView {
     
-    var textButtons: [String:UIButton] = [:]
-    var selectedValue: String?
+    private var textButtons: [String:UIButton] = [:]
+    private var selectedValue: String?
+    private var editable: Bool = true
     
     init(frame: CGRect, textOptions: [String]) {
         super.init(frame: frame)
@@ -50,7 +51,9 @@ class TextSelectorFieldView: UIStackView {
     }
     
     @objc func buttonPressed(sender: UIButton) {
-        updateButtonsWith(selected: sender)
+        if editable {
+            updateButtonsWith(selected: sender)
+        }
     }
     
     private func updateButtonsWith(selected: UIButton) {
@@ -85,5 +88,13 @@ class TextSelectorFieldView: UIStackView {
                 NSAttributedString.Key.underlineStyle: 0.0
             ])
         button.setAttributedTitle(attributedString, for: .normal)
+    }
+    
+    func set(editable: Bool) {
+        self.editable = editable
+    }
+    
+    func getSelectedValue() -> String? {
+        return selectedValue
     }
 }

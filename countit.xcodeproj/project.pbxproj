@@ -57,6 +57,7 @@
 		1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */; };
 		1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */; };
 		1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */; };
+		1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB221E1152B002F09CF /* Clock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSteps.swift; sourceTree = "<group>"; };
 		1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceContractTestBase.swift; sourceTree = "<group>"; };
 		1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
+		1DEB4BB221E1152B002F09CF /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 				1DB3903621B5C06A00C11CD7 /* model */,
 				1DB3903821B5C07900C11CD7 /* service */,
 				1DB3903921B5C08800C11CD7 /* repository */,
+				1DEB4BB121E114FF002F09CF /* utils */,
 				1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */,
 				1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */,
 				1DB3901321B5BFD200C11CD7 /* Info.plist */,
@@ -478,6 +481,14 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		1DEB4BB121E114FF002F09CF /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4BB221E1152B002F09CF /* Clock.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -628,6 +639,7 @@
 				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
 				1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */,
 				1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */,
+				1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */,
 				1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,

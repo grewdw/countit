@@ -40,6 +40,9 @@ class ItemServiceContractTestBase: XCTestCase {
     
     let ITEM_NAME_ONE_NEW = "testItemOneNew"
     let ITEM_DESCRIPTION_ONE_NEW = "testItemDescriptionOneNew"
+    let ITEM_TARGET_DIRECTION_ONE_NEW = TargetDirection.AT_LEAST
+    let ITEM_TARGET_VALUE_ONE_NEW = 10
+    let ITEM_TARGET_TIMEPERIOD_ONE_NEW = TargetTimePeriod.WEEK
     
     let LIST_POSITION_NEW = 10
     

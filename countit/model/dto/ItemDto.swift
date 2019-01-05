@@ -14,14 +14,14 @@ class ItemDto {
     private let id: NSManagedObjectID?
     private let name: String
     private let description: String?
-    private let targetDto: TargetDto
+    private let currentTargetDto: TargetDto
     private var listPosition: Int?
     
     init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ targetDto: TargetDto, _ listPosition: Int?) {
         self.id = id
         self.name = name
         self.description = description
-        self.targetDto = targetDto
+        self.currentTargetDto = targetDto
         self.listPosition = listPosition
     }
     
@@ -29,7 +29,7 @@ class ItemDto {
         self.id = itemForm.getId()
         self.name = itemForm.getName()!
         self.description = itemForm.getDescription()
-        self.targetDto = TargetDto(targetForm: itemForm.getTargetForm())
+        self.currentTargetDto = TargetDto(targetForm: itemForm.getTargetForm())
         self.listPosition = itemForm.getListPosition()
     }
     
@@ -37,7 +37,7 @@ class ItemDto {
         self.id = itemEntity.objectID
         self.name = itemEntity.name!
         self.description = itemEntity.itemDescription
-        self.targetDto = TargetDto(
+        self.currentTargetDto = TargetDto(
             direction: TargetDirection(rawValue: targetEntity.direction!)!,
             value: Int(targetEntity.value),
             timePeriod: TargetTimePeriod(rawValue: targetEntity.timePeriod!)!)
@@ -60,8 +60,8 @@ class ItemDto {
         return listPosition
     }
     
-    func getTargetDto() -> TargetDto {
-        return targetDto
+    func getCurrentTargetDto() -> TargetDto {
+        return currentTargetDto
     }
     
     func setListPosition(newPosition: Int) {
