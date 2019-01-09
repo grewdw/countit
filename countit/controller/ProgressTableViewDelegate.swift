@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import CoreData
 
-protocol TableController {
+protocol ProgressTableViewDelegate {
     
     func buttonPressed(_ button: NavBarButtonType)
+    
+    func recordActivityButtonPressedFor(item: NSManagedObjectID)
 }

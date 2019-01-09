@@ -12,7 +12,7 @@ protocol FormController {
     
     func submitForm(_ Form: Form)
     
-    func with(item: ItemDto)
+    func with(item: ItemDetailsDto)
     
     func cancelForm()
     

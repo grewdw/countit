@@ -23,10 +23,11 @@ class ItemRepositoryImpl: ItemRepository {
 // create functions
 extension ItemRepositoryImpl {
     
-    func createWithTarget(item: ItemDto, atPosition position: Int, withTimestamp timestamp: NSDate) -> Bool {
+    func createWithTarget(item: ItemDetailsDto, atPosition position: Int, withTimestamp timestamp: NSDate) -> Bool {
         let itemEntity = itemEntityFrom(itemDto: item)
         itemEntity.listPosition = Int16(position)
-        createNewTarget(item: itemEntity, target: item.getCurrentTargetDto(), timestamp: timestamp)
+        let target = TargetDto(direction: item.getDirection(), value: item.getValue(), timePeriod: item.getTimePeriod())
+        createNewTarget(item: itemEntity, target: target, timestamp: timestamp)
         return saveContext()
     }
     
@@ -58,7 +59,7 @@ extension ItemRepositoryImpl {
 // update functions
 extension ItemRepositoryImpl {
     
-    func update(item: ItemDto, with id: NSManagedObjectID) -> Bool {
+    func update(item: ItemDetailsDto, with id: NSManagedObjectID) -> Bool {
         if let itemEntity = getItem(with: id) {
             itemEntity.name = item.getName()
             itemEntity.itemDescription = item.getDescription()
@@ -94,23 +95,23 @@ extension ItemRepositoryImpl {
 // get functions
 extension ItemRepositoryImpl {
     
-    func getItemWithCurrentTarget(with id: NSManagedObjectID) -> ItemDto? {
+    func getItemWithCurrentTarget(with id: NSManagedObjectID) -> ItemDetailsDto? {
         if let item: ItemEntity = getItem(with: id) {
             let currentTarget = getCurrentTargetFor(item: item)
             return currentTarget == nil
                 ? nil
-                : ItemDto(itemEntity: item, targetEntity: currentTarget!)
+                : ItemDetailsDto(itemEntity: item, targetEntity: currentTarget!)
         }
         else {
             return nil
         }
     }
     
-    func getItemsWithCurrentTargets() -> [ItemDto] {
+    func getItemsWithCurrentTargets() -> [ItemDetailsDto] {
         var itemEntities = getItems()
         var targetEntities = [TargetEntity]()
         if itemEntities.count == 0 {
-            return [ItemDto]()
+            return [ItemDetailsDto]()
         }
         for item in 0 ... itemEntities.count - 1 {
             if let target = getCurrentTargetFor(item: itemEntities[item]) {
@@ -178,7 +179,7 @@ extension ItemRepositoryImpl {
 extension ItemRepositoryImpl {
  
     // conversions from dto to entities
-    private func itemEntityFrom(itemDto: ItemDto) -> ItemEntity {
+    private func itemEntityFrom(itemDto: ItemDetailsDto) -> ItemEntity {
         let item = ItemEntity(context: context)
         item.name = itemDto.getName()
         item.itemDescription = itemDto.getDescription()
@@ -194,10 +195,10 @@ extension ItemRepositoryImpl {
     }
     
     // conversion from entities to dto
-    private func itemAndTargetEntityToDto(itemEntities: [ItemEntity], targetEntities: [TargetEntity]) -> [ItemDto] {
-        var itemDtos: [ItemDto] = []
+    private func itemAndTargetEntityToDto(itemEntities: [ItemEntity], targetEntities: [TargetEntity]) -> [ItemDetailsDto] {
+        var itemDtos: [ItemDetailsDto] = []
         for item in 0 ... itemEntities.count - 1 {
-            itemDtos.append(ItemDto(itemEntity: itemEntities[item], targetEntity: targetEntities[item]))
+            itemDtos.append(ItemDetailsDto(itemEntity: itemEntities[item], targetEntity: targetEntities[item]))
         }
         return itemDtos
     }

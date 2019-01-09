@@ -11,13 +11,13 @@ import CoreData
 
 protocol ItemService {
     
-    func saveItem(_ item: ItemDto) -> Bool
+    func saveItem(_ item: ItemDetailsDto) -> Bool
     
-    func getItem(id: NSManagedObjectID) -> ItemDto?
+    func getItem(id: NSManagedObjectID) -> ItemSummaryDto?
     
-    func getItems() -> [ItemDto]
+    func getItems() -> [ItemSummaryDto]
     
-    func persistTableOrder(for items: [ItemDto])
+    func persistTableOrder(for items: [ItemSummaryDto])
     
     func delete(itemWithId _id: NSManagedObjectID) -> Bool
 }

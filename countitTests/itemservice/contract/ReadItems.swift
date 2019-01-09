@@ -17,7 +17,7 @@ class ReadItems: ItemServiceContractTestBase {
         //        Given
         createItemOne(withDescription: true, usingService: target!)
         
-        let itemId = target!.getItems()[0].getId()!
+        let itemId = target!.getItems()[0].getItemDetailsDto().getId()!
         
         //        When
         let item = target!.getItem(id: itemId)
@@ -32,7 +32,7 @@ class ReadItems: ItemServiceContractTestBase {
         //        Given
         createThreeItems(withService: target!)
         
-        let itemId = target!.getItems()[1].getId()!
+        let itemId = target!.getItems()[1].getItemDetailsDto().getId()!
         
         //        When
         let item = target!.getItem(id: itemId)
@@ -45,7 +45,7 @@ class ReadItems: ItemServiceContractTestBase {
     func testGetSingleItemNoneExist() {
         //        Given
         createItemOne(withDescription: true, usingService: target!)
-        let itemId = target!.getItems()[0].getId()!
+        let itemId = target!.getItems()[0].getItemDetailsDto().getId()!
         let _ = target!.delete(itemWithId: itemId)
         
         //        When

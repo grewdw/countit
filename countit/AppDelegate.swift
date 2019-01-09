@@ -22,13 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let clock = Clock()
         
+        let activityRepository = ActivityRepositoryImpl(context: context)
+        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock)
         let itemRepository = ItemRepositoryImpl(context: context)
-        let itemService = ItemServiceImpl(itemRepository: itemRepository, clock: clock)
+        let itemService = ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
         
         let viewResolver = ViewResolver()
         let controllerResolver = ControllerResolver()
         controllerResolver.add(controller: ProgressTableController(
-            controllerResolver, viewResolver, itemService), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
+            controllerResolver, viewResolver, itemService, activityService), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
         controllerResolver.add(controller: ItemFormController(controllerResolver, viewResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
         controllerResolver.add(controller: UINavigationController(rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
         

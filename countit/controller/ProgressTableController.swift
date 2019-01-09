@@ -7,24 +7,27 @@
 //
 
 import UIKit
+import CoreData
 
 class ProgressTableController: UIViewController, UISearchBarDelegate {
     
     private let controllerResolver: ControllerResolver
     private let viewResolver: ViewResolver
     private let itemService: ItemService
+    private let activityService: ActivityService
     
     private let refreshControl = UIRefreshControl()
     
-    var items: [ItemDto] = []
-    var filteredItems: [ItemDto] = []
+    var items: [ItemSummaryDto] = []
+    var filteredItems: [ItemSummaryDto] = []
     
     var filteringItems: Bool = false
     
-    init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService) {
+    init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService, _ activityService: ActivityService) {
         self.controllerResolver = controllerResolver
         self.viewResolver = viewResolver
         self.itemService = itemService
+        self.activityService = activityService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -54,6 +57,8 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         tableView.initialiseNavBarWithSearch(for: self, searchResultsUpdater: self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 22.0
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = .gray
         self.view = tableView
     }
 }
@@ -71,8 +76,8 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func filterItems(containing searchText: String) {
-        filteredItems = items.filter({( item : ItemDto) -> Bool in
-        return item.getName().lowercased().contains(searchText.lowercased())
+        filteredItems = items.filter({( item : ItemSummaryDto) -> Bool in
+        return item.getItemDetailsDto().getName().lowercased().contains(searchText.lowercased())
         })
         reloadTableData()
     }
@@ -89,7 +94,8 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemsArray = filteringItems ? filteredItems : items
         
-        let cell = CurrentProgressTableCellView(itemsArray[indexPath.row].getName())
+        let cell = CurrentProgressTableCellView(itemsArray[indexPath.row])
+        cell.delegate = self
         cell.accessibilityIdentifier = "Cell" + String(indexPath.row)
         cell.accessoryType = UITableViewCell.AccessoryType.detailButton
         return cell
@@ -98,10 +104,10 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let itemsArray = filteringItems ? filteredItems : items
         
-        toItemController(item: itemsArray[indexPath.row])
+        toItemController(item: itemsArray[indexPath.row].getItemDetailsDto())
     }
     
-    private func toItemController(item: ItemDto?) {
+    private func toItemController(item: ItemDetailsDto?) {
         if let parentController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController {
             if let itemFormController = controllerResolver.get(ControllerType.ITEM_FORM_CONTROLLER) as? FormController {
                 if let itemToAdd = item {
@@ -114,7 +120,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let itemId = items[indexPath.row].getId() {
+            if let itemId = items[indexPath.row].getItemDetailsDto().getId() {
                 self.items.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 let _ = itemService.delete(itemWithId: itemId)
@@ -123,7 +129,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProgressTableController: TableController {
+extension ProgressTableController: ProgressTableViewDelegate {
     
     func buttonPressed(_ button: NavBarButtonType) {
         switch button {
@@ -134,8 +140,13 @@ extension ProgressTableController: TableController {
         }
     }
     
-    func addButtonPressed() {
+    private func addButtonPressed() {
         toItemController(item: nil)
+    }
+    
+    func recordActivityButtonPressedFor(item: NSManagedObjectID) {
+        activityService.record(newActivity: NewActivityDto(item: item, value: 1))
+        refreshTable()
     }
 }
 

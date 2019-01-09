@@ -9,19 +9,23 @@
 import Foundation
 import CoreData
 
-class ItemDto {
+class ItemDetailsDto {
     
     private let id: NSManagedObjectID?
     private let name: String
     private let description: String?
-    private let currentTargetDto: TargetDto
+    private let direction: TargetDirection
+    private let value: Int
+    private let timePeriod: TargetTimePeriod
     private var listPosition: Int?
     
-    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ targetDto: TargetDto, _ listPosition: Int?) {
+    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ direction: TargetDirection, _ value: Int, _ timePeriod: TargetTimePeriod, _ listPosition: Int?) {
         self.id = id
         self.name = name
         self.description = description
-        self.currentTargetDto = targetDto
+        self.direction = direction
+        self.value = value
+        self.timePeriod = timePeriod
         self.listPosition = listPosition
     }
     
@@ -29,18 +33,19 @@ class ItemDto {
         self.id = itemForm.getId()
         self.name = itemForm.getName()!
         self.description = itemForm.getDescription()
-        self.currentTargetDto = TargetDto(targetForm: itemForm.getTargetForm())
-        self.listPosition = itemForm.getListPosition()
+        self.direction = itemForm.getTargetForm().getDirection()
+        self.value = itemForm.getTargetForm().getValue()
+        self.timePeriod = itemForm.getTargetForm().getTimePeriod()
+        self.listPosition = nil
     }
     
     init(itemEntity: ItemEntity, targetEntity: TargetEntity) {
         self.id = itemEntity.objectID
         self.name = itemEntity.name!
         self.description = itemEntity.itemDescription
-        self.currentTargetDto = TargetDto(
-            direction: TargetDirection(rawValue: targetEntity.direction!)!,
-            value: Int(targetEntity.value),
-            timePeriod: TargetTimePeriod(rawValue: targetEntity.timePeriod!)!)
+        self.direction = TargetDirection(rawValue: targetEntity.direction!)!
+        self.value = Int(targetEntity.value)
+        self.timePeriod = TargetTimePeriod(rawValue: targetEntity.timePeriod!)!
         self.listPosition = Int(itemEntity.listPosition)
     }
     
@@ -56,12 +61,20 @@ class ItemDto {
         return description
     }
     
-    func getListPosition() -> Int? {
-        return listPosition
+    func getDirection() -> TargetDirection {
+        return direction
     }
     
-    func getCurrentTargetDto() -> TargetDto {
-        return currentTargetDto
+    func getValue() -> Int {
+        return value
+    }
+    
+    func getTimePeriod() -> TargetTimePeriod {
+        return timePeriod
+    }
+    
+    func getListPosition() -> Int? {
+        return listPosition
     }
     
     func setListPosition(newPosition: Int) {

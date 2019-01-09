@@ -130,9 +130,8 @@ extension NewItemFormView {
         let name = nameField.getValue()
         let description = descriptionField.getValue()
         let countTargetForm = targetFields.getFormData()
-        let listPosition = form?.getListPosition()
         
-        return ItemForm(id, name, description, countTargetForm, listPosition)
+        return ItemForm(id, name, description, countTargetForm)
     }
 }
 
