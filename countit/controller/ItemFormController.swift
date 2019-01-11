@@ -13,7 +13,7 @@ class ItemFormController: UIViewController {
     
     private var formView: NewItemFormView?
     
-    private var selectedItem: ItemDto?
+    private var selectedItem: ItemDetailsDto?
     
     private let itemService: ItemService
     private let controllerResolver: ControllerResolver
@@ -58,13 +58,13 @@ extension ItemFormController: FormController {
     
     func submitForm(_ form: Form) {
         let formToSubmit = form as! ItemForm
-        if itemService.saveItem(ItemDto(itemForm: formToSubmit)) {
+        if itemService.saveItem(ItemDetailsDto(itemForm: formToSubmit)) {
             let navController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController
             navController?.popViewController(animated: true)
         }
     }
     
-    func with(item: ItemDto) {
+    func with(item: ItemDetailsDto) {
         selectedItem = item
     }
 

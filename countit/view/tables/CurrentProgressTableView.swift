@@ -11,7 +11,7 @@ import UIKit
 class CurrentProgressTableView: UITableView, NavBarButtonDelegate {
 
     let NAV_ITEM_TITLE = "COUNT IT"
-    var tableDelegate: TableController?
+    var tableDelegate: ProgressTableViewDelegate?
     
     func initialiseNavBar(for controller: UIViewController) {
         NavigationItemBuilder(for: controller)

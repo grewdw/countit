@@ -66,42 +66,33 @@ class ItemServiceContractTestBase: XCTestCase {
     }
     
     func createItemOne(withDescription: Bool, usingService service: ItemService) {
-        let targetDto = TargetBuilder()
+        let item = ItemDetailsBuilder()
+            .with(name: ITEM_NAME_ONE)
             .with(direction: ITEM_TARGET_DIRECTION_ONE)
             .with(value: ITEM_TARGET_VALUE_ONE)
             .with(timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
-            .build()
-        let item = ItemBuilder()
-            .with(name: ITEM_NAME_ONE)
-            .with(target: targetDto)
         let itemBuilt = withDescription ? item.with(description: ITEM_DESCRIPTION_ONE).build() : item.build()
         let _ = service.saveItem(itemBuilt)
     }
     
     func createItemTwo(usingService service: ItemService) {
-        let targetDto = TargetBuilder()
+        let item = ItemDetailsBuilder()
+            .with(name: ITEM_NAME_TWO)
+            .with(description: ITEM_DESCRIPTION_TWO)
             .with(direction: ITEM_TARGET_DIRECTION_TWO)
             .with(value: ITEM_TARGET_VALUE_TWO)
             .with(timePeriod: ITEM_TARGET_TIMEPERIOD_TWO)
-            .build()
-        let item = ItemBuilder()
-            .with(name: ITEM_NAME_TWO)
-            .with(target: targetDto)
-            .with(description: ITEM_DESCRIPTION_TWO)
             .build()
         let _ = service.saveItem(item)
     }
     
     func createItemThree(usingService service: ItemService) {
-        let targetDto = TargetBuilder()
+        let item = ItemDetailsBuilder()
+            .with(name: ITEM_NAME_THREE)
+            .with(description: ITEM_DESCRIPTION_THREE)
             .with(direction: ITEM_TARGET_DIRECTION_THREE)
             .with(value: ITEM_TARGET_VALUE_THREE)
             .with(timePeriod: ITEM_TARGET_TIMEPERIOD_THREE)
-            .build()
-        let item = ItemBuilder()
-            .with(name: ITEM_NAME_THREE)
-            .with(target: targetDto)
-            .with(description: ITEM_DESCRIPTION_THREE)
             .build()
         let _ = service.saveItem(item)
     }

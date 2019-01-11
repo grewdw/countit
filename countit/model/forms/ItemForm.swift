@@ -15,24 +15,21 @@ class ItemForm: Form {
     private var name: String?
     private var description: String?
     private var targetForm: TargetForm
-    private var listPosition: Int?
     
     private var fieldErrors: [ItemFormFields] = []
 
-    init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?, _ targetForm: TargetForm, _ listPosition: Int?) {
+    init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?, _ targetForm: TargetForm) {
         self.id = id
         self.name = name
         self.description = description
         self.targetForm = targetForm
-        self.listPosition = listPosition
     }
     
-    init(_ dto: ItemDto) {
+    init(_ dto: ItemDetailsDto) {
         self.id = dto.getId()
         self.name = dto.getName()
         self.description = dto.getDescription()
-        self.targetForm = TargetForm(targetDto: dto.getCurrentTargetDto())
-        self.listPosition = dto.getListPosition()
+        self.targetForm = TargetForm(direction: dto.getDirection(), value: dto.getValue(), timePeriod: dto.getTimePeriod())
     }
     
     func getId() -> NSManagedObjectID? {
@@ -49,10 +46,6 @@ class ItemForm: Form {
     
     func getTargetForm() -> TargetForm {
         return targetForm
-    }
-    
-    func getListPosition() -> Int? {
-        return self.listPosition
     }
     
     func isValid() -> Bool {

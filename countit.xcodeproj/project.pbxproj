@@ -17,9 +17,9 @@
 		1D76F06221BBF81800A53853 /* ItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06121BBF81800A53853 /* ItemForm.swift */; };
 		1D76F06921BC214600A53853 /* FormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06821BC214600A53853 /* FormController.swift */; };
 		1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */; };
-		1D76F07021BC52C800A53853 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06F21BC52C800A53853 /* TableController.swift */; };
+		1D76F07021BC52C800A53853 /* ProgressTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06F21BC52C800A53853 /* ProgressTableViewDelegate.swift */; };
 		1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D321C05E81000E3621 /* ItemService.swift */; };
-		1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D521C05EE6000E3621 /* ItemDto.swift */; };
+		1D7D37D621C05EE6000E3621 /* ItemDetailsDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */; };
 		1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */; };
 		1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DE21C061E3000E3621 /* ItemRepository.swift */; };
 		1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */; };
@@ -44,7 +44,6 @@
 		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
 		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
-		1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */; };
 		1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */; };
 		1DEB4B9821D8C9C0002F09CF /* TargetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */; };
 		1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */; };
@@ -52,12 +51,23 @@
 		1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9E21D93921002F09CF /* TargetDirection.swift */; };
 		1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */; };
 		1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA221D946DB002F09CF /* TargetDto.swift */; };
-		1DEB4BA621DBF2A3002F09CF /* ItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA521DBF2A3002F09CF /* ItemBuilder.swift */; };
+		1DEB4BA621DBF2A3002F09CF /* ItemDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA521DBF2A3002F09CF /* ItemDetailsBuilder.swift */; };
 		1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */; };
 		1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */; };
 		1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */; };
 		1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */; };
 		1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB221E1152B002F09CF /* Clock.swift */; };
+		1DEB4BB521E3892B002F09CF /* NewActivityDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB421E3892B002F09CF /* NewActivityDto.swift */; };
+		1DEB4BB721E38A45002F09CF /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB621E38A45002F09CF /* ActivityService.swift */; };
+		1DEB4BB921E38A99002F09CF /* ActivityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */; };
+		1DEB4BBB21E38B01002F09CF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */; };
+		1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */; };
+		1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */; };
+		1DEB4BC121E3E320002F09CF /* ItemSummaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC021E3E320002F09CF /* ItemSummaryBuilder.swift */; };
+		1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */; };
+		1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */; };
+		1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC621E7926C002F09CF /* UITestBase.swift */; };
+		1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,9 +98,9 @@
 		1D76F06121BBF81800A53853 /* ItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemForm.swift; sourceTree = "<group>"; };
 		1D76F06821BC214600A53853 /* FormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormController.swift; sourceTree = "<group>"; };
 		1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableView.swift; sourceTree = "<group>"; };
-		1D76F06F21BC52C800A53853 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		1D76F06F21BC52C800A53853 /* ProgressTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewDelegate.swift; sourceTree = "<group>"; };
 		1D7D37D321C05E81000E3621 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
-		1D7D37D521C05EE6000E3621 /* ItemDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDto.swift; sourceTree = "<group>"; };
+		1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsDto.swift; sourceTree = "<group>"; };
 		1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceImpl.swift; sourceTree = "<group>"; };
 		1D7D37DE21C061E3000E3621 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -121,7 +131,6 @@
 		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
 		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
-		1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServicePerformanceTests.swift; sourceTree = "<group>"; };
 		1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TargetFormView.swift; path = countit/View/Forms/TargetFormView.swift; sourceTree = SOURCE_ROOT; };
 		1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextSelectorFieldView.swift; path = countit/View/Forms/Fields/TextSelectorFieldView.swift; sourceTree = SOURCE_ROOT; };
@@ -129,12 +138,23 @@
 		1DEB4B9E21D93921002F09CF /* TargetDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDirection.swift; sourceTree = "<group>"; };
 		1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePeriod.swift; sourceTree = "<group>"; };
 		1DEB4BA221D946DB002F09CF /* TargetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDto.swift; sourceTree = "<group>"; };
-		1DEB4BA521DBF2A3002F09CF /* ItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBuilder.swift; sourceTree = "<group>"; };
+		1DEB4BA521DBF2A3002F09CF /* ItemDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsBuilder.swift; sourceTree = "<group>"; };
 		1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetBuilder.swift; sourceTree = "<group>"; };
 		1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSteps.swift; sourceTree = "<group>"; };
 		1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceContractTestBase.swift; sourceTree = "<group>"; };
 		1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		1DEB4BB221E1152B002F09CF /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		1DEB4BB421E3892B002F09CF /* NewActivityDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityDto.swift; sourceTree = "<group>"; };
+		1DEB4BB621E38A45002F09CF /* ActivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityService.swift; sourceTree = "<group>"; };
+		1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityServiceImpl.swift; sourceTree = "<group>"; };
+		1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
+		1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryImpl.swift; sourceTree = "<group>"; };
+		1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSummaryDto.swift; sourceTree = "<group>"; };
+		1DEB4BC021E3E320002F09CF /* ItemSummaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSummaryBuilder.swift; sourceTree = "<group>"; };
+		1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
+		1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = countit/View/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4BC621E7926C002F09CF /* UITestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBase.swift; sourceTree = "<group>"; };
+		1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,8 +249,10 @@
 		1D7D37D721C05F01000E3621 /* dto */ = {
 			isa = PBXGroup;
 			children = (
-				1D7D37D521C05EE6000E3621 /* ItemDto.swift */,
+				1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */,
 				1DEB4BA221D946DB002F09CF /* TargetDto.swift */,
+				1DEB4BB421E3892B002F09CF /* NewActivityDto.swift */,
+				1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -239,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */,
+				1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */,
 			);
 			path = implementation;
 			sourceTree = "<group>";
@@ -247,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */,
+				1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */,
 			);
 			path = implementation;
 			sourceTree = "<group>";
@@ -326,7 +350,10 @@
 				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
 				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
+				1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */,
 				1DB3902921B5BFD200C11CD7 /* Info.plist */,
+				1DEB4BC621E7926C002F09CF /* UITestBase.swift */,
+				1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */,
 			);
 			path = countitUITests;
 			sourceTree = "<group>";
@@ -340,6 +367,7 @@
 				1D49B41D21B8003600920CF4 /* enums */,
 				1DB3904021B6AC2000C11CD7 /* extensions */,
 				1D9B8C4321C698AD009427FE /* ViewResolver.swift */,
+				1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -362,7 +390,7 @@
 				1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */,
 				1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */,
 				1D76F06821BC214600A53853 /* FormController.swift */,
-				1D76F06F21BC52C800A53853 /* TableController.swift */,
+				1D76F06F21BC52C800A53853 /* ProgressTableViewDelegate.swift */,
 				1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */,
 			);
 			path = controller;
@@ -372,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7D37D321C05E81000E3621 /* ItemService.swift */,
+				1DEB4BB621E38A45002F09CF /* ActivityService.swift */,
 				1D7D37DB21C06152000E3621 /* implementation */,
 			);
 			path = service;
@@ -381,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7D37DE21C061E3000E3621 /* ItemRepository.swift */,
+				1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */,
 				1D7D37E021C061EF000E3621 /* implementation */,
 			);
 			path = repository;
@@ -407,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */,
-				1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -459,8 +488,9 @@
 		1DEB4BA421DBF294002F09CF /* builders */ = {
 			isa = PBXGroup;
 			children = (
-				1DEB4BA521DBF2A3002F09CF /* ItemBuilder.swift */,
+				1DEB4BA521DBF2A3002F09CF /* ItemDetailsBuilder.swift */,
 				1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */,
+				1DEB4BC021E3E320002F09CF /* ItemSummaryBuilder.swift */,
 			);
 			path = builders;
 			sourceTree = "<group>";
@@ -618,35 +648,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEB4BB721E38A45002F09CF /* ActivityService.swift in Sources */,
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
-				1D76F07021BC52C800A53853 /* TableController.swift in Sources */,
+				1D76F07021BC52C800A53853 /* ProgressTableViewDelegate.swift in Sources */,
 				1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */,
 				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
+				1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */,
+				1DEB4BB921E38A99002F09CF /* ActivityServiceImpl.swift in Sources */,
 				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
 				1DEB4B9C21D93809002F09CF /* TargetForm.swift in Sources */,
 				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
+				1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */,
 				1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */,
+				1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
 				1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */,
 				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
 				1D49B42521B8510300920CF4 /* TextFieldView.swift in Sources */,
-				1D7D37D621C05EE6000E3621 /* ItemDto.swift in Sources */,
+				1D7D37D621C05EE6000E3621 /* ItemDetailsDto.swift in Sources */,
 				1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */,
 				1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */,
 				1D49B41721B7FD3100920CF4 /* NewItemFormView.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
 				1D76F06221BBF81800A53853 /* ItemForm.swift in Sources */,
+				1DEB4BB521E3892B002F09CF /* NewActivityDto.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
+				1DEB4BBB21E38B01002F09CF /* ActivityRepository.swift in Sources */,
 				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
 				1DEB4B9821D8C9C0002F09CF /* TargetFormView.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
@@ -661,10 +698,11 @@
 				1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */,
 				1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */,
 				1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */,
+				1DEB4BC121E3E320002F09CF /* ItemSummaryBuilder.swift in Sources */,
 				1DEB4B8121D00991002F09CF /* ReadItems.swift in Sources */,
 				1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */,
 				1DEB4B7C21CFFB07002F09CF /* TestCoreDataConfig.swift in Sources */,
-				1DEB4BA621DBF2A3002F09CF /* ItemBuilder.swift in Sources */,
+				1DEB4BA621DBF2A3002F09CF /* ItemDetailsBuilder.swift in Sources */,
 				1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */,
 				1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */,
 				1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */,
@@ -676,9 +714,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
-				1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */,
+				1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
+				1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */,
 				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
 				1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */,
 				1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */,

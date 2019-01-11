@@ -10,6 +10,8 @@ import UIKit
 
 class TextFieldView: UIStackView, UITextFieldDelegate {
     
+    typealias AI = AccessibilityIdentifiers
+    
     let fieldName = UILabel()
     let fieldText = UITextField()
     let fieldError = UILabel()
@@ -37,9 +39,9 @@ class TextFieldView: UIStackView, UITextFieldDelegate {
         fieldName.text = fieldNameString
         fieldText.text = fieldTextString
         
-        fieldName.accessibilityIdentifier = "fieldName"
-        fieldText.accessibilityIdentifier = "fieldText"
-        fieldError.accessibilityIdentifier = "fieldError"
+        fieldName.accessibilityIdentifier = AI.TEXT_FIELD_NAME
+        fieldText.accessibilityIdentifier = AI.TEXT_FIELD_TEXT
+        fieldError.accessibilityIdentifier = AI.TEXT_FIELD_ERROR
         
         fieldName.textAlignment = .left
         fieldName.adjustsFontSizeToFitWidth = true

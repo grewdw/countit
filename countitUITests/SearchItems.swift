@@ -8,76 +8,48 @@
 
 import XCTest
 
-class SearchItems: XCTestCase {
-    
-    let ITEM_NAME_A = "a"
-    let ITEM_NAME_AB = "ab"
-    let ITEM_NAME_ABC = "abc"
+class SearchItems: UITestBase {
     
     override func setUp() {
+        super.setUp()
         
-        continueAfterFailure = false
-        
-        let app = XCUIApplication()
-        app.launchArguments = ["test"]
-        app.launch()
-        
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        let nameField = app.otherElements["nameField"].textFields["fieldText"]
-        
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_A)
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_AB)
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_ABC)
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
+        createItemWithDetailsAndSave(name: ITEM_NAME_A, description: nil, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_AB, description: nil, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ABC, description: nil, target: nil)
     }
     
     override func tearDown() {
+        super.tearDown()
     }
 
     func testDynamicSearchForItems() {
+        searchItemTableFor(string: "a")
         
-        let app = XCUIApplication()
-        let itemTable = app.tables["ItemTable"]
-        let searchField = app.searchFields["Search items"]
-        
-        itemTable.swipeDown()
-        searchField.tap()
-        searchField.typeText("a")
-        
-        XCTAssertTrue(itemTable.cells.count == 3)
+        assertTableCountIs(3)
         assertTable(cell: 0, is: ITEM_NAME_A)
         assertTable(cell: 1, is: ITEM_NAME_AB)
         assertTable(cell: 2, is: ITEM_NAME_ABC)
         
-        searchField.typeText("b")
+        addToItemTableSearchWith(string: "b")
         
-        XCTAssertTrue(itemTable.cells.count == 2)
+        assertTableCountIs(2)
         assertTable(cell: 0, is: ITEM_NAME_AB)
         assertTable(cell: 1, is: ITEM_NAME_ABC)
         
-        searchField.typeText("c")
+        addToItemTableSearchWith(string: "c")
         
-        XCTAssertTrue(itemTable.cells.count == 1)
+        assertTableCountIs(1)
         assertTable(cell: 0, is: ITEM_NAME_ABC)
         
-        searchField.typeText(XCUIKeyboardKey.delete.rawValue)
+        addToItemTableSearchWith(string: DELETE_KEY)
         
-        XCTAssertTrue(itemTable.cells.count == 2)
+        assertTableCountIs(2)
         assertTable(cell: 0, is: ITEM_NAME_AB)
         assertTable(cell: 1, is: ITEM_NAME_ABC)
         
-        searchField.typeText(XCUIKeyboardKey.delete.rawValue)
+        addToItemTableSearchWith(string: DELETE_KEY)
         
-        XCTAssertTrue(itemTable.cells.count == 3)
+        assertTableCountIs(3)
         assertTable(cell: 0, is: ITEM_NAME_A)
         assertTable(cell: 1, is: ITEM_NAME_AB)
         assertTable(cell: 2, is: ITEM_NAME_ABC)

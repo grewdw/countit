@@ -14,8 +14,10 @@ class CommonSteps {
     
     static func getItemService() -> ItemService {
         let context = TestCoreDataConfig.getCoreDataContext()
-        let itemRepository = ItemRepositoryImpl(context: context)
         let clock = Clock()
-        return ItemServiceImpl(itemRepository: itemRepository, clock: clock)
+        let activityRepository = ActivityRepositoryImpl(context: context)
+        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock)
+        let itemRepository = ItemRepositoryImpl(context: context)
+        return ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
     }
 }

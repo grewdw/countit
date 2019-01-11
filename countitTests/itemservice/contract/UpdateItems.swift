@@ -12,20 +12,29 @@ import CoreData
 
 class UpdateItems: ItemServiceContractTestBase {
     
-    var ITEM_ONE: ItemDto?
+    var ITEM_ONE_SUMMARY: ItemSummaryDto?
+    var ITEM_ONE_DETAILS: ItemDetailsDto?
     
     override func setUp() {
         target = CommonSteps.getItemService()
         
         createThreeItems(withService: target!)
         
-        ITEM_ONE = target!.getItems()[0]
+        ITEM_ONE_SUMMARY = target!.getItems()[0]
+        ITEM_ONE_DETAILS = target!.getItems()[0].getItemDetailsDto()
     }
     
     func testChangeName() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getCurrentTargetDto())!).build()
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: ITEM_NAME_ONE_NEW)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: (ITEM_ONE_DETAILS?.getValue())!)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
+            .build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -40,7 +49,13 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeNameNoDescription() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: ITEM_NAME_ONE_NEW).with(target: (ITEM_ONE?.getCurrentTargetDto())!).build()
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: ITEM_NAME_ONE_NEW)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: (ITEM_ONE_DETAILS?.getValue())!)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
+            .build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -55,7 +70,14 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeDescription() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: ITEM_DESCRIPTION_ONE_NEW).with(target: (ITEM_ONE?.getCurrentTargetDto())!).build()
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: ITEM_DESCRIPTION_ONE_NEW)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: (ITEM_ONE_DETAILS?.getValue())!)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
+            .build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -70,12 +92,13 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetValueUpdates() {
         
         //        Given
-        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
-        let updatedItem = ItemBuilder()
-            .with(id: (ITEM_ONE?.getId())!)
-            .with(name: (ITEM_ONE?.getName())!)
-            .with(description: (ITEM_ONE?.getDescription())!)
-            .with(target: newTarget)
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: ITEM_TARGET_VALUE_ONE_NEW)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
             .build()
         
         //        When
@@ -91,12 +114,13 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetTimePeriodDoesNotUpdateWithValueChange() {
         
         //        Given
-        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE_NEW)
-        let updatedItem = ItemBuilder()
-            .with(id: (ITEM_ONE?.getId())!)
-            .with(name: (ITEM_ONE?.getName())!)
-            .with(description: (ITEM_ONE?.getDescription())!)
-            .with(target: newTarget)
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: ITEM_TARGET_VALUE_ONE_NEW)
+            .with(timePeriod: ITEM_TARGET_TIMEPERIOD_ONE_NEW)
             .build()
         
         //        When
@@ -112,12 +136,13 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetTimePeriodDoesNotUpdateWithoutValueChange() {
         
         //        Given
-        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE_NEW)
-        let updatedItem = ItemBuilder()
-            .with(id: (ITEM_ONE?.getId())!)
-            .with(name: (ITEM_ONE?.getName())!)
-            .with(description: (ITEM_ONE?.getDescription())!)
-            .with(target: newTarget)
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: (ITEM_ONE_DETAILS?.getValue())!)
+            .with(timePeriod: ITEM_TARGET_TIMEPERIOD_ONE_NEW)
             .build()
         
         //        When
@@ -133,12 +158,13 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetDirectionDoesNotUpdateWithValueChange() {
         
         //        Given
-        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE_NEW, value: ITEM_TARGET_VALUE_ONE_NEW, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
-        let updatedItem = ItemBuilder()
-            .with(id: (ITEM_ONE?.getId())!)
-            .with(name: (ITEM_ONE?.getName())!)
-            .with(description: (ITEM_ONE?.getDescription())!)
-            .with(target: newTarget)
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: ITEM_TARGET_DIRECTION_ONE_NEW)
+            .with(value: ITEM_TARGET_VALUE_ONE_NEW)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
             .build()
         
         //        When
@@ -154,12 +180,13 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetDirectionDoesNotUpdateWithoutValueChange() {
         
         //        Given
-        let newTarget = TargetDto(direction: ITEM_TARGET_DIRECTION_ONE_NEW, value: ITEM_TARGET_VALUE_ONE, timePeriod: ITEM_TARGET_TIMEPERIOD_ONE)
-        let updatedItem = ItemBuilder()
-            .with(id: (ITEM_ONE?.getId())!)
-            .with(name: (ITEM_ONE?.getName())!)
-            .with(description: (ITEM_ONE?.getDescription())!)
-            .with(target: newTarget)
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: ITEM_TARGET_DIRECTION_ONE_NEW)
+            .with(value: (ITEM_ONE_DETAILS?.getValue())!)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
             .build()
         
         //        When
@@ -175,7 +202,15 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeListPositionDoesNotUpdate() {
         
         //        Given
-        let updatedItem = ItemBuilder().with(id: (ITEM_ONE?.getId())!).with(name: (ITEM_ONE?.getName())!).with(description: (ITEM_ONE?.getDescription())!).with(target: (ITEM_ONE?.getCurrentTargetDto())!).with(listPosition: LIST_POSITION_NEW).build()
+        let updatedItem = ItemDetailsBuilder()
+            .with(id: (ITEM_ONE_DETAILS?.getId())!)
+            .with(name: (ITEM_ONE_DETAILS?.getName())!)
+            .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
+            .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
+            .with(value: (ITEM_ONE_DETAILS?.getValue())!)
+            .with(timePeriod: (ITEM_ONE_DETAILS?.getTimePeriod())!)
+            .with(listPosition: LIST_POSITION_NEW)
+            .build()
         
         //        When
         let _ = target!.saveItem(updatedItem)
@@ -207,7 +242,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testPersistOrderChange_includesNewItem() {
         //        Given
         var initialOrderItems = target!.getItems()
-        let itemFour = ItemBuilder().with(name: ITEM_NAME_FOUR).with(description: ITEM_DESCRIPTION_FOUR).build()
+        let itemFour = ItemSummaryBuilder().with(name: ITEM_NAME_FOUR).with(description: ITEM_DESCRIPTION_FOUR).build()
         initialOrderItems.append(itemFour)
         initialOrderItems.swapAt(0, 2)
         initialOrderItems.swapAt(1, 2)
@@ -226,7 +261,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testPersistOrderChangeWithEmptyArray() {
         
         //        Given
-        let emptyItemArray: [ItemDto] = []
+        let emptyItemArray: [ItemSummaryDto] = []
         
         //        When
         target!.persistTableOrder(for: emptyItemArray)
@@ -242,7 +277,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testPersistOrderChangeSingleItemArray() {
         
         //        Given
-        let singleItemArray: [ItemDto] = [ITEM_ONE!]
+        let singleItemArray: [ItemSummaryDto] = [ITEM_ONE_SUMMARY!]
         
         //        When
         target!.persistTableOrder(for: singleItemArray)

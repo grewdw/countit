@@ -10,6 +10,8 @@ import UIKit
 
 class TargetFormView: UIStackView {
     
+    typealias AI = AccessibilityIdentifiers
+    
     let title = UILabel()
     let direction = TextSelectorFieldView(frame: .zero, textOptions: ["At least", "At most"])
     var value = UITextField()
@@ -33,9 +35,9 @@ class TargetFormView: UIStackView {
         value.keyboardType = .numberPad
         value.placeholder = "0"
         
-        direction.accessibilityIdentifier = "targetDirection"
-        value.accessibilityIdentifier = "targetValue"
-        timePeriod.accessibilityIdentifier = "targetTimePeriod"
+        direction.accessibilityIdentifier = AI.TARGET_FORM_DIRECTION_FIELD
+        value.accessibilityIdentifier = AI.TARGET_FORM_VALUE_FIELD
+        timePeriod.accessibilityIdentifier = AI.TARGET_FORM_TIMEPERIOD_FIELD
         
         title.translatesAutoresizingMaskIntoConstraints = false
         direction.translatesAutoresizingMaskIntoConstraints = false

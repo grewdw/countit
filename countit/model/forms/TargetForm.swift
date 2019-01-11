@@ -20,12 +20,6 @@ class TargetForm: Form {
         self.timePeriod = timePeriod
     }
     
-    init(targetDto: TargetDto) {
-        self.direction = targetDto.getDirection()
-        self.value = targetDto.getValue()
-        self.timePeriod = targetDto.getTimePeriod()
-    }
-    
     func getDirection() -> TargetDirection {
         return direction
     }

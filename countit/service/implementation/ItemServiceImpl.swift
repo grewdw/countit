@@ -12,15 +12,17 @@ import UIKit
 
 class ItemServiceImpl: ItemService {
     
+    private let activityService: ActivityService
     private let itemRepository: ItemRepository
     private let clock: Clock
     
-    init (itemRepository: ItemRepository, clock: Clock) {
+    init (activityService: ActivityService, itemRepository: ItemRepository, clock: Clock) {
+        self.activityService = activityService
         self.itemRepository = itemRepository
         self.clock = clock
     }
     
-    func saveItem(_ item: ItemDto) -> Bool {
+    func saveItem(_ item: ItemDetailsDto) -> Bool {
         if let id = item.getId() {
             return updateItem(id: id, toItem: item)
         }
@@ -29,19 +31,21 @@ class ItemServiceImpl: ItemService {
         }
     }
     
-    private func create(item: ItemDto) -> Bool {
+    private func create(item: ItemDetailsDto) -> Bool {
         let previousLowestPosition = itemRepository.getLowestListPosition()
         let newLowestPosition = previousLowestPosition != nil ? previousLowestPosition!+1 : 0
         return itemRepository.createWithTarget(item: item, atPosition: newLowestPosition, withTimestamp: clock.now())
     }
     
-    private func updateItem(id: NSManagedObjectID, toItem item: ItemDto) -> Bool {
+    private func updateItem(id: NSManagedObjectID, toItem item: ItemDetailsDto) -> Bool {
         if let currentItem = itemRepository.getItemWithCurrentTarget(with: id) {
-            if currentItem.getCurrentTargetDto().getValue() == item.getCurrentTargetDto().getValue() {
+            if currentItem.getValue() == item.getValue() {
                 return itemRepository.update(item: item, with: id)
             }
             else {
-                let newTarget = create(newTarget: item.getCurrentTargetDto(), fromOldTarget: currentItem.getCurrentTargetDto())
+                let updatedTarget = TargetDto(direction: item.getDirection(), value: item.getValue(), timePeriod: item.getTimePeriod())
+                let oldTarget = TargetDto(direction: currentItem.getDirection(), value: currentItem.getValue(), timePeriod: currentItem.getTimePeriod())
+                let newTarget = create(newTarget: updatedTarget, fromOldTarget: oldTarget)
                 return itemRepository.update(item: item, with: id) && itemRepository.create(target: newTarget, forItem: id, withTimestamp: clock.now())
             }
         }
@@ -55,20 +59,29 @@ class ItemServiceImpl: ItemService {
             timePeriod: oldTarget.getTimePeriod())
     }
     
-    func getItem(id: NSManagedObjectID) -> ItemDto? {
-        return itemRepository.getItemWithCurrentTarget(with: id)
+    func getItem(id: NSManagedObjectID) -> ItemSummaryDto? {
+        if let item = itemRepository.getItemWithCurrentTarget(with: id) {
+            return ItemSummaryDto(itemDetailsDto: item, activityCount: activityService.getActivityCountForItem(id: item.getId()!))
+        }
+        return nil
+
     }
     
-    func getItems() -> [ItemDto] {
-        return itemRepository.getItemsWithCurrentTargets()
+    func getItems() -> [ItemSummaryDto] {
+        let itemDetailDtos = itemRepository.getItemsWithCurrentTargets()
+        var itemSummaryDtos = [ItemSummaryDto]()
+        for item in itemDetailDtos {
+            itemSummaryDtos.append(ItemSummaryDto(itemDetailsDto: item, activityCount: activityService.getActivityCountForItem(id: item.getId()!)))
+        }
+        return itemSummaryDtos
     }
     
-    func persistTableOrder(for items: [ItemDto]) {
+    func persistTableOrder(for items: [ItemSummaryDto]) {
         if items.count > 0 {
             var listPosition = 0
             for position in 0...items.count-1 {
-                if let itemId = items[position].getId() {
-                    items[position].setListPosition(newPosition: listPosition)
+                if let itemId = items[position].getItemDetailsDto().getId() {
+                    items[position].getItemDetailsDto().setListPosition(newPosition: listPosition)
                     let _ = itemRepository.updateItemWith(id: itemId, toListPosition: listPosition)
                     listPosition += 1
                 }

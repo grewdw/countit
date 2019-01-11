@@ -58,7 +58,7 @@ class CreateItems: ItemServiceContractTestBase {
     func testCreateItems_ListPositionGivenAndOverwritten() {
         //        Given
         createTwoItems(withService: target!)
-        let incorrectListPositionItem = ItemBuilder().with(name: ITEM_NAME_THREE).with(description: ITEM_DESCRIPTION_THREE).with(listPosition: 20).build()
+        let incorrectListPositionItem = ItemDetailsBuilder().with(name: ITEM_NAME_THREE).with(description: ITEM_DESCRIPTION_THREE).with(listPosition: 20).build()
         let _ = target!.saveItem(incorrectListPositionItem)
         
         //        When
