@@ -24,6 +24,11 @@ class ActivityServiceImpl: ActivityService {
     }
     
     func getActivityCountForItem(id: NSManagedObjectID) -> Int {
-        return activityRepository.getActivityCountFor(item: id)
+        let activities = activityRepository.getActivitiesFor(item: id)
+        var activityCount = 0
+        for activity in activities {
+            activityCount += Int(activity.value)
+        }
+        return activityCount
     }
 }

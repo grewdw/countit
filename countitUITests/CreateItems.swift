@@ -8,144 +8,56 @@
 
 import XCTest
 
-class CreateItems: XCTestCase {
-
-    let ITEM_NAME_ONE = "TestItemNameOne"
-    let ITEM_NAME_TWO = "TestItemNameTwo"
-    
-    let ITEM_DESCRIPTION_ONE = "TestItemDescriptionOne"
-    let ITEM_DESCRIPTION_TWO = "TestItemDescriptionTwo"
-    
-    let ITEM_TARGET_VALUE_ONE = "10"
-    let ITEM_TARGET_VALUE_ZERO = "0"
-    
-    let ERROR_MESSAGE = "* Must provide a name"
+class CreateItems: UITestBase {
     
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        let app = XCUIApplication()
-        app.launchArguments = ["test"]
-        app.launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        super.setUp()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
 
     func testCreateSingleItem() {
-        let app = XCUIApplication()
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        let nameField = app.otherElements["nameField"].textFields["fieldText"]
-        let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
-        let targetValue = app.textFields["targetValue"]
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: ITEM_TARGET_VALUE_TEN)
         
+        assertTableCountIs(1)
+        assertTable(cell: 0, is: ITEM_NAME_ONE)
         
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_ONE)
-        descriptionField.tap()
-        descriptionField.typeText(ITEM_DESCRIPTION_ONE)
-        descriptionField.typeText(String(XCUIKeyboardKey.return.rawValue))
-        targetValue.tap()
-        targetValue.typeText(ITEM_TARGET_VALUE_ONE)
+        select(FIRST_CELL)
         
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        let itemTable = app.tables["ItemTable"]
-        
-        XCTAssertTrue(itemTable.cells["Cell0"].exists, "item not found in item table")
-        
-        itemTable.cells["Cell0"].buttons["More Info"].tap()
-        
-        XCTAssertTrue(itemTable.cells.count == 1)
-        XCTAssertEqual(nameField.value as? String, ITEM_NAME_ONE, "item name not correct in cell")
-        XCTAssertEqual(descriptionField.value as? String, ITEM_DESCRIPTION_ONE, "item description not correct in cell")
-        XCTAssertEqual(targetValue.value as? String, ITEM_TARGET_VALUE_ONE, "target value not correct in cell")
+        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: ITEM_TARGET_VALUE_TEN)
     }
     
     func testCreateSingleItemTargetValueDefaultsToZero() {
-        let app = XCUIApplication()
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        let nameField = app.otherElements["nameField"].textFields["fieldText"]
-        let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
-        let targetValue = app.textFields["targetValue"]
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
         
+        assertTableCountIs(1)
         
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_ONE)
-        descriptionField.tap()
-        descriptionField.typeText(ITEM_DESCRIPTION_ONE)
+        select(FIRST_CELL)
         
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        let itemTable = app.tables["ItemTable"]
-        
-        XCTAssertTrue(itemTable.cells["Cell0"].exists, "item not found in item table")
-        
-        itemTable.cells["Cell0"].buttons["More Info"].tap()
-        
-        XCTAssertTrue(itemTable.cells.count == 1)
-        XCTAssertEqual(nameField.value as? String, ITEM_NAME_ONE, "item name not correct in cell")
-        XCTAssertEqual(descriptionField.value as? String, ITEM_DESCRIPTION_ONE, "item description not correct in cell")
-        XCTAssertEqual(targetValue.value as? String, ITEM_TARGET_VALUE_ZERO, "target value not correct in cell")
+        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: ITEM_TARGET_VALUE_ZERO)
     }
     
     func testCreateMultipleItems() {
-        let app = XCUIApplication()
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        let nameField = app.otherElements["nameField"].textFields["fieldText"]
-        let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
         
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_ONE)
-        descriptionField.tap()
-        descriptionField.typeText(ITEM_DESCRIPTION_ONE)
+        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, target: nil)
         
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_TWO)
-        descriptionField.tap()
-        descriptionField.typeText(ITEM_DESCRIPTION_TWO)
-        
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        let itemTable = app.tables["ItemTable"]
-        
-        XCTAssertTrue(itemTable.cells.count == 2)
-        XCTAssertEqual(itemTable.cells["Cell0"].staticTexts["itemName"].label, ITEM_NAME_ONE)
-        XCTAssertEqual(itemTable.cells["Cell1"].staticTexts["itemName"].label, ITEM_NAME_TWO)
+        assertTableCountIs(2)
+        assertTable(cell: 0, is: ITEM_NAME_ONE)
+        assertTable(cell: 1, is: ITEM_NAME_TWO)
     }
     
     func testCreateItemWithoutNameFails() {
-        let app = XCUIApplication()
-        app.navigationBars["COUNT IT"].buttons["Add"].tap()
-        let nameField = app.otherElements["nameField"].textFields["fieldText"]
-        let descriptionField = app.otherElements["descriptionField"].textFields["fieldText"]
+        openItemForm()
+        saveNewItemForm()
         
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
+        assertItemFormErrorIs(ERROR_MESSAGE)
         
-        let nameFieldError = app.otherElements["nameField"].staticTexts["fieldError"]
-        XCTAssertEqual(nameFieldError.label, ERROR_MESSAGE)
+        enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
         
-        nameField.tap()
-        nameField.typeText(ITEM_NAME_ONE)
-        descriptionField.tap()
-        descriptionField.typeText(ITEM_DESCRIPTION_ONE)
-        
-        app.navigationBars["ADD ITEM"].buttons["Save"].tap()
-        
-        let itemTable = app.tables["ItemTable"]
-        
-        XCTAssertTrue(itemTable.cells.count == 1)
+        assertTableCountIs(1)
     }
 
 }

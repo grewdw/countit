@@ -10,6 +10,8 @@ import UIKit
 
 class CurrentProgressTableCellView: UITableViewCell {
     
+    typealias AI = AccessibilityIdentifiers
+    
     var name = UILabel()
     var recordActivity = UIButton()
     var subtractActivity = UIButton()
@@ -38,19 +40,21 @@ class CurrentProgressTableCellView: UITableViewCell {
         self.addSubview(subtractActivity)
         self.addSubview(activityCount)
         name.text = item.getItemDetailsDto().getName()
-        name.accessibilityIdentifier = "itemName"
+        name.accessibilityIdentifier = AI.PROGRESS_CELL_NAME
         name.numberOfLines = 0
         name.textAlignment = .center
         
         activityCount.text = String(item.getActivityCount())
-        activityCount.accessibilityIdentifier = "activityCount"
+        activityCount.accessibilityIdentifier = AI.PROGRESS_CELL_ACTIVITY_COUNT
         activityCount.font = UIFont.boldSystemFont(ofSize: 20)
         activityCount.numberOfLines = 0
         activityCount.textAlignment = .center
         
+        recordActivity.accessibilityIdentifier = AI.PROGRESS_CELL_RECORD_ACTIVITY
         format(button: recordActivity, text: "Add")
         recordActivity.addTarget(self, action: #selector(recordActivityButtonPressed), for: .touchUpInside)
         
+        subtractActivity.accessibilityIdentifier = AI.PROGRESS_CELL_SUBTRACT_ACTIVITY
         format(button: subtractActivity, text: "Subtract")
         subtractActivity.addTarget(self, action: #selector(subtractActivityButtonPressed), for: .touchUpInside)
         
@@ -69,20 +73,10 @@ class CurrentProgressTableCellView: UITableViewCell {
             recordActivity.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
             recordActivity.topAnchor.constraint(equalTo: self.topAnchor, constant: CELL_SPACING_TOP),
             recordActivity.bottomAnchor.constraint(equalTo: activityCount.topAnchor, constant: CELL_SPACING_BOTTOM),
-////            recordActivity.leftAnchor.constraint(equalTo: name.rightAnchor),
-//            recordActivity.rightAnchor.constraint(equalTo: self.rightAnchor),
             subtractActivity.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
             subtractActivity.topAnchor.constraint(equalTo: self.topAnchor, constant: CELL_SPACING_TOP),
             subtractActivity.bottomAnchor.constraint(equalTo: activityCount.topAnchor, constant: CELL_SPACING_BOTTOM),
-////            subtractActivity.rightAnchor.constraint(equalTo: name.leftAnchor),
-//            subtractActivity.leftAnchor.constraint(equalTo: self.leftAnchor),
-////            activityCount.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
-////            activityCount.topAnchor.constraint(equalTo: name.bottomAnchor),
-////            activityCount.topAnchor.constraint(equalTo: recordActivity.bottomAnchor),
-////            activityCount.topAnchor.constraint(equalTo: subtractActivity.bottomAnchor),
             activityCount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: CELL_SPACING_BOTTOM),
-//            activityCount.rightAnchor.constraint(equalTo: self.rightAnchor),
-//            activityCount.leftAnchor.constraint(equalTo: self.leftAnchor),
             activityCount.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }

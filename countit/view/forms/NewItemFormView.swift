@@ -10,6 +10,8 @@ import UIKit
 
 class NewItemFormView: UIScrollView {
     
+    typealias AI = AccessibilityIdentifiers
+    
     private let DEFAULT_FORM_TITLE = "ADD ITEM"
     
     var form: ItemForm?
@@ -32,7 +34,7 @@ class NewItemFormView: UIScrollView {
             .with(fieldTextPlaceholder: "Enter item name")
             .with(fieldErrorText: "* Must provide a name")
             .build()
-        nameField.accessibilityIdentifier = "nameField"
+        nameField.accessibilityIdentifier = AI.ITEM_FORM_NAME_FIELD
         nameField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(nameField, forKey: ItemFormFields.NAME)
         
@@ -42,12 +44,12 @@ class NewItemFormView: UIScrollView {
             .with(fieldText: "")
             .with(fieldTextPlaceholder: "Enter item description")
             .build()
-        descriptionField.accessibilityIdentifier = "descriptionField"
+        descriptionField.accessibilityIdentifier = AI.ITEM_FORM_DESCRIPTION_FIELD
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
         fields.updateValue(descriptionField, forKey: ItemFormFields.DESCRIPTION)
         
         targetFields = TargetFormView(frame: .zero)
-        targetFields.accessibilityIdentifier = "targetFields"
+        targetFields.accessibilityIdentifier = AI.ITEM_FORM_TARGET_FIELDS
         targetFields.translatesAutoresizingMaskIntoConstraints = false
         
         super.init(frame: frame)

@@ -44,7 +44,6 @@
 		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
 		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
-		1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */; };
 		1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */; };
 		1DEB4B9821D8C9C0002F09CF /* TargetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */; };
 		1DEB4B9A21D8DF09002F09CF /* TextSelectorFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */; };
@@ -65,6 +64,10 @@
 		1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */; };
 		1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */; };
 		1DEB4BC121E3E320002F09CF /* ItemSummaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC021E3E320002F09CF /* ItemSummaryBuilder.swift */; };
+		1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */; };
+		1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */; };
+		1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC621E7926C002F09CF /* UITestBase.swift */; };
+		1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,7 +131,6 @@
 		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
 		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
-		1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServicePerformanceTests.swift; sourceTree = "<group>"; };
 		1DEB4B9721D8C9C0002F09CF /* TargetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TargetFormView.swift; path = countit/View/Forms/TargetFormView.swift; sourceTree = SOURCE_ROOT; };
 		1DEB4B9921D8DF09002F09CF /* TextSelectorFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextSelectorFieldView.swift; path = countit/View/Forms/Fields/TextSelectorFieldView.swift; sourceTree = SOURCE_ROOT; };
@@ -149,6 +151,10 @@
 		1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryImpl.swift; sourceTree = "<group>"; };
 		1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSummaryDto.swift; sourceTree = "<group>"; };
 		1DEB4BC021E3E320002F09CF /* ItemSummaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSummaryBuilder.swift; sourceTree = "<group>"; };
+		1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
+		1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = countit/View/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
+		1DEB4BC621E7926C002F09CF /* UITestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBase.swift; sourceTree = "<group>"; };
+		1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,7 +350,10 @@
 				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
 				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
+				1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */,
 				1DB3902921B5BFD200C11CD7 /* Info.plist */,
+				1DEB4BC621E7926C002F09CF /* UITestBase.swift */,
+				1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */,
 			);
 			path = countitUITests;
 			sourceTree = "<group>";
@@ -358,6 +367,7 @@
 				1D49B41D21B8003600920CF4 /* enums */,
 				1DB3904021B6AC2000C11CD7 /* extensions */,
 				1D9B8C4321C698AD009427FE /* ViewResolver.swift */,
+				1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -427,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */,
-				1DEB4B8C21D54EAD002F09CF /* XCTestExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -646,6 +655,7 @@
 				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
+				1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */,
 				1DEB4BB921E38A99002F09CF /* ActivityServiceImpl.swift in Sources */,
 				1D49B42821B853F800920CF4 /* TextFieldViewBuilder.swift in Sources */,
@@ -704,9 +714,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
-				1DEB4B8D21D54EAD002F09CF /* XCTestExtension.swift in Sources */,
+				1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
+				1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */,
 				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
 				1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */,
 				1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */,

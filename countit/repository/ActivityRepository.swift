@@ -13,5 +13,5 @@ protocol ActivityRepository {
     
     func save(activity: NewActivityDto, withTimestamp timestamp: NSDate) -> Bool
     
-    func getActivityCountFor(item: NSManagedObjectID) -> Int
+    func getActivitiesFor(item: NSManagedObjectID) -> [ActivityEntity]
 }

@@ -49,7 +49,7 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized(gestureRecognizer:)))
-        tableView.accessibilityIdentifier = "ItemTable"
+        tableView.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_TABLE
         tableView.addGestureRecognizer(longpress)
         tableView.dataSource = self
         tableView.delegate = self

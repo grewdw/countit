@@ -28,8 +28,19 @@ class ActivityRepositoryImpl: ActivityRepository {
         return false
     }
     
-    func getActivityCountFor(item: NSManagedObjectID) -> Int {
-        return getItemWith(id: item)?.activity?.count ?? 0
+    func getActivitiesFor(item: NSManagedObjectID) -> [ActivityEntity] {
+        let request: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "item == %@", item)
+        return getActivities(with: request)
+    }
+    
+    private func getActivities(with request: NSFetchRequest<ActivityEntity>) -> [ActivityEntity] {
+        do {
+            let items: [ActivityEntity] = try context.fetch(request)
+            return items
+        } catch {
+            return [ActivityEntity]()
+        }
     }
     
     private func getItemWith(id: NSManagedObjectID) -> ItemEntity? {
