@@ -68,6 +68,9 @@
 		1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */; };
 		1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC621E7926C002F09CF /* UITestBase.swift */; };
 		1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */; };
+		1DF653DA21ECBAD700AA65C3 /* UITestBaseAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653D921ECBAD700AA65C3 /* UITestBaseAssertions.swift */; };
+		1DF653DC21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653DB21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift */; };
+		1DF653DE21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +158,9 @@
 		1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = countit/View/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
 		1DEB4BC621E7926C002F09CF /* UITestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBase.swift; sourceTree = "<group>"; };
 		1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
+		1DF653D921ECBAD700AA65C3 /* UITestBaseAssertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseAssertions.swift; sourceTree = "<group>"; };
+		1DF653DB21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseItemTableSteps.swift; sourceTree = "<group>"; };
+		1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseItemFormSteps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +319,7 @@
 		1DB3900321B5BFD000C11CD7 /* countit */ = {
 			isa = PBXGroup;
 			children = (
+				1DF653E021ED2BC200AA65C3 /* config */,
 				1DB3903521B5C05B00C11CD7 /* view */,
 				1DB3903721B5C07300C11CD7 /* controller */,
 				1DB3903621B5C06A00C11CD7 /* model */,
@@ -321,9 +328,6 @@
 				1DEB4BB121E114FF002F09CF /* utils */,
 				1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */,
 				1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */,
-				1DB3901321B5BFD200C11CD7 /* Info.plist */,
-				1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */,
-				1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */,
 			);
 			path = countit;
 			sourceTree = "<group>";
@@ -336,7 +340,6 @@
 				1DEB4BA421DBF294002F09CF /* builders */,
 				1DEB4B8F21D54F1C002F09CF /* config */,
 				1DEB4B7D21D0094E002F09CF /* itemservice */,
-				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
 			);
 			path = countitTests;
 			sourceTree = "<group>";
@@ -344,16 +347,11 @@
 		1DB3902621B5BFD200C11CD7 /* countitUITests */ = {
 			isa = PBXGroup;
 			children = (
+				1DF653DF21ECBF8900AA65C3 /* tests */,
+				1DF653D821ECBAA600AA65C3 /* assertions */,
+				1DF653D721ECBA9800AA65C3 /* steps */,
 				1DEB4B9021D54F2D002F09CF /* config */,
 				1DEB4B8E21D54EF0002F09CF /* extensions */,
-				1DB3902721B5BFD200C11CD7 /* CreateItems.swift */,
-				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
-				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
-				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
-				1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */,
-				1DB3902921B5BFD200C11CD7 /* Info.plist */,
-				1DEB4BC621E7926C002F09CF /* UITestBase.swift */,
-				1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */,
 			);
 			path = countitUITests;
 			sourceTree = "<group>";
@@ -409,6 +407,7 @@
 		1DB3903921B5C08800C11CD7 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */,
 				1D7D37DE21C061E3000E3621 /* ItemRepository.swift */,
 				1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */,
 				1D7D37E021C061EF000E3621 /* implementation */,
@@ -444,6 +443,7 @@
 		1DEB4B8F21D54F1C002F09CF /* config */ = {
 			isa = PBXGroup;
 			children = (
+				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
 				1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */,
 			);
 			path = config;
@@ -452,6 +452,8 @@
 		1DEB4B9021D54F2D002F09CF /* config */ = {
 			isa = PBXGroup;
 			children = (
+				1DB3902921B5BFD200C11CD7 /* Info.plist */,
+				1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -517,6 +519,45 @@
 				1DEB4BB221E1152B002F09CF /* Clock.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		1DF653D721ECBA9800AA65C3 /* steps */ = {
+			isa = PBXGroup;
+			children = (
+				1DF653DB21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift */,
+				1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */,
+			);
+			path = steps;
+			sourceTree = "<group>";
+		};
+		1DF653D821ECBAA600AA65C3 /* assertions */ = {
+			isa = PBXGroup;
+			children = (
+				1DF653D921ECBAD700AA65C3 /* UITestBaseAssertions.swift */,
+			);
+			path = assertions;
+			sourceTree = "<group>";
+		};
+		1DF653DF21ECBF8900AA65C3 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				1DB3902721B5BFD200C11CD7 /* CreateItems.swift */,
+				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
+				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
+				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
+				1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */,
+				1DEB4BC621E7926C002F09CF /* UITestBase.swift */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		1DF653E021ED2BC200AA65C3 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				1DB3901321B5BFD200C11CD7 /* Info.plist */,
+				1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */,
+			);
+			path = config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -714,10 +755,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF653DE21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift in Sources */,
 				1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
 				1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
+				1DF653DC21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift in Sources */,
+				1DF653DA21ECBAD700AA65C3 /* UITestBaseAssertions.swift in Sources */,
 				1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */,
 				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
 				1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */,
@@ -863,7 +907,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3XM73DHEY;
-				INFOPLIST_FILE = countit/Info.plist;
+				INFOPLIST_FILE = countit/config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -881,7 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3XM73DHEY;
-				INFOPLIST_FILE = countit/Info.plist;
+				INFOPLIST_FILE = countit/config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -900,7 +944,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3XM73DHEY;
-				INFOPLIST_FILE = countitTests/Info.plist;
+				INFOPLIST_FILE = countitTests/config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -921,7 +965,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3XM73DHEY;
-				INFOPLIST_FILE = countitTests/Info.plist;
+				INFOPLIST_FILE = countitTests/config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -941,7 +985,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3XM73DHEY;
-				INFOPLIST_FILE = countitUITests/Info.plist;
+				INFOPLIST_FILE = countitUITests/config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -961,7 +1005,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3XM73DHEY;
-				INFOPLIST_FILE = countitUITests/Info.plist;
+				INFOPLIST_FILE = countitUITests/config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
