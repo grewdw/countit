@@ -32,8 +32,9 @@ class ItemServicePerformanceTests: XCTestCase {
     override func setUp() {
         let context = TestCoreDataConfig.getCoreDataContext()
         clock = Clock()
+        let calendar = Calendar.current
         let activityRepository = ActivityRepositoryImpl(context: context)
-        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock!)
+        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock!, calendar: calendar)
         itemRepository = ItemRepositoryImpl(context: context)
         target = ItemServiceImpl(activityService: activityService, itemRepository: itemRepository!, clock: clock!)
         

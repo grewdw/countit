@@ -53,7 +53,8 @@ extension UITestBase {
                       file: file, line: line)
     }
     
-    func assertActivityCountFor(cell: Int, is expectedActivityCount: String, file: StaticString = #file, line: UInt = #line) {
+    func assertActivityCountFor(cell: Int, is activityCount: Int, file: StaticString = #file, line: UInt = #line) {
+        let expectedActivityCount  = String(activityCount) + " / " + "0"
         let actualActivityCount = itemTable!.cells.element(boundBy: cell).staticTexts[AI.PROGRESS_CELL_ACTIVITY_COUNT].label
         XCTAssertEqual(actualActivityCount, expectedActivityCount,
                        "activityCount incorrect. Expected \(expectedActivityCount) but was \(actualActivityCount)",

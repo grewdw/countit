@@ -23,7 +23,7 @@ class ItemRepositoryImpl: ItemRepository {
 // create functions
 extension ItemRepositoryImpl {
     
-    func createWithTarget(item: ItemDetailsDto, atPosition position: Int, withTimestamp timestamp: NSDate) -> Bool {
+    func createWithTarget(item: ItemDetailsDto, atPosition position: Int, withTimestamp timestamp: Date) -> Bool {
         let itemEntity = itemEntityFrom(itemDto: item)
         itemEntity.listPosition = Int16(position)
         let target = TargetDto(direction: item.getDirection(), value: item.getValue(), timePeriod: item.getTimePeriod())
@@ -31,7 +31,7 @@ extension ItemRepositoryImpl {
         return saveContext()
     }
     
-    func create(target: TargetDto, forItem itemId: NSManagedObjectID, withTimestamp timestamp: NSDate) -> Bool {
+    func create(target: TargetDto, forItem itemId: NSManagedObjectID, withTimestamp timestamp: Date) -> Bool {
         if let item: ItemEntity = getItem(with: itemId) {
             setPastTargetToNotCurrent(item: item)
             createNewTarget(item: item, target: target, timestamp: timestamp)
@@ -48,10 +48,10 @@ extension ItemRepositoryImpl {
         }
     }
     
-    private func createNewTarget(item: ItemEntity, target: TargetDto, timestamp: NSDate) {
+    private func createNewTarget(item: ItemEntity, target: TargetDto, timestamp: Date) {
         let newTarget = targetEntityFrom(targetDto: target)
         newTarget.current = true
-        newTarget.createdTimestamp = timestamp as Date
+        newTarget.createdTimestamp = timestamp
         item.addToTarget(newTarget)
     }
 }

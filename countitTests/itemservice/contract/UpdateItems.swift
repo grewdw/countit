@@ -16,7 +16,7 @@ class UpdateItems: ItemServiceContractTestBase {
     var ITEM_ONE_DETAILS: ItemDetailsDto?
     
     override func setUp() {
-        target = CommonSteps.getItemService()
+        target = CommonSteps.getItemService(clock: clock)
         
         createThreeItems(withService: target!)
         

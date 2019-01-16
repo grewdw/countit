@@ -12,11 +12,11 @@ import CoreData
 
 class CommonSteps {
     
-    static func getItemService() -> ItemService {
+    static func getItemService(clock: Clock) -> ItemService {
         let context = TestCoreDataConfig.getCoreDataContext()
-        let clock = Clock()
+        let calendar = Calendar.current
         let activityRepository = ActivityRepositoryImpl(context: context)
-        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock)
+        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock, calendar: calendar)
         let itemRepository = ItemRepositoryImpl(context: context)
         return ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
     }

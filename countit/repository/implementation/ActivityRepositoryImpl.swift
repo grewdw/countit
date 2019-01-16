@@ -17,11 +17,11 @@ class ActivityRepositoryImpl: ActivityRepository {
         self.context = context
     }
     
-    func save(activity: NewActivityDto, withTimestamp timestamp: NSDate) -> Bool {
+    func save(activity: NewActivityDto, withTimestamp timestamp: Date) -> Bool {
         if let item = getItemWith(id: activity.getItem()) {
             let activityEntity = ActivityEntity(context: context)
             activityEntity.value = Int32(activity.getValue())
-            activityEntity.createdTimestamp = timestamp as Date
+            activityEntity.createdTimestamp = timestamp
             item.addToActivity(activityEntity)
             return saveContext()
         }
@@ -31,6 +31,12 @@ class ActivityRepositoryImpl: ActivityRepository {
     func getActivitiesFor(item: NSManagedObjectID) -> [ActivityEntity] {
         let request: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
         request.predicate = NSPredicate(format: "item == %@", item)
+        return getActivities(with: request)
+    }
+    
+    func getActivitiesFor(item: NSManagedObjectID, fromStartDate start: Date, toEndDate end: Date) -> [ActivityEntity] {
+        let request: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "item == %@ AND createdTimestamp >= %@ AND createdTimestamp < %@", item, start as NSDate, end as NSDate)
         return getActivities(with: request)
     }
     

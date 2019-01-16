@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Clock: NSDate {
+class Clock {
     
-    func now() -> NSDate {
-        return NSDate()
+    func now() -> Date {
+        return Date()
     }
 }

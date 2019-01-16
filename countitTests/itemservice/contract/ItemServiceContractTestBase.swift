@@ -13,6 +13,8 @@ class ItemServiceContractTestBase: XCTestCase {
     
     var target: ItemService?
     
+    var clock = TestClock()
+    
     let ITEM_NAME_ONE = "testItemOne"
     let ITEM_NAME_TWO = "testItemTwo"
     let ITEM_NAME_THREE = "testItemThree"
@@ -47,7 +49,7 @@ class ItemServiceContractTestBase: XCTestCase {
     let LIST_POSITION_NEW = 10
     
     override func setUp() {
-        target = CommonSteps.getItemService()
+        target = CommonSteps.getItemService(clock: clock)
     }
     
     override func tearDown() {
