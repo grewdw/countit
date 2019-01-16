@@ -49,7 +49,7 @@ class ItemServiceContractTestBase: XCTestCase {
     let LIST_POSITION_NEW = 10
     
     override func setUp() {
-        target = CommonSteps.getItemService(clock: clock)
+        target = ServiceConfig(clock: clock).getItemService()
     }
     
     override func tearDown() {

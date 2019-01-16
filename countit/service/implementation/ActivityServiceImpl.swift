@@ -27,6 +27,9 @@ class ActivityServiceImpl: ActivityService {
     
     func getCurrentTargetProgressFor(item: ItemDetailsDto) -> ItemSummaryDto {
         if let targetDuration = getTargetDuration(timePeriod: item.getTimePeriod()) {
+            let now = clock.now()
+            let end = targetDuration.end
+            let start = targetDuration.start
             let activities = activityRepository.getActivitiesFor(item: item.getId()!, fromStartDate: targetDuration.start, toEndDate: targetDuration.end)
             var activityCount = 0
             for activity in activities {
