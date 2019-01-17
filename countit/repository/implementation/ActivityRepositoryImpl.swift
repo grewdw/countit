@@ -17,13 +17,16 @@ class ActivityRepositoryImpl: ActivityRepository {
         self.context = context
     }
     
-    func save(activity: NewActivityDto, withTimestamp timestamp: Date) -> Bool {
-        if let item = getItemWith(id: activity.getItem()) {
-            let activityEntity = ActivityEntity(context: context)
-            activityEntity.value = Int32(activity.getValue())
-            activityEntity.createdTimestamp = timestamp
-            item.addToActivity(activityEntity)
-            return saveContext()
+    func save(activity: ActivityUpdateDto, withTimestamp timestamp: Date) -> Bool {
+        if let id = activity.getItem().getId() {
+            if let item = getItemWith(id: id) {
+                let activityEntity = ActivityEntity(context: context)
+                activityEntity.value = Int32(activity.getValue())
+                activityEntity.createdTimestamp = timestamp
+                item.addToActivity(activityEntity)
+                return saveContext()
+            }
+            return false
         }
         return false
     }

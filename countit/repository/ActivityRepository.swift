@@ -11,7 +11,7 @@ import CoreData
 
 protocol ActivityRepository {
     
-    func save(activity: NewActivityDto, withTimestamp timestamp: Date) -> Bool
+    func save(activity: ActivityUpdateDto, withTimestamp timestamp: Date) -> Bool
     
     func getActivitiesFor(item: NSManagedObjectID) -> [ActivityEntity]
     

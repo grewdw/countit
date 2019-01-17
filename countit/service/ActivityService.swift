@@ -11,7 +11,7 @@ import CoreData
 
 protocol ActivityService {
     
-    func record(newActivity activity: NewActivityDto) -> Bool
+    func record(activityUpdate activity: ActivityUpdateDto) -> Bool
     
     func getCurrentTargetProgressFor(item: ItemDetailsDto) -> ItemSummaryDto
 }

@@ -54,4 +54,8 @@ extension UITestBase {
     func clickAddActivityButtonFor(cell: String) {
         itemTable!.cells[cell].buttons[AI.PROGRESS_CELL_RECORD_ACTIVITY].tap()
     }
+    
+    func clickSubtractActivityButtonFor(cell: String) {
+        itemTable!.cells[cell].buttons[AI.PROGRESS_CELL_SUBTRACT_ACTIVITY].tap()
+    }
 }
