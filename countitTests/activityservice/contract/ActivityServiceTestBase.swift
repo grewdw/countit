@@ -213,7 +213,7 @@ class ActivityServiceTestBase: XCTestCase {
         for timestamp in timestamps {
             if let date = timeStampStringToDate(timestamp: timestamp) {
                 clock.set(date: date)
-                let _ = activityService?.record(newActivity: NewActivityDto(item: item!.getId()!, value: 1))
+                let _ = activityService?.record(activityUpdate: ActivityUpdateDto(item: item!, value: 1))
             }
         }
     }

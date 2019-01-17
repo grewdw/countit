@@ -13,5 +13,7 @@ protocol ProgressTableViewDelegate {
     
     func buttonPressed(_ button: NavBarButtonType)
     
-    func recordActivityButtonPressedFor(item: NSManagedObjectID)
+    func recordActivityButtonPressedFor(item: ItemDetailsDto)
+    
+    func subtractActivityButtonPressedFor(item: ItemDetailsDto)
 }

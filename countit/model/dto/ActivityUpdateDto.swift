@@ -9,17 +9,17 @@
 import Foundation
 import CoreData
 
-class NewActivityDto {
+class ActivityUpdateDto {
     
-    private let item: NSManagedObjectID
+    private let item: ItemDetailsDto
     private let value: Int
     
-    init(item: NSManagedObjectID, value: Int) {
+    init(item: ItemDetailsDto, value: Int) {
         self.item = item
         self.value = value
     }
     
-    func getItem() -> NSManagedObjectID {
+    func getItem() -> ItemDetailsDto {
         return item
     }
     

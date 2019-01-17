@@ -82,11 +82,11 @@ class CurrentProgressTableCellView: UITableViewCell {
     }
     
     @objc func recordActivityButtonPressed() {
-        delegate?.recordActivityButtonPressedFor(item: item.getItemDetailsDto().getId()!)
+        delegate?.recordActivityButtonPressedFor(item: item.getItemDetailsDto())
     }
     
     @objc func subtractActivityButtonPressed() {
-        print("subtract button pressed")
+        delegate?.subtractActivityButtonPressedFor(item: item.getItemDetailsDto())
     }
     
     private func format(button: UIButton, text: String?) {

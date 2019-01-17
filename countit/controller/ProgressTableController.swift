@@ -144,8 +144,13 @@ extension ProgressTableController: ProgressTableViewDelegate {
         toItemController(item: nil)
     }
     
-    func recordActivityButtonPressedFor(item: NSManagedObjectID) {
-        activityService.record(newActivity: NewActivityDto(item: item, value: 1))
+    func recordActivityButtonPressedFor(item: ItemDetailsDto) {
+        activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
+        refreshTable()
+    }
+    
+    func subtractActivityButtonPressedFor(item: ItemDetailsDto) {
+        activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
         refreshTable()
     }
 }

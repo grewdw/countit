@@ -21,23 +21,43 @@ class ActivityServiceImpl: ActivityService {
         self.calendar = calendar
     }
     
-    func record(newActivity activity: NewActivityDto) -> Bool {
+    func record(activityUpdate activity: ActivityUpdateDto) -> Bool {
+        return activity.getValue() < 0 ? processSubtract(activity: activity) : processAdd(activity: activity)
+
+    }
+    
+    private func processSubtract(activity: ActivityUpdateDto) -> Bool {
+        let activityInPeriod = calculateActivityInCurrentPeriodFor(item: activity.getItem())
+        if activityInPeriod <= 0 {
+            return true
+        }
+        else {
+            return activityInPeriod >= activity.getValue()
+                ? activityRepository.save(activity: activity, withTimestamp: clock.now())
+                : activityRepository.save(
+                    activity: ActivityUpdateDto(item: activity.getItem(), value: activityInPeriod),
+                    withTimestamp: clock.now())
+        }
+    }
+    
+    private func processAdd(activity: ActivityUpdateDto) -> Bool {
         return activityRepository.save(activity: activity, withTimestamp: clock.now())
     }
     
     func getCurrentTargetProgressFor(item: ItemDetailsDto) -> ItemSummaryDto {
+        return ItemSummaryDto(itemDetailsDto: item, activityCount: calculateActivityInCurrentPeriodFor(item: item))
+    }
+    
+    private func calculateActivityInCurrentPeriodFor(item: ItemDetailsDto) -> Int {
         if let targetDuration = getTargetDuration(timePeriod: item.getTimePeriod()) {
-            let now = clock.now()
-            let end = targetDuration.end
-            let start = targetDuration.start
             let activities = activityRepository.getActivitiesFor(item: item.getId()!, fromStartDate: targetDuration.start, toEndDate: targetDuration.end)
             var activityCount = 0
             for activity in activities {
                 activityCount += Int(activity.value)
             }
-            return ItemSummaryDto(itemDetailsDto: item, activityCount: activityCount)
+            return activityCount
         }
-        return ItemSummaryDto(itemDetailsDto: item, activityCount: 0)
+        return 0
     }
     
     private func getTargetDuration(timePeriod: TargetTimePeriod) -> DateInterval? {
