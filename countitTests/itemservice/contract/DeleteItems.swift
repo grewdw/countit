@@ -16,7 +16,7 @@ class DeleteItems: ItemServiceContractTestBase {
     var ITEM_ID_TWO: NSManagedObjectID?
     
     override func setUp() {
-        target = CommonSteps.getItemService()
+        target = ServiceConfig(clock: clock).getItemService()
         
         createTwoItems(withService: target!)
         

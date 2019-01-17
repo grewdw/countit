@@ -24,15 +24,15 @@ class RecordActivity: UITestBase {
     func testRecordSingleActivityForFirstItem() {
         clickAddActivityButtonFor(cell: FIRST_CELL)
         
-        assertActivityCountFor(cell: 0, is: "1")
-        assertActivityCountFor(cell: 1, is: "0")
+        assertActivityCountFor(cell: 0, is: 1)
+        assertActivityCountFor(cell: 1, is: 0)
     }
     
     func testRecordSingleActivityForSecondItem() {
         clickAddActivityButtonFor(cell: SECOND_CELL)
         
-        assertActivityCountFor(cell: 0, is: "0")
-        assertActivityCountFor(cell: 1, is: "1")
+        assertActivityCountFor(cell: 0, is: 0)
+        assertActivityCountFor(cell: 1, is: 1)
     }
     
     func testRecordMultipleActivityForFirstItem() {
@@ -40,8 +40,8 @@ class RecordActivity: UITestBase {
         clickAddActivityButtonFor(cell: FIRST_CELL)
         clickAddActivityButtonFor(cell: FIRST_CELL)
         
-        assertActivityCountFor(cell: 0, is: "3")
-        assertActivityCountFor(cell: 1, is: "0")
+        assertActivityCountFor(cell: 0, is: 3)
+        assertActivityCountFor(cell: 1, is: 0)
     }
 
     func testRecordMultipleActivityForSecondItem() {
@@ -50,8 +50,8 @@ class RecordActivity: UITestBase {
         clickAddActivityButtonFor(cell: SECOND_CELL)
         clickAddActivityButtonFor(cell: SECOND_CELL)
         
-        assertActivityCountFor(cell: 0, is: "0")
-        assertActivityCountFor(cell: 1, is: "4")
+        assertActivityCountFor(cell: 0, is: 0)
+        assertActivityCountFor(cell: 1, is: 4)
     }
     
     func testRecordMultipleActivityForBothItems() {
@@ -65,7 +65,7 @@ class RecordActivity: UITestBase {
         clickAddActivityButtonFor(cell: SECOND_CELL)
         clickAddActivityButtonFor(cell: SECOND_CELL)
         
-        assertActivityCountFor(cell: 0, is: "5")
-        assertActivityCountFor(cell: 1, is: "3")
+        assertActivityCountFor(cell: 0, is: 5)
+        assertActivityCountFor(cell: 1, is: 3)
     }
 }

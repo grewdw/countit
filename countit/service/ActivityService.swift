@@ -13,5 +13,5 @@ protocol ActivityService {
     
     func record(newActivity activity: NewActivityDto) -> Bool
     
-    func getActivityCountForItem(id: NSManagedObjectID) -> Int
+    func getCurrentTargetProgressFor(item: ItemDetailsDto) -> ItemSummaryDto
 }

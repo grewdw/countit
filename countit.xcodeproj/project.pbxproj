@@ -53,7 +53,7 @@
 		1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA221D946DB002F09CF /* TargetDto.swift */; };
 		1DEB4BA621DBF2A3002F09CF /* ItemDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA521DBF2A3002F09CF /* ItemDetailsBuilder.swift */; };
 		1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */; };
-		1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */; };
+		1DEB4BAB21DBFC4C002F09CF /* ServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAA21DBFC4C002F09CF /* ServiceConfig.swift */; };
 		1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */; };
 		1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */; };
 		1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB221E1152B002F09CF /* Clock.swift */; };
@@ -71,6 +71,8 @@
 		1DF653DA21ECBAD700AA65C3 /* UITestBaseAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653D921ECBAD700AA65C3 /* UITestBaseAssertions.swift */; };
 		1DF653DC21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653DB21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift */; };
 		1DF653DE21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */; };
+		1DF653E221EFD40D00AA65C3 /* TestClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653E121EFD40D00AA65C3 /* TestClock.swift */; };
+		1DF653E621EFD56300AA65C3 /* ActivityServiceTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +145,7 @@
 		1DEB4BA221D946DB002F09CF /* TargetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDto.swift; sourceTree = "<group>"; };
 		1DEB4BA521DBF2A3002F09CF /* ItemDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsBuilder.swift; sourceTree = "<group>"; };
 		1DEB4BA721DBF2AD002F09CF /* TargetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetBuilder.swift; sourceTree = "<group>"; };
-		1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSteps.swift; sourceTree = "<group>"; };
+		1DEB4BAA21DBFC4C002F09CF /* ServiceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConfig.swift; sourceTree = "<group>"; };
 		1DEB4BAC21DBFEF6002F09CF /* ItemServiceContractTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceContractTestBase.swift; sourceTree = "<group>"; };
 		1DEB4BAF21DC00E8002F09CF /* XCTestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestExtension.swift; sourceTree = "<group>"; };
 		1DEB4BB221E1152B002F09CF /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
@@ -161,6 +163,8 @@
 		1DF653D921ECBAD700AA65C3 /* UITestBaseAssertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseAssertions.swift; sourceTree = "<group>"; };
 		1DF653DB21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseItemTableSteps.swift; sourceTree = "<group>"; };
 		1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseItemFormSteps.swift; sourceTree = "<group>"; };
+		1DF653E121EFD40D00AA65C3 /* TestClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClock.swift; sourceTree = "<group>"; };
+		1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityServiceTestBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +343,7 @@
 				1DEB4BA921DBFC2F002F09CF /* utils */,
 				1DEB4BA421DBF294002F09CF /* builders */,
 				1DEB4B8F21D54F1C002F09CF /* config */,
+				1DF653E321EFD53400AA65C3 /* activityservice */,
 				1DEB4B7D21D0094E002F09CF /* itemservice */,
 			);
 			path = countitTests;
@@ -444,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
+				1DEB4BAA21DBFC4C002F09CF /* ServiceConfig.swift */,
 				1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */,
 			);
 			path = config;
@@ -500,7 +506,7 @@
 		1DEB4BA921DBFC2F002F09CF /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				1DEB4BAA21DBFC4C002F09CF /* CommonSteps.swift */,
+				1DF653E121EFD40D00AA65C3 /* TestClock.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -558,6 +564,22 @@
 				1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */,
 			);
 			path = config;
+			sourceTree = "<group>";
+		};
+		1DF653E321EFD53400AA65C3 /* activityservice */ = {
+			isa = PBXGroup;
+			children = (
+				1DF653E421EFD54400AA65C3 /* contract */,
+			);
+			path = activityservice;
+			sourceTree = "<group>";
+		};
+		1DF653E421EFD54400AA65C3 /* contract */ = {
+			isa = PBXGroup;
+			children = (
+				1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */,
+			);
+			path = contract;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -738,7 +760,8 @@
 			files = (
 				1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */,
 				1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */,
-				1DEB4BAB21DBFC4C002F09CF /* CommonSteps.swift in Sources */,
+				1DEB4BAB21DBFC4C002F09CF /* ServiceConfig.swift in Sources */,
+				1DF653E621EFD56300AA65C3 /* ActivityServiceTestBase.swift in Sources */,
 				1DEB4BC121E3E320002F09CF /* ItemSummaryBuilder.swift in Sources */,
 				1DEB4B8121D00991002F09CF /* ReadItems.swift in Sources */,
 				1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */,
@@ -747,6 +770,7 @@
 				1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */,
 				1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */,
 				1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */,
+				1DF653E221EFD40D00AA65C3 /* TestClock.swift in Sources */,
 				1DEB4B8321D009B6002F09CF /* DeleteItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

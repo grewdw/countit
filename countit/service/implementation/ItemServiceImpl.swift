@@ -61,7 +61,7 @@ class ItemServiceImpl: ItemService {
     
     func getItem(id: NSManagedObjectID) -> ItemSummaryDto? {
         if let item = itemRepository.getItemWithCurrentTarget(with: id) {
-            return ItemSummaryDto(itemDetailsDto: item, activityCount: activityService.getActivityCountForItem(id: item.getId()!))
+            return activityService.getCurrentTargetProgressFor(item: item)
         }
         return nil
 
@@ -71,7 +71,7 @@ class ItemServiceImpl: ItemService {
         let itemDetailDtos = itemRepository.getItemsWithCurrentTargets()
         var itemSummaryDtos = [ItemSummaryDto]()
         for item in itemDetailDtos {
-            itemSummaryDtos.append(ItemSummaryDto(itemDetailsDto: item, activityCount: activityService.getActivityCountForItem(id: item.getId()!)))
+            itemSummaryDtos.append(activityService.getCurrentTargetProgressFor(item: item))
         }
         return itemSummaryDtos
     }

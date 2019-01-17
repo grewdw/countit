@@ -44,7 +44,7 @@ class CurrentProgressTableCellView: UITableViewCell {
         name.numberOfLines = 0
         name.textAlignment = .center
         
-        activityCount.text = String(item.getActivityCount())
+        activityCount.text = String(String(item.getActivityCount()) + " / " + String(item.getItemDetailsDto().getValue()))
         activityCount.accessibilityIdentifier = AI.PROGRESS_CELL_ACTIVITY_COUNT
         activityCount.font = UIFont.boldSystemFont(ofSize: 20)
         activityCount.numberOfLines = 0

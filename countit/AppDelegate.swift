@@ -21,9 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let context = CoreDataConfig.getCoreDataContext(isSQLDatabase: isSQLDatabase)
         
         let clock = Clock()
+        let calendar = Calendar.autoupdatingCurrent
         
         let activityRepository = ActivityRepositoryImpl(context: context)
-        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock)
+        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock, calendar: calendar)
         let itemRepository = ItemRepositoryImpl(context: context)
         let itemService = ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
         
