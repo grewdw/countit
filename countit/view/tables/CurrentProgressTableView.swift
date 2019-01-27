@@ -21,7 +21,6 @@ class CurrentProgressTableView: UITableView, NavBarButtonDelegate {
     
     func initialiseNavBarWithSearch(for controller: UIViewController, searchResultsUpdater: UISearchResultsUpdating) {
         NavigationItemBuilder(for: controller)
-            .with(title: NAV_ITEM_TITLE)
             .with(rightButton: .ADD, forTarget: self)
             .withSearchController(searchResultsUpdater: searchResultsUpdater, placeholder: "Search items")
             .build()

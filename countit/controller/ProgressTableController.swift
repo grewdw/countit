@@ -58,7 +58,7 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 22.0
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = .gray
+        tableView.backgroundColor = Colours.TABLE_BACKGROUND
         self.view = tableView
     }
 }
@@ -113,7 +113,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
                 if let itemToAdd = item {
                     itemFormController.with(item: itemToAdd)
                 }
-                parentController.pushViewController(itemFormController as! UIViewController, animated: true)
+                parentController.pushViewController(FormOptionSelectorController(options: ["Day", "Week", "Month"], selectedOption: 1, delegate: self) as! UIViewController, animated: true)
             }
         }
     }
@@ -260,4 +260,11 @@ extension ProgressTableController: UISearchResultsUpdating {
             filterItems(containing: searchController.searchBar.text!)
         }
     }
+}
+
+extension ProgressTableController: FormOptionSelectorDelegate {
+    func selectionChanged(to selection: String, on selector: FormOptionSelectorController) {
+        print(selection)
+    }
+    
 }
