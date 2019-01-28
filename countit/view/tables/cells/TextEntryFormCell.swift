@@ -12,9 +12,11 @@ class TextEntryFormCell: UITableViewCell {
     
     var fieldName: String
     var textBox = UITextField()
+    let delegate: FormCellDelegate
     
-    init(placeholder: String?, text: String?, fieldName: String, numeric: Bool) {
+    init(placeholder: String?, text: String?, fieldName: String, numeric: Bool, delegate: FormCellDelegate) {
         self.fieldName = fieldName
+        self.delegate = delegate
         textBox.placeholder = placeholder
         textBox.text = text
         
@@ -27,6 +29,7 @@ class TextEntryFormCell: UITableViewCell {
         selectionStyle = .none
         
         self.addSubview(textBox)
+        textBox.delegate = self
         textBox.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -45,5 +48,27 @@ class TextEntryFormCell: UITableViewCell {
 extension TextEntryFormCell: FormCell {
     func setValue(to value: String) {
         textBox.text = value
+    }
+}
+
+extension TextEntryFormCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let currentText = textBox.text {
+            var textArray = Array(currentText)
+            var newText = [Character]()
+            if textArray.count != 0 {
+                for charPos in 0...textArray.count - 1 {
+                    if charPos < range.location || charPos >= range.location + range.length {
+                        newText.append(textArray[charPos])
+                    }
+                }
+            }
+            if range.location == textArray.count && string != "" {
+                newText.append(contentsOf: Array(string))
+            }
+            delegate.selectionChanged(to: String(newText), for: fieldName)
+            return true
+        }
+        return true
     }
 }

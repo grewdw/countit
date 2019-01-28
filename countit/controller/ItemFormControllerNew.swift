@@ -19,7 +19,6 @@ class ItemFormControllerNew: UIViewController {
     private var sections: [Int : [ItemFormField]] = [:]
     private var fieldToIndexPathMap: [ItemFormField : IndexPath] = [:]
     private var indexPathToFieldMap: [IndexPath : ItemFormField] = [:]
-    
     private var fieldNameToValueMap: [ItemFormField : String] = [:]
     
     private let directionOptions = [TargetDirection.AT_LEAST.rawValue, TargetDirection.AT_MOST.rawValue]
@@ -28,6 +27,7 @@ class ItemFormControllerNew: UIViewController {
     private var selectedItem: ItemDetailsDto?
     
     private var selectingOption = false
+    private var validForm = false { didSet{ self.navigationItem.rightBarButtonItem?.isEnabled = validForm }}
     
     let controllerResolver: ControllerResolver
     let viewResolver: ViewResolver
@@ -53,10 +53,7 @@ class ItemFormControllerNew: UIViewController {
         else {
             selectingOption = false
         }
-        let tableView = UITableView(frame: self.view.bounds, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        view = tableView
+        initialiseView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,6 +66,13 @@ class ItemFormControllerNew: UIViewController {
         fieldNameToValueMap.updateValue(selectedItem?.getDirection().rawValue ?? DEFAULT_DIRECTION, forKey: .DIRECTION)
         fieldNameToValueMap.updateValue(String(selectedItem?.getValue() ?? 0) ?? DEFAULT_TARGET_VALUE, forKey: .TARGET_VALUE)
         fieldNameToValueMap.updateValue(selectedItem?.getTimePeriod().rawValue ?? DEFAULT_TIMEPERIOD, forKey: .TIMEPERIOD)
+    }
+    
+    func initialiseView() {
+        let formView = ItemFormView(frame: self.view.bounds, delegate: self, dataSource: self, formController: self)
+        formView.initialiseNavBar(for: self)
+        validForm = fieldNameToValueMap[.NAME] == "" ? false : true
+        self.view = formView
     }
 }
 
@@ -91,13 +95,13 @@ extension ItemFormControllerNew: UITableViewDataSource {
     private func createCellFor(formField: ItemFormField) -> UITableViewCell {
         switch formField {
         case .NAME:
-            return TextEntryFormCell(placeholder: "Name", text: fieldNameToValueMap[.NAME], fieldName: ItemFormField.NAME.rawValue, numeric: false)
+            return TextEntryFormCell(placeholder: "Name", text: fieldNameToValueMap[.NAME], fieldName: ItemFormField.NAME.rawValue, numeric: false, delegate: self)
         case .DESCRIPTION:
-            return TextEntryFormCell(placeholder: "Description", text: fieldNameToValueMap[.DESCRIPTION], fieldName: ItemFormField.DESCRIPTION.rawValue, numeric: false)
+            return TextEntryFormCell(placeholder: "Description", text: fieldNameToValueMap[.DESCRIPTION], fieldName: ItemFormField.DESCRIPTION.rawValue, numeric: false, delegate: self)
         case .DIRECTION:
             return FormOptionDisplayCell(label: "Target", currentValue: fieldNameToValueMap[.DIRECTION]!, fieldName: ItemFormField.DIRECTION.rawValue)
         case .TARGET_VALUE:
-            return TextEntryFormCell(placeholder: "0", text: fieldNameToValueMap[.TARGET_VALUE], fieldName: ItemFormField.TARGET_VALUE.rawValue, numeric: true)
+            return TextEntryFormCell(placeholder: "0", text: fieldNameToValueMap[.TARGET_VALUE], fieldName: ItemFormField.TARGET_VALUE.rawValue, numeric: true, delegate: self)
         case .TIMEPERIOD:
             return FormOptionDisplayCell(label: "Every", currentValue: fieldNameToValueMap[.TIMEPERIOD]!, fieldName: ItemFormField.TIMEPERIOD.rawValue)
         }
@@ -130,8 +134,16 @@ extension ItemFormControllerNew: UITableViewDelegate {
 }
 
 extension ItemFormControllerNew: FormController {
-    func submitForm(_ Form: Form) {
-        
+    func submitForm() {
+        itemService.saveItem(ItemDetailsDto(selectedItem?.getId(),
+            fieldNameToValueMap[.NAME]!,
+            fieldNameToValueMap[.DESCRIPTION]!,
+            TargetDirection(rawValue: fieldNameToValueMap[.DIRECTION]!)!,
+            Int(fieldNameToValueMap[.TARGET_VALUE]!)!,
+            TargetTimePeriod(rawValue: fieldNameToValueMap[.TIMEPERIOD]!)!,
+            selectedItem?.getListPosition()))
+        let navController = controllerResolver.get(.PRIMARY_NAV_CONTROLLER) as? UINavigationController
+        navController?.popViewController(animated: true)
     }
     
     func with(item: ItemDetailsDto) {
@@ -143,9 +155,9 @@ extension ItemFormControllerNew: FormCellDelegate {
     func selectionChanged(to selection: String, for fieldName: String) {
         if let changedField = ItemFormField.init(rawValue: fieldName) {
             fieldNameToValueMap.updateValue(selection, forKey: changedField)
-            let tableView = view as? UITableView
-            let cell = tableView?.cellForRow(at: fieldToIndexPathMap[changedField]!) as? FormCell
-            cell?.setValue(to: selection)
+            if changedField == ItemFormField.NAME {
+                validForm = selection != ""
+            }
         }
     }
 }

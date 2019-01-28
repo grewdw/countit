@@ -140,7 +140,7 @@ extension NewItemFormView: NavBarButtonDelegate {
         if let controller = formDelegate {
             let form = getFormData()
             if form.isValid() {
-                controller.submitForm(getFormData())
+                controller.submitForm()
             }
 
         }

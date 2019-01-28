@@ -10,7 +10,7 @@ import Foundation
 
 protocol FormController {
     
-    func submitForm(_ Form: Form)
+    func submitForm()
     
     func with(item: ItemDetailsDto)
 }

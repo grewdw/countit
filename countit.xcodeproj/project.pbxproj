@@ -86,6 +86,7 @@
 		1DF653FC21FF7CB000AA65C3 /* FormOptionDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FB21FF7CB000AA65C3 /* FormOptionDisplayCell.swift */; };
 		1DF653FE21FF951500AA65C3 /* FormCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */; };
 		1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FF21FF956600AA65C3 /* FormCell.swift */; };
+		1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6540121FFB56700AA65C3 /* ItemFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		1DF653FB21FF7CB000AA65C3 /* FormOptionDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionDisplayCell.swift; path = countit/View/Tables/Cells/FormOptionDisplayCell.swift; sourceTree = SOURCE_ROOT; };
 		1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormCellDelegate.swift; path = countit/Controller/enums/FormCellDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1DF653FF21FF956600AA65C3 /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormCell.swift; path = countit/View/Tables/Cells/FormCell.swift; sourceTree = SOURCE_ROOT; };
+		1DF6540121FFB56700AA65C3 /* ItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemFormView.swift; path = countit/View/Tables/ItemFormView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */,
+				1DF6540121FFB56700AA65C3 /* ItemFormView.swift */,
 				1DF653EF21FE344400AA65C3 /* FormOptionSelectorView.swift */,
 				1D76F06521BC1FF900A53853 /* cells */,
 			);
@@ -769,6 +772,7 @@
 				1DF653F621FE432E00AA65C3 /* PrimaryNavigationController.swift in Sources */,
 				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
+				1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
 				1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */,
