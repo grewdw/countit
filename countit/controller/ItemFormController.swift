@@ -67,10 +67,4 @@ extension ItemFormController: FormController {
     func with(item: ItemDetailsDto) {
         selectedItem = item
     }
-
-    func cancelForm() {
-    }
-    
-    func buttonPressed(_ button: NavBarButtonType) {
-    }
 }

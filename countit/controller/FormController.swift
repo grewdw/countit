@@ -13,8 +13,4 @@ protocol FormController {
     func submitForm(_ Form: Form)
     
     func with(item: ItemDetailsDto)
-    
-    func cancelForm()
-    
-    func buttonPressed(_ button: NavBarButtonType)
 }

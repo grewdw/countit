@@ -113,7 +113,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
                 if let itemToAdd = item {
                     itemFormController.with(item: itemToAdd)
                 }
-                parentController.pushViewController(FormOptionSelectorController(options: ["Day", "Week", "Month"], selectedOption: 1, delegate: self) as! UIViewController, animated: true)
+                parentController.pushViewController(itemFormController as! UIViewController, animated: true)
             }
         }
     }
@@ -262,9 +262,3 @@ extension ProgressTableController: UISearchResultsUpdating {
     }
 }
 
-extension ProgressTableController: FormOptionSelectorDelegate {
-    func selectionChanged(to selection: String, on selector: FormOptionSelectorController) {
-        print(selection)
-    }
-    
-}

@@ -12,14 +12,16 @@ class FormOptionSelectorController: UIViewController {
     
     let options: [String]
     var selectedOption: Int
-    let delegate: FormOptionSelectorDelegate
+    let delegate: FormCellDelegate
+    let fieldName: String
     
     let FIRST_SECTION = 0
     
-    init(options: [String], selectedOption: Int, delegate: FormOptionSelectorDelegate) {
+    init(options: [String], selectedOption: Int, delegate: FormCellDelegate, fieldName: String) {
         self.options = options
         self.selectedOption = selectedOption
         self.delegate = delegate
+        self.fieldName = fieldName
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -59,13 +61,10 @@ extension FormOptionSelectorController: UITableViewDelegate {
             newCell?.setSelected(to: true)
             selectedOption = indexPath.row
             if let cellText = newCell?.textLabel?.text {
-                delegate.selectionChanged(to: cellText, on: self)
+                delegate.selectionChanged(to: cellText, for: fieldName)
             }
         }
     }
 }
 
-protocol FormOptionSelectorDelegate {
-    
-    func selectionChanged(to selection: String, on selector: FormOptionSelectorController)
-}
+

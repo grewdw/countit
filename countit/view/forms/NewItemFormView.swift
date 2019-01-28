@@ -23,8 +23,6 @@ class NewItemFormView: UIScrollView {
     let descriptionField: TextFieldView
     let targetFields: TargetFormView
     
-    var fields: [ItemFormFields: TextFieldView] = [:]
-    
     init(frame: CGRect, form: ItemForm?) {
        
         nameField = TextFieldViewBuilder(frame: .zero)
@@ -36,7 +34,6 @@ class NewItemFormView: UIScrollView {
             .build()
         nameField.accessibilityIdentifier = AI.ITEM_FORM_NAME_FIELD
         nameField.translatesAutoresizingMaskIntoConstraints = false
-        fields.updateValue(nameField, forKey: ItemFormFields.NAME)
         
         descriptionField = TextFieldViewBuilder(frame: .zero)
             .with(spacing: 10)
@@ -46,7 +43,6 @@ class NewItemFormView: UIScrollView {
             .build()
         descriptionField.accessibilityIdentifier = AI.ITEM_FORM_DESCRIPTION_FIELD
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
-        fields.updateValue(descriptionField, forKey: ItemFormFields.DESCRIPTION)
         
         targetFields = TargetFormView(frame: .zero)
         targetFields.accessibilityIdentifier = AI.ITEM_FORM_TARGET_FIELDS
@@ -146,13 +142,7 @@ extension NewItemFormView: NavBarButtonDelegate {
             if form.isValid() {
                 controller.submitForm(getFormData())
             }
-            else {
-                let errors = form.getFieldErrors()
-                for error in errors {
-                    fields[error]?.displayErrorMessage()
-                }
-            }
-            
+
         }
     }
 }
