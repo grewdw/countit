@@ -47,7 +47,7 @@ extension FormOptionSelectorController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return FormOptionSelectorCell(text: options[indexPath.row], selected: indexPath.row == selectedOption)
+        return FormOptionSelectorCell(text: options[indexPath.row], selected: indexPath.row == selectedOption, accessibilityIdentifier: options[indexPath.row])
     }
 }
 

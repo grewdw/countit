@@ -53,7 +53,8 @@ class UpdateItems: UITestBase {
         select(FIRST_CELL)
         clearFormFields(name: true, description: false, target: true)
         
-        assertItemFormErrorIs(ERROR_MESSAGE)    }
+        assertItemFormSaveButton(isEnabled: false)
+    }
     
     func testChangeItemOrder() {
         createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, target: nil)

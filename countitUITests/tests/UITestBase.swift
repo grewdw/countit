@@ -44,11 +44,23 @@ class UITestBase: XCTestCase {
     var itemFormSaveButton: XCUIElement?
     
     var nameField: XCUIElement?
-    var nameFieldError: XCUIElement?
+    var nameFieldText: XCUIElement?
+    
     var descriptionField: XCUIElement?
-    var targetField: XCUIElement?
+    var descriptionFieldText: XCUIElement?
+    
+    var targetDirectionField: XCUIElement?
+    var targetDirectionFieldLabel: XCUIElement?
+    
+    var targetValueField: XCUIElement?
+    var targetValueFieldText: XCUIElement?
+    
+    var targetTimePeriodField: XCUIElement?
+    var targetTimePeriodFieldLabel: XCUIElement?
     
     var itemTable: XCUIElement?
+    var itemForm: XCUIElement?
+    var formSelectorTable: XCUIElement?
     
     var searchField: XCUIElement?
     
@@ -68,12 +80,20 @@ class UITestBase: XCTestCase {
     func initialiseXCUIElementsFor(newApp: XCUIApplication) {
         app = newApp
         itemTableAddButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_TABLE].buttons[AI.NAVIGATION_BAR_BUTTON_ADD]
-        itemFormSaveButton = newApp.navigationBars[AI.NAVIGATION_BAR_ADD_ITEM].buttons[AI.NAVIGATION_BAR_BUTTON_SAVE]
-        nameField = newApp.otherElements[AI.ITEM_FORM_NAME_FIELD].textFields[AI.TEXT_FIELD_TEXT]
-        nameFieldError = newApp.otherElements[AI.ITEM_FORM_NAME_FIELD].staticTexts[AI.TEXT_FIELD_ERROR]
-        descriptionField = newApp.otherElements[AI.ITEM_FORM_DESCRIPTION_FIELD].textFields[AI.TEXT_FIELD_TEXT]
-        targetField = newApp.textFields[AI.TARGET_FORM_VALUE_FIELD]
+        itemFormSaveButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_FORM].buttons[AI.NAVIGATION_BAR_BUTTON_SAVE]
+        nameField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_NAME_FIELD]
+        nameFieldText = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_NAME_FIELD].textFields[AI.TEXT_FIELD_TEXT]
+        descriptionField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_DESCRIPTION_FIELD]
+        descriptionFieldText = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_DESCRIPTION_FIELD].textFields[AI.TEXT_FIELD_TEXT]
+        targetDirectionField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_DIRECTION_FIELD]
+        targetDirectionFieldLabel = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_DIRECTION_FIELD].staticTexts[AI.OPTION_FIELD_TEXT]
+        targetValueField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_VALUE_FIELD]
+        targetValueFieldText = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_VALUE_FIELD].textFields[AI.TEXT_FIELD_TEXT]
+        targetTimePeriodField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_TIMEPERIOD_FIELD]
+        targetTimePeriodFieldLabel = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_TIMEPERIOD_FIELD].staticTexts[AI.OPTION_FIELD_TEXT]
         itemTable = newApp.tables[AI.ITEM_TABLE]
+        itemForm = newApp.tables[AI.ITEM_FORM_TABLE]
+        formSelectorTable = newApp.tables[AI.FORM_SELECTOR_TABLE]
         searchField = newApp.searchFields["Search items"]
     }
     
@@ -82,9 +102,10 @@ class UITestBase: XCTestCase {
         itemTableAddButton = nil
         itemFormSaveButton = nil
         nameField = nil
-        nameFieldError = nil
         descriptionField = nil
-        targetField = nil
+        targetDirectionField = nil
+        targetValueField = nil
+        targetTimePeriodField = nil
         itemTable = nil
         searchField = nil
     }

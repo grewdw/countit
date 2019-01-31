@@ -45,7 +45,6 @@ class NewItemFormView: UIScrollView {
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
         
         targetFields = TargetFormView(frame: .zero)
-        targetFields.accessibilityIdentifier = AI.ITEM_FORM_TARGET_FIELDS
         targetFields.translatesAutoresizingMaskIntoConstraints = false
         
         super.init(frame: frame)

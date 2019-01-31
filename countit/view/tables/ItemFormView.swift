@@ -17,6 +17,7 @@ class ItemFormView: UITableView {
         super.init(frame: frame, style: .grouped)
         self.delegate = delegate
         self.dataSource = dataSource
+        self.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_FORM_TABLE
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +30,7 @@ extension ItemFormView: NavBarButtonDelegate {
     func initialiseNavBar(for controller: UIViewController) {
         NavigationItemBuilder(for: controller)
             .with(rightButton: .DONE, forTarget: self)
+            .with(title: "itemForm")
             .build()
     }
     

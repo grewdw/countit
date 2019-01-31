@@ -49,11 +49,9 @@ class CreateItems: UITestBase {
         assertTable(cell: 1, is: ITEM_NAME_TWO)
     }
     
-    func testCreateItemWithoutNameFails() {
+    func testCannotSaveWithoutItemName() {
         openItemForm()
-        saveNewItemForm()
-        
-        assertItemFormErrorIs(ERROR_MESSAGE)
+        assertItemFormSaveButton(isEnabled: false)
         
         enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
         

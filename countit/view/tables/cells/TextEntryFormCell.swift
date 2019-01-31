@@ -14,7 +14,7 @@ class TextEntryFormCell: UITableViewCell {
     var textBox = UITextField()
     let delegate: FormCellDelegate
     
-    init(placeholder: String?, text: String?, fieldName: String, numeric: Bool, delegate: FormCellDelegate) {
+    init(placeholder: String?, text: String?, fieldName: String, numeric: Bool, delegate: FormCellDelegate, accessibilityIdentifier: String) {
         self.fieldName = fieldName
         self.delegate = delegate
         textBox.placeholder = placeholder
@@ -26,10 +26,12 @@ class TextEntryFormCell: UITableViewCell {
         
         super.init(style: .value1, reuseIdentifier: "TextEntryFormCell")
         
+        self.accessibilityIdentifier = accessibilityIdentifier
         selectionStyle = .none
         
         self.addSubview(textBox)
         textBox.delegate = self
+        textBox.accessibilityIdentifier = AccessibilityIdentifiers.TEXT_FIELD_TEXT
         textBox.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -48,6 +50,9 @@ class TextEntryFormCell: UITableViewCell {
 extension TextEntryFormCell: FormCell {
     func setValue(to value: String) {
         textBox.text = value
+    }
+    
+    func selected() {
     }
 }
 
@@ -69,6 +74,11 @@ extension TextEntryFormCell: UITextFieldDelegate {
             delegate.selectionChanged(to: String(newText), for: fieldName)
             return true
         }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

@@ -39,10 +39,6 @@ class TextFieldView: UIStackView, UITextFieldDelegate {
         fieldName.text = fieldNameString
         fieldText.text = fieldTextString
         
-        fieldName.accessibilityIdentifier = AI.TEXT_FIELD_NAME
-        fieldText.accessibilityIdentifier = AI.TEXT_FIELD_TEXT
-        fieldError.accessibilityIdentifier = AI.TEXT_FIELD_ERROR
-        
         fieldName.textAlignment = .left
         fieldName.adjustsFontSizeToFitWidth = true
         fieldName.font = UIFont.boldSystemFont(ofSize: 30)

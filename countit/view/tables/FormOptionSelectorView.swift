@@ -18,6 +18,7 @@ class FormOptionSelectorView: UITableView {
         self.dataSource = dataSource
         self.tableFooterView = UIView()
         self.backgroundColor = c.TABLE_BACKGROUND
+        self.accessibilityIdentifier = AccessibilityIdentifiers.FORM_SELECTOR_TABLE
     }
     
     required init?(coder aDecoder: NSCoder) {

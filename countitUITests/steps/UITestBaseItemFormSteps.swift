@@ -25,36 +25,30 @@ extension UITestBase {
     
     func clearFormFields(name: Bool, description: Bool, target: Bool) {
         if name {
-            nameField!.clearText()
+            nameFieldText!.clearText()
         }
         if description {
-            nameField!.clearText()
+            nameFieldText!.clearText()
         }
         if target {
-            nameField!.clearText()
+            nameFieldText!.clearText()
         }
     }
     
     // helper method for enterNewDetails & updateItemForm above
     func updateForm(name: String?, description: String?, target: String?, existingItem: Bool) {
-        let existingItemName = existingItem ? nameField?.value as? String : nil
         if let nameUnwrapped = name {
-            nameField!.clearAndEnterText(newText: nameUnwrapped)
-            nameField!.typeText(RETURN_KEY)
+            nameFieldText!.clearAndEnterText(newText: nameUnwrapped)
+            nameFieldText!.typeText(RETURN_KEY)
         }
         if let descriptionUnwrapped = description {
-            descriptionField!.clearAndEnterText(newText: descriptionUnwrapped)
-            descriptionField!.typeText(RETURN_KEY)
+            descriptionFieldText!.clearAndEnterText(newText: descriptionUnwrapped)
+            descriptionFieldText!.typeText(RETURN_KEY)
         }
         if let targetUnwrapped = target {
-            targetField!.clearAndEnterText(newText: targetUnwrapped)
-            targetField!.typeText(RETURN_KEY)
+            targetValueFieldText!.clearAndEnterText(newText: targetUnwrapped)
+            targetValueFieldText!.typeText(RETURN_KEY)
         }
-        if existingItem {
-            app!.navigationBars[existingItemName!.uppercased()].buttons[AI.NAVIGATION_BAR_BUTTON_SAVE].tap()
-        }
-        else {
-            saveNewItemForm()
-        }
+        saveNewItemForm()
     }
 }

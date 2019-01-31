@@ -11,4 +11,6 @@ import Foundation
 protocol FormCell {
     
     func setValue(to value: String)
+    
+    func selected()
 }

@@ -35,10 +35,6 @@ class TargetFormView: UIStackView {
         value.keyboardType = .numberPad
         value.placeholder = "0"
         
-        direction.accessibilityIdentifier = AI.TARGET_FORM_DIRECTION_FIELD
-        value.accessibilityIdentifier = AI.TARGET_FORM_VALUE_FIELD
-        timePeriod.accessibilityIdentifier = AI.TARGET_FORM_TIMEPERIOD_FIELD
-        
         title.translatesAutoresizingMaskIntoConstraints = false
         direction.translatesAutoresizingMaskIntoConstraints = false
         value.translatesAutoresizingMaskIntoConstraints = false

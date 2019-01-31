@@ -10,8 +10,9 @@ import UIKit
 
 class FormOptionSelectorCell: UITableViewCell {
     
-    init(text: String, selected: Bool) {
+    init(text: String, selected: Bool, accessibilityIdentifier: String) {
         super.init(style: .value1, reuseIdentifier: "FormOptionSelectorCell")
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.textLabel?.text = text
         self.selectionStyle = .none
         self.tintColor = UIColor.red

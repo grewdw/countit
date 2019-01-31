@@ -6,9 +6,11 @@
 //  Copyright © 2019 David Grew. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol FormCellDelegate {
     
     func selectionChanged(to selection: String, for fieldName: String)
+    
+    func transitionTo(cellController: UIViewController)
 }
