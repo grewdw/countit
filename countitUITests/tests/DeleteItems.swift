@@ -13,8 +13,8 @@ class DeleteItems: UITestBase {
     override func setUp() {
         super.setUp()
         
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
-        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
     }
     
     override func tearDown() {

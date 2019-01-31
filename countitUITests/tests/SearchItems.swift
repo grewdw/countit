@@ -13,9 +13,9 @@ class SearchItems: UITestBase {
     override func setUp() {
         super.setUp()
         
-        createItemWithDetailsAndSave(name: ITEM_NAME_A, description: nil, target: nil)
-        createItemWithDetailsAndSave(name: ITEM_NAME_AB, description: nil, target: nil)
-        createItemWithDetailsAndSave(name: ITEM_NAME_ABC, description: nil, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_A, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_AB, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ABC, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
     }
     
     override func tearDown() {

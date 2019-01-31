@@ -23,9 +23,9 @@ class FormOptionDisplayCell: UITableViewCell {
         super.init(style: .value1, reuseIdentifier: "FormOptionDisplayCell")
         
         self.accessibilityIdentifier = accessibilityIdentifier
-        detailTextLabel?.accessibilityIdentifier = AccessibilityIdentifiers.OPTION_FIELD_TEXT
         textLabel?.text = label
         detailTextLabel?.text = currentValue
+        detailTextLabel?.accessibilityIdentifier = AccessibilityIdentifiers.OPTION_FIELD_TEXT
         accessoryType = enabled ? .disclosureIndicator : .none
         selectionStyle = .none
     }

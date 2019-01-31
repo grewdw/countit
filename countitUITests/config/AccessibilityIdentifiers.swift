@@ -16,12 +16,6 @@ class AccessibilityIdentifiers {
     public static let ITEM_FORM_TARGET_VALUE_FIELD = "itemFormTargetFields"
     public static let ITEM_FORM_TARGET_TIMEPERIOD_FIELD = "itemFormTargetTimePeriodField"
     
-    public static let AT_LEAST = "At least"
-    public static let AT_MOST = "At most"
-    public static let DAY = "Day"
-    public static let WEEK = "Week"
-    public static let MONTH = "Month"
-    
     public static let TEXT_FIELD_TEXT = "textFieldText"
     
     public static let OPTION_FIELD_TEXT = "optionFieldText"

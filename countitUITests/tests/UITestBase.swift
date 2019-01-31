@@ -30,6 +30,12 @@ class UITestBase: XCTestCase {
     let ITEM_TARGET_VALUE_TEN = "10"
     let ITEM_TARGET_VALUE_TWENTY = "20"
     
+    let AT_LEAST = "At least"
+    let AT_MOST = "At most"
+    let DAY = "Day"
+    let WEEK = "Week"
+    let MONTH = "Month"
+    
     let ERROR_MESSAGE = "* Must provide a name"
     
     let FIRST_CELL = "Cell0"
@@ -42,6 +48,7 @@ class UITestBase: XCTestCase {
     
     var itemTableAddButton: XCUIElement?
     var itemFormSaveButton: XCUIElement?
+    var backButton: XCUIElement?
     
     var nameField: XCUIElement?
     var nameFieldText: XCUIElement?
@@ -81,6 +88,7 @@ class UITestBase: XCTestCase {
         app = newApp
         itemTableAddButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_TABLE].buttons[AI.NAVIGATION_BAR_BUTTON_ADD]
         itemFormSaveButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_FORM].buttons[AI.NAVIGATION_BAR_BUTTON_SAVE]
+        backButton = newApp.navigationBars.buttons.element(boundBy: 0)
         nameField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_NAME_FIELD]
         nameFieldText = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_NAME_FIELD].textFields[AI.TEXT_FIELD_TEXT]
         descriptionField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_DESCRIPTION_FIELD]

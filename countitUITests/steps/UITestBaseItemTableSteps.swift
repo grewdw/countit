@@ -11,9 +11,9 @@ import XCTest
 
 extension UITestBase {
     
-    func createItemWithDetailsAndSave(name: String?, description: String?, target: String?) {
+    func createItemWithDetailsAndSave(name: String?, description: String?, targetDirection: String?, targetValue: String?, targetTimePeriod: String?) {
         openItemForm()
-        enterNewItemDetailsToFormAndSave(name: name, description: description, target: target)
+        enterNewItemDetailsToFormAndSave(name: name, description: description, targetDirection: targetDirection, targetValue: targetValue, targetTimePeriod: targetTimePeriod)
     }
     
     func openItemForm() {

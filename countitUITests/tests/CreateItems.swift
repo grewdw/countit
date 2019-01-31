@@ -19,30 +19,30 @@ class CreateItems: UITestBase {
     }
 
     func testCreateSingleItem() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: ITEM_TARGET_VALUE_TEN)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: MONTH)
         
         assertTableCountIs(1)
         assertTable(cell: 0, is: ITEM_NAME_ONE)
         
         select(FIRST_CELL)
         
-        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: ITEM_TARGET_VALUE_TEN)
+        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: MONTH)
     }
     
     func testCreateSingleItemTargetValueDefaultsToZero() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
         assertTableCountIs(1)
         
         select(FIRST_CELL)
         
-        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: ITEM_TARGET_VALUE_ZERO)
+        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_ZERO, targetTimePeriod: nil)
     }
     
     func testCreateMultipleItems() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
-        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
         assertTableCountIs(2)
         assertTable(cell: 0, is: ITEM_NAME_ONE)
@@ -53,7 +53,7 @@ class CreateItems: UITestBase {
         openItemForm()
         assertItemFormSaveButton(isEnabled: false)
         
-        enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, target: nil)
+        enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
         assertTableCountIs(1)
     }
