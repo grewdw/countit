@@ -58,7 +58,7 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 22.0
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = .gray
+        tableView.backgroundColor = Colours.TABLE_BACKGROUND
         self.view = tableView
     }
 }
@@ -145,12 +145,12 @@ extension ProgressTableController: ProgressTableViewDelegate {
     }
     
     func recordActivityButtonPressedFor(item: ItemDetailsDto) {
-        activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
+        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
         refreshTable()
     }
     
     func subtractActivityButtonPressedFor(item: ItemDetailsDto) {
-        activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
+        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
         refreshTable()
     }
 }
@@ -261,3 +261,4 @@ extension ProgressTableController: UISearchResultsUpdating {
         }
     }
 }
+

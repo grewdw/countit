@@ -15,8 +15,6 @@ class ItemForm: Form {
     private var name: String?
     private var description: String?
     private var targetForm: TargetForm
-    
-    private var fieldErrors: [ItemFormFields] = []
 
     init(_ id: NSManagedObjectID?, _ name: String?, _ description: String?, _ targetForm: TargetForm) {
         self.id = id
@@ -53,18 +51,10 @@ class ItemForm: Form {
             return true
         }
         else {
-            fieldErrors.append(ItemFormFields.NAME)
+            
             return false
         }
     }
     
-    func getFieldErrors() -> [ItemFormFields] {
-        return fieldErrors
-    }
 }
 
-enum ItemFormFields {
-    
-    case NAME
-    case DESCRIPTION
-}

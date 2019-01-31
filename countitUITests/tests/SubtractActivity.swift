@@ -13,8 +13,8 @@ class SubtractActivity: UITestBase {
     override func setUp() {
         super.setUp()
         
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, target: nil)
-        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: nil, target: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
     }
 
     override func tearDown() {

@@ -10,13 +10,13 @@ import UIKit
 
 class NavigationItemBuilder {
     
-    var controller: UIViewController
-    var title: String? = nil
-    var leftButton: NavBarButtonType?
-    var rightButton: NavBarButtonType?
-    var leftButtonTarget: NavBarButtonDelegate?
-    var rightButtonTarget: NavBarButtonDelegate?
-    var searchController: UISearchController?
+    private var controller: UIViewController
+    private var title: String? = nil
+    private var leftButton: NavBarButtonType?
+    private var rightButton: NavBarButtonType?
+    private var leftButtonTarget: NavBarButtonDelegate?
+    private var rightButtonTarget: NavBarButtonDelegate?
+    private var searchController: UISearchController?
     
     init(for controller: UIViewController) {
         self.controller = controller
@@ -55,6 +55,8 @@ class NavigationItemBuilder {
         if rightButton != nil {
             controller.navigationItem.rightBarButtonItem = getBarButton(rightButton!, rightButtonTarget!)
         }
+        controller.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        controller.navigationItem.titleView = UIImageView(image: UIImage(named: "NavBarImage"))
         controller.navigationItem.searchController = searchController
     }
     

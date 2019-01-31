@@ -15,46 +15,66 @@ extension UITestBase {
         itemFormSaveButton!.tap()
     }
     
-    func enterNewItemDetailsToFormAndSave(name: String?, description: String?, target: String?) {
-        updateForm(name: name, description: description, target: target, existingItem: false)
+    func enterNewItemDetailsToFormAndSave(name: String?, description: String?, targetDirection: String?, targetValue: String?, targetTimePeriod: String?) {
+        updateForm(name: name, description: description, targetDirection: targetDirection, targetValue: targetValue, targetTimePeriod: targetTimePeriod)
     }
     
-    func updateItemFormWithDetailsAndSave(name: String?, description: String?, target: String?) {
-        updateForm(name: name, description: description, target: target, existingItem: true)
+    func updateItemFormWithDetailsAndSave(name: String?, description: String?, targetDirection: String?, targetValue: String?, targetTimePeriod: String?) {
+        updateForm(name: name, description: description, targetDirection: targetDirection, targetValue: targetValue, targetTimePeriod: targetTimePeriod)
     }
     
     func clearFormFields(name: Bool, description: Bool, target: Bool) {
         if name {
-            nameField!.clearText()
+            nameFieldText!.clearText()
         }
         if description {
-            nameField!.clearText()
+            nameFieldText!.clearText()
         }
         if target {
-            nameField!.clearText()
+            nameFieldText!.clearText()
         }
     }
     
     // helper method for enterNewDetails & updateItemForm above
-    func updateForm(name: String?, description: String?, target: String?, existingItem: Bool) {
-        let existingItemName = existingItem ? nameField?.value as? String : nil
+    private func updateForm(name: String?, description: String?, targetDirection: String?, targetValue: String?, targetTimePeriod: String?) {
         if let nameUnwrapped = name {
-            nameField!.clearAndEnterText(newText: nameUnwrapped)
-            nameField!.typeText(RETURN_KEY)
+            nameFieldText!.clearAndEnterText(newText: nameUnwrapped)
+            nameFieldText!.typeText(RETURN_KEY)
         }
         if let descriptionUnwrapped = description {
-            descriptionField!.clearAndEnterText(newText: descriptionUnwrapped)
-            descriptionField!.typeText(RETURN_KEY)
+            descriptionFieldText!.clearAndEnterText(newText: descriptionUnwrapped)
+            descriptionFieldText!.typeText(RETURN_KEY)
         }
-        if let targetUnwrapped = target {
-            targetField!.clearAndEnterText(newText: targetUnwrapped)
-            targetField!.typeText(RETURN_KEY)
+        if let targetDirectionUnwrapped = targetDirection {
+            updateTargetDirection(to: targetDirectionUnwrapped)
         }
-        if existingItem {
-            app!.navigationBars[existingItemName!.uppercased()].buttons[AI.NAVIGATION_BAR_BUTTON_SAVE].tap()
+        if let targetValueUnwrapped = targetValue {
+            targetValueFieldText!.clearAndEnterText(newText: targetValueUnwrapped)
+            targetValueFieldText!.typeText(RETURN_KEY)
         }
-        else {
-            saveNewItemForm()
+        if let targetTimePeriodUnwrapped = targetTimePeriod {
+            updateTargetTimePeriod(to: targetTimePeriodUnwrapped)
         }
+        saveNewItemForm()
+    }
+    
+    func updateTargetDirection(to direction: String) {
+        clickOnTargetDirectionField()
+        formSelectorTable?.cells[direction].tap()
+        backButton?.tap()
+    }
+    
+    func clickOnTargetDirectionField() {
+        targetDirectionField?.tap()
+    }
+    
+    func updateTargetTimePeriod(to timePeriod: String) {
+        clickOnTargetTimePeriodField()
+        formSelectorTable?.cells[timePeriod].tap()
+        backButton?.tap()
+    }
+    
+    func clickOnTargetTimePeriodField() {
+        targetTimePeriodField?.tap()
     }
 }
