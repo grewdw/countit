@@ -18,6 +18,8 @@ class ItemFormView: UITableView {
         self.delegate = delegate
         self.dataSource = dataSource
         self.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_FORM_TABLE
+//        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing(_:))))
+//        self.keyboardDismissMode = .onDrag
     }
     
     required init?(coder aDecoder: NSCoder) {

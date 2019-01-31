@@ -14,8 +14,4 @@ class ViewResolver {
     func getCurrentProgressTableView(frame: CGRect) -> CurrentProgressTableView {
         return CurrentProgressTableView(frame: frame)
     }
-    
-    func getNewItemFormView(frame: CGRect, form: ItemForm?) -> NewItemFormView {
-        return NewItemFormView(frame: frame, form: form)
-    }
 }

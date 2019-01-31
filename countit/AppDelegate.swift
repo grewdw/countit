@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controllerResolver = ControllerResolver()
         controllerResolver.add(controller: ProgressTableController(
             controllerResolver, viewResolver, itemService, activityService), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
-        controllerResolver.add(controller: ItemFormControllerNew(controllerResolver, viewResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
+        controllerResolver.add(controller: ItemFormController(controllerResolver, viewResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
         controllerResolver.add(controller: PrimaryNavigationController(
             rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
         

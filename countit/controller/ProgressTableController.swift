@@ -145,12 +145,12 @@ extension ProgressTableController: ProgressTableViewDelegate {
     }
     
     func recordActivityButtonPressedFor(item: ItemDetailsDto) {
-        activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
+        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
         refreshTable()
     }
     
     func subtractActivityButtonPressedFor(item: ItemDetailsDto) {
-        activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
+        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
         refreshTable()
     }
 }
