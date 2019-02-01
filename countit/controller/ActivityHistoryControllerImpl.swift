@@ -28,7 +28,8 @@ class ActivityHistoryControllerImpl: UIViewController {
         if let itemUnwrapped = item {
             activityRecords = activityService.getActivityHistoryFor(item: itemUnwrapped).getActivity()
         }
-        let tableView = UITableView(frame: self.view.bounds, style: .plain)
+        let tableView = ActivityHistoryView(frame: self.view.bounds)
+        tableView.initialiseNavBar(for: self)
         tableView.delegate = self
         tableView.dataSource = self
         self.view = tableView

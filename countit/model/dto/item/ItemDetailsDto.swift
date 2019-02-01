@@ -28,17 +28,7 @@ class ItemDetailsDto {
         self.timePeriod = timePeriod
         self.listPosition = listPosition
     }
-    
-    init(itemForm: ItemForm) {
-        self.id = itemForm.getId()
-        self.name = itemForm.getName()!
-        self.description = itemForm.getDescription()
-        self.direction = itemForm.getTargetForm().getDirection()
-        self.value = itemForm.getTargetForm().getValue()
-        self.timePeriod = itemForm.getTargetForm().getTimePeriod()
-        self.listPosition = nil
-    }
-    
+
     init(itemEntity: ItemEntity, targetEntity: TargetEntity) {
         self.id = itemEntity.objectID
         self.name = itemEntity.name!

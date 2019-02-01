@@ -23,23 +23,23 @@ class DeleteItems: UITestBase {
     
     func testDeleteFirstItem() {
         deleteItemIn(cell: FIRST_CELL)
-        assertTableCountIs(1)
+        assertProgressTableCountIs(1)
     }
     
     func testDeleteSecondItem() {
         deleteItemIn(cell: SECOND_CELL)
-        assertTableCountIs(1)
+        assertProgressTableCountIs(1)
     }
     
     func testDeleteTwoItems() {
-        deleteItemIn(cell: FIRST_CELL)
         deleteItemIn(cell: SECOND_CELL)
-        assertTableCountIs(0)
+        deleteItemIn(cell: FIRST_CELL)
+        assertProgressTableCountIs(0)
     }
     
     func testCancelDelete() {
         initiateDeleteFor(cell: FIRST_CELL)
         cancelDeletefor(cell: FIRST_CELL)
-        assertTableCountIs(2)
+        assertProgressTableCountIs(2)
     }
 }

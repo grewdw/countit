@@ -77,4 +77,8 @@ extension UITestBase {
     func clickOnTargetTimePeriodField() {
         targetTimePeriodField?.tap()
     }
+    
+    func clickOnShowActivityButton() {
+        showActivityButton?.tap()
+    }
 }

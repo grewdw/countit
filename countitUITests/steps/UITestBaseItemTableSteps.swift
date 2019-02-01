@@ -20,12 +20,12 @@ extension UITestBase {
         itemTableAddButton!.tap()
     }
     
-    func select(_ cell: String) {
-        itemTable!.cells[cell].buttons["More Info"].tap()
+    func select(_ cell: Int) {
+        itemTable!.cells.element(boundBy: cell).buttons["More Info"].tap()
     }
     
-    func moveItem(cell fromCell: String, toCell: String) {
-        itemTable!.cells[fromCell].press(forDuration: 2, thenDragTo: itemTable!.cells[toCell])
+    func moveItem(cell fromCell: Int, toCell: Int) {
+        itemTable!.cells.element(boundBy: fromCell).press(forDuration: 2, thenDragTo: itemTable!.cells.element(boundBy: toCell))
     }
     
     func searchItemTableFor(string: String) {
@@ -38,24 +38,24 @@ extension UITestBase {
         searchField!.typeText(string)
     }
     
-    func deleteItemIn(cell: String) {
+    func deleteItemIn(cell: Int) {
         initiateDeleteFor(cell: cell)
-        itemTable!.cells[cell].buttons["Delete"].tap()
+        itemTable!.cells.element(boundBy: cell).buttons["Delete"].tap()
     }
     
-    func initiateDeleteFor(cell: String) {
-        itemTable!.cells[cell].swipeLeft()
+    func initiateDeleteFor(cell: Int) {
+        itemTable!.cells.element(boundBy: cell).swipeLeft()
     }
     
-    func cancelDeletefor(cell: String) {
-        itemTable!.cells[cell].swipeRight()
+    func cancelDeletefor(cell: Int) {
+        itemTable!.cells.element(boundBy: cell).swipeRight()
     }
     
-    func clickAddActivityButtonFor(cell: String) {
-        itemTable!.cells[cell].buttons[AI.PROGRESS_CELL_RECORD_ACTIVITY].tap()
+    func clickAddActivityButtonFor(cell: Int) {
+        itemTable!.cells.element(boundBy: cell).buttons[AI.PROGRESS_CELL_RECORD_ACTIVITY].tap()
     }
     
-    func clickSubtractActivityButtonFor(cell: String) {
-        itemTable!.cells[cell].buttons[AI.PROGRESS_CELL_SUBTRACT_ACTIVITY].tap()
+    func clickSubtractActivityButtonFor(cell: Int) {
+        itemTable!.cells.element(boundBy: cell).buttons[AI.PROGRESS_CELL_SUBTRACT_ACTIVITY].tap()
     }
 }

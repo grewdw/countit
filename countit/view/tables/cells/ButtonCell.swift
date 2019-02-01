@@ -14,16 +14,16 @@ class ButtonCell: UITableViewCell {
     let delegate: FormCellDelegate
     let buttonPressAction: () -> Void
     
-    init(buttonText: String, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void) {
+    init(buttonText: String, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
         self.delegate = delegate
         self.buttonPressAction = buttonPressAction
         super.init(style: .value1, reuseIdentifier: "buttonCell")
-        
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.addSubview(button)
         
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         format(button: button, text: buttonText)
-        
+        button.accessibilityIdentifier = AccessibilityIdentifiers.BUTTON_FIELD_BUTTON
         button.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

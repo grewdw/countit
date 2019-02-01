@@ -129,7 +129,8 @@ extension ItemFormController: UITableViewDataSource {
                                   buttonPressAction: { () -> Void in
                                     var activityController = self.controllerResolver.get(.ACTIVITY_HISTORY_CONTROLLER) as? ActivityHistoryController
                                     activityController = activityController?.withItem(id: self.selectedItem!.getId()!)
-                                    self.transitionTo(cellController: activityController as! UIViewController) } )
+                                    self.transitionTo(cellController: activityController as! UIViewController) },
+                                  accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
         }
     }
 }
