@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class ActivityServiceImpl: ActivityService {
-    
+
     private let activityRepository: ActivityRepository
     private let clock: Clock
     private let calendar: Calendar
@@ -24,6 +24,14 @@ class ActivityServiceImpl: ActivityService {
     func record(activityUpdate activity: ActivityUpdateDto) -> Bool {
         return activity.getValue() < 0 ? processSubtract(activity: activity) : processAdd(activity: activity)
 
+    }
+    
+    func getActivityHistoryFor(item: NSManagedObjectID) -> ActivityHistoryDto {
+        return ActivityHistoryDto(id: item, activity: activityRepository.getActivitiesFor(item: item))
+    }
+    
+    func delete(activityRecord: ActivityRecordDto) -> Bool {
+        return activityRepository.delete(activityRecord: activityRecord)
     }
     
     private func processSubtract(activity: ActivityUpdateDto) -> Bool {

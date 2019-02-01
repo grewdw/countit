@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controllerResolver.add(controller: ItemFormController(controllerResolver, viewResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
         controllerResolver.add(controller: PrimaryNavigationController(
             rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
+        controllerResolver.add(controller: ActivityHistoryControllerImpl(activityService: activityService), called: ControllerType.ACTIVITY_HISTORY_CONTROLLER)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER)

@@ -50,6 +50,9 @@ class ItemFormController: UIViewController {
         if !selectingOption {
             updateFieldValues()
             initialiseView()
+            if selectedItem != nil {
+                sections.updateValue([ItemFormField.SHOW_ACTIVITY], forKey: 2)
+            }
         }
         else {
             selectingOption = false
@@ -60,6 +63,7 @@ class ItemFormController: UIViewController {
         if !selectingOption {
             selectedItem = nil
             view = nil
+            sections.removeValue(forKey: 2)
         }
     }
     
@@ -120,6 +124,12 @@ extension ItemFormController: UITableViewDataSource {
                                          availableValues: timePeriodOptions, fieldName: ItemFormField.TIMEPERIOD.rawValue,
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
+        case .SHOW_ACTIVITY:
+                return ButtonCell(buttonText: "Show activity", delegate: self,
+                                  buttonPressAction: { () -> Void in
+                                    var activityController = self.controllerResolver.get(.ACTIVITY_HISTORY_CONTROLLER) as? ActivityHistoryController
+                                    activityController = activityController?.withItem(id: self.selectedItem!.getId()!)
+                                    self.transitionTo(cellController: activityController as! UIViewController) } )
         }
     }
 }
@@ -175,4 +185,5 @@ enum ItemFormField: String {
     case DIRECTION = "direction"
     case TARGET_VALUE = "targetValue"
     case TIMEPERIOD = "timePeriod"
+    case SHOW_ACTIVITY = "showActivity"
 }

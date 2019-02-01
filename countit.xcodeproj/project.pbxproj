@@ -24,6 +24,12 @@
 		1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E921C2F328000E3621 /* ControllersType.swift */; };
 		1D7D37EC21C30041000E3621 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37EB21C30041000E3621 /* Form.swift */; };
 		1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8C4321C698AD009427FE /* ViewResolver.swift */; };
+		1D9D329E22043988007C675F /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D329D22043988007C675F /* ButtonCell.swift */; };
+		1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */; };
+		1D9D32A222044FEB007C675F /* ActivityRecordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */; };
+		1D9D32A6220450FF007C675F /* ActivityHistoryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D32A5220450FF007C675F /* ActivityHistoryDto.swift */; };
+		1D9D32A82204526F007C675F /* ActivityRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D32A72204526F007C675F /* ActivityRecordCell.swift */; };
+		1D9D32AA22045472007C675F /* ActivityHistoryControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D32A922045472007C675F /* ActivityHistoryControllerImpl.swift */; };
 		1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */; };
 		1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3900B21B5BFD000C11CD7 /* countit.xcdatamodeld */; };
 		1DB3900F21B5BFD200C11CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB3900E21B5BFD200C11CD7 /* Assets.xcassets */; };
@@ -118,6 +124,12 @@
 		1D7D37E921C2F328000E3621 /* ControllersType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersType.swift; sourceTree = "<group>"; };
 		1D7D37EB21C30041000E3621 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		1D9B8C4321C698AD009427FE /* ViewResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewResolver.swift; path = countit/View/ViewResolver.swift; sourceTree = SOURCE_ROOT; };
+		1D9D329D22043988007C675F /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = countit/View/Tables/Cells/ButtonCell.swift; sourceTree = SOURCE_ROOT; };
+		1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityHistoryController.swift; path = countit/Controller/ActivityHistoryController.swift; sourceTree = SOURCE_ROOT; };
+		1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecordDto.swift; sourceTree = "<group>"; };
+		1D9D32A5220450FF007C675F /* ActivityHistoryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryDto.swift; sourceTree = "<group>"; };
+		1D9D32A72204526F007C675F /* ActivityRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityRecordCell.swift; path = countit/View/Tables/Cells/ActivityRecordCell.swift; sourceTree = SOURCE_ROOT; };
+		1D9D32A922045472007C675F /* ActivityHistoryControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityHistoryControllerImpl.swift; path = countit/Controller/ActivityHistoryControllerImpl.swift; sourceTree = SOURCE_ROOT; };
 		1DB3900121B5BFD000C11CD7 /* countit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = countit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB3900421B5BFD000C11CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB3900C21B5BFD000C11CD7 /* countit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = countit.xcdatamodel; sourceTree = "<group>"; };
@@ -254,6 +266,8 @@
 				1DF653F921FF7C9000AA65C3 /* TextEntryFormCell.swift */,
 				1DF653FB21FF7CB000AA65C3 /* FormOptionDisplayCell.swift */,
 				1DF653FF21FF956600AA65C3 /* FormCell.swift */,
+				1D9D329D22043988007C675F /* ButtonCell.swift */,
+				1D9D32A72204526F007C675F /* ActivityRecordCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -261,10 +275,9 @@
 		1D7D37D721C05F01000E3621 /* dto */ = {
 			isa = PBXGroup;
 			children = (
-				1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */,
+				1D9D32A422045051007C675F /* activity */,
+				1D9D32A322045040007C675F /* item */,
 				1DEB4BA221D946DB002F09CF /* TargetDto.swift */,
-				1DEB4BB421E3892B002F09CF /* ActivityUpdateDto.swift */,
-				1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -301,6 +314,25 @@
 				1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */,
 			);
 			path = enums;
+			sourceTree = "<group>";
+		};
+		1D9D32A322045040007C675F /* item */ = {
+			isa = PBXGroup;
+			children = (
+				1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */,
+				1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */,
+			);
+			path = item;
+			sourceTree = "<group>";
+		};
+		1D9D32A422045051007C675F /* activity */ = {
+			isa = PBXGroup;
+			children = (
+				1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */,
+				1DEB4BB421E3892B002F09CF /* ActivityUpdateDto.swift */,
+				1D9D32A5220450FF007C675F /* ActivityHistoryDto.swift */,
+			);
+			path = activity;
 			sourceTree = "<group>";
 		};
 		1DB38FF821B5BFD000C11CD7 = {
@@ -400,6 +432,8 @@
 				1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */,
 				1DF653ED21FE276700AA65C3 /* FormOptionSelectorController.swift */,
 				1DF653F521FE432E00AA65C3 /* PrimaryNavigationController.swift */,
+				1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */,
+				1D9D32A922045472007C675F /* ActivityHistoryControllerImpl.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -725,6 +759,7 @@
 				1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */,
 				1D76F07021BC52C800A53853 /* ProgressTableViewDelegate.swift in Sources */,
 				1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */,
+				1D9D32A6220450FF007C675F /* ActivityHistoryDto.swift in Sources */,
 				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1D7D37EC21C30041000E3621 /* Form.swift in Sources */,
@@ -734,11 +769,14 @@
 				1DF653FE21FF951500AA65C3 /* FormCellDelegate.swift in Sources */,
 				1DEB4B9C21D93809002F09CF /* TargetForm.swift in Sources */,
 				1DF653EE21FE276700AA65C3 /* FormOptionSelectorController.swift in Sources */,
+				1D9D329E22043988007C675F /* ButtonCell.swift in Sources */,
 				1DF653F621FE432E00AA65C3 /* PrimaryNavigationController.swift in Sources */,
 				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
+				1D9D32AA22045472007C675F /* ActivityHistoryControllerImpl.swift in Sources */,
+				1D9D32A222044FEB007C675F /* ActivityRecordDto.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
 				1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */,
 				1D7D37EA21C2F328000E3621 /* ControllersType.swift in Sources */,
@@ -752,6 +790,7 @@
 				1DF653F221FE371400AA65C3 /* FormOptionSelectorCell.swif.swift in Sources */,
 				1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
+				1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
 				1D76F06221BBF81800A53853 /* ItemForm.swift in Sources */,
 				1DF653FA21FF7C9000AA65C3 /* TextEntryFormCell.swift in Sources */,
@@ -764,6 +803,7 @@
 				1D76F06921BC214600A53853 /* FormController.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 				1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */,
+				1D9D32A82204526F007C675F /* ActivityRecordCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

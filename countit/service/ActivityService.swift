@@ -14,4 +14,8 @@ protocol ActivityService {
     func record(activityUpdate activity: ActivityUpdateDto) -> Bool
     
     func getCurrentTargetProgressFor(item: ItemDetailsDto) -> ItemSummaryDto
+    
+    func getActivityHistoryFor(item: NSManagedObjectID) -> ActivityHistoryDto
+    
+    func delete(activityRecord: ActivityRecordDto) -> Bool
 }
