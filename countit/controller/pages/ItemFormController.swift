@@ -1,5 +1,5 @@
 //
-//  FormController.swift
+//  ItemFormController.swift
 //  countit
 //
 //  Created by David Grew on 08/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FormController {
+protocol ItemFormController {
     
     func submitForm()
     

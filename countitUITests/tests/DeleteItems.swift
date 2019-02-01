@@ -33,6 +33,7 @@ class DeleteItems: UITestBase {
     
     func testDeleteTwoItems() {
         deleteItemIn(cell: SECOND_CELL)
+        assertProgressTableCountIs(1)
         deleteItemIn(cell: FIRST_CELL)
         assertProgressTableCountIs(0)
     }

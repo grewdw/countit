@@ -29,16 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemService = ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
         
         let viewResolver = ViewResolver()
-        let controllerResolver = ControllerResolver()
-        controllerResolver.add(controller: ProgressTableController(
-            controllerResolver, viewResolver, itemService, activityService), called: ControllerType.PROGRESS_TABLE_CONTROLLER)
-        controllerResolver.add(controller: ItemFormController(controllerResolver, viewResolver, itemService), called: ControllerType.ITEM_FORM_CONTROLLER)
-        controllerResolver.add(controller: PrimaryNavigationController(
-            rootViewController: controllerResolver.get(ControllerType.PROGRESS_TABLE_CONTROLLER)!), called: ControllerType.PRIMARY_NAV_CONTROLLER)
-        controllerResolver.add(controller: ActivityHistoryControllerImpl(activityService: activityService), called: ControllerType.ACTIVITY_HISTORY_CONTROLLER)
+        let controllerResolver = ControllerResolver(activityService: activityService, itemService: itemService)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER)
+        window!.rootViewController = controllerResolver.getPrimaryNavController()
         window!.makeKeyAndVisible()
         return true
     }

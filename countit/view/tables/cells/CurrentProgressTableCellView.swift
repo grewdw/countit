@@ -19,7 +19,7 @@ class CurrentProgressTableCellView: UITableViewCell {
     
     var item: ItemSummaryDto
     
-    var delegate: ProgressTableViewDelegate?
+    var delegate: ProgressTableController?
     
     let CELL_SPACING_TOP: CGFloat = 10
     let CELL_SPACING_BOTTOM: CGFloat = -10

@@ -1,5 +1,5 @@
 //
-//  ItemFormControllerNew.swift
+//  ItemFormControllerImpl.swift
 //  countit
 //
 //  Created by David Grew on 28/01/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemFormController: UIViewController {
+class ItemFormControllerImpl: UIViewController {
     
     private let DEFAULT_NAME = ""
     private let DEFAULT_DESCRIPTION = ""
@@ -84,7 +84,7 @@ class ItemFormController: UIViewController {
     }
 }
 
-extension ItemFormController: UITableViewDataSource {
+extension ItemFormControllerImpl: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -125,17 +125,15 @@ extension ItemFormController: UITableViewDataSource {
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
         case .SHOW_ACTIVITY:
-                return ButtonCell(buttonText: "Show activity", delegate: self,
-                                  buttonPressAction: { () -> Void in
-                                    var activityController = self.controllerResolver.get(.ACTIVITY_HISTORY_CONTROLLER) as? ActivityHistoryController
-                                    activityController = activityController?.withItem(id: self.selectedItem!.getId()!)
-                                    self.transitionTo(cellController: activityController as! UIViewController) },
-                                  accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
+            return ButtonCell(buttonText: "Show activity", delegate: self,
+                              buttonPressAction: { () -> Void in                                self.transitionTo(cellController: self.controllerResolver.getActivityHistoryController()
+                                .withItem(id: self.selectedItem!.getId()!) as! UIViewController) },
+                              accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
         }
     }
 }
 
-extension ItemFormController: UITableViewDelegate {
+extension ItemFormControllerImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tableView = view as? UITableView
         let cell = tableView?.cellForRow(at: indexPath) as? FormCell
@@ -143,7 +141,7 @@ extension ItemFormController: UITableViewDelegate {
     }
 }
 
-extension ItemFormController: FormController {
+extension ItemFormControllerImpl: ItemFormController {
     func submitForm() {
         let _ = itemService.saveItem(ItemDetailsDto(
             selectedItem?.getId(),
@@ -153,8 +151,7 @@ extension ItemFormController: FormController {
             Int(fieldNameToValueMap[.TARGET_VALUE]!) ?? 0,
             TargetTimePeriod(rawValue: fieldNameToValueMap[.TIMEPERIOD]!)!,
             selectedItem?.getListPosition()))
-        let navController = controllerResolver.get(.PRIMARY_NAV_CONTROLLER) as? UINavigationController
-        navController?.popViewController(animated: true)
+        controllerResolver.getPrimaryNavController().popViewController(animated: true)
     }
     
     func with(item: ItemDetailsDto) {
@@ -162,7 +159,7 @@ extension ItemFormController: FormController {
     }
 }
 
-extension ItemFormController: FormCellDelegate {
+extension ItemFormControllerImpl: FormCellDelegate {
     func selectionChanged(to selection: String, for fieldName: String) {
         if let changedField = ItemFormField.init(rawValue: fieldName) {
             fieldNameToValueMap.updateValue(selection, forKey: changedField)
@@ -174,8 +171,8 @@ extension ItemFormController: FormCellDelegate {
     
     func transitionTo(cellController: UIViewController) {
         selectingOption = true
-        let navController = controllerResolver.get(.PRIMARY_NAV_CONTROLLER) as? UINavigationController
-        navController?.pushViewController(cellController, animated: true)
+        controllerResolver.getPrimaryNavController()
+            .pushViewController(cellController, animated: true)
     }
 }
 
