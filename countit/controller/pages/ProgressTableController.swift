@@ -1,5 +1,5 @@
 //
-//  TableController.swift
+//  ProgressTableController.swift
 //  countit
 //
 //  Created by David Grew on 08/12/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-protocol ProgressTableViewDelegate {
+protocol ProgressTableController {
     
     func buttonPressed(_ button: NavBarButtonType)
     

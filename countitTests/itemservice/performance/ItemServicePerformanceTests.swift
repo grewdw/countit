@@ -38,7 +38,7 @@ class ItemServicePerformanceTests: XCTestCase {
         itemRepository = ItemRepositoryImpl(context: context)
         target = ItemServiceImpl(activityService: activityService, itemRepository: itemRepository!, clock: clock!)
         
-        for count in 1...1000 {
+        for count in 1...100 {
             dataLoadItem(number: count)
         }
         

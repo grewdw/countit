@@ -10,9 +10,9 @@ import UIKit
 
 class ItemFormView: UITableView {
     
-    private let formController: FormController
+    private let formController: ItemFormController
     
-    init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource, formController: FormController) {
+    init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource, formController: ItemFormController) {
         self.formController = formController
         super.init(frame: frame, style: .grouped)
         self.delegate = delegate

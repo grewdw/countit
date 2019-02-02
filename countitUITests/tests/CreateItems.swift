@@ -21,8 +21,8 @@ class CreateItems: UITestBase {
     func testCreateSingleItem() {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: MONTH)
         
-        assertTableCountIs(1)
-        assertTable(cell: 0, is: ITEM_NAME_ONE)
+        assertProgressTableCountIs(1)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE)
         
         select(FIRST_CELL)
         
@@ -32,7 +32,7 @@ class CreateItems: UITestBase {
     func testCreateSingleItemTargetValueDefaultsToZero() {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
-        assertTableCountIs(1)
+        assertProgressTableCountIs(1)
         
         select(FIRST_CELL)
         
@@ -44,9 +44,9 @@ class CreateItems: UITestBase {
         
         createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
-        assertTableCountIs(2)
-        assertTable(cell: 0, is: ITEM_NAME_ONE)
-        assertTable(cell: 1, is: ITEM_NAME_TWO)
+        assertProgressTableCountIs(2)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE)
+        assertProgressTable(cell: 1, is: ITEM_NAME_TWO)
     }
     
     func testCannotSaveWithoutItemName() {
@@ -55,7 +55,7 @@ class CreateItems: UITestBase {
         
         enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
-        assertTableCountIs(1)
+        assertProgressTableCountIs(1)
     }
 
 }

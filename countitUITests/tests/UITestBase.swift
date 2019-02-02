@@ -38,8 +38,8 @@ class UITestBase: XCTestCase {
     
     let ERROR_MESSAGE = "* Must provide a name"
     
-    let FIRST_CELL = "Cell0"
-    let SECOND_CELL = "Cell1"
+    let FIRST_CELL = 0
+    let SECOND_CELL = 1
     
     let RETURN_KEY = String(XCUIKeyboardKey.return.rawValue)
     let DELETE_KEY = String(XCUIKeyboardKey.delete.rawValue)
@@ -65,9 +65,12 @@ class UITestBase: XCTestCase {
     var targetTimePeriodField: XCUIElement?
     var targetTimePeriodFieldLabel: XCUIElement?
     
+    var showActivityButton: XCUIElement?
+    
     var itemTable: XCUIElement?
     var itemForm: XCUIElement?
     var formSelectorTable: XCUIElement?
+    var activityHistoryTable: XCUIElement?
     
     var searchField: XCUIElement?
     
@@ -99,9 +102,11 @@ class UITestBase: XCTestCase {
         targetValueFieldText = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_VALUE_FIELD].textFields[AI.TEXT_FIELD_TEXT]
         targetTimePeriodField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_TIMEPERIOD_FIELD]
         targetTimePeriodFieldLabel = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_TARGET_TIMEPERIOD_FIELD].staticTexts[AI.OPTION_FIELD_TEXT]
+        showActivityButton = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_SHOW_ACTIVITY_BUTTON].buttons[AI.BUTTON_FIELD_BUTTON]
         itemTable = newApp.tables[AI.ITEM_TABLE]
         itemForm = newApp.tables[AI.ITEM_FORM_TABLE]
         formSelectorTable = newApp.tables[AI.FORM_SELECTOR_TABLE]
+        activityHistoryTable = newApp.tables[AI.ACTIVITY_HISTORY_TABLE]
         searchField = newApp.searchFields["Search items"]
     }
     

@@ -1,5 +1,5 @@
 //
-//  CurrentProgressController.swift
+//  ProgressTableControllerImpl.swift
 //  countit
 //
 //  Created by David Grew on 03/12/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ProgressTableController: UIViewController, UISearchBarDelegate {
+class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     
     private let controllerResolver: ControllerResolver
     private let viewResolver: ViewResolver
@@ -39,11 +39,11 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
         getItems()
         initiateView()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         refreshTable()
     }
-
+    
     func initiateView() {
         let tableView = viewResolver.getCurrentProgressTableView(frame: self.view.bounds)
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
@@ -63,7 +63,7 @@ class ProgressTableController: UIViewController, UISearchBarDelegate {
     }
 }
 
-extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
+extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSource {
     
     func getItems() {
         items = itemService.getItems()
@@ -77,7 +77,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     
     func filterItems(containing searchText: String) {
         filteredItems = items.filter({( item : ItemSummaryDto) -> Bool in
-        return item.getItemDetailsDto().getName().lowercased().contains(searchText.lowercased())
+            return item.getItemDetailsDto().getName().lowercased().contains(searchText.lowercased())
         })
         reloadTableData()
     }
@@ -108,14 +108,12 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func toItemController(item: ItemDetailsDto?) {
-        if let parentController = controllerResolver.get(ControllerType.PRIMARY_NAV_CONTROLLER) as? UINavigationController {
-            if let itemFormController = controllerResolver.get(ControllerType.ITEM_FORM_CONTROLLER) as? FormController {
-                if let itemToAdd = item {
-                    itemFormController.with(item: itemToAdd)
-                }
-                parentController.pushViewController(itemFormController as! UIViewController, animated: true)
+        let parentController = controllerResolver.getPrimaryNavController()
+        let itemFormController = controllerResolver.getItemFormController()
+            if let itemToAdd = item {
+                itemFormController.with(item: itemToAdd)
             }
-        }
+        parentController.pushViewController(itemFormController as! UIViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -129,7 +127,7 @@ extension ProgressTableController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProgressTableController: ProgressTableViewDelegate {
+extension ProgressTableControllerImpl: ProgressTableController {
     
     func buttonPressed(_ button: NavBarButtonType) {
         switch button {
@@ -155,7 +153,7 @@ extension ProgressTableController: ProgressTableViewDelegate {
     }
 }
 
-extension ProgressTableController {
+extension ProgressTableControllerImpl {
     
     @objc func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
         
@@ -201,7 +199,7 @@ extension ProgressTableController {
                 tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                 Path.initialIndexPath = indexPath
                 if !filteringItems {
-                  itemService.persistTableOrder(for: items)
+                    itemService.persistTableOrder(for: items)
                 }
             }
             
@@ -249,7 +247,7 @@ extension ProgressTableController {
     }
 }
 
-extension ProgressTableController: UISearchResultsUpdating {
+extension ProgressTableControllerImpl: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text?.isEmpty ?? false || searchController.searchBar.text == "" {

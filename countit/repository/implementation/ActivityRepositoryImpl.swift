@@ -31,16 +31,27 @@ class ActivityRepositoryImpl: ActivityRepository {
         return false
     }
     
-    func getActivitiesFor(item: NSManagedObjectID) -> [ActivityEntity] {
+    func getActivitiesFor(item: NSManagedObjectID) -> [ActivityRecordDto] {
         let request: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
         request.predicate = NSPredicate(format: "item == %@", item)
-        return getActivities(with: request)
+        request.sortDescriptors = [NSSortDescriptor(key: "createdTimestamp", ascending: false)]
+        return toDtoFrom(activityEntities: getActivities(with: request))
     }
     
     func getActivitiesFor(item: NSManagedObjectID, fromStartDate start: Date, toEndDate end: Date) -> [ActivityEntity] {
         let request: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
         request.predicate = NSPredicate(format: "item == %@ AND createdTimestamp >= %@ AND createdTimestamp < %@", item, start as NSDate, end as NSDate)
         return getActivities(with: request)
+    }
+    
+    func delete(activityRecord: ActivityRecordDto) -> Bool {
+        if let activity = context.object(with: activityRecord.getId()) as? ActivityEntity {
+            context.delete(activity)
+            return saveContext()
+        }
+        else {
+            return false
+        }
     }
     
     private func getActivities(with request: NSFetchRequest<ActivityEntity>) -> [ActivityEntity] {
@@ -54,6 +65,14 @@ class ActivityRepositoryImpl: ActivityRepository {
     
     private func getItemWith(id: NSManagedObjectID) -> ItemEntity? {
         return context.object(with: id) as? ItemEntity
+    }
+    
+    private func toDtoFrom(activityEntities: [ActivityEntity]) -> [ActivityRecordDto] {
+        var dtoArray: [ActivityRecordDto] = []
+        for entity in activityEntities {
+            dtoArray.append(ActivityRecordDto(activityEntity: entity))
+        }
+        return dtoArray
     }
     
     private func saveContext() -> Bool {

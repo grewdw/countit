@@ -29,17 +29,17 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testDay_secondBeforeDayStart() {
         runTestForTodayWith(timePeriod: .DAY, activityTimestamps: [ONE_SECOND_BEFORE_DAY_START], expectedCount: 0)
-        testItemCountAt(date: YESTERDAY, expectedCount: 1)
+        assertItemProgressCountAt(date: YESTERDAY, expectedCount: 1)
     }
     
     func testDay_secondAfterDayEnd() {
         runTestForTodayWith(timePeriod: .DAY, activityTimestamps: [ONE_SECOND_AFTER_DAY_END], expectedCount: 0)
-        testItemCountAt(date: TOMORROW, expectedCount: 1)
+        assertItemProgressCountAt(date: TOMORROW, expectedCount: 1)
     }
     
     func testDay_DayEndExact() {
         runTestForTodayWith(timePeriod: .DAY, activityTimestamps: [DAY_END_EXACT], expectedCount: 0)
-        testItemCountAt(date: TOMORROW, expectedCount: 1)
+        assertItemProgressCountAt(date: TOMORROW, expectedCount: 1)
     }
     
     func testDay_secondBeforeDayEnd() {
@@ -56,8 +56,8 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testDay_complextTest() {
         runTestForTodayWith(timePeriod: .DAY, activityTimestamps: getAllTimeStamps(), expectedCount: 3)
-        testItemCountAt(date: TOMORROW, expectedCount: 2)
-        testItemCountAt(date: YESTERDAY, expectedCount: 1)
+        assertItemProgressCountAt(date: TOMORROW, expectedCount: 2)
+        assertItemProgressCountAt(date: YESTERDAY, expectedCount: 1)
     }
     
     func testWeek_secondAfterWeekStart() {
@@ -70,17 +70,17 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testWeek_secondBeforeWeekStart() {
         runTestForTodayWith(timePeriod: .WEEK, activityTimestamps: [ONE_SECOND_BEFORE_WEEK_START], expectedCount: 0)
-        testItemCountAt(date: LAST_WEEK, expectedCount: 1)
+        assertItemProgressCountAt(date: LAST_WEEK, expectedCount: 1)
     }
     
     func testWeek_secondAfterWeekEnd() {
         runTestForTodayWith(timePeriod: .WEEK, activityTimestamps: [ONE_SECOND_AFTER_WEEK_END], expectedCount: 0)
-        testItemCountAt(date: NEXT_WEEK, expectedCount: 1)
+        assertItemProgressCountAt(date: NEXT_WEEK, expectedCount: 1)
     }
     
     func testWeek_WeekEndExact() {
         runTestForTodayWith(timePeriod: .WEEK, activityTimestamps: [WEEK_END_EXACT], expectedCount: 0)
-        testItemCountAt(date: NEXT_WEEK, expectedCount: 1)
+        assertItemProgressCountAt(date: NEXT_WEEK, expectedCount: 1)
     }
     
     func testWeek_secondBeforeWeekEnd() {
@@ -97,8 +97,8 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testWeek_complextTest() {
         runTestForTodayWith(timePeriod: .WEEK, activityTimestamps: getAllTimeStamps(), expectedCount: 9)
-        testItemCountAt(date: NEXT_WEEK, expectedCount: 2)
-        testItemCountAt(date: LAST_WEEK, expectedCount: 1)
+        assertItemProgressCountAt(date: NEXT_WEEK, expectedCount: 2)
+        assertItemProgressCountAt(date: LAST_WEEK, expectedCount: 1)
     }
     
     func testMonth_secondAfterMonthStart() {
@@ -111,17 +111,17 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testMonth_secondBeforeMonthStart() {
         runTestForTodayWith(timePeriod: .MONTH, activityTimestamps: [ONE_SECOND_BEFORE_MONTH_START], expectedCount: 0)
-        testItemCountAt(date: LAST_MONTH, expectedCount: 1)
+        assertItemProgressCountAt(date: LAST_MONTH, expectedCount: 1)
     }
     
     func testMonth_secondAfterMonthEnd() {
         runTestForTodayWith(timePeriod: .MONTH, activityTimestamps: [ONE_SECOND_AFTER_MONTH_END], expectedCount: 0)
-        testItemCountAt(date: NEXT_MONTH, expectedCount: 1)
+        assertItemProgressCountAt(date: NEXT_MONTH, expectedCount: 1)
     }
     
     func testMonth_MonthEndExact() {
         runTestForTodayWith(timePeriod: .MONTH, activityTimestamps: [MONTH_END_EXACT], expectedCount: 0)
-        testItemCountAt(date: NEXT_MONTH, expectedCount: 1)
+        assertItemProgressCountAt(date: NEXT_MONTH, expectedCount: 1)
     }
     
     func testMonth_secondBeforeMonthEnd() {
@@ -138,14 +138,14 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testMonth_complextTest() {
         runTestForTodayWith(timePeriod: .MONTH, activityTimestamps: getAllTimeStamps(), expectedCount: 15)
-        testItemCountAt(date: NEXT_MONTH, expectedCount: 2)
-        testItemCountAt(date: LAST_MONTH, expectedCount: 1)
+        assertItemProgressCountAt(date: NEXT_MONTH, expectedCount: 2)
+        assertItemProgressCountAt(date: LAST_MONTH, expectedCount: 1)
     }
     
     private func runTestForTodayWith(timePeriod: TargetTimePeriod, activityTimestamps: [String], expectedCount: Int) {
         createItem(withTargetTimePeriod: timePeriod)
         recordActivity(withTimestamps: activityTimestamps)
         
-        testItemCountAt(date: TODAY, expectedCount: expectedCount)
+        assertItemProgressCountAt(date: TODAY, expectedCount: expectedCount)
     }
 }

@@ -25,33 +25,33 @@ class SearchItems: UITestBase {
     func testDynamicSearchForItems() {
         searchItemTableFor(string: "a")
         
-        assertTableCountIs(3)
-        assertTable(cell: 0, is: ITEM_NAME_A)
-        assertTable(cell: 1, is: ITEM_NAME_AB)
-        assertTable(cell: 2, is: ITEM_NAME_ABC)
+        assertProgressTableCountIs(3)
+        assertProgressTable(cell: 0, is: ITEM_NAME_A)
+        assertProgressTable(cell: 1, is: ITEM_NAME_AB)
+        assertProgressTable(cell: 2, is: ITEM_NAME_ABC)
         
         addToItemTableSearchWith(string: "b")
         
-        assertTableCountIs(2)
-        assertTable(cell: 0, is: ITEM_NAME_AB)
-        assertTable(cell: 1, is: ITEM_NAME_ABC)
+        assertProgressTableCountIs(2)
+        assertProgressTable(cell: 0, is: ITEM_NAME_AB)
+        assertProgressTable(cell: 1, is: ITEM_NAME_ABC)
         
         addToItemTableSearchWith(string: "c")
         
-        assertTableCountIs(1)
-        assertTable(cell: 0, is: ITEM_NAME_ABC)
+        assertProgressTableCountIs(1)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ABC)
         
         addToItemTableSearchWith(string: DELETE_KEY)
         
-        assertTableCountIs(2)
-        assertTable(cell: 0, is: ITEM_NAME_AB)
-        assertTable(cell: 1, is: ITEM_NAME_ABC)
+        assertProgressTableCountIs(2)
+        assertProgressTable(cell: 0, is: ITEM_NAME_AB)
+        assertProgressTable(cell: 1, is: ITEM_NAME_ABC)
         
         addToItemTableSearchWith(string: DELETE_KEY)
         
-        assertTableCountIs(3)
-        assertTable(cell: 0, is: ITEM_NAME_A)
-        assertTable(cell: 1, is: ITEM_NAME_AB)
-        assertTable(cell: 2, is: ITEM_NAME_ABC)
+        assertProgressTableCountIs(3)
+        assertProgressTable(cell: 0, is: ITEM_NAME_A)
+        assertProgressTable(cell: 1, is: ITEM_NAME_AB)
+        assertProgressTable(cell: 2, is: ITEM_NAME_ABC)
     }
 }
