@@ -18,21 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
         let isSQLDatabase = ProcessInfo.processInfo.arguments.contains("test") ? false : true
         
-        let context = CoreDataConfig.getCoreDataContext(isSQLDatabase: isSQLDatabase)
-        
-        let clock = Clock()
-        let calendar = Calendar.autoupdatingCurrent
-        
-        let activityRepository = ActivityRepositoryImpl(context: context)
-        let activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock, calendar: calendar)
-        let itemRepository = ItemRepositoryImpl(context: context)
-        let itemService = ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
-        
-        let viewResolver = ViewResolver()
-        let controllerResolver = ControllerResolver(activityService: activityService, itemService: itemService)
-        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = controllerResolver.getPrimaryNavController()
+        window!.rootViewController = AppContainer(sqlDatabase: isSQLDatabase).getControllerResolver().getPrimaryNavController()
         window!.makeKeyAndVisible()
         return true
     }

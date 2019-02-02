@@ -11,8 +11,7 @@ import UIKit
 
 class ControllerResolver {
     
-    private let activityService: ActivityService
-    private let itemService: ItemService
+    private let serviceResolver: ServiceResolver
     private let viewResolver: ViewResolver
     
     private var primaryNavController: UINavigationController?
@@ -20,10 +19,9 @@ class ControllerResolver {
     private var itemFormController: ItemFormController?
     private var activityHistoryController: ActivityHistoryController?
     
-    init(activityService: ActivityService, itemService: ItemService) {
+    init(serviceResolver: ServiceResolver) {
         viewResolver = ViewResolver()
-        self.activityService = activityService
-        self.itemService = itemService
+        self.serviceResolver = serviceResolver
     }
 
     func getPrimaryNavController() -> UINavigationController {
@@ -31,7 +29,8 @@ class ControllerResolver {
             return primaryNavController!
         }
         else {
-            primaryNavController = PrimaryNavigationController(rootViewController: getProgressTableController() as! UIViewController)
+            primaryNavController = PrimaryNavigationController(
+                rootViewController: getProgressTableController() as! UIViewController)
             return primaryNavController!
         }
     }
@@ -41,7 +40,9 @@ class ControllerResolver {
             return progressTableController!
         }
         else {
-            progressTableController = ProgressTableControllerImpl(self, viewResolver, itemService, activityService)
+            progressTableController = ProgressTableControllerImpl(self, viewResolver,
+                                                                  serviceResolver.getItemService(),
+                                                                  serviceResolver.getActivityService())
             return progressTableController!
         }
     }
@@ -51,7 +52,7 @@ class ControllerResolver {
             return itemFormController!
         }
         else {
-            itemFormController = ItemFormControllerImpl(self, viewResolver, itemService)
+            itemFormController = ItemFormControllerImpl(self, viewResolver, serviceResolver.getItemService())
             return itemFormController!
         }
     }
@@ -61,7 +62,8 @@ class ControllerResolver {
             return activityHistoryController!
         }
         else {
-            activityHistoryController = ActivityHistoryControllerImpl(activityService: activityService)
+            activityHistoryController = ActivityHistoryControllerImpl(activityService:
+                serviceResolver.getActivityService())
             return activityHistoryController!
         }
     }

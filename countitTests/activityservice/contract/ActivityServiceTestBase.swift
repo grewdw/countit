@@ -95,13 +95,27 @@ class ActivityServiceTestBase: XCTestCase {
         return dateFormatter.date(from: timestamp)
     }
     
-    func testItemCountAt(date: String, expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
+    func assertItemProgressCountAt(date: String, expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
         clock.set(date: timeStampStringToDate(timestamp: date)!)
-        let itemSummary = activityService!.getCurrentTargetProgressFor(item: item!)
+        let actualCount = activityService!.getCurrentTargetProgressFor(item: item!).getActivityCount()
         
-        XCTAssertEqual(itemSummary.getActivityCount(), expectedCount,
-                       "activityCount incorrect. Expected \(expectedCount) but was \(itemSummary.getActivityCount())",
+        XCTAssertEqual(actualCount, expectedCount,
+                       "activityCount incorrect. Expected \(expectedCount) but was \(actualCount)",
                         file: file, line: line)
+    }
+    
+    func assertNumberOfActivityRecords(is expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
+        let actualCount = activityService!.getActivityHistoryFor(item: item!.getId()!).getActivity().count
+        
+        XCTAssertEqual(actualCount, expectedCount,
+                       "Incorrect number of activity records. Expected \(expectedCount) but was \(actualCount)",
+            file: file, line: line)
+    }
+    
+    func deleteActivity(number activity: Int) {
+        let activityRecords = activityService!.getActivityHistoryFor(item: item!.getId()!).getActivity()
+        XCTAssertTrue(activityRecords.count >= activity, "activity number \(activity) not found")
+        let _ = activityService!.delete(activityRecord: activityRecords[activity - 1])
     }
     
     func getAllTimeStamps() -> [String] {

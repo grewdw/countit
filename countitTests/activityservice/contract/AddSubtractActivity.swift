@@ -55,6 +55,6 @@ class AddSubtractActivity: ActivityServiceTestBase {
         if let subtract = subtractActivityDate {
             subtractActivity(withTimestamps: subtract)
         }
-        testItemCountAt(date: testDate, expectedCount: expectedCount)
+        assertItemProgressCountAt(date: testDate, expectedCount: expectedCount)
     }
 }
