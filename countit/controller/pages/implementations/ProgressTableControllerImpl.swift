@@ -20,6 +20,7 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     
     var items: [ItemSummaryDto] = []
     var filteredItems: [ItemSummaryDto] = []
+    var itemToStateMap: [NSManagedObjectID:ItemCellState] = [:]
     
     var filteringItems: Bool = false
     
@@ -46,6 +47,7 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     
     func initiateView() {
         let tableView = viewResolver.getCurrentProgressTableView(frame: self.view.bounds)
+        tableView.separatorStyle = .none
         refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.refreshControl = refreshControl
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized(gestureRecognizer:)))
@@ -92,12 +94,16 @@ extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemsArray = filteringItems ? filteredItems : items
-        
-        let cell = CurrentProgressTableCellView(itemsArray[indexPath.row])
-        cell.delegate = self
-        cell.accessibilityIdentifier = "Cell" + String(indexPath.row)
-        cell.accessoryType = UITableViewCell.AccessoryType.detailButton
+        let item = filteringItems ? filteredItems[indexPath.row] : items[indexPath.row]
+        let state: ItemCellState
+        if let itemId = item.getItemDetailsDto().getId() {
+            state = itemToStateMap[itemId] != nil ? itemToStateMap[itemId]! : .CLOSED
+        }
+        else {
+            state = .CLOSED
+        }
+        itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId()!)
+        let cell = ItemCell(item: item, delegate: self, state: state)
         return cell
     }
     
@@ -142,6 +148,10 @@ extension ProgressTableControllerImpl: ProgressTableController {
         toItemController(item: nil)
     }
     
+    func itemSelected(itemDetails: ItemDetailsDto) {
+        toItemController(item: itemDetails)
+    }
+    
     func recordActivityButtonPressedFor(item: ItemDetailsDto) {
         let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
         refreshTable()
@@ -150,6 +160,16 @@ extension ProgressTableControllerImpl: ProgressTableController {
     func subtractActivityButtonPressedFor(item: ItemDetailsDto) {
         let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
         refreshTable()
+    }
+    
+    func stateChange(item: ItemSummaryDto, state: ItemCellState) {
+        itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId()!)
+    }
+    
+    func updateTableHeights() {
+        let tableView = view as? UITableView
+        tableView?.beginUpdates()
+        tableView?.endUpdates()
     }
 }
 
@@ -168,7 +188,7 @@ extension ProgressTableControllerImpl {
         case .began:
             if indexPath != nil {
                 Path.initialIndexPath = indexPath
-                let cell = tableView.cellForRow(at: indexPath!) as! CurrentProgressTableCellView
+                let cell = tableView.cellForRow(at: indexPath!) as! ItemCell
                 My.cellSnapShot = snapshopOfCell(inputView: cell)
                 var center = cell.center
                 My.cellSnapShot?.center = center

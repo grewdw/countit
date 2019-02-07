@@ -12,7 +12,7 @@ class CurrentProgressTableView: UITableView, NavBarButtonDelegate {
 
     let NAV_ITEM_TITLE = "COUNT IT"
     var tableDelegate: ProgressTableController?
-    
+ 
     func initialiseNavBar(for controller: UIViewController) {
         NavigationItemBuilder(for: controller)
             .with(rightButton: .ADD, forTarget: controller as! NavBarButtonDelegate)

@@ -59,7 +59,7 @@ class ItemFormControllerImpl: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         if !selectingOption {
             selectedItem = nil
             view = nil
