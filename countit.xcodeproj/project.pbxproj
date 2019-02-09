@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0453CC15F615381322900751 /* Pods_countitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7398A5826A458E82557B2FF5 /* Pods_countitTests.framework */; };
 		1D1E57092204C5B20081CCE8 /* ItemFormControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E57082204C5B20081CCE8 /* ItemFormControllerImpl.swift */; };
 		1D1E570B2204C62A0081CCE8 /* ProgressTableControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E570A2204C62A0081CCE8 /* ProgressTableControllerImpl.swift */; };
 		1D1E5712220586B80081CCE8 /* ServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5711220586B80081CCE8 /* ServiceResolver.swift */; };
@@ -20,6 +21,12 @@
 		1D1E5728220B04D00081CCE8 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5727220B04D00081CCE8 /* ActionButton.swift */; };
 		1D1E5731220B057D0081CCE8 /* ItemCellButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5730220B057D0081CCE8 /* ItemCellButtonDelegate.swift */; };
 		1D1E5735220B08450081CCE8 /* ActionButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */; };
+		1D27FBB8220CE3E400F8789B /* ProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBB7220CE3E400F8789B /* ProgressSection.swift */; };
+		1D27FBBC220EFA8100F8789B /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBBB220EFA8100F8789B /* Separator.swift */; };
+		1D27FBC0220F012700F8789B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBBF220F012700F8789B /* ProgressBar.swift */; };
+		1D27FBC2220F040300F8789B /* GTProgressBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */; };
+		1D27FBC4220F04F300F8789B /* ProgressBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */; };
+		1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */; };
 		1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */; };
 		1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */; };
 		1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */; };
@@ -97,6 +104,8 @@
 		1DF653FE21FF951500AA65C3 /* FormCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */; };
 		1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FF21FF956600AA65C3 /* FormCell.swift */; };
 		1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6540121FFB56700AA65C3 /* ItemFormView.swift */; };
+		93D53C87420576BE4227D486 /* Pods_countitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B858F6F70E8087F74BC5551 /* Pods_countitUITests.framework */; };
+		BA0045E4D698F54BF4A79C97 /* Pods_countit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB6459C799994A5979FF6CF /* Pods_countit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,12 +133,18 @@
 		1D1E571722058AEC0081CCE8 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		1D1E571922058E180081CCE8 /* DeleteActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteActivity.swift; sourceTree = "<group>"; };
 		1D1E571D220A2B640081CCE8 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = countit/View/Tables/Cells/ItemCell.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5720220A32520081CCE8 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Border.swift; path = countit/View/Tables/Cells/itemcellcomponents/Border.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5722220A33B60081CCE8 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = countit/View/Tables/Cells/itemcellcomponents/Name.swift; sourceTree = SOURCE_ROOT; };
+		1D1E5720220A32520081CCE8 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Border.swift; path = countit/view/tables/cells/itemcellcomponents/elements/Border.swift; sourceTree = SOURCE_ROOT; };
+		1D1E5722220A33B60081CCE8 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = countit/view/tables/cells/itemcellcomponents/sections/Name.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5724220A4A650081CCE8 /* MoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoreInfo.swift; path = countit/view/tables/cells/itemcellcomponents/buttons/MoreInfo.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5727220B04D00081CCE8 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = countit/View/Tables/Cells/itemcellcomponents/buttons/ActionButton.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5730220B057D0081CCE8 /* ItemCellButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCellButtonDelegate.swift; path = countit/view/tables/cells/itemcellcomponents/protocols/ItemCellButtonDelegate.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButtonRow.swift; path = countit/View/Tables/Cells/itemcellcomponents/ActionButtonRow.swift; sourceTree = SOURCE_ROOT; };
+		1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButtonRow.swift; path = countit/view/tables/cells/itemcellcomponents/sections/ActionButtonRow.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBB7220CE3E400F8789B /* ProgressSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressSection.swift; path = countit/view/tables/cells/itemcellcomponents/sections/ProgressSection.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBBB220EFA8100F8789B /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Separator.swift; path = countit/view/tables/cells/itemcellcomponents/elements/Separator.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBBF220F012700F8789B /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = countit/View/Tables/Cells/itemcellcomponents/elements/ProgressBar.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GTProgressBarBuilder.swift; path = countit/View/UIElementBuilders/GTProgressBarBuilder.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressBarColor.swift; path = countit/View/Enums/ProgressBarColor.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressDelegate.swift; path = countit/View/Tables/Cells/itemcellcomponents/delegates/ProgressDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormController.swift; sourceTree = "<group>"; };
 		1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonBuilder.swift; sourceTree = "<group>"; };
 		1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemBuilder.swift; sourceTree = "<group>"; };
@@ -213,6 +228,15 @@
 		1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormCellDelegate.swift; path = countit/controller/protocols/FormCellDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1DF653FF21FF956600AA65C3 /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormCell.swift; path = countit/view/tables/cells/protocols/FormCell.swift; sourceTree = SOURCE_ROOT; };
 		1DF6540121FFB56700AA65C3 /* ItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemFormView.swift; path = countit/View/Tables/ItemFormView.swift; sourceTree = SOURCE_ROOT; };
+		2FB6459C799994A5979FF6CF /* Pods_countit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B858F6F70E8087F74BC5551 /* Pods_countitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		503CFEF07DCB8CEBE7936D26 /* Pods-countitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-countitUITests/Pods-countitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7398A5826A458E82557B2FF5 /* Pods_countitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		801BADFA91AC030AF7FC0DFF /* Pods-countitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-countitTests/Pods-countitTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F65A6535B651D6F3E181FF0 /* Pods-countitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-countitTests/Pods-countitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AAE1B8F7E82342EF18DD94D7 /* Pods-countitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-countitUITests/Pods-countitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B860E3498CB4090B1DB5EF1D /* Pods-countit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countit.release.xcconfig"; path = "Pods/Target Support Files/Pods-countit/Pods-countit.release.xcconfig"; sourceTree = "<group>"; };
+		C2858C7430761B4663BF02E5 /* Pods-countit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-countit/Pods-countit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0045E4D698F54BF4A79C97 /* Pods_countit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0453CC15F615381322900751 /* Pods_countitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D53C87420576BE4227D486 /* Pods_countitUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,11 +339,11 @@
 		1D1E571F220A32130081CCE8 /* itemcellcomponents */ = {
 			isa = PBXGroup;
 			children = (
+				1D27FBC5220F12EA00F8789B /* delegates */,
+				1D27FBBE220F00D600F8789B /* elements */,
+				1D27FBBD220F00CF00F8789B /* sections */,
 				1D1E5732220B08120081CCE8 /* protocols */,
 				1D1E5726220B04A60081CCE8 /* buttons */,
-				1D1E5720220A32520081CCE8 /* Border.swift */,
-				1D1E5722220A33B60081CCE8 /* Name.swift */,
-				1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */,
 			);
 			path = itemcellcomponents;
 			sourceTree = "<group>";
@@ -338,11 +365,40 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		1D27FBBD220F00CF00F8789B /* sections */ = {
+			isa = PBXGroup;
+			children = (
+				1D1E5722220A33B60081CCE8 /* Name.swift */,
+				1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */,
+				1D27FBB7220CE3E400F8789B /* ProgressSection.swift */,
+			);
+			path = sections;
+			sourceTree = "<group>";
+		};
+		1D27FBBE220F00D600F8789B /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				1D1E5720220A32520081CCE8 /* Border.swift */,
+				1D27FBBB220EFA8100F8789B /* Separator.swift */,
+				1D27FBBF220F012700F8789B /* ProgressBar.swift */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		1D27FBC5220F12EA00F8789B /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
 		1D49B41821B7FFAC00920CF4 /* uielementbuilders */ = {
 			isa = PBXGroup;
 			children = (
 				1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */,
 				1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */,
+				1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */,
 			);
 			path = uielementbuilders;
 			sourceTree = "<group>";
@@ -351,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */,
+				1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -441,6 +498,8 @@
 				1DB3901B21B5BFD200C11CD7 /* countitTests */,
 				1DB3902621B5BFD200C11CD7 /* countitUITests */,
 				1DB3900221B5BFD000C11CD7 /* Products */,
+				8E80B8A51C85994185774E2B /* Pods */,
+				BABB5BC5C70E6A26D1E39EA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -718,6 +777,29 @@
 			path = contract;
 			sourceTree = "<group>";
 		};
+		8E80B8A51C85994185774E2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2858C7430761B4663BF02E5 /* Pods-countit.debug.xcconfig */,
+				B860E3498CB4090B1DB5EF1D /* Pods-countit.release.xcconfig */,
+				8F65A6535B651D6F3E181FF0 /* Pods-countitTests.debug.xcconfig */,
+				801BADFA91AC030AF7FC0DFF /* Pods-countitTests.release.xcconfig */,
+				AAE1B8F7E82342EF18DD94D7 /* Pods-countitUITests.debug.xcconfig */,
+				503CFEF07DCB8CEBE7936D26 /* Pods-countitUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BABB5BC5C70E6A26D1E39EA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FB6459C799994A5979FF6CF /* Pods_countit.framework */,
+				7398A5826A458E82557B2FF5 /* Pods_countitTests.framework */,
+				4B858F6F70E8087F74BC5551 /* Pods_countitUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -725,9 +807,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DB3902C21B5BFD200C11CD7 /* Build configuration list for PBXNativeTarget "countit" */;
 			buildPhases = (
+				47BA3E7B75F3D5B571E18A84 /* [CP] Check Pods Manifest.lock */,
 				1DB38FFD21B5BFD000C11CD7 /* Sources */,
 				1DB38FFE21B5BFD000C11CD7 /* Frameworks */,
 				1DB38FFF21B5BFD000C11CD7 /* Resources */,
+				9909E7A4C830099B091A79AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -742,6 +826,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DB3902F21B5BFD200C11CD7 /* Build configuration list for PBXNativeTarget "countitTests" */;
 			buildPhases = (
+				75D23F4F55CC3DFAE1B6F80A /* [CP] Check Pods Manifest.lock */,
 				1DB3901421B5BFD200C11CD7 /* Sources */,
 				1DB3901521B5BFD200C11CD7 /* Frameworks */,
 				1DB3901621B5BFD200C11CD7 /* Resources */,
@@ -760,6 +845,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DB3903221B5BFD200C11CD7 /* Build configuration list for PBXNativeTarget "countitUITests" */;
 			buildPhases = (
+				CA2FF8A83B6BB7ECF72CDC8C /* [CP] Check Pods Manifest.lock */,
 				1DB3901F21B5BFD200C11CD7 /* Sources */,
 				1DB3902021B5BFD200C11CD7 /* Frameworks */,
 				1DB3902121B5BFD200C11CD7 /* Resources */,
@@ -842,6 +928,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		47BA3E7B75F3D5B571E18A84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-countit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75D23F4F55CC3DFAE1B6F80A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-countitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9909E7A4C830099B091A79AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-countit/Pods-countit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTProgressBar/GTProgressBar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTProgressBar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-countit/Pods-countit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA2FF8A83B6BB7ECF72CDC8C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-countitUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1DB38FFD21B5BFD000C11CD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -853,6 +1030,7 @@
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
 				1D1E571822058AEC0081CCE8 /* AppContainer.swift in Sources */,
 				1DF653F021FE344400AA65C3 /* FormOptionSelectorView.swift in Sources */,
+				1D27FBB8220CE3E400F8789B /* ProgressSection.swift in Sources */,
 				1D1E5731220B057D0081CCE8 /* ItemCellButtonDelegate.swift in Sources */,
 				1D1E5721220A32520081CCE8 /* Border.swift in Sources */,
 				1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */,
@@ -870,6 +1048,7 @@
 				1D9D329E22043988007C675F /* ButtonCell.swift in Sources */,
 				1DF653F621FE432E00AA65C3 /* PrimaryNavigationController.swift in Sources */,
 				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
+				1D27FBC0220F012700F8789B /* ProgressBar.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
@@ -878,14 +1057,17 @@
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
 				1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */,
 				1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */,
+				1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
 				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
 				1DF653FC21FF7CB000AA65C3 /* FormOptionDisplayCell.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
+				1D27FBC4220F04F300F8789B /* ProgressBarColor.swift in Sources */,
 				1D7D37D621C05EE6000E3621 /* ItemDetailsDto.swift in Sources */,
 				1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */,
 				1DF653F221FE371400AA65C3 /* FormOptionSelectorCell.swif.swift in Sources */,
 				1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */,
+				1D27FBC2220F040300F8789B /* GTProgressBarBuilder.swift in Sources */,
 				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
 				1D1E5723220A33B60081CCE8 /* Name.swift in Sources */,
 				1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */,
@@ -893,6 +1075,7 @@
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
 				1D1E5725220A4A650081CCE8 /* MoreInfo.swift in Sources */,
 				1DF653FA21FF7C9000AA65C3 /* TextEntryFormCell.swift in Sources */,
+				1D27FBBC220EFA8100F8789B /* Separator.swift in Sources */,
 				1DEB4BB521E3892B002F09CF /* ActivityUpdateDto.swift in Sources */,
 				1DF653F421FE429000AA65C3 /* Colours.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
@@ -1087,6 +1270,7 @@
 		};
 		1DB3902D21B5BFD200C11CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2858C7430761B4663BF02E5 /* Pods-countit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1105,6 +1289,7 @@
 		};
 		1DB3902E21B5BFD200C11CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B860E3498CB4090B1DB5EF1D /* Pods-countit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1123,6 +1308,7 @@
 		};
 		1DB3903021B5BFD200C11CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F65A6535B651D6F3E181FF0 /* Pods-countitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1144,6 +1330,7 @@
 		};
 		1DB3903121B5BFD200C11CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801BADFA91AC030AF7FC0DFF /* Pods-countitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1165,6 +1352,7 @@
 		};
 		1DB3903321B5BFD200C11CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAE1B8F7E82342EF18DD94D7 /* Pods-countitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1185,6 +1373,7 @@
 		};
 		1DB3903421B5BFD200C11CD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 503CFEF07DCB8CEBE7936D26 /* Pods-countitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

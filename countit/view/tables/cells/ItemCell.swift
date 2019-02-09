@@ -15,24 +15,26 @@ class ItemCell: UITableViewCell {
     let BORDER_PADDING_LEFT: CGFloat = 15
     let BORDER_PADDING_RIGHT: CGFloat = -15
     let NAME_PADDING_TOP: CGFloat = 15
-    let NAME_PADDING_LEFT: CGFloat = 50
-    let NAME_PADDING_RIGHT: CGFloat = -50
+    let NAME_PADDING_LEFT: CGFloat = 60
+    let NAME_PADDING_RIGHT: CGFloat = -60
     let MORE_INFO_PADDING_TOP: CGFloat = 15
     let MORE_INFO_PADDING_RIGHT: CGFloat = -27.5
     let MORE_INFO_HEIGHT: CGFloat = 25
     let MORE_INFO_WIDTH: CGFloat = 25
     let ACTION_BUTTON_PADDING_TOP: CGFloat = 37.5
-    let ACTION_BUTTON_PADDING_BOTTOM: CGFloat = 15
     let ACTION_BUTTON_PADDING_LEFT: CGFloat = 25
     let ACTION_BUTTON_PADDING_RIGHT: CGFloat = -25
     let ACTION_BUTTON_HEIGHT: CGFloat = 25
+    let PROGRESS_SECTION_PADDING_LEFT: CGFloat = 25
+    let PROGRESS_SECTION_PADDING_RIGHT: CGFloat = -25
+    let PROGRESS_SECTION_PADDING_TOP: CGFloat = 62.5
+    let PROGRESS_SECTION_PADDING_BOTTOM: CGFloat = 10
 
     let HEIGHT_ZERO: CGFloat = 0
     
     var alwaysConstraints: [NSLayoutConstraint] = []
     var closedConstraints: [NSLayoutConstraint] = []
-    var progressBorderConstraints: [NSLayoutConstraint] = []
-    var progressLabelConstraints: [NSLayoutConstraint] = []
+    var progressConstraints: [NSLayoutConstraint] = []
     
     let item: ItemSummaryDto
     let delegate: ProgressTableController
@@ -41,10 +43,9 @@ class ItemCell: UITableViewCell {
     var name: Name?
     var moreInfo: ActionButton?
     var actionButtonRow: ActionButtonRow?
-    var label: UILabel?
+    var progressSection: ProgressSection?
     
     var nameHeight: CGFloat?
-    var labelHeight: CGFloat?
     
     var state: ItemCellState = .CLOSED
     
@@ -57,31 +58,29 @@ class ItemCell: UITableViewCell {
         self.backgroundColor = Colours.TABLE_BACKGROUND
         self.selectionStyle = .none
         
+        let progressDelegate = ProgressDelegate(delegate: self, item: item)
+        
         border = Border()
-        name = Name(name: item.getItemDetailsDto().getName())
+        name = Name(item: item, cellWidth: self.bounds.width)
         moreInfo = ActionButton(buttonPressAction: self.MoreInfoButtonPressed, image: UIImage(named: "MoreInfoIcon")!, selectedImage: nil)
-        actionButtonRow = ActionButtonRow(delegate: self)
-        label = UILabel()
-        label?.text = "newTextThat is really long so it's definitely going to wrap around to the next line"
-        label?.numberOfLines = 0
-        nameHeight = name!.sizeThatFits(CGSize(width: self.bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
-        labelHeight = label!.sizeThatFits(CGSize(width: self.bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
+        actionButtonRow = progressDelegate.getActionButtons()
+        progressSection = progressDelegate.getProgressSection()
+        nameHeight = name!.getHeight()
         
         self.addSubview(border!)
         self.addSubview(name!)
         self.addSubview(moreInfo!)
         self.addSubview(actionButtonRow!)
-        self.addSubview(label!)
+        self.addSubview(progressSection!)
         border!.translatesAutoresizingMaskIntoConstraints = false
         name!.translatesAutoresizingMaskIntoConstraints = false
         moreInfo!.translatesAutoresizingMaskIntoConstraints = false
         actionButtonRow!.translatesAutoresizingMaskIntoConstraints = false
-        label!.translatesAutoresizingMaskIntoConstraints = false
+        progressSection!.translatesAutoresizingMaskIntoConstraints = false
         
         createAlwaysConstraints()
         createClosedConstraints()
-        createProgressBorderConstraints()
-        createProgressLabelConstraints()
+        createProgressConstraints()
         
         if state == .CLOSED {
             setToClosed()
@@ -107,22 +106,18 @@ class ItemCell: UITableViewCell {
         alwaysConstraints.append(actionButtonRow!.leftAnchor.constraint(equalTo: leftAnchor, constant: ACTION_BUTTON_PADDING_LEFT))
         alwaysConstraints.append(actionButtonRow!.rightAnchor.constraint(equalTo: rightAnchor, constant: ACTION_BUTTON_PADDING_RIGHT))
         alwaysConstraints.append(actionButtonRow!.heightAnchor.constraint(equalToConstant: ACTION_BUTTON_HEIGHT))
-        alwaysConstraints.append(label!.leftAnchor.constraint(equalTo: border!.leftAnchor))
-        alwaysConstraints.append(label!.rightAnchor.constraint(equalTo: border!.rightAnchor))
-        alwaysConstraints.append(label!.topAnchor.constraint(equalTo: topAnchor, constant: ACTION_BUTTON_PADDING_TOP + ACTION_BUTTON_HEIGHT + ACTION_BUTTON_PADDING_BOTTOM + nameHeight!))
+        alwaysConstraints.append(progressSection!.leftAnchor.constraint(equalTo: leftAnchor, constant: PROGRESS_SECTION_PADDING_LEFT))
+        alwaysConstraints.append(progressSection!.rightAnchor.constraint(equalTo: rightAnchor, constant: PROGRESS_SECTION_PADDING_RIGHT))
+        alwaysConstraints.append(progressSection!.topAnchor.constraint(equalTo: topAnchor, constant: PROGRESS_SECTION_PADDING_TOP + nameHeight!))
+        alwaysConstraints.append(border!.bottomAnchor.constraint(equalTo: progressSection!.bottomAnchor, constant: PROGRESS_SECTION_PADDING_BOTTOM))
     }
     
     func createClosedConstraints() {
-        closedConstraints.append(border!.bottomAnchor.constraint(equalTo: topAnchor, constant: ACTION_BUTTON_PADDING_TOP + ACTION_BUTTON_HEIGHT + ACTION_BUTTON_PADDING_BOTTOM + nameHeight!))
-        closedConstraints.append(label!.heightAnchor.constraint(equalToConstant: 0))
+        closedConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: 0))
     }
     
-    func createProgressBorderConstraints() {
-        progressBorderConstraints.append(border!.bottomAnchor.constraint(equalTo: label!.bottomAnchor, constant: 7.5))
-    }
-    
-    func createProgressLabelConstraints() {
-        progressLabelConstraints.append(label!.heightAnchor.constraint(equalToConstant: labelHeight!))
+    func createProgressConstraints() {
+        progressConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: 59.5))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -139,15 +134,12 @@ extension ItemCell {
     
     func setToProgress() {
         NSLayoutConstraint.activate(alwaysConstraints)
-        NSLayoutConstraint.activate(progressBorderConstraints)
-        NSLayoutConstraint.activate(progressLabelConstraints)
+        NSLayoutConstraint.activate(progressConstraints)
     }
     
     func transitionClosedToProgress() {
         NSLayoutConstraint.deactivate(closedConstraints)
-        NSLayoutConstraint.activate(progressBorderConstraints)
-        delegate.updateTableHeights()
-        NSLayoutConstraint.activate(progressLabelConstraints)
+        NSLayoutConstraint.activate(progressConstraints)
         delegate.updateTableHeights()
         state = .PROGRESS
         delegate.stateChange(item: item, state: state)
@@ -155,9 +147,7 @@ extension ItemCell {
     
     func transitionProgressToClosed() {
         NSLayoutConstraint.activate(closedConstraints)
-        NSLayoutConstraint.deactivate(progressBorderConstraints)
-        delegate.updateTableHeights()
-        NSLayoutConstraint.deactivate(progressLabelConstraints)
+        NSLayoutConstraint.deactivate(progressConstraints)
         delegate.updateTableHeights()
         state = .CLOSED
         delegate.stateChange(item: item, state: state)
@@ -170,11 +160,11 @@ extension ItemCell: ItemCellButtonDelegate {
     }
     
     func AddButtonPressed() {
-        delegate.recordActivityButtonPressedFor(item: item.getItemDetailsDto())
+        print("add")
     }
     
     func PlusOneButtonPressed() {
-        print("PlusOne")
+        delegate.recordActivityButtonPressedFor(item: item.getItemDetailsDto())
     }
     
     func ProgressButtonPressed() {

@@ -1,0 +1,6 @@
+framework module Pods_countit {
+  umbrella header "Pods-countit-umbrella.h"
+
+  export *
+  module * { export * }
+}
