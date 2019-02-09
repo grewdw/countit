@@ -10,11 +10,7 @@ import UIKit
 import GTProgressBar
 
 class ProgressSection: UIView {
-    
-    private let SEPARATOR_HEIGHT: CGFloat = 1
-    private let SEPARATOR_PADDING_LEFT: CGFloat = 30
-    private let SEPARATOR_PADDING_RIGHT: CGFloat = -30
-    private let SEPARATOR_PADDING_TOP: CGFloat = 2
+ 
     private let PROGRESS_BAR_PADDING_TOP: CGFloat = 22.5
     private let PROGRESS_LABEL_PADDING_TOP: CGFloat = 5
     

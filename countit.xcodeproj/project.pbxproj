@@ -16,29 +16,27 @@
 		1D1E571A22058E180081CCE8 /* DeleteActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E571922058E180081CCE8 /* DeleteActivity.swift */; };
 		1D1E571E220A2B640081CCE8 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E571D220A2B640081CCE8 /* ItemCell.swift */; };
 		1D1E5721220A32520081CCE8 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5720220A32520081CCE8 /* Border.swift */; };
-		1D1E5723220A33B60081CCE8 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5722220A33B60081CCE8 /* Name.swift */; };
-		1D1E5725220A4A650081CCE8 /* MoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5724220A4A650081CCE8 /* MoreInfo.swift */; };
+		1D1E5723220A33B60081CCE8 /* DetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5722220A33B60081CCE8 /* DetailsSection.swift */; };
 		1D1E5728220B04D00081CCE8 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5727220B04D00081CCE8 /* ActionButton.swift */; };
 		1D1E5731220B057D0081CCE8 /* ItemCellButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5730220B057D0081CCE8 /* ItemCellButtonDelegate.swift */; };
-		1D1E5735220B08450081CCE8 /* ActionButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */; };
+		1D1E5735220B08450081CCE8 /* ButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5734220B08450081CCE8 /* ButtonSection.swift */; };
 		1D27FBB8220CE3E400F8789B /* ProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBB7220CE3E400F8789B /* ProgressSection.swift */; };
 		1D27FBBC220EFA8100F8789B /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBBB220EFA8100F8789B /* Separator.swift */; };
-		1D27FBC0220F012700F8789B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBBF220F012700F8789B /* ProgressBar.swift */; };
 		1D27FBC2220F040300F8789B /* GTProgressBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */; };
 		1D27FBC4220F04F300F8789B /* ProgressBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */; };
 		1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */; };
+		1D27FBC9220F437E00F8789B /* ItemCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC8220F437E00F8789B /* ItemCellState.swift */; };
 		1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */; };
 		1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */; };
 		1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */; };
 		1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */; };
-		1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */; };
+		1D76F06E21BC527700A53853 /* ProgressTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76F06D21BC527700A53853 /* ProgressTableView.swift */; };
 		1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D321C05E81000E3621 /* ItemService.swift */; };
 		1D7D37D621C05EE6000E3621 /* ItemDetailsDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */; };
 		1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */; };
 		1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37DE21C061E3000E3621 /* ItemRepository.swift */; };
 		1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */; };
 		1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */; };
-		1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8C4321C698AD009427FE /* ViewResolver.swift */; };
 		1D9D329E22043988007C675F /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D329D22043988007C675F /* ButtonCell.swift */; };
 		1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */; };
 		1D9D32A222044FEB007C675F /* ActivityRecordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */; };
@@ -54,7 +52,6 @@
 		1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3901C21B5BFD200C11CD7 /* CreateItems.swift */; };
 		1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3902721B5BFD200C11CD7 /* CreateItems.swift */; };
 		1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */; };
-		1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */; };
 		1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */; };
 		1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */; };
 		1DEB4B7C21CFFB07002F09CF /* TestCoreDataConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */; };
@@ -97,7 +94,7 @@
 		1DF653EE21FE276700AA65C3 /* FormOptionSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653ED21FE276700AA65C3 /* FormOptionSelectorController.swift */; };
 		1DF653F021FE344400AA65C3 /* FormOptionSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653EF21FE344400AA65C3 /* FormOptionSelectorView.swift */; };
 		1DF653F221FE371400AA65C3 /* FormOptionSelectorCell.swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653F121FE371400AA65C3 /* FormOptionSelectorCell.swif.swift */; };
-		1DF653F421FE429000AA65C3 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653F321FE429000AA65C3 /* Colours.swift */; };
+		1DF653F421FE429000AA65C3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653F321FE429000AA65C3 /* Colors.swift */; };
 		1DF653F621FE432E00AA65C3 /* PrimaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653F521FE432E00AA65C3 /* PrimaryNavigationController.swift */; };
 		1DF653FA21FF7C9000AA65C3 /* TextEntryFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653F921FF7C9000AA65C3 /* TextEntryFormCell.swift */; };
 		1DF653FC21FF7CB000AA65C3 /* FormOptionDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FB21FF7CB000AA65C3 /* FormOptionDisplayCell.swift */; };
@@ -134,29 +131,27 @@
 		1D1E571922058E180081CCE8 /* DeleteActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteActivity.swift; sourceTree = "<group>"; };
 		1D1E571D220A2B640081CCE8 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = countit/View/Tables/Cells/ItemCell.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5720220A32520081CCE8 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Border.swift; path = countit/view/tables/cells/itemcellcomponents/elements/Border.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5722220A33B60081CCE8 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = countit/view/tables/cells/itemcellcomponents/sections/Name.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5724220A4A650081CCE8 /* MoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoreInfo.swift; path = countit/view/tables/cells/itemcellcomponents/buttons/MoreInfo.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5727220B04D00081CCE8 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = countit/View/Tables/Cells/itemcellcomponents/buttons/ActionButton.swift; sourceTree = SOURCE_ROOT; };
+		1D1E5722220A33B60081CCE8 /* DetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailsSection.swift; path = countit/view/tables/cells/itemcellcomponents/sections/DetailsSection.swift; sourceTree = SOURCE_ROOT; };
+		1D1E5727220B04D00081CCE8 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = countit/view/tables/cells/itemcellcomponents/elements/ActionButton.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5730220B057D0081CCE8 /* ItemCellButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCellButtonDelegate.swift; path = countit/view/tables/cells/itemcellcomponents/protocols/ItemCellButtonDelegate.swift; sourceTree = SOURCE_ROOT; };
-		1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButtonRow.swift; path = countit/view/tables/cells/itemcellcomponents/sections/ActionButtonRow.swift; sourceTree = SOURCE_ROOT; };
+		1D1E5734220B08450081CCE8 /* ButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ButtonSection.swift; path = countit/view/tables/cells/itemcellcomponents/sections/ButtonSection.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBB7220CE3E400F8789B /* ProgressSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressSection.swift; path = countit/view/tables/cells/itemcellcomponents/sections/ProgressSection.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBBB220EFA8100F8789B /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Separator.swift; path = countit/view/tables/cells/itemcellcomponents/elements/Separator.swift; sourceTree = SOURCE_ROOT; };
-		1D27FBBF220F012700F8789B /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = countit/View/Tables/Cells/itemcellcomponents/elements/ProgressBar.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GTProgressBarBuilder.swift; path = countit/View/UIElementBuilders/GTProgressBarBuilder.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressBarColor.swift; path = countit/View/Enums/ProgressBarColor.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressDelegate.swift; path = countit/View/Tables/Cells/itemcellcomponents/delegates/ProgressDelegate.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBC8220F437E00F8789B /* ItemCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCellState.swift; path = countit/View/Enums/ItemCellState.swift; sourceTree = SOURCE_ROOT; };
 		1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormController.swift; sourceTree = "<group>"; };
 		1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonBuilder.swift; sourceTree = "<group>"; };
 		1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemBuilder.swift; sourceTree = "<group>"; };
 		1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
-		1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableView.swift; sourceTree = "<group>"; };
+		1D76F06D21BC527700A53853 /* ProgressTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableView.swift; sourceTree = "<group>"; };
 		1D7D37D321C05E81000E3621 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
 		1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsDto.swift; sourceTree = "<group>"; };
 		1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServiceImpl.swift; sourceTree = "<group>"; };
 		1D7D37DE21C061E3000E3621 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
 		1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerResolver.swift; sourceTree = "<group>"; };
-		1D9B8C4321C698AD009427FE /* ViewResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewResolver.swift; path = countit/config/container/resolvers/ViewResolver.swift; sourceTree = SOURCE_ROOT; };
 		1D9D329D22043988007C675F /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = countit/view/tables/cells/formcells/ButtonCell.swift; sourceTree = SOURCE_ROOT; };
 		1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityHistoryController.swift; path = countit/controller/pages/ActivityHistoryController.swift; sourceTree = SOURCE_ROOT; };
 		1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecordDto.swift; sourceTree = "<group>"; };
@@ -178,7 +173,6 @@
 		1DB3902721B5BFD200C11CD7 /* CreateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItems.swift; sourceTree = "<group>"; };
 		1DB3902921B5BFD200C11CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableController.swift; sourceTree = "<group>"; };
-		1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProgressTableCellView.swift; sourceTree = "<group>"; };
 		1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConfig.swift; sourceTree = "<group>"; };
 		1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataConfig.swift; sourceTree = "<group>"; };
@@ -221,7 +215,7 @@
 		1DF653ED21FE276700AA65C3 /* FormOptionSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionSelectorController.swift; path = countit/controller/pages/implementations/FormOptionSelectorController.swift; sourceTree = SOURCE_ROOT; };
 		1DF653EF21FE344400AA65C3 /* FormOptionSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionSelectorView.swift; path = countit/View/Tables/FormOptionSelectorView.swift; sourceTree = SOURCE_ROOT; };
 		1DF653F121FE371400AA65C3 /* FormOptionSelectorCell.swif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionSelectorCell.swif.swift; path = countit/view/tables/cells/formcells/FormOptionSelectorCell.swif.swift; sourceTree = SOURCE_ROOT; };
-		1DF653F321FE429000AA65C3 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colours.swift; path = countit/View/Colours.swift; sourceTree = SOURCE_ROOT; };
+		1DF653F321FE429000AA65C3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = countit/View/Colors.swift; sourceTree = SOURCE_ROOT; };
 		1DF653F521FE432E00AA65C3 /* PrimaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrimaryNavigationController.swift; path = countit/Controller/PrimaryNavigationController.swift; sourceTree = SOURCE_ROOT; };
 		1DF653F921FF7C9000AA65C3 /* TextEntryFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextEntryFormCell.swift; path = countit/view/tables/cells/formcells/TextEntryFormCell.swift; sourceTree = SOURCE_ROOT; };
 		1DF653FB21FF7CB000AA65C3 /* FormOptionDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionDisplayCell.swift; path = countit/view/tables/cells/formcells/FormOptionDisplayCell.swift; sourceTree = SOURCE_ROOT; };
@@ -309,7 +303,6 @@
 		1D1E5714220587390081CCE8 /* resolvers */ = {
 			isa = PBXGroup;
 			children = (
-				1D9B8C4321C698AD009427FE /* ViewResolver.swift */,
 				1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */,
 				1D1E5711220586B80081CCE8 /* ServiceResolver.swift */,
 				1D1E5715220587BB0081CCE8 /* RepositoryResolver.swift */,
@@ -343,18 +336,8 @@
 				1D27FBBE220F00D600F8789B /* elements */,
 				1D27FBBD220F00CF00F8789B /* sections */,
 				1D1E5732220B08120081CCE8 /* protocols */,
-				1D1E5726220B04A60081CCE8 /* buttons */,
 			);
 			path = itemcellcomponents;
-			sourceTree = "<group>";
-		};
-		1D1E5726220B04A60081CCE8 /* buttons */ = {
-			isa = PBXGroup;
-			children = (
-				1D1E5724220A4A650081CCE8 /* MoreInfo.swift */,
-				1D1E5727220B04D00081CCE8 /* ActionButton.swift */,
-			);
-			path = buttons;
 			sourceTree = "<group>";
 		};
 		1D1E5732220B08120081CCE8 /* protocols */ = {
@@ -368,8 +351,8 @@
 		1D27FBBD220F00CF00F8789B /* sections */ = {
 			isa = PBXGroup;
 			children = (
-				1D1E5722220A33B60081CCE8 /* Name.swift */,
-				1D1E5734220B08450081CCE8 /* ActionButtonRow.swift */,
+				1D1E5722220A33B60081CCE8 /* DetailsSection.swift */,
+				1D1E5734220B08450081CCE8 /* ButtonSection.swift */,
 				1D27FBB7220CE3E400F8789B /* ProgressSection.swift */,
 			);
 			path = sections;
@@ -380,7 +363,7 @@
 			children = (
 				1D1E5720220A32520081CCE8 /* Border.swift */,
 				1D27FBBB220EFA8100F8789B /* Separator.swift */,
-				1D27FBBF220F012700F8789B /* ProgressBar.swift */,
+				1D1E5727220B04D00081CCE8 /* ActionButton.swift */,
 			);
 			path = elements;
 			sourceTree = "<group>";
@@ -408,6 +391,7 @@
 			children = (
 				1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */,
 				1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */,
+				1D27FBC8220F437E00F8789B /* ItemCellState.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -415,7 +399,7 @@
 		1D76F06321BC1FEB00A53853 /* tables */ = {
 			isa = PBXGroup;
 			children = (
-				1D76F06D21BC527700A53853 /* CurrentProgressTableView.swift */,
+				1D76F06D21BC527700A53853 /* ProgressTableView.swift */,
 				1DF6540121FFB56700AA65C3 /* ItemFormView.swift */,
 				1DF653EF21FE344400AA65C3 /* FormOptionSelectorView.swift */,
 				1D9D32AB2204B0A5007C675F /* ActivityHistoryView.swift */,
@@ -430,7 +414,6 @@
 				1D1E571F220A32130081CCE8 /* itemcellcomponents */,
 				1D1E571C220A2B200081CCE8 /* formcells */,
 				1D1E571B220A2B020081CCE8 /* protocols */,
-				1DB3903E21B5C37900C11CD7 /* CurrentProgressTableCellView.swift */,
 				1D9D32A72204526F007C675F /* ActivityRecordCell.swift */,
 				1D1E571D220A2B640081CCE8 /* ItemCell.swift */,
 			);
@@ -562,7 +545,7 @@
 				1D49B41D21B8003600920CF4 /* enums */,
 				1DB3904021B6AC2000C11CD7 /* extensions */,
 				1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */,
-				1DF653F321FE429000AA65C3 /* Colours.swift */,
+				1DF653F321FE429000AA65C3 /* Colors.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1024,7 +1007,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D1E5735220B08450081CCE8 /* ActionButtonRow.swift in Sources */,
+				1D1E5735220B08450081CCE8 /* ButtonSection.swift in Sources */,
 				1D1E571E220A2B640081CCE8 /* ItemCell.swift in Sources */,
 				1DEB4BB721E38A45002F09CF /* ActivityService.swift in Sources */,
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
@@ -1036,7 +1019,6 @@
 				1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */,
 				1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */,
 				1D9D32A6220450FF007C675F /* ActivityHistoryDto.swift in Sources */,
-				1D9B8C4421C698AD009427FE /* ViewResolver.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1D1E57092204C5B20081CCE8 /* ItemFormControllerImpl.swift in Sources */,
@@ -1048,7 +1030,6 @@
 				1D9D329E22043988007C675F /* ButtonCell.swift in Sources */,
 				1DF653F621FE432E00AA65C3 /* PrimaryNavigationController.swift in Sources */,
 				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
-				1D27FBC0220F012700F8789B /* ProgressBar.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
 				1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
@@ -1059,7 +1040,7 @@
 				1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */,
 				1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
-				1D76F06E21BC527700A53853 /* CurrentProgressTableView.swift in Sources */,
+				1D76F06E21BC527700A53853 /* ProgressTableView.swift in Sources */,
 				1DF653FC21FF7CB000AA65C3 /* FormOptionDisplayCell.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
 				1D27FBC4220F04F300F8789B /* ProgressBarColor.swift in Sources */,
@@ -1068,19 +1049,18 @@
 				1DF653F221FE371400AA65C3 /* FormOptionSelectorCell.swif.swift in Sources */,
 				1DEB4BB321E1152B002F09CF /* Clock.swift in Sources */,
 				1D27FBC2220F040300F8789B /* GTProgressBarBuilder.swift in Sources */,
-				1DB3903F21B5C37900C11CD7 /* CurrentProgressTableCellView.swift in Sources */,
-				1D1E5723220A33B60081CCE8 /* Name.swift in Sources */,
+				1D1E5723220A33B60081CCE8 /* DetailsSection.swift in Sources */,
 				1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */,
 				1D9D32AC2204B0A5007C675F /* ActivityHistoryView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
-				1D1E5725220A4A650081CCE8 /* MoreInfo.swift in Sources */,
 				1DF653FA21FF7C9000AA65C3 /* TextEntryFormCell.swift in Sources */,
 				1D27FBBC220EFA8100F8789B /* Separator.swift in Sources */,
 				1DEB4BB521E3892B002F09CF /* ActivityUpdateDto.swift in Sources */,
-				1DF653F421FE429000AA65C3 /* Colours.swift in Sources */,
+				1DF653F421FE429000AA65C3 /* Colors.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
 				1D1E5716220587BB0081CCE8 /* RepositoryResolver.swift in Sources */,
 				1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */,
+				1D27FBC9220F437E00F8789B /* ItemCellState.swift in Sources */,
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
 				1DEB4BBB21E38B01002F09CF /* ActivityRepository.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,

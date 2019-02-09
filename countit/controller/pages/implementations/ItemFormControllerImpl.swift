@@ -30,12 +30,10 @@ class ItemFormControllerImpl: UIViewController {
     private var validForm = false { didSet{ self.navigationItem.rightBarButtonItem?.isEnabled = validForm }}
     
     let controllerResolver: ControllerResolver
-    let viewResolver: ViewResolver
     let itemService: ItemService
     
-    init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService) {
+    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
         self.controllerResolver = controllerResolver
-        self.viewResolver = viewResolver
         self.itemService = itemService
         sections.updateValue([ItemFormField.NAME, ItemFormField.DESCRIPTION], forKey: 0)
         sections.updateValue([ItemFormField.DIRECTION, ItemFormField.TARGET_VALUE, ItemFormField.TIMEPERIOD], forKey: 1)

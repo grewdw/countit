@@ -9,7 +9,7 @@
 import UIKit
 import GTProgressBar
 
-class ActionButtonRow: UIStackView {
+class ButtonSection: UIStackView {
     
     let delegate: ItemCellButtonDelegate
     let percentageLabel = UILabel()
@@ -24,10 +24,10 @@ class ActionButtonRow: UIStackView {
         distribution = .fillProportionally
         alignment = .center
         
-        let progress = ActionButton(buttonPressAction: self.delegate.ProgressButtonPressed, image: UIImage(named: "ProgressIcon")!, selectedImage: nil)
-        let performance = ActionButton(buttonPressAction: self.delegate.PerformanceButtonPressed, image: UIImage(named: "StatsIcon")!, selectedImage: nil)
-        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed, image: UIImage(named: "AddIcon")!, selectedImage: nil)
-        let plusOne = ActionButton(buttonPressAction: self.delegate.PlusOneButtonPressed, image: UIImage(named: "PlusOneIcon")!, selectedImage: nil)
+        let progress = ActionButton(buttonPressAction: self.delegate.ProgressButtonPressed, image: UIImage(named: "ProgressIcon")!)
+        let performance = ActionButton(buttonPressAction: self.delegate.PerformanceButtonPressed, image: UIImage(named: "StatsIcon")!)
+        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed, image: UIImage(named: "AddIcon")!)
+        let plusOne = ActionButton(buttonPressAction: self.delegate.PlusOneButtonPressed, image: UIImage(named: "PlusOneIcon")!)
         
         percentageLabel.text = "\(percentage)%"
         setPercentage(color: color)
@@ -48,13 +48,13 @@ class ActionButtonRow: UIStackView {
     func setPercentage(color: ProgressBarColor) {
         switch color {
         case .BLUE:
-            percentageLabel.textColor = Colours.PROGRESS_BLUE
+            percentageLabel.textColor = Colors.PROGRESS_BLUE
         case .GREEN:
-            percentageLabel.textColor = Colours.PROGRESS_GREEN
+            percentageLabel.textColor = Colors.PROGRESS_GREEN
         case .YELLOW:
-            percentageLabel.textColor = Colours.PROGRESS_YELLOW
+            percentageLabel.textColor = Colors.PROGRESS_YELLOW
         case .RED:
-            percentageLabel.textColor = Colours.PROGRESS_RED
+            percentageLabel.textColor = Colors.PROGRESS_RED
         }
     }
 }

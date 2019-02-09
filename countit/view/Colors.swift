@@ -21,5 +21,4 @@ class Colors {
     static let PROGRESS_GREEN_BACKGROUND = UIColor(red:0.77, green:0.93, blue:0.78, alpha:1.0)
     static let PROGRESS_YELLOW_BACKGROUND = UIColor(red:0.95, green:0.95, blue:0.78, alpha:1.0)
     static let PROGRESS_RED_BACKGROUND = UIColor(red:0.93, green:0.78, blue:0.78, alpha:1.0)
-
 }

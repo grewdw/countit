@@ -10,11 +10,13 @@ import UIKit
 
 class Border: UIView {
     
+    private let CORNER_RADIUS: CGFloat = 10
+    
     init() {
         super.init(frame: CGRect())
         backgroundColor = .white
-        layer.cornerRadius = 10;
-        layer.masksToBounds = true;
+        layer.cornerRadius = CORNER_RADIUS
+        layer.masksToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {

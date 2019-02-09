@@ -11,7 +11,6 @@ import CoreData
 
 class AppContainer {
     
-    private let viewResolver: ViewResolver
     private let controllerResolver: ControllerResolver
     private let serviceResolver: ServiceResolver
     private let respositoryResolver: RepositoryResolver
@@ -22,7 +21,6 @@ class AppContainer {
     
     init(sqlDatabase: Bool) {
         context = CoreDataConfig.getCoreDataContext(isSQLDatabase: sqlDatabase)
-        viewResolver = ViewResolver()
         respositoryResolver = RepositoryResolver(context: context)
         serviceResolver = ServiceResolver(repositoryResolver: respositoryResolver, clock: clock, calendar: calendar)
         controllerResolver = ControllerResolver(serviceResolver: serviceResolver)

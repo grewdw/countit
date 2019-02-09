@@ -11,15 +11,21 @@ import GTProgressBar
 
 class GTProgressBarBuilder {
     
+    private let BORDER_WIDTH: CGFloat = 1
+    private let FILL_INSET: CGFloat = 2
+    private let MAX_HEIGHT: CGFloat = 20
+    
+    private let MAX_PROGRESS: CGFloat = 1.0
+    
     private var borderColor: UIColor
     private var fillColor: UIColor
     private var backgroundColor: UIColor
     private var progress: CGFloat
     
     init() {
-        borderColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
-        fillColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
-        backgroundColor = UIColor(red:0.77, green:0.93, blue:0.78, alpha:1.0)
+        borderColor = Colors.PROGRESS_BLUE
+        fillColor = Colors.PROGRESS_BLUE
+        backgroundColor = Colors.PROGRESS_BLUE_BACKGROUND
         progress = 0
     }
     
@@ -38,7 +44,7 @@ class GTProgressBarBuilder {
     }
     
     func with(progress: CGFloat) -> GTProgressBarBuilder {
-        self.progress = progress >= 1.0 ? 1.0 : progress
+        self.progress = progress >= MAX_PROGRESS ? MAX_PROGRESS : progress
         return self
     }
     
@@ -47,29 +53,29 @@ class GTProgressBarBuilder {
         bar.barBorderColor = borderColor
         bar.barFillColor = fillColor
         bar.barBackgroundColor = backgroundColor
-        bar.barBorderWidth = 1
-        bar.barFillInset = 2
-        bar.barMaxHeight = 20
+        bar.barBorderWidth = BORDER_WIDTH
+        bar.barFillInset = FILL_INSET
+        bar.barMaxHeight = MAX_HEIGHT
         bar.displayLabel = false
         bar.progress = progress
         return bar
     }
     
     private func setToGreen() {
-        borderColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
-        fillColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
-        backgroundColor = UIColor(red:0.77, green:0.93, blue:0.78, alpha:1.0)
+        borderColor = Colors.PROGRESS_GREEN
+        fillColor = Colors.PROGRESS_GREEN
+        backgroundColor = Colors.PROGRESS_GREEN_BACKGROUND
     }
     
     private func setToYellow() {
-        borderColor = UIColor(red:0.85, green:0.85, blue:0.20, alpha:1.0)
-        fillColor = UIColor(red:0.90, green:0.90, blue:0.20, alpha:1.0)
-        backgroundColor = UIColor(red:0.95, green:0.95, blue:0.78, alpha:1.0)
+        borderColor = Colors.PROGRESS_YELLOW
+        fillColor = Colors.PROGRESS_YELLOW
+        backgroundColor = Colors.PROGRESS_YELLOW_BACKGROUND
     }
     
     private func setToRed() {
-        borderColor = UIColor(red:0.80, green:0.36, blue:0.36, alpha:1.0)
-        fillColor = UIColor(red:0.80, green:0.36, blue:0.36, alpha:1.0)
-        backgroundColor = UIColor(red:0.93, green:0.78, blue:0.78, alpha:1.0)
+        borderColor = Colors.PROGRESS_RED
+        fillColor = Colors.PROGRESS_RED
+        backgroundColor = Colors.PROGRESS_RED_BACKGROUND
     }
 }

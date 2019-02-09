@@ -10,7 +10,7 @@ import UIKit
 
 class FormOptionSelectorView: UITableView {
     
-    typealias c = Colours
+    typealias c = Colors
     
     init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         super.init(frame: frame, style: .grouped)

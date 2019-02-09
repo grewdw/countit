@@ -11,7 +11,7 @@ import UIKit
 
 class ProgressDelegate {
     
-    private let actionButtonRow: ActionButtonRow
+    private let buttonSection: ButtonSection
     private let progressSection: ProgressSection
     
     
@@ -33,15 +33,15 @@ class ProgressDelegate {
         }
         else {
             progress = CGFloat(integerLiteral: activityCount) / CGFloat(integerLiteral: target)
-            color = .YELLOW
+            color = targetDirection == TargetDirection.AT_LEAST ? .YELLOW : .GREEN
         }
         
-        actionButtonRow = ActionButtonRow(delegate: delegate, percentage: String(Int(progress * 100)), color: color)
+        buttonSection = ButtonSection(delegate: delegate, percentage: String(Int(progress * 100)), color: color)
         progressSection = ProgressSection(progress: progress, color: color, activityCount: activityCount, target: target)
     }
     
-    func getActionButtons() -> ActionButtonRow {
-        return actionButtonRow
+    func getActionButtons() -> ButtonSection {
+        return buttonSection
     }
     
     func getProgressSection() -> ProgressSection {
