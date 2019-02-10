@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 @testable import countit
 
-class ItemDetailsBuilder {
+class ItemUpdateBuilder {
     
     private var id: NSManagedObjectID?
     private var name: String
@@ -30,42 +30,42 @@ class ItemDetailsBuilder {
         self.listPosition = nil
     }
     
-    func with(id: NSManagedObjectID) -> ItemDetailsBuilder {
+    func with(id: NSManagedObjectID) -> ItemUpdateBuilder {
         self.id = id
         return self
     }
     
-    func with(name: String) -> ItemDetailsBuilder {
+    func with(name: String) -> ItemUpdateBuilder {
         self.name = name
         return self
     }
     
-    func with(description: String) -> ItemDetailsBuilder {
+    func with(description: String) -> ItemUpdateBuilder {
         self.description = description
         return self
     }
     
-    func with(direction: TargetDirection) -> ItemDetailsBuilder {
+    func with(direction: TargetDirection) -> ItemUpdateBuilder {
         self.direction = direction
         return self
     }
     
-    func with(value: Int) -> ItemDetailsBuilder {
+    func with(value: Int) -> ItemUpdateBuilder {
         self.value = value
         return self
     }
     
-    func with(timePeriod: TargetTimePeriod) -> ItemDetailsBuilder {
+    func with(timePeriod: TargetTimePeriod) -> ItemUpdateBuilder {
         self.timePeriod = timePeriod
         return self
     }
     
-    func with(listPosition: Int) -> ItemDetailsBuilder {
+    func with(listPosition: Int) -> ItemUpdateBuilder {
         self.listPosition = listPosition
         return self
     }
     
-    func build() -> ItemDetailsDto {
-        return ItemDetailsDto(id, name, description, direction, value, timePeriod, listPosition)
+    func build() -> ItemUpdateDto {
+        return ItemUpdateDto(id, name, description, direction, value, timePeriod, listPosition)
     }
 }

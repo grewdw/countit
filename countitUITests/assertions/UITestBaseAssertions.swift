@@ -60,11 +60,19 @@ extension UITestBase {
         }
     }
     
-    func assertProgressTable(cell cellNumber: Int, is expectedName: String, file: StaticString = #file, line: UInt = #line) {
-        let actualName = itemTable!.cells.element(boundBy: cellNumber).staticTexts[AI.PROGRESS_CELL_NAME].label
+    func assertProgressTable(cell cellNumber: Int, is expectedName: String, withTarget target: String?,
+                             file: StaticString = #file, line: UInt = #line) {
+        let actualName = itemTable!.cells.element(boundBy: cellNumber).staticTexts[AI.ITEM_CELL_NAME].label
         XCTAssertEqual(actualName, expectedName,
                        "item name incorrect for cell \(cellNumber). Expected \(expectedName) but was \(actualName)",
             file: file, line: line)
+        
+        if let expectedTarget = target {
+            let actualTarget = itemTable!.cells.element(boundBy: cellNumber).staticTexts[AI.ITEM_CELL_TARGET].label
+            XCTAssertEqual(actualTarget, expectedTarget,
+                           "item target incorrect for cell \(cellNumber). Expected \(expectedTarget) but was \(actualTarget)",
+                file: file, line: line)
+        }
     }
     
     func assertProgressTableCountIs(_ expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
@@ -74,11 +82,17 @@ extension UITestBase {
                       file: file, line: line)
     }
     
-    func assertActivityCountFor(cell: Int, is activityCount: Int, file: StaticString = #file, line: UInt = #line) {
-        let expectedActivityCount  = String(activityCount) + " / " + "0"
-        let actualActivityCount = itemTable!.cells.element(boundBy: cell).staticTexts[AI.PROGRESS_CELL_ACTIVITY_COUNT].label
-        XCTAssertEqual(actualActivityCount, expectedActivityCount,
-                       "activityCount incorrect. Expected \(expectedActivityCount) but was \(actualActivityCount)",
+    func assertProgressFor(cell: Int, isPercentage expectedPercentage: String,
+                           withCount expectedCount: String,
+                           file: StaticString = #file, line: UInt = #line) {
+        let actualPercentage = itemTable!.cells.element(boundBy: cell).staticTexts[AI.ITEM_CELL_PROGRESS_PERCENTAGE].label
+        XCTAssertEqual(actualPercentage, expectedPercentage,
+                       "activityCount incorrect. Expected \(expectedPercentage) but was \(actualPercentage)",
+            file: file, line: line)
+        
+        let actualCount = itemTable!.cells.element(boundBy: cell).staticTexts[AI.ITEM_CELL_PROGRESS_COUNT].label
+        XCTAssertEqual(actualCount, expectedCount,
+                       "activityCount incorrect. Expected \(expectedCount) but was \(actualCount)",
                        file: file, line: line)
     }
     

@@ -11,7 +11,7 @@ import CoreData
 
 protocol ItemService {
     
-    func saveItem(_ item: ItemDetailsDto) -> Bool
+    func saveItem(_ item: ItemUpdateDto) -> Bool
     
     func getItem(id: NSManagedObjectID) -> ItemSummaryDto?
     

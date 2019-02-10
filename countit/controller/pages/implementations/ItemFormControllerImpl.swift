@@ -30,12 +30,10 @@ class ItemFormControllerImpl: UIViewController {
     private var validForm = false { didSet{ self.navigationItem.rightBarButtonItem?.isEnabled = validForm }}
     
     let controllerResolver: ControllerResolver
-    let viewResolver: ViewResolver
     let itemService: ItemService
     
-    init(_ controllerResolver: ControllerResolver, _ viewResolver: ViewResolver, _ itemService: ItemService) {
+    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
         self.controllerResolver = controllerResolver
-        self.viewResolver = viewResolver
         self.itemService = itemService
         sections.updateValue([ItemFormField.NAME, ItemFormField.DESCRIPTION], forKey: 0)
         sections.updateValue([ItemFormField.DIRECTION, ItemFormField.TARGET_VALUE, ItemFormField.TIMEPERIOD], forKey: 1)
@@ -59,7 +57,7 @@ class ItemFormControllerImpl: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         if !selectingOption {
             selectedItem = nil
             view = nil
@@ -126,8 +124,9 @@ extension ItemFormControllerImpl: UITableViewDataSource {
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
         case .SHOW_ACTIVITY:
             return ButtonCell(buttonText: "Show activity", delegate: self,
-                              buttonPressAction: { () -> Void in                                self.transitionTo(cellController: self.controllerResolver.getActivityHistoryController()
-                                .withItem(id: self.selectedItem!.getId()!) as! UIViewController) },
+                              buttonPressAction: { () -> Void in self.transitionTo(cellController:
+                                self.controllerResolver.getActivityHistoryController()
+                                .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
         }
     }
@@ -143,7 +142,7 @@ extension ItemFormControllerImpl: UITableViewDelegate {
 
 extension ItemFormControllerImpl: ItemFormController {
     func submitForm() {
-        let _ = itemService.saveItem(ItemDetailsDto(
+        let _ = itemService.saveItem(ItemUpdateDto(
             selectedItem?.getId(),
             fieldNameToValueMap[.NAME]!,
             fieldNameToValueMap[.DESCRIPTION]!,

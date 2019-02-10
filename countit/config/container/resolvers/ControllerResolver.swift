@@ -12,7 +12,6 @@ import UIKit
 class ControllerResolver {
     
     private let serviceResolver: ServiceResolver
-    private let viewResolver: ViewResolver
     
     private var primaryNavController: UINavigationController?
     private var progressTableController: ProgressTableController?
@@ -20,7 +19,6 @@ class ControllerResolver {
     private var activityHistoryController: ActivityHistoryController?
     
     init(serviceResolver: ServiceResolver) {
-        viewResolver = ViewResolver()
         self.serviceResolver = serviceResolver
     }
 
@@ -40,7 +38,7 @@ class ControllerResolver {
             return progressTableController!
         }
         else {
-            progressTableController = ProgressTableControllerImpl(self, viewResolver,
+            progressTableController = ProgressTableControllerImpl(self,
                                                                   serviceResolver.getItemService(),
                                                                   serviceResolver.getActivityService())
             return progressTableController!
@@ -52,7 +50,7 @@ class ControllerResolver {
             return itemFormController!
         }
         else {
-            itemFormController = ItemFormControllerImpl(self, viewResolver, serviceResolver.getItemService())
+            itemFormController = ItemFormControllerImpl(self, serviceResolver.getItemService())
             return itemFormController!
         }
     }

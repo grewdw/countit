@@ -24,7 +24,7 @@ class UpdateItems: UITestBase {
         select(FIRST_CELL)
         updateItemFormWithDetailsAndSave(name: ITEM_NAME_ONE_NEW, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
-        assertProgressTable(cell: 0, is: ITEM_NAME_ONE_NEW)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE_NEW, withTarget: "At least 10 a day")
         
         select(FIRST_CELL)
         assertItemForm(name: ITEM_NAME_ONE_NEW, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
@@ -34,7 +34,7 @@ class UpdateItems: UITestBase {
         select(FIRST_CELL)
         updateItemFormWithDetailsAndSave(name: nil, description: ITEM_DESCRIPTION_ONE_NEW, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         
-        assertProgressTable(cell: 0, is: ITEM_NAME_ONE)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE, withTarget: "At least 10 a day")
         
         select(FIRST_CELL)
         assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE_NEW, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
@@ -44,7 +44,7 @@ class UpdateItems: UITestBase {
         select(FIRST_CELL)
         updateItemFormWithDetailsAndSave(name: nil, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TWENTY, targetTimePeriod: nil)
         
-        assertProgressTable(cell: 0, is: ITEM_NAME_ONE)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE, withTarget: "At least 20 a day")
         
         select(FIRST_CELL)
         assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TWENTY, targetTimePeriod: nil)
@@ -74,7 +74,7 @@ class UpdateItems: UITestBase {
         
         moveItem(cell: FIRST_CELL, toCell: SECOND_CELL)
         
-        assertProgressTable(cell: 0, is: ITEM_NAME_TWO)
-        assertProgressTable(cell: 1, is: ITEM_NAME_ONE)
+        assertProgressTable(cell: 0, is: ITEM_NAME_TWO, withTarget: nil)
+        assertProgressTable(cell: 1, is: ITEM_NAME_ONE, withTarget: nil)
     }
 }

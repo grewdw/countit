@@ -1,0 +1,6 @@
+framework module Pods_countitTests {
+  umbrella header "Pods-countitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

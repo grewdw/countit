@@ -68,7 +68,7 @@ class ItemServiceContractTestBase: XCTestCase {
     }
     
     func createItemOne(withDescription: Bool, usingService service: ItemService) {
-        let item = ItemDetailsBuilder()
+        let item = ItemUpdateBuilder()
             .with(name: ITEM_NAME_ONE)
             .with(direction: ITEM_TARGET_DIRECTION_ONE)
             .with(value: ITEM_TARGET_VALUE_ONE)
@@ -78,7 +78,7 @@ class ItemServiceContractTestBase: XCTestCase {
     }
     
     func createItemTwo(usingService service: ItemService) {
-        let item = ItemDetailsBuilder()
+        let item = ItemUpdateBuilder()
             .with(name: ITEM_NAME_TWO)
             .with(description: ITEM_DESCRIPTION_TWO)
             .with(direction: ITEM_TARGET_DIRECTION_TWO)
@@ -89,7 +89,7 @@ class ItemServiceContractTestBase: XCTestCase {
     }
     
     func createItemThree(usingService service: ItemService) {
-        let item = ItemDetailsBuilder()
+        let item = ItemUpdateBuilder()
             .with(name: ITEM_NAME_THREE)
             .with(description: ITEM_DESCRIPTION_THREE)
             .with(direction: ITEM_TARGET_DIRECTION_THREE)

@@ -11,15 +11,15 @@ import CoreData
 
 class ItemDetailsDto {
     
-    private let id: NSManagedObjectID?
+    private let id: NSManagedObjectID
     private let name: String
     private let description: String?
     private let direction: TargetDirection
     private let value: Int
     private let timePeriod: TargetTimePeriod
-    private var listPosition: Int?
-    
-    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ direction: TargetDirection, _ value: Int, _ timePeriod: TargetTimePeriod, _ listPosition: Int?) {
+    private var listPosition: Int
+
+    init(_ id: NSManagedObjectID, _ name: String, _ description: String?, _ direction: TargetDirection, _ value: Int, _ timePeriod: TargetTimePeriod, _ listPosition: Int) {
         self.id = id
         self.name = name
         self.description = description
@@ -28,7 +28,7 @@ class ItemDetailsDto {
         self.timePeriod = timePeriod
         self.listPosition = listPosition
     }
-
+    
     init(itemEntity: ItemEntity, targetEntity: TargetEntity) {
         self.id = itemEntity.objectID
         self.name = itemEntity.name!
@@ -39,7 +39,7 @@ class ItemDetailsDto {
         self.listPosition = Int(itemEntity.listPosition)
     }
     
-    func getId() -> NSManagedObjectID? {
+    func getId() -> NSManagedObjectID {
         return id
     }
     
@@ -63,7 +63,7 @@ class ItemDetailsDto {
         return timePeriod
     }
     
-    func getListPosition() -> Int? {
+    func getListPosition() -> Int {
         return listPosition
     }
     

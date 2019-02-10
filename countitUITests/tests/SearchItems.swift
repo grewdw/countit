@@ -26,32 +26,32 @@ class SearchItems: UITestBase {
         searchItemTableFor(string: "a")
         
         assertProgressTableCountIs(3)
-        assertProgressTable(cell: 0, is: ITEM_NAME_A)
-        assertProgressTable(cell: 1, is: ITEM_NAME_AB)
-        assertProgressTable(cell: 2, is: ITEM_NAME_ABC)
+        assertProgressTable(cell: 0, is: ITEM_NAME_A, withTarget: nil)
+        assertProgressTable(cell: 1, is: ITEM_NAME_AB, withTarget: nil)
+        assertProgressTable(cell: 2, is: ITEM_NAME_ABC, withTarget: nil)
         
         addToItemTableSearchWith(string: "b")
         
         assertProgressTableCountIs(2)
-        assertProgressTable(cell: 0, is: ITEM_NAME_AB)
-        assertProgressTable(cell: 1, is: ITEM_NAME_ABC)
+        assertProgressTable(cell: 0, is: ITEM_NAME_AB, withTarget: nil)
+        assertProgressTable(cell: 1, is: ITEM_NAME_ABC, withTarget: nil)
         
         addToItemTableSearchWith(string: "c")
         
         assertProgressTableCountIs(1)
-        assertProgressTable(cell: 0, is: ITEM_NAME_ABC)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ABC, withTarget: nil)
         
         addToItemTableSearchWith(string: DELETE_KEY)
         
         assertProgressTableCountIs(2)
-        assertProgressTable(cell: 0, is: ITEM_NAME_AB)
-        assertProgressTable(cell: 1, is: ITEM_NAME_ABC)
+        assertProgressTable(cell: 0, is: ITEM_NAME_AB, withTarget: nil)
+        assertProgressTable(cell: 1, is: ITEM_NAME_ABC, withTarget: nil)
         
         addToItemTableSearchWith(string: DELETE_KEY)
         
         assertProgressTableCountIs(3)
-        assertProgressTable(cell: 0, is: ITEM_NAME_A)
-        assertProgressTable(cell: 1, is: ITEM_NAME_AB)
-        assertProgressTable(cell: 2, is: ITEM_NAME_ABC)
+        assertProgressTable(cell: 0, is: ITEM_NAME_A, withTarget: nil)
+        assertProgressTable(cell: 1, is: ITEM_NAME_AB, withTarget: nil)
+        assertProgressTable(cell: 2, is: ITEM_NAME_ABC, withTarget: nil)
     }
 }

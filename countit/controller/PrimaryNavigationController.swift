@@ -13,7 +13,7 @@ class PrimaryNavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(nibName: nil, bundle: nil)
         self.pushViewController(rootViewController, animated: false)
-        self.navigationBar.barTintColor = Colours.LOGO_RED
+        self.navigationBar.barTintColor = Colors.LOGO_RED
         self.navigationBar.tintColor = .white
         self.navigationBar.isOpaque = false
     }

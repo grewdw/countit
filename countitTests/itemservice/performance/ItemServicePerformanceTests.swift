@@ -19,11 +19,11 @@ class ItemServicePerformanceTests: XCTestCase {
     
     var items: [ItemSummaryDto]?
     var item: ItemDetailsDto?
-    var updatedItem: ItemDetailsDto?
-    var updatedTargetItem: ItemDetailsDto?
-    var updatedTargetAndNameItem: ItemDetailsDto?
+    var updatedItem: ItemUpdateDto?
+    var updatedTargetItem: ItemUpdateDto?
+    var updatedTargetAndNameItem: ItemUpdateDto?
     var itemId: NSManagedObjectID?
-    let newItem = ItemDetailsDto(nil, "newItem", nil, TargetDirection.AT_LEAST, 5, TargetTimePeriod.DAY, nil)
+    let newItem = ItemUpdateDto(nil, "newItem", nil, TargetDirection.AT_LEAST, 5, TargetTimePeriod.DAY, nil)
     
     let UPDATED_ITEM_NAME = "updatedItemName"
     
@@ -68,7 +68,7 @@ class ItemServicePerformanceTests: XCTestCase {
         self.measureMetrics([.wallClockTime], automaticallyStartMeasuring: false, for: {
             updateTestVariables()
             startMeasuring()
-            let _ = target!.getItem(id: item!.getId()!)
+            let _ = target!.getItem(id: item!.getId())
             stopMeasuring()
         })
     }
@@ -119,16 +119,16 @@ class ItemServicePerformanceTests: XCTestCase {
     }
     
     private func dataLoadItem(number: Int) {
-        let _ = target!.saveItem(ItemDetailsDto(nil, "item" + String(number), nil, .AT_LEAST, 5, .DAY, nil))
+        let _ = target!.saveItem(ItemUpdateDto(nil, "item" + String(number), nil, .AT_LEAST, 5, .DAY, nil))
     }
     
     private func updateTestVariables() {
         items = target!.getItems()
         if let itemArray = items {
             item = itemArray[itemArray.count-1].getItemDetailsDto()
-            updatedItem = ItemDetailsDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), (item?.getDirection())!, (item?.getValue())!, (item?.getTimePeriod())!, item?.getListPosition())
-            updatedTargetItem = ItemDetailsDto(item?.getId(), item!.getName() + String(counter), item?.getDescription(), .AT_LEAST, 5 + counter, .DAY, item?.getListPosition())
-            updatedTargetAndNameItem = ItemDetailsDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), .AT_LEAST, 5 + counter, .DAY, item?.getListPosition())
+            updatedItem = ItemUpdateDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), (item?.getDirection())!, (item?.getValue())!, (item?.getTimePeriod())!, item?.getListPosition())
+            updatedTargetItem = ItemUpdateDto(item?.getId(), item!.getName() + String(counter), item?.getDescription(), .AT_LEAST, 5 + counter, .DAY, item?.getListPosition())
+            updatedTargetAndNameItem = ItemUpdateDto(item?.getId(), UPDATED_ITEM_NAME + String(counter), item?.getDescription(), .AT_LEAST, 5 + counter, .DAY, item?.getListPosition())
             itemId = item!.getId()
             counter += 1
         }

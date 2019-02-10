@@ -21,7 +21,7 @@ extension UITestBase {
     }
     
     func select(_ cell: Int) {
-        itemTable!.cells.element(boundBy: cell).buttons["More Info"].tap()
+        itemTable!.cells.element(boundBy: cell).buttons[AI.ITEM_CELL_MOREINFO_BUTTON].tap()
     }
     
     func moveItem(cell fromCell: Int, toCell: Int) {
@@ -51,11 +51,7 @@ extension UITestBase {
         itemTable!.cells.element(boundBy: cell).swipeRight()
     }
     
-    func clickAddActivityButtonFor(cell: Int) {
-        itemTable!.cells.element(boundBy: cell).buttons[AI.PROGRESS_CELL_RECORD_ACTIVITY].tap()
-    }
-    
-    func clickSubtractActivityButtonFor(cell: Int) {
-        itemTable!.cells.element(boundBy: cell).buttons[AI.PROGRESS_CELL_SUBTRACT_ACTIVITY].tap()
+    func clickPlusOneButtonFor(cell: Int) {
+        itemTable!.cells.element(boundBy: cell).buttons[AI.ITEM_CELL_PLUSONE_BUTTON].tap()
     }
 }

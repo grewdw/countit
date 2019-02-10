@@ -33,8 +33,8 @@ class ActivityHistory: UITestBase {
     
     func testActivityHistoryShowsRecordedActivity() {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
-        clickAddActivityButtonFor(cell: FIRST_CELL)
-        clickAddActivityButtonFor(cell: FIRST_CELL)
+        clickPlusOneButtonFor(cell: FIRST_CELL)
+        clickPlusOneButtonFor(cell: FIRST_CELL)
         select(FIRST_CELL)
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(2)
@@ -44,8 +44,8 @@ class ActivityHistory: UITestBase {
     
     func testDeleteActivity() {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
-        clickAddActivityButtonFor(cell: FIRST_CELL)
-        clickAddActivityButtonFor(cell: FIRST_CELL)
+        clickPlusOneButtonFor(cell: FIRST_CELL)
+        clickPlusOneButtonFor(cell: FIRST_CELL)
         select(FIRST_CELL)
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(2)

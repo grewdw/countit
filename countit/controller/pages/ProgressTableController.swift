@@ -7,13 +7,24 @@
 //
 
 import Foundation
+import UIKit
 import CoreData
 
 protocol ProgressTableController {
     
-    func buttonPressed(_ button: NavBarButtonType)
+    func addButtonPressed()
+    
+    func itemSelected(itemDetails: ItemDetailsDto)
     
     func recordActivityButtonPressedFor(item: ItemDetailsDto)
     
     func subtractActivityButtonPressedFor(item: ItemDetailsDto)
+    
+    func itemCellStateChange(item: ItemSummaryDto, state: ItemCellState)
+    
+    func updateCellHeights()
+    
+    func refreshTableData()
+    
+    func itemPositionsChanged(itemOneRow: Int, itemTwoRow: Int)
 }

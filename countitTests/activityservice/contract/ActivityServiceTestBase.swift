@@ -67,7 +67,7 @@ class ActivityServiceTestBase: XCTestCase {
     }
 
     func createItem(withTargetTimePeriod timePeriod: TargetTimePeriod) {
-        let newItem = ItemDetailsDto(nil, ITEM_NAME, nil, TARGET_DIRECTION, TARGET_VALUE, timePeriod, nil)
+        let newItem = ItemUpdateDto(nil, ITEM_NAME, nil, TARGET_DIRECTION, TARGET_VALUE, timePeriod, nil)
         _ = itemService!.saveItem(newItem)
         item = itemService!.getItems()[0].getItemDetailsDto()
     }
@@ -105,7 +105,7 @@ class ActivityServiceTestBase: XCTestCase {
     }
     
     func assertNumberOfActivityRecords(is expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
-        let actualCount = activityService!.getActivityHistoryFor(item: item!.getId()!).getActivity().count
+        let actualCount = activityService!.getActivityHistoryFor(item: item!.getId()).getActivity().count
         
         XCTAssertEqual(actualCount, expectedCount,
                        "Incorrect number of activity records. Expected \(expectedCount) but was \(actualCount)",
@@ -113,7 +113,7 @@ class ActivityServiceTestBase: XCTestCase {
     }
     
     func deleteActivity(number activity: Int) {
-        let activityRecords = activityService!.getActivityHistoryFor(item: item!.getId()!).getActivity()
+        let activityRecords = activityService!.getActivityHistoryFor(item: item!.getId()).getActivity()
         XCTAssertTrue(activityRecords.count >= activity, "activity number \(activity) not found")
         let _ = activityService!.delete(activityRecord: activityRecords[activity - 1])
     }
