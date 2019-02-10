@@ -27,7 +27,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeName() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: ITEM_NAME_ONE_NEW)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -49,7 +49,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeNameNoDescription() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: ITEM_NAME_ONE_NEW)
             .with(direction: (ITEM_ONE_DETAILS?.getDirection())!)
@@ -70,7 +70,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeDescription() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: ITEM_DESCRIPTION_ONE_NEW)
@@ -92,7 +92,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetValueUpdates() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -114,7 +114,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetTimePeriodDoesNotUpdateWithValueChange() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -136,7 +136,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetTimePeriodDoesNotUpdateWithoutValueChange() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -158,7 +158,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetDirectionDoesNotUpdateWithValueChange() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -180,7 +180,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeTargetDirectionDoesNotUpdateWithoutValueChange() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -202,7 +202,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testChangeListPositionDoesNotUpdate() {
         
         //        Given
-        let updatedItem = ItemDetailsBuilder()
+        let updatedItem = ItemUpdateBuilder()
             .with(id: (ITEM_ONE_DETAILS?.getId())!)
             .with(name: (ITEM_ONE_DETAILS?.getName())!)
             .with(description: (ITEM_ONE_DETAILS?.getDescription())!)
@@ -238,26 +238,7 @@ class UpdateItems: ItemServiceContractTestBase {
         assert(item: items[1], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 1)
         assert(item: items[2], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 2)
     }
-    
-    func testPersistOrderChange_includesNewItem() {
-        //        Given
-        var initialOrderItems = target!.getItems()
-        let itemFour = ItemSummaryBuilder().with(name: ITEM_NAME_FOUR).with(description: ITEM_DESCRIPTION_FOUR).build()
-        initialOrderItems.append(itemFour)
-        initialOrderItems.swapAt(0, 2)
-        initialOrderItems.swapAt(1, 2)
-        
-        //        When
-        target!.persistTableOrder(for: initialOrderItems)
-        let items = target!.getItems()
-        
-        //        Then
-        XCTAssert(items.count == 3)
-        assert(item: items[0], hasName: ITEM_NAME_THREE, description: ITEM_DESCRIPTION_THREE, listPosition: 0)
-        assert(item: items[1], hasName: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, listPosition: 1)
-        assert(item: items[2], hasName: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, listPosition: 2)
-    }
-    
+ 
     func testPersistOrderChangeWithEmptyArray() {
         
         //        Given

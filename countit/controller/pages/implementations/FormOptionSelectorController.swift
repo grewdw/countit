@@ -35,7 +35,7 @@ class FormOptionSelectorController: UIViewController {
         self.view = tableView
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         view = nil
     }
 }

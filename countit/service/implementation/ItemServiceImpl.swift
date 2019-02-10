@@ -22,7 +22,7 @@ class ItemServiceImpl: ItemService {
         self.clock = clock
     }
     
-    func saveItem(_ item: ItemDetailsDto) -> Bool {
+    func saveItem(_ item: ItemUpdateDto) -> Bool {
         if let id = item.getId() {
             return updateItem(id: id, toItem: item)
         }
@@ -31,13 +31,13 @@ class ItemServiceImpl: ItemService {
         }
     }
     
-    private func create(item: ItemDetailsDto) -> Bool {
+    private func create(item: ItemUpdateDto) -> Bool {
         let previousLowestPosition = itemRepository.getLowestListPosition()
         let newLowestPosition = previousLowestPosition != nil ? previousLowestPosition!+1 : 0
         return itemRepository.createWithTarget(item: item, atPosition: newLowestPosition, withTimestamp: clock.now())
     }
     
-    private func updateItem(id: NSManagedObjectID, toItem item: ItemDetailsDto) -> Bool {
+    private func updateItem(id: NSManagedObjectID, toItem item: ItemUpdateDto) -> Bool {
         if let currentItem = itemRepository.getItemWithCurrentTarget(with: id) {
             if currentItem.getValue() == item.getValue() {
                 return itemRepository.update(item: item, with: id)
@@ -80,11 +80,10 @@ class ItemServiceImpl: ItemService {
         if items.count > 0 {
             var listPosition = 0
             for position in 0...items.count-1 {
-                if let itemId = items[position].getItemDetailsDto().getId() {
-                    items[position].getItemDetailsDto().setListPosition(newPosition: listPosition)
-                    let _ = itemRepository.updateItemWith(id: itemId, toListPosition: listPosition)
-                    listPosition += 1
-                }
+                let itemId = items[position].getItemDetailsDto().getId()
+                items[position].getItemDetailsDto().setListPosition(newPosition: listPosition)
+                let _ = itemRepository.updateItemWith(id: itemId, toListPosition: listPosition)
+                listPosition += 1
             }
         }
     }

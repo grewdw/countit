@@ -24,11 +24,16 @@ class ProgressDelegate {
         let targetDirection = item.getItemDetailsDto().getDirection()
         
         if activityCount > target {
-            progress = 1
+            if target == 0 {
+                progress = 0
+            }
+            else {
+                progress = CGFloat(integerLiteral: activityCount) / CGFloat(integerLiteral: target)
+            }
             color = targetDirection == TargetDirection.AT_LEAST ? .GREEN : .RED
         }
         else if target == activityCount {
-            progress = 1
+            progress = activityCount == 0 ? 0 : 1
             color =  .GREEN
         }
         else {

@@ -1,25 +1,25 @@
 //
-//  ItemDto.swift
+//  ItemUpdateDto.swift
 //  countit
 //
-//  Created by David Grew on 11/12/2018.
-//  Copyright © 2018 David Grew. All rights reserved.
+//  Created by David Grew on 10/02/2019.
+//  Copyright © 2019 David Grew. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class ItemDetailsDto {
+class ItemUpdateDto {
     
-    private let id: NSManagedObjectID
+    private let id: NSManagedObjectID?
     private let name: String
     private let description: String?
     private let direction: TargetDirection
     private let value: Int
     private let timePeriod: TargetTimePeriod
-    private var listPosition: Int
-
-    init(_ id: NSManagedObjectID, _ name: String, _ description: String?, _ direction: TargetDirection, _ value: Int, _ timePeriod: TargetTimePeriod, _ listPosition: Int) {
+    private var listPosition: Int?
+    
+    init(_ id: NSManagedObjectID?, _ name: String, _ description: String?, _ direction: TargetDirection, _ value: Int, _ timePeriod: TargetTimePeriod, _ listPosition: Int?) {
         self.id = id
         self.name = name
         self.description = description
@@ -29,17 +29,7 @@ class ItemDetailsDto {
         self.listPosition = listPosition
     }
     
-    init(itemEntity: ItemEntity, targetEntity: TargetEntity) {
-        self.id = itemEntity.objectID
-        self.name = itemEntity.name!
-        self.description = itemEntity.itemDescription
-        self.direction = TargetDirection(rawValue: targetEntity.direction!)!
-        self.value = Int(targetEntity.value)
-        self.timePeriod = TargetTimePeriod(rawValue: targetEntity.timePeriod!)!
-        self.listPosition = Int(itemEntity.listPosition)
-    }
-    
-    func getId() -> NSManagedObjectID {
+    func getId() -> NSManagedObjectID? {
         return id
     }
     
@@ -63,7 +53,7 @@ class ItemDetailsDto {
         return timePeriod
     }
     
-    func getListPosition() -> Int {
+    func getListPosition() -> Int? {
         return listPosition
     }
     
@@ -71,3 +61,4 @@ class ItemDetailsDto {
         self.listPosition = newPosition
     }
 }
+

@@ -14,7 +14,7 @@ class ActionButton: UIButton {
     
     let image: UIImage
     
-    init(buttonPressAction: @escaping () -> Void, image: UIImage) {
+    init(buttonPressAction: @escaping () -> Void, image: UIImage, accessibilityIdentifier: String) {
         self.buttonPressAction = buttonPressAction
         self.image = image
         super.init(frame: CGRect())
@@ -22,6 +22,7 @@ class ActionButton: UIButton {
         addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         setImage(image, for: .normal)
         imageView?.contentMode = .scaleAspectFit
+        self.accessibilityIdentifier = accessibilityIdentifier
     }
     
     required init?(coder aDecoder: NSCoder) {

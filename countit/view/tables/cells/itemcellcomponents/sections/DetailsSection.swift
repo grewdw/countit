@@ -22,7 +22,9 @@ class DetailsSection: UIView {
         
         let details = setupDetailsStackView(name: setup(name: item.getName(), cellWidth: cellWidth),
                                             target: setup(target: "\(item.getDirection().rawValue) \(item.getValue()) a \(item.getTimePeriod().rawValue.lowercased())", cellWidth: cellWidth))
-        let moreInfo = ActionButton(buttonPressAction: delegate.MoreInfoButtonPressed, image: UIImage(named: "MoreInfoIcon")!)
+        let moreInfo = ActionButton(buttonPressAction: delegate.MoreInfoButtonPressed,
+                                    image: UIImage(named: "MoreInfoIcon")!,
+                                    accessibilityIdentifier: AccessibilityIdentifiers.ITEM_CELL_MOREINFO_BUTTON)
         
         addSubview(details)
         addSubview(moreInfo)
@@ -56,6 +58,7 @@ class DetailsSection: UIView {
     
     private func setup(name: String, cellWidth: CGFloat) -> UILabel {
         let nameLabel = UILabel()
+        nameLabel.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_CELL_NAME
         nameLabel.attributedText = NSAttributedString(
             string: name,
             attributes:[
@@ -75,6 +78,7 @@ class DetailsSection: UIView {
     
     private func setup(target: String, cellWidth: CGFloat) -> UILabel {
         let targetLabel = UILabel()
+        targetLabel.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_CELL_TARGET
         targetLabel.attributedText = NSAttributedString(
             string: target,
             attributes:[

@@ -22,7 +22,7 @@ class CreateItems: UITestBase {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: MONTH)
         
         assertProgressTableCountIs(1)
-        assertProgressTable(cell: 0, is: ITEM_NAME_ONE)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE, withTarget: "At most 10 a month")
         
         select(FIRST_CELL)
         
@@ -40,13 +40,13 @@ class CreateItems: UITestBase {
     }
     
     func testCreateMultipleItems() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: WEEK)
         
-        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: AT_LEAST, targetValue: ITEM_TARGET_VALUE_TWENTY, targetTimePeriod: MONTH)
         
         assertProgressTableCountIs(2)
-        assertProgressTable(cell: 0, is: ITEM_NAME_ONE)
-        assertProgressTable(cell: 1, is: ITEM_NAME_TWO)
+        assertProgressTable(cell: 0, is: ITEM_NAME_ONE, withTarget: "At most 10 a week")
+        assertProgressTable(cell: 1, is: ITEM_NAME_TWO, withTarget:  "At least 20 a month")
     }
     
     func testCannotSaveWithoutItemName() {

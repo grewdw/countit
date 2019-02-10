@@ -124,8 +124,9 @@ extension ItemFormControllerImpl: UITableViewDataSource {
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
         case .SHOW_ACTIVITY:
             return ButtonCell(buttonText: "Show activity", delegate: self,
-                              buttonPressAction: { () -> Void in                                self.transitionTo(cellController: self.controllerResolver.getActivityHistoryController()
-                                .withItem(id: self.selectedItem!.getId()!) as! UIViewController) },
+                              buttonPressAction: { () -> Void in self.transitionTo(cellController:
+                                self.controllerResolver.getActivityHistoryController()
+                                .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
         }
     }
@@ -141,7 +142,7 @@ extension ItemFormControllerImpl: UITableViewDelegate {
 
 extension ItemFormControllerImpl: ItemFormController {
     func submitForm() {
-        let _ = itemService.saveItem(ItemDetailsDto(
+        let _ = itemService.saveItem(ItemUpdateDto(
             selectedItem?.getId(),
             fieldNameToValueMap[.NAME]!,
             fieldNameToValueMap[.DESCRIPTION]!,

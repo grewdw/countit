@@ -22,6 +22,7 @@ class ProgressTableView: UITableView {
         setupOrderChange()
         separatorStyle = .none
         dataSource = delegate as? UITableViewDataSource
+        self.delegate = delegate as? UITableViewDelegate
         rowHeight = UITableView.automaticDimension
         estimatedRowHeight = 22.0
         tableFooterView = UIView()

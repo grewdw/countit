@@ -23,7 +23,7 @@ class ItemRepositoryImpl: ItemRepository {
 // create functions
 extension ItemRepositoryImpl {
     
-    func createWithTarget(item: ItemDetailsDto, atPosition position: Int, withTimestamp timestamp: Date) -> Bool {
+    func createWithTarget(item: ItemUpdateDto, atPosition position: Int, withTimestamp timestamp: Date) -> Bool {
         let itemEntity = itemEntityFrom(itemDto: item)
         itemEntity.listPosition = Int16(position)
         let target = TargetDto(direction: item.getDirection(), value: item.getValue(), timePeriod: item.getTimePeriod())
@@ -59,7 +59,7 @@ extension ItemRepositoryImpl {
 // update functions
 extension ItemRepositoryImpl {
     
-    func update(item: ItemDetailsDto, with id: NSManagedObjectID) -> Bool {
+    func update(item: ItemUpdateDto, with id: NSManagedObjectID) -> Bool {
         if let itemEntity = getItem(with: id) {
             itemEntity.name = item.getName()
             itemEntity.itemDescription = item.getDescription()
@@ -179,7 +179,7 @@ extension ItemRepositoryImpl {
 extension ItemRepositoryImpl {
  
     // conversions from dto to entities
-    private func itemEntityFrom(itemDto: ItemDetailsDto) -> ItemEntity {
+    private func itemEntityFrom(itemDto: ItemUpdateDto) -> ItemEntity {
         let item = ItemEntity(context: context)
         item.name = itemDto.getName()
         item.itemDescription = itemDto.getDescription()

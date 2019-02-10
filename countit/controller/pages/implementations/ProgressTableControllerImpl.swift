@@ -43,7 +43,6 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     
     func initiateView() {
         let tableView = ProgressTableView(delegate: self)
-        tableView.delegate = self
         tableView.initialiseNavBarWithSearch(for: self, searchResultsUpdater: self)
         self.view = tableView
     }
@@ -70,24 +69,19 @@ extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = filteringItems ? filteredItems[indexPath.row] : items[indexPath.row]
         let state: ItemCellState
-        if let itemId = item.getItemDetailsDto().getId() {
-            state = itemToStateMap[itemId] != nil ? itemToStateMap[itemId]! : .CLOSED
-        }
-        else {
-            state = .CLOSED
-        }
-        itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId()!)
+        let itemId = item.getItemDetailsDto().getId()
+        state = itemToStateMap[itemId] != nil ? itemToStateMap[itemId]! : .CLOSED
+        itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId())
         let cell = ItemCell(item: item, delegate: self, state: state)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let itemId = items[indexPath.row].getItemDetailsDto().getId() {
-                self.items.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                let _ = itemService.delete(itemWithId: itemId)
-            }
+            let itemId = items[indexPath.row].getItemDetailsDto().getId()
+            self.items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            let _ = itemService.delete(itemWithId: itemId)
         }
     }
 }
@@ -113,7 +107,7 @@ extension ProgressTableControllerImpl: ProgressTableController {
     }
     
     func itemCellStateChange(item: ItemSummaryDto, state: ItemCellState) {
-        itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId()!)
+        itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId())
     }
     
     func updateCellHeights() {

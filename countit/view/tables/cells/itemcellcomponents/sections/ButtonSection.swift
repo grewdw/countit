@@ -11,6 +11,8 @@ import GTProgressBar
 
 class ButtonSection: UIStackView {
     
+    typealias AI = AccessibilityIdentifiers
+    
     let delegate: ItemCellButtonDelegate
     let percentageLabel = UILabel()
     let percentage: String
@@ -24,15 +26,24 @@ class ButtonSection: UIStackView {
         distribution = .fillProportionally
         alignment = .center
         
-        let progress = ActionButton(buttonPressAction: self.delegate.ProgressButtonPressed, image: UIImage(named: "ProgressIcon")!)
-        let performance = ActionButton(buttonPressAction: self.delegate.PerformanceButtonPressed, image: UIImage(named: "StatsIcon")!)
-        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed, image: UIImage(named: "AddIcon")!)
-        let plusOne = ActionButton(buttonPressAction: self.delegate.PlusOneButtonPressed, image: UIImage(named: "PlusOneIcon")!)
+        let progress = ActionButton(buttonPressAction: self.delegate.ProgressButtonPressed,
+                                    image: UIImage(named: "ProgressIcon")!,
+                                    accessibilityIdentifier: AI.ITEM_CELL_PROGRESS_BUTTON)
+        let performance = ActionButton(buttonPressAction: self.delegate.PerformanceButtonPressed,
+                                       image: UIImage(named: "StatsIcon")!,
+                                       accessibilityIdentifier: AI.ITEM_CELL_PERFORMANCE_BUTTON)
+        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed,
+                               image: UIImage(named: "AddIcon")!,
+                               accessibilityIdentifier: AI.ITEM_CELL_ADD_BUTTON)
+        let plusOne = ActionButton(buttonPressAction: self.delegate.PlusOneButtonPressed,
+                                   image: UIImage(named: "PlusOneIcon")!,
+                                   accessibilityIdentifier: AI.ITEM_CELL_PLUSONE_BUTTON)
         
         percentageLabel.text = "\(percentage)%"
         setPercentage(color: color)
         percentageLabel.textAlignment = .center
         percentageLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        percentageLabel.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_CELL_PROGRESS_PERCENTAGE
         
         addArrangedSubview(progress)
         addArrangedSubview(performance)

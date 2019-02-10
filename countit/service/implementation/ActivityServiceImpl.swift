@@ -58,7 +58,7 @@ class ActivityServiceImpl: ActivityService {
     
     private func calculateActivityInCurrentPeriodFor(item: ItemDetailsDto) -> Int {
         if let targetDuration = getTargetDuration(timePeriod: item.getTimePeriod()) {
-            let activities = activityRepository.getActivitiesFor(item: item.getId()!, fromStartDate: targetDuration.start, toEndDate: targetDuration.end)
+            let activities = activityRepository.getActivitiesFor(item: item.getId(), fromStartDate: targetDuration.start, toEndDate: targetDuration.end)
             var activityCount = 0
             for activity in activities {
                 activityCount += Int(activity.value)

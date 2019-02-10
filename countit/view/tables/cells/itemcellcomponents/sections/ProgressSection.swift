@@ -24,6 +24,7 @@ class ProgressSection: UIView {
         progressLabel.text = "\(activityCount) of \(target)"
         progressLabel.font = UIFont.systemFont(ofSize: 14)
         progressLabel.textAlignment = .center
+        progressLabel.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_CELL_PROGRESS_COUNT
         
         addSubview(topPadding)
         addSubview(progressBar)
