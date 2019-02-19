@@ -12,12 +12,10 @@ import UIKit
 
 class ItemServiceImpl: ItemService {
     
-    private let activityService: ActivityService
     private let itemRepository: ItemRepository
     private let clock: Clock
     
-    init (activityService: ActivityService, itemRepository: ItemRepository, clock: Clock) {
-        self.activityService = activityService
+    init (itemRepository: ItemRepository, clock: Clock) {
         self.itemRepository = itemRepository
         self.clock = clock
     }
@@ -59,29 +57,24 @@ class ItemServiceImpl: ItemService {
             timePeriod: oldTarget.getTimePeriod())
     }
     
-    func getItem(id: NSManagedObjectID) -> ItemSummaryDto? {
+    func getItem(id: NSManagedObjectID) -> ItemDetailsDto? {
         if let item = itemRepository.getItemWithCurrentTarget(with: id) {
-            return activityService.getCurrentTargetProgressFor(item: item)
+            return item
         }
         return nil
 
     }
     
-    func getItems() -> [ItemSummaryDto] {
-        let itemDetailDtos = itemRepository.getItemsWithCurrentTargets()
-        var itemSummaryDtos = [ItemSummaryDto]()
-        for item in itemDetailDtos {
-            itemSummaryDtos.append(activityService.getCurrentTargetProgressFor(item: item))
-        }
-        return itemSummaryDtos
+    func getItems() -> [ItemDetailsDto] {
+        return itemRepository.getItemsWithCurrentTargets()
     }
     
-    func persistTableOrder(for items: [ItemSummaryDto]) {
+    func persistTableOrder(for items: [ItemDetailsDto]) {
         if items.count > 0 {
             var listPosition = 0
             for position in 0...items.count-1 {
-                let itemId = items[position].getItemDetailsDto().getId()
-                items[position].getItemDetailsDto().setListPosition(newPosition: listPosition)
+                let itemId = items[position].getId()
+                items[position].setListPosition(newPosition: listPosition)
                 let _ = itemRepository.updateItemWith(id: itemId, toListPosition: listPosition)
                 listPosition += 1
             }

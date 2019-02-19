@@ -32,7 +32,7 @@ class ItemCell: UITableViewCell {
     var closedConstraints: [NSLayoutConstraint] = []
     var progressConstraints: [NSLayoutConstraint] = []
     
-    let item: ItemSummaryDto
+    let item: ItemProgressSummaryDto
     let delegate: ProgressTableController
     
     var border: Border?
@@ -44,7 +44,7 @@ class ItemCell: UITableViewCell {
     
     var state: ItemCellState = .CLOSED
     
-    init(item: ItemSummaryDto, delegate: ProgressTableController, state: ItemCellState) {
+    init(item: ItemProgressSummaryDto, delegate: ProgressTableController, state: ItemCellState) {
         self.item = item
         self.delegate = delegate
         self.state = state
@@ -106,7 +106,7 @@ class ItemCell: UITableViewCell {
     }
     
     func createProgressConstraints() {
-        progressConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: 59.5))
+        progressConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: 112))
     }
     
     required init?(coder aDecoder: NSCoder) {

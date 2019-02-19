@@ -12,17 +12,19 @@ import CoreData
 class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     
     private let controllerResolver: ControllerResolver
+    private let progressService: ProgressService
     private let itemService: ItemService
     private let activityService: ActivityService
     
-    var items: [ItemSummaryDto] = []
-    var filteredItems: [ItemSummaryDto] = []
+    var items: [ItemProgressSummaryDto] = []
+    var filteredItems: [ItemProgressSummaryDto] = []
     var itemToStateMap: [NSManagedObjectID:ItemCellState] = [:]
     
     var filteringItems: Bool = false
     
-    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService, _ activityService: ActivityService) {
+    init(_ controllerResolver: ControllerResolver, _ progressService: ProgressService, _ itemService: ItemService, _ activityService: ActivityService) {
         self.controllerResolver = controllerResolver
+        self.progressService = progressService
         self.itemService = itemService
         self.activityService = activityService
         super.init(nibName: nil, bundle: nil)
@@ -51,11 +53,11 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
 extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSource {
     
     func getItems() {
-        items = itemService.getItems()
+        items = progressService.getItemsProgresss()
     }
     
     func filterItems(containing searchText: String) {
-        filteredItems = items.filter({( item : ItemSummaryDto) -> Bool in
+        filteredItems = items.filter({( item : ItemProgressSummaryDto) -> Bool in
             return item.getItemDetailsDto().getName().lowercased().contains(searchText.lowercased())
         })
         let table = self.view as? UITableView
@@ -98,15 +100,15 @@ extension ProgressTableControllerImpl: ProgressTableController {
     
     func recordActivityButtonPressedFor(item: ItemDetailsDto) {
         let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
-        refreshTableData()
+        reloadData()
     }
     
     func subtractActivityButtonPressedFor(item: ItemDetailsDto) {
         let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
-        refreshTableData()
+        reloadData()
     }
     
-    func itemCellStateChange(item: ItemSummaryDto, state: ItemCellState) {
+    func itemCellStateChange(item: ItemProgressSummaryDto, state: ItemCellState) {
         itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId())
     }
     
@@ -117,6 +119,11 @@ extension ProgressTableControllerImpl: ProgressTableController {
     }
     
     @objc func refreshTableData() {
+        itemToStateMap.removeAll()
+        reloadData()
+    }
+    
+    private func reloadData() {
         getItems()
         let table = self.view as? UITableView
         table?.reloadData()
@@ -125,8 +132,16 @@ extension ProgressTableControllerImpl: ProgressTableController {
     func itemPositionsChanged(itemOneRow: Int, itemTwoRow: Int) {
         self.items.swapAt(itemOneRow, itemTwoRow)
         if !filteringItems {
-            itemService.persistTableOrder(for: items)
+            itemService.persistTableOrder(for: toItemDetails(items: items))
         }
+    }
+    
+    private func toItemDetails(items: [ItemProgressSummaryDto]) -> [ItemDetailsDto] {
+        var itemDetails = [ItemDetailsDto]()
+        for item in items {
+            itemDetails.append(item.getItemDetailsDto())
+        }
+        return itemDetails
     }
     
     private func toItemController(item: ItemDetailsDto?) {

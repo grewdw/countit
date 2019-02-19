@@ -29,4 +29,8 @@ class AppContainer {
     func getControllerResolver() -> ControllerResolver {
         return controllerResolver
     }
+    
+    func getServiceResolver() -> ServiceResolver {
+        return serviceResolver
+    }
 }

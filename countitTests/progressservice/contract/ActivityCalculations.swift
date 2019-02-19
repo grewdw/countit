@@ -9,7 +9,7 @@
 import XCTest
 @testable import countit
 
-class CalculateProgressTimings: ActivityServiceTestBase {
+class ActivityCalculations: ProgressServiceTestBase {
 
     override func setUp() {
         super.setUp()
@@ -56,8 +56,8 @@ class CalculateProgressTimings: ActivityServiceTestBase {
     
     func testDay_complextTest() {
         runTestForTodayWith(timePeriod: .DAY, activityTimestamps: getAllTimeStamps(), expectedCount: 3)
-        assertItemProgressCountAt(date: TOMORROW, expectedCount: 2)
-        assertItemProgressCountAt(date: YESTERDAY, expectedCount: 1)
+        self.assertItemProgressCountAt(date: TOMORROW, expectedCount: 2)
+        self.assertItemProgressCountAt(date: YESTERDAY, expectedCount: 1)
     }
     
     func testWeek_secondAfterWeekStart() {

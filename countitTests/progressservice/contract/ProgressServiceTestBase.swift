@@ -1,17 +1,17 @@
 //
-//  ActivityServiceTestBase.swift
+//  ProgressServiceTestBase.swift
 //  countitTests
 //
-//  Created by David Grew on 16/01/2019.
+//  Created by David Grew on 18/02/2019.
 //  Copyright © 2019 David Grew. All rights reserved.
 //
 
-import XCTest
+import Foundation
 @testable import countit
-import CoreData
+import XCTest
 
-class ActivityServiceTestBase: XCTestCase {
-
+class ProgressServiceTestBase: XCTestCase {
+    
     let ITEM_NAME = "itemName"
     let TARGET_DIRECTION = TargetDirection.AT_LEAST
     let TARGET_VALUE = 5
@@ -52,20 +52,23 @@ class ActivityServiceTestBase: XCTestCase {
     let clock = TestClock()
     var activityService: ActivityService?
     var itemService: ItemService?
+    var progressService: ProgressService?
     var item: ItemDetailsDto?
     
     override func setUp() {
         let serviceConfig = ServiceConfig(clock: clock)
-        itemService = serviceConfig.getItemService()
         activityService = serviceConfig.getActivityService()
+        itemService = serviceConfig.getItemService()
+        progressService = serviceConfig.getProgressService()
     }
     
     override func tearDown() {
         activityService = nil
         itemService = nil
+        progressService = nil
         item = nil
     }
-
+    
     func createItem(withTargetTimePeriod timePeriod: TargetTimePeriod) {
         let newItem = ItemUpdateDto(nil, ITEM_NAME, nil, TARGET_DIRECTION, TARGET_VALUE, timePeriod, nil)
         _ = itemService!.saveItem(newItem)
@@ -74,10 +77,6 @@ class ActivityServiceTestBase: XCTestCase {
     
     func recordActivity(withTimestamps timestamps: [String]) {
         updateActivity(value: 1, forTimestamps: timestamps)
-    }
-    
-    func subtractActivity(withTimestamps timestamps: [String]) {
-        updateActivity(value: -1, forTimestamps: timestamps)
     }
     
     private func updateActivity(value: Int, forTimestamps timestamps: [String]) {
@@ -94,21 +93,48 @@ class ActivityServiceTestBase: XCTestCase {
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         return dateFormatter.date(from: timestamp)
     }
- 
-    func assertNumberOfActivityRecords(is expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
-        let actualCount = activityService!.getActivityHistoryFor(item: item!.getId()).getActivity().count
+    
+    func assertItemProgressCountAt(date: String, expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
+        clock.set(date: timeStampStringToDate(timestamp: date)!)
+        let actualCount = progressService?.getItemsProgresss()[0].getActivityPeriodSummaryDto().getActivityCount()
         
         XCTAssertEqual(actualCount, expectedCount,
-                       "Incorrect number of activity records. Expected \(expectedCount) but was \(actualCount)",
+                       "activityCount incorrect. Expected \(expectedCount) but was \(actualCount)",
             file: file, line: line)
     }
     
-    func deleteActivity(number activity: Int) {
-        let activityRecords = activityService!.getActivityHistoryFor(item: item!.getId()).getActivity()
-        XCTAssertTrue(activityRecords.count >= activity, "activity number \(activity) not found")
-        let _ = activityService!.delete(activityRecord: activityRecords[activity - 1])
+    func assertItemHas(overrallDuration expectedDuration: DateInterval, at date: String,
+                       file: StaticString = #file, line: UInt = #line) {
+        clock.set(date: timeStampStringToDate(timestamp: date)!)
+        let actualDuration = progressService!.getItemsProgresss()[0].getActivityPeriodSummaryDto().getOverallDuration()
+        assert(expectedDuration: expectedDuration, actualDuration: actualDuration)
     }
     
+    func assertItemHas(elapsedDuration expectedDuration: DateInterval, at date: String,
+                       file: StaticString = #file, line: UInt = #line) {
+        clock.set(date: timeStampStringToDate(timestamp: date)!)
+        let actualDuration = progressService!.getItemsProgresss()[0].getActivityPeriodSummaryDto().getElapsedDuration()
+        assert(expectedDuration: expectedDuration, actualDuration: actualDuration)
+    }
+    
+    func assertItemHas(remainingDuration expectedDuration: DateInterval, at date: String,
+                       file: StaticString = #file, line: UInt = #line) {
+        clock.set(date: timeStampStringToDate(timestamp: date)!)
+        let actualDuration = progressService!.getItemsProgresss()[0].getActivityPeriodSummaryDto().getRemainingDuration()
+        assert(expectedDuration: expectedDuration, actualDuration: actualDuration)
+    }
+    
+    private func assert(expectedDuration: DateInterval, actualDuration: DateInterval,
+                        file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(actualDuration.start, expectedDuration.start,
+                       "start date incorrect. Expected \(expectedDuration.start) but was \(actualDuration.start)",
+            file: file, line: line)
+        
+        XCTAssertEqual(actualDuration.end, expectedDuration.end,
+                       "end date incorrect. Expected \(expectedDuration.end) but was \(actualDuration.end)",
+            file: file, line: line)
+    }
+ 
     func getAllTimeStamps() -> [String] {
         return [ONE_SECOND_AFTER_DAY_START,
                 DAY_START_EXACT,

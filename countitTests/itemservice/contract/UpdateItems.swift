@@ -12,7 +12,6 @@ import CoreData
 
 class UpdateItems: ItemServiceContractTestBase {
     
-    var ITEM_ONE_SUMMARY: ItemSummaryDto?
     var ITEM_ONE_DETAILS: ItemDetailsDto?
     
     override func setUp() {
@@ -20,8 +19,7 @@ class UpdateItems: ItemServiceContractTestBase {
         
         createThreeItems(withService: target!)
         
-        ITEM_ONE_SUMMARY = target!.getItems()[0]
-        ITEM_ONE_DETAILS = target!.getItems()[0].getItemDetailsDto()
+        ITEM_ONE_DETAILS = target!.getItems()[0]
     }
     
     func testChangeName() {
@@ -242,7 +240,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testPersistOrderChangeWithEmptyArray() {
         
         //        Given
-        let emptyItemArray: [ItemSummaryDto] = []
+        let emptyItemArray: [ItemDetailsDto] = []
         
         //        When
         target!.persistTableOrder(for: emptyItemArray)
@@ -258,7 +256,7 @@ class UpdateItems: ItemServiceContractTestBase {
     func testPersistOrderChangeSingleItemArray() {
         
         //        Given
-        let singleItemArray: [ItemSummaryDto] = [ITEM_ONE_SUMMARY!]
+        let singleItemArray: [ItemDetailsDto] = [ITEM_ONE_DETAILS!]
         
         //        When
         target!.persistTableOrder(for: singleItemArray)

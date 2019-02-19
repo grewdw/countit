@@ -14,6 +14,7 @@ class ServiceConfig {
     
     let activityService: ActivityService
     let itemService: ItemService
+    let progressService: ProgressService
     
     init(clock: Clock) {
         let context = TestCoreDataConfig.getCoreDataContext()
@@ -21,7 +22,8 @@ class ServiceConfig {
         let activityRepository = ActivityRepositoryImpl(context: context)
         let itemRepository = ItemRepositoryImpl(context: context)
         activityService = ActivityServiceImpl(activityRepository: activityRepository, clock: clock, calendar: calendar)
-        itemService =  ItemServiceImpl(activityService: activityService, itemRepository: itemRepository, clock: clock)
+        itemService =  ItemServiceImpl(itemRepository: itemRepository, clock: clock)
+        progressService = ProgressServiceImpl(itemService: itemService, activityService: activityService, calendar: calendar, clock: clock)
     }
     
     func getActivityService() -> ActivityService {
@@ -30,5 +32,9 @@ class ServiceConfig {
     
     func getItemService() -> ItemService {
         return itemService
+    }
+    
+    func getProgressService() -> ProgressService {
+        return progressService
     }
 }

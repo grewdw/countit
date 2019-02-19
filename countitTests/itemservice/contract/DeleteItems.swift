@@ -21,8 +21,8 @@ class DeleteItems: ItemServiceContractTestBase {
         createTwoItems(withService: target!)
         
         let items = target!.getItems()
-        ITEM_ID_ONE = items[0].getItemDetailsDto().getId()
-        ITEM_ID_TWO = items[1].getItemDetailsDto().getId()
+        ITEM_ID_ONE = items[0].getId()
+        ITEM_ID_TWO = items[1].getId()
     }
     
     func testDeleteOneItem() {

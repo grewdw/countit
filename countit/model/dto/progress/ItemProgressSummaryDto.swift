@@ -8,21 +8,21 @@
 
 import Foundation
 
-class ItemSummaryDto {
+class ItemProgressSummaryDto {
     
     private let itemDetailsDto: ItemDetailsDto
-    private let activityCount: Int
+    private let activityPeriodSummaryDto: ActivityPeriodSummaryDto
     
-    init(itemDetailsDto: ItemDetailsDto, activityCount: Int) {
+    init(itemDetailsDto: ItemDetailsDto, periodSummary: ActivityPeriodSummaryDto) {
         self.itemDetailsDto = itemDetailsDto
-        self.activityCount = activityCount
+        self.activityPeriodSummaryDto = periodSummary
     }
     
     func getItemDetailsDto() -> ItemDetailsDto {
         return itemDetailsDto
     }
     
-    func getActivityCount() -> Int {
-        return activityCount
+    func getActivityPeriodSummaryDto() -> ActivityPeriodSummaryDto {
+        return activityPeriodSummaryDto
     }
 }

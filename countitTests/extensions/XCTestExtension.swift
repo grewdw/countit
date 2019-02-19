@@ -12,16 +12,16 @@ import CoreData
 
 extension XCTestCase {
     
-    func assert(item: ItemSummaryDto, hasName: String?, description: String?, listPosition: Int?) {
+    func assert(item: ItemDetailsDto, hasName: String?, description: String?, listPosition: Int?) {
         
-        XCTAssert(item.getItemDetailsDto().getName() == hasName)
-        XCTAssert(item.getItemDetailsDto().getDescription() == description)
-        XCTAssert(item.getItemDetailsDto().getListPosition() == listPosition)
+        XCTAssert(item.getName() == hasName)
+        XCTAssert(item.getDescription() == description)
+        XCTAssert(item.getListPosition() == listPosition)
     }
     
-    func assertTargetFor(item: ItemSummaryDto, hasDirection direction: TargetDirection, value: Int, timePeriod: TargetTimePeriod) {
-        XCTAssert(item.getItemDetailsDto().getDirection() == direction)
-        XCTAssert(item.getItemDetailsDto().getValue() == value)
-        XCTAssert(item.getItemDetailsDto().getTimePeriod() == timePeriod)
+    func assertTargetFor(item: ItemDetailsDto, hasDirection direction: TargetDirection, value: Int, timePeriod: TargetTimePeriod) {
+        XCTAssert(item.getDirection() == direction)
+        XCTAssert(item.getValue() == value)
+        XCTAssert(item.getTimePeriod() == timePeriod)
     }
 }

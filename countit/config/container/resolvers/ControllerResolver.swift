@@ -39,6 +39,7 @@ class ControllerResolver {
         }
         else {
             progressTableController = ProgressTableControllerImpl(self,
+                                                                  serviceResolver.getProgressService(),
                                                                   serviceResolver.getItemService(),
                                                                   serviceResolver.getActivityService())
             return progressTableController!
