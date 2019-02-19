@@ -13,7 +13,6 @@
 		1D1E5712220586B80081CCE8 /* ServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5711220586B80081CCE8 /* ServiceResolver.swift */; };
 		1D1E5716220587BB0081CCE8 /* RepositoryResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5715220587BB0081CCE8 /* RepositoryResolver.swift */; };
 		1D1E571822058AEC0081CCE8 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E571722058AEC0081CCE8 /* AppContainer.swift */; };
-		1D1E571A22058E180081CCE8 /* DeleteActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E571922058E180081CCE8 /* DeleteActivity.swift */; };
 		1D1E571E220A2B640081CCE8 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E571D220A2B640081CCE8 /* ItemCell.swift */; };
 		1D1E5721220A32520081CCE8 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5720220A32520081CCE8 /* Border.swift */; };
 		1D1E5723220A33B60081CCE8 /* DetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E5722220A33B60081CCE8 /* DetailsSection.swift */; };
@@ -38,6 +37,10 @@
 		1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */; };
 		1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */; };
 		1D886AA222101FE200C002C2 /* ItemUpdateDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AA122101FE200C002C2 /* ItemUpdateDto.swift */; };
+		1D886AA8221ADCE100C002C2 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AA7221ADCE100C002C2 /* ProgressService.swift */; };
+		1D886AAB221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AAA221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift */; };
+		1D886AAD221ADEA000C002C2 /* ProgressServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AAC221ADEA000C002C2 /* ProgressServiceImpl.swift */; };
+		1D886AB1221B2D9900C002C2 /* ProgressServiceTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AB0221B2D9900C002C2 /* ProgressServiceTestBase.swift */; };
 		1D9D329E22043988007C675F /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D329D22043988007C675F /* ButtonCell.swift */; };
 		1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */; };
 		1D9D32A222044FEB007C675F /* ActivityRecordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */; };
@@ -54,6 +57,7 @@
 		1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3902721B5BFD200C11CD7 /* CreateItems.swift */; };
 		1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */; };
 		1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */; };
+		1DD1581A221C936E00B95C9C /* TimeCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD15819221C936E00B95C9C /* TimeCalculations.swift */; };
 		1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */; };
 		1DEB4B7C21CFFB07002F09CF /* TestCoreDataConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */; };
 		1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B7E21D00982002F09CF /* UpdateItems.swift */; };
@@ -63,7 +67,6 @@
 		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
 		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
-		1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */; };
 		1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9E21D93921002F09CF /* TargetDirection.swift */; };
 		1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */; };
 		1DEB4BA321D946DB002F09CF /* TargetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA221D946DB002F09CF /* TargetDto.swift */; };
@@ -78,7 +81,7 @@
 		1DEB4BB921E38A99002F09CF /* ActivityServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */; };
 		1DEB4BBB21E38B01002F09CF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */; };
 		1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */; };
-		1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */; };
+		1DEB4BBF21E3DCAE002F09CF /* ItemProgressSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBE21E3DCAE002F09CF /* ItemProgressSummaryDto.swift */; };
 		1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */; };
 		1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */; };
 		1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC621E7926C002F09CF /* UITestBase.swift */; };
@@ -88,8 +91,8 @@
 		1DF653DE21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */; };
 		1DF653E221EFD40D00AA65C3 /* TestClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653E121EFD40D00AA65C3 /* TestClock.swift */; };
 		1DF653E621EFD56300AA65C3 /* ActivityServiceTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */; };
-		1DF653EA21F12DE000AA65C3 /* CalculateProgressTimings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653E921F12DE000AA65C3 /* CalculateProgressTimings.swift */; };
-		1DF653EC21F12F3C00AA65C3 /* AddSubtractActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653EB21F12F3C00AA65C3 /* AddSubtractActivity.swift */; };
+		1DF653EA21F12DE000AA65C3 /* ActivityCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653E921F12DE000AA65C3 /* ActivityCalculations.swift */; };
+		1DF653EC21F12F3C00AA65C3 /* AddDeleteActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653EB21F12F3C00AA65C3 /* AddDeleteActivity.swift */; };
 		1DF653EE21FE276700AA65C3 /* FormOptionSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653ED21FE276700AA65C3 /* FormOptionSelectorController.swift */; };
 		1DF653F021FE344400AA65C3 /* FormOptionSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653EF21FE344400AA65C3 /* FormOptionSelectorView.swift */; };
 		1DF653F221FE371400AA65C3 /* FormOptionSelectorCell.swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653F121FE371400AA65C3 /* FormOptionSelectorCell.swif.swift */; };
@@ -127,7 +130,6 @@
 		1D1E5711220586B80081CCE8 /* ServiceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResolver.swift; sourceTree = "<group>"; };
 		1D1E5715220587BB0081CCE8 /* RepositoryResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryResolver.swift; sourceTree = "<group>"; };
 		1D1E571722058AEC0081CCE8 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
-		1D1E571922058E180081CCE8 /* DeleteActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteActivity.swift; sourceTree = "<group>"; };
 		1D1E571D220A2B640081CCE8 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCell.swift; path = countit/View/Tables/Cells/ItemCell.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5720220A32520081CCE8 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Border.swift; path = countit/view/tables/cells/itemcellcomponents/elements/Border.swift; sourceTree = SOURCE_ROOT; };
 		1D1E5722220A33B60081CCE8 /* DetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailsSection.swift; path = countit/view/tables/cells/itemcellcomponents/sections/DetailsSection.swift; sourceTree = SOURCE_ROOT; };
@@ -152,6 +154,10 @@
 		1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
 		1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerResolver.swift; sourceTree = "<group>"; };
 		1D886AA122101FE200C002C2 /* ItemUpdateDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateDto.swift; sourceTree = "<group>"; };
+		1D886AA7221ADCE100C002C2 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
+		1D886AAA221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPeriodSummaryDto.swift; sourceTree = "<group>"; };
+		1D886AAC221ADEA000C002C2 /* ProgressServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressServiceImpl.swift; sourceTree = "<group>"; };
+		1D886AB0221B2D9900C002C2 /* ProgressServiceTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressServiceTestBase.swift; sourceTree = "<group>"; };
 		1D9D329D22043988007C675F /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ButtonCell.swift; path = countit/view/tables/cells/formcells/ButtonCell.swift; sourceTree = SOURCE_ROOT; };
 		1D9D329F22044EEE007C675F /* ActivityHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityHistoryController.swift; path = countit/controller/pages/ActivityHistoryController.swift; sourceTree = SOURCE_ROOT; };
 		1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecordDto.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 		1DB3902921B5BFD200C11CD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB3903C21B5C19600C11CD7 /* ProgressTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableController.swift; sourceTree = "<group>"; };
 		1DB3904121B6AC3300C11CD7 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		1DD15819221C936E00B95C9C /* TimeCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCalculations.swift; sourceTree = "<group>"; };
 		1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConfig.swift; sourceTree = "<group>"; };
 		1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataConfig.swift; sourceTree = "<group>"; };
 		1DEB4B7E21D00982002F09CF /* UpdateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItems.swift; sourceTree = "<group>"; };
@@ -183,7 +190,6 @@
 		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
 		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
-		1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemServicePerformanceTests.swift; sourceTree = "<group>"; };
 		1DEB4B9E21D93921002F09CF /* TargetDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDirection.swift; sourceTree = "<group>"; };
 		1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePeriod.swift; sourceTree = "<group>"; };
 		1DEB4BA221D946DB002F09CF /* TargetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDto.swift; sourceTree = "<group>"; };
@@ -198,7 +204,7 @@
 		1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityServiceImpl.swift; sourceTree = "<group>"; };
 		1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryImpl.swift; sourceTree = "<group>"; };
-		1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSummaryDto.swift; sourceTree = "<group>"; };
+		1DEB4BBE21E3DCAE002F09CF /* ItemProgressSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProgressSummaryDto.swift; sourceTree = "<group>"; };
 		1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
 		1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = countit/View/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
 		1DEB4BC621E7926C002F09CF /* UITestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBase.swift; sourceTree = "<group>"; };
@@ -208,8 +214,8 @@
 		1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseItemFormSteps.swift; sourceTree = "<group>"; };
 		1DF653E121EFD40D00AA65C3 /* TestClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClock.swift; sourceTree = "<group>"; };
 		1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityServiceTestBase.swift; sourceTree = "<group>"; };
-		1DF653E921F12DE000AA65C3 /* CalculateProgressTimings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateProgressTimings.swift; sourceTree = "<group>"; };
-		1DF653EB21F12F3C00AA65C3 /* AddSubtractActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubtractActivity.swift; sourceTree = "<group>"; };
+		1DF653E921F12DE000AA65C3 /* ActivityCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCalculations.swift; sourceTree = "<group>"; };
+		1DF653EB21F12F3C00AA65C3 /* AddDeleteActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeleteActivity.swift; sourceTree = "<group>"; };
 		1DF653ED21FE276700AA65C3 /* FormOptionSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionSelectorController.swift; path = countit/controller/pages/implementations/FormOptionSelectorController.swift; sourceTree = SOURCE_ROOT; };
 		1DF653EF21FE344400AA65C3 /* FormOptionSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionSelectorView.swift; path = countit/View/Tables/FormOptionSelectorView.swift; sourceTree = SOURCE_ROOT; };
 		1DF653F121FE371400AA65C3 /* FormOptionSelectorCell.swif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormOptionSelectorCell.swif.swift; path = countit/view/tables/cells/formcells/FormOptionSelectorCell.swif.swift; sourceTree = SOURCE_ROOT; };
@@ -421,6 +427,7 @@
 		1D7D37D721C05F01000E3621 /* dto */ = {
 			isa = PBXGroup;
 			children = (
+				1D886AA9221ADD1A00C002C2 /* progress */,
 				1D9D32A422045051007C675F /* activity */,
 				1D9D32A322045040007C675F /* item */,
 				1DEB4BA221D946DB002F09CF /* TargetDto.swift */,
@@ -433,6 +440,7 @@
 			children = (
 				1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */,
 				1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */,
+				1D886AAC221ADEA000C002C2 /* ProgressServiceImpl.swift */,
 			);
 			path = implementation;
 			sourceTree = "<group>";
@@ -453,11 +461,36 @@
 			path = entities;
 			sourceTree = "<group>";
 		};
+		1D886AA9221ADD1A00C002C2 /* progress */ = {
+			isa = PBXGroup;
+			children = (
+				1DEB4BBE21E3DCAE002F09CF /* ItemProgressSummaryDto.swift */,
+			);
+			path = progress;
+			sourceTree = "<group>";
+		};
+		1D886AAE221B2D6200C002C2 /* progressservice */ = {
+			isa = PBXGroup;
+			children = (
+				1D886AAF221B2D6A00C002C2 /* contract */,
+			);
+			path = progressservice;
+			sourceTree = "<group>";
+		};
+		1D886AAF221B2D6A00C002C2 /* contract */ = {
+			isa = PBXGroup;
+			children = (
+				1DF653E921F12DE000AA65C3 /* ActivityCalculations.swift */,
+				1DD15819221C936E00B95C9C /* TimeCalculations.swift */,
+				1D886AB0221B2D9900C002C2 /* ProgressServiceTestBase.swift */,
+			);
+			path = contract;
+			sourceTree = "<group>";
+		};
 		1D9D32A322045040007C675F /* item */ = {
 			isa = PBXGroup;
 			children = (
 				1D7D37D521C05EE6000E3621 /* ItemDetailsDto.swift */,
-				1DEB4BBE21E3DCAE002F09CF /* ItemSummaryDto.swift */,
 				1D886AA122101FE200C002C2 /* ItemUpdateDto.swift */,
 			);
 			path = item;
@@ -469,6 +502,7 @@
 				1D9D32A122044FEB007C675F /* ActivityRecordDto.swift */,
 				1DEB4BB421E3892B002F09CF /* ActivityUpdateDto.swift */,
 				1D9D32A5220450FF007C675F /* ActivityHistoryDto.swift */,
+				1D886AAA221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift */,
 			);
 			path = activity;
 			sourceTree = "<group>";
@@ -518,6 +552,7 @@
 				1DEB4BA921DBFC2F002F09CF /* utils */,
 				1DEB4BA421DBF294002F09CF /* builders */,
 				1DEB4B8F21D54F1C002F09CF /* config */,
+				1D886AAE221B2D6200C002C2 /* progressservice */,
 				1DF653E321EFD53400AA65C3 /* activityservice */,
 				1DEB4B7D21D0094E002F09CF /* itemservice */,
 			);
@@ -574,6 +609,7 @@
 			children = (
 				1D7D37D321C05E81000E3621 /* ItemService.swift */,
 				1DEB4BB621E38A45002F09CF /* ActivityService.swift */,
+				1D886AA7221ADCE100C002C2 /* ProgressService.swift */,
 				1D7D37DB21C06152000E3621 /* implementation */,
 			);
 			path = service;
@@ -649,7 +685,6 @@
 		1DEB4B9221D6700E002F09CF /* performance */ = {
 			isa = PBXGroup;
 			children = (
-				1DEB4B9521D670AE002F09CF /* ItemServicePerformanceTests.swift */,
 			);
 			path = performance;
 			sourceTree = "<group>";
@@ -749,9 +784,7 @@
 		1DF653E421EFD54400AA65C3 /* contract */ = {
 			isa = PBXGroup;
 			children = (
-				1DF653E921F12DE000AA65C3 /* CalculateProgressTimings.swift */,
-				1DF653EB21F12F3C00AA65C3 /* AddSubtractActivity.swift */,
-				1D1E571922058E180081CCE8 /* DeleteActivity.swift */,
+				1DF653EB21F12F3C00AA65C3 /* AddDeleteActivity.swift */,
 				1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */,
 			);
 			path = contract;
@@ -1010,6 +1043,7 @@
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
 				1D1E571822058AEC0081CCE8 /* AppContainer.swift in Sources */,
 				1DF653F021FE344400AA65C3 /* FormOptionSelectorView.swift in Sources */,
+				1D886AA8221ADCE100C002C2 /* ProgressService.swift in Sources */,
 				1D27FBB8220CE3E400F8789B /* ProgressSection.swift in Sources */,
 				1D1E5731220B057D0081CCE8 /* ItemCellButtonDelegate.swift in Sources */,
 				1D1E5721220A32520081CCE8 /* Border.swift in Sources */,
@@ -1033,7 +1067,7 @@
 				1D9D32AA22045472007C675F /* ActivityHistoryControllerImpl.swift in Sources */,
 				1D9D32A222044FEB007C675F /* ActivityRecordDto.swift in Sources */,
 				1DB3903D21B5C19600C11CD7 /* ProgressTableController.swift in Sources */,
-				1DEB4BBF21E3DCAE002F09CF /* ItemSummaryDto.swift in Sources */,
+				1DEB4BBF21E3DCAE002F09CF /* ItemProgressSummaryDto.swift in Sources */,
 				1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */,
 				1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
@@ -1065,7 +1099,9 @@
 				1D1E5712220586B80081CCE8 /* ServiceResolver.swift in Sources */,
 				1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */,
 				1D9D32A82204526F007C675F /* ActivityRecordCell.swift in Sources */,
+				1D886AAB221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift in Sources */,
 				1D1E570B2204C62A0081CCE8 /* ProgressTableControllerImpl.swift in Sources */,
+				1D886AAD221ADEA000C002C2 /* ProgressServiceImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,20 +1109,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DEB4B9621D670AE002F09CF /* ItemServicePerformanceTests.swift in Sources */,
 				1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */,
-				1DF653EC21F12F3C00AA65C3 /* AddSubtractActivity.swift in Sources */,
+				1DF653EC21F12F3C00AA65C3 /* AddDeleteActivity.swift in Sources */,
+				1DD1581A221C936E00B95C9C /* TimeCalculations.swift in Sources */,
 				1DEB4BAB21DBFC4C002F09CF /* ServiceConfig.swift in Sources */,
 				1DF653E621EFD56300AA65C3 /* ActivityServiceTestBase.swift in Sources */,
-				1D1E571A22058E180081CCE8 /* DeleteActivity.swift in Sources */,
 				1DEB4B8121D00991002F09CF /* ReadItems.swift in Sources */,
 				1DEB4BB021DC00E8002F09CF /* XCTestExtension.swift in Sources */,
 				1DEB4B7C21CFFB07002F09CF /* TestCoreDataConfig.swift in Sources */,
 				1DEB4BA621DBF2A3002F09CF /* ItemUpdateBuilder.swift in Sources */,
+				1D886AB1221B2D9900C002C2 /* ProgressServiceTestBase.swift in Sources */,
 				1DEB4BA821DBF2AD002F09CF /* TargetBuilder.swift in Sources */,
 				1DEB4B7F21D00982002F09CF /* UpdateItems.swift in Sources */,
 				1DB3901D21B5BFD200C11CD7 /* CreateItems.swift in Sources */,
-				1DF653EA21F12DE000AA65C3 /* CalculateProgressTimings.swift in Sources */,
+				1DF653EA21F12DE000AA65C3 /* ActivityCalculations.swift in Sources */,
 				1DF653E221EFD40D00AA65C3 /* TestClock.swift in Sources */,
 				1DEB4B8321D009B6002F09CF /* DeleteItems.swift in Sources */,
 			);

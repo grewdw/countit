@@ -22,8 +22,16 @@ class ActivityServiceImpl: ActivityService {
     }
     
     func record(activityUpdate activity: ActivityUpdateDto) -> Bool {
-        return activity.getValue() < 0 ? processSubtract(activity: activity) : processAdd(activity: activity)
-
+        return activityRepository.save(activity: activity, withTimestamp: clock.now())
+    }
+    
+    func getActivityCountFor(item: NSManagedObjectID, between: DateInterval) -> Int {
+        let activities = activityRepository.getActivitiesFor(item: item, fromStartDate: between.start, toEndDate: between.end)
+        var activityCount = 0
+        for activity in activities {
+            activityCount += Int(activity.value)
+        }
+        return activityCount
     }
     
     func getActivityHistoryFor(item: NSManagedObjectID) -> ActivityHistoryDto {
@@ -32,50 +40,5 @@ class ActivityServiceImpl: ActivityService {
     
     func delete(activityRecord: ActivityRecordDto) -> Bool {
         return activityRepository.delete(activityRecord: activityRecord)
-    }
-    
-    private func processSubtract(activity: ActivityUpdateDto) -> Bool {
-        let activityInPeriod = calculateActivityInCurrentPeriodFor(item: activity.getItem())
-        if activityInPeriod <= 0 {
-            return true
-        }
-        else {
-            return activityInPeriod >= activity.getValue()
-                ? activityRepository.save(activity: activity, withTimestamp: clock.now())
-                : activityRepository.save(
-                    activity: ActivityUpdateDto(item: activity.getItem(), value: activityInPeriod),
-                    withTimestamp: clock.now())
-        }
-    }
-    
-    private func processAdd(activity: ActivityUpdateDto) -> Bool {
-        return activityRepository.save(activity: activity, withTimestamp: clock.now())
-    }
-    
-    func getCurrentTargetProgressFor(item: ItemDetailsDto) -> ItemSummaryDto {
-        return ItemSummaryDto(itemDetailsDto: item, activityCount: calculateActivityInCurrentPeriodFor(item: item))
-    }
-    
-    private func calculateActivityInCurrentPeriodFor(item: ItemDetailsDto) -> Int {
-        if let targetDuration = getTargetDuration(timePeriod: item.getTimePeriod()) {
-            let activities = activityRepository.getActivitiesFor(item: item.getId(), fromStartDate: targetDuration.start, toEndDate: targetDuration.end)
-            var activityCount = 0
-            for activity in activities {
-                activityCount += Int(activity.value)
-            }
-            return activityCount
-        }
-        return 0
-    }
-    
-    private func getTargetDuration(timePeriod: TargetTimePeriod) -> DateInterval? {
-        switch timePeriod {
-        case .DAY:
-            return calendar.dateInterval(of: .day, for: clock.now())
-        case .WEEK:
-            return calendar.dateInterval(of: .weekOfYear, for: clock.now())
-        case .MONTH:
-            return calendar.dateInterval(of: .month, for: clock.now())
-        }
     }
 }

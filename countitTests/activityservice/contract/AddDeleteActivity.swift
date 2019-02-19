@@ -1,23 +1,28 @@
 //
-//  DeleteActivity.swift
+//  AddSubtractActivity.swift
 //  countitTests
 //
-//  Created by David Grew on 02/02/2019.
+//  Created by David Grew on 17/01/2019.
 //  Copyright © 2019 David Grew. All rights reserved.
 //
 
-import Foundation
 import XCTest
 @testable import countit
 
-class DeleteActivity: ActivityServiceTestBase {
-    
+class AddDeleteActivity: ActivityServiceTestBase {
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
+    }
+
+    func testRecordActivity() {
+        createItem(withTargetTimePeriod: .DAY)
+        recordActivity(withTimestamps: [TODAY])
+        assertNumberOfActivityRecords(is: 1)
     }
     
     func testDeleteActivity() {

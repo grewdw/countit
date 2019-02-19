@@ -16,6 +16,7 @@ class ServiceResolver {
     
     private var itemService: ItemService?
     private var activityService: ActivityService?
+    private var progressService: ProgressService?
     
     init(repositoryResolver: RepositoryResolver, clock: Clock, calendar: Calendar) {
         self.repositoryResolver = repositoryResolver
@@ -28,8 +29,7 @@ class ServiceResolver {
             return itemService!
         }
         else {
-            itemService = ItemServiceImpl(activityService: getActivityService(),
-                                          itemRepository: repositoryResolver.getItemRepository(),
+            itemService = ItemServiceImpl(itemRepository: repositoryResolver.getItemRepository(),
                                           clock: clock)
             return itemService!
         }
@@ -43,6 +43,17 @@ class ServiceResolver {
             activityService = ActivityServiceImpl(activityRepository: repositoryResolver.getActivityRepository(),
                                               clock: clock, calendar: calendar)
             return activityService!
+        }
+    }
+    
+    func getProgressService() -> ProgressService {
+        if progressService != nil {
+            return progressService!
+        }
+        else {
+            progressService = ProgressServiceImpl(itemService: getItemService(), activityService: getActivityService(),
+                                                  calendar: calendar, clock: clock)
+            return progressService!
         }
     }
 }

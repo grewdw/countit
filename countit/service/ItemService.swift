@@ -13,11 +13,11 @@ protocol ItemService {
     
     func saveItem(_ item: ItemUpdateDto) -> Bool
     
-    func getItem(id: NSManagedObjectID) -> ItemSummaryDto?
+    func getItem(id: NSManagedObjectID) -> ItemDetailsDto?
     
-    func getItems() -> [ItemSummaryDto]
+    func getItems() -> [ItemDetailsDto]
     
-    func persistTableOrder(for items: [ItemSummaryDto])
+    func persistTableOrder(for items: [ItemDetailsDto])
     
     func delete(itemWithId _id: NSManagedObjectID) -> Bool
 }

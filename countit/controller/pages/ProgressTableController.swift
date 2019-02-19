@@ -20,7 +20,7 @@ protocol ProgressTableController {
     
     func subtractActivityButtonPressedFor(item: ItemDetailsDto)
     
-    func itemCellStateChange(item: ItemSummaryDto, state: ItemCellState)
+    func itemCellStateChange(item: ItemProgressSummaryDto, state: ItemCellState)
     
     func updateCellHeights()
     
