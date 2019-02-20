@@ -11,11 +11,12 @@ import UIKit
 
 class ProgressDelegate {
     
+    private let detailsSection: DetailsSection
     private let buttonSection: ButtonSection
     private let progressSection: ProgressSection
     
     
-    init(delegate: ItemCellButtonDelegate, item: ItemProgressSummaryDto) {
+    init(delegate: ItemCellButtonDelegate, item: ItemProgressSummaryDto, cellWidth: CGFloat) {
         var activityProgress: CGFloat
         var color: ProgressBarColor
         
@@ -49,8 +50,13 @@ class ProgressDelegate {
             }
         }
         
+        detailsSection = DetailsSection(delegate: delegate, item: item.getItemDetailsDto(), percentage: String(Int(activityProgress * 100)), percentageColor: color, cellWidth: cellWidth)
         buttonSection = ButtonSection(delegate: delegate, percentage: String(Int(activityProgress * 100)), color: color)
         progressSection = ProgressSection(activityProgress: activityProgress, timeProgress: timeProgress, color: color, activityCount: activityCount, target: target, remainingSeconds: timeRemaining)
+    }
+    
+    func getDetailsSection() -> DetailsSection {
+        return detailsSection
     }
     
     func getActionButtons() -> ButtonSection {

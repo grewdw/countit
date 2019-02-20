@@ -73,6 +73,8 @@ class NavigationItemBuilder {
                 return NavBarButtonBuilder().getEditButton(target)
             case NavBarButtonType.SAVE :
                 return NavBarButtonBuilder().getSaveButton(target)
+            case NavBarButtonType.NONE :
+                return nil
             }
         }
         return nil

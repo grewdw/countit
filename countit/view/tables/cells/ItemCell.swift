@@ -17,16 +17,17 @@ class ItemCell: UITableViewCell {
     let DETAILS_PADDING_LEFT: CGFloat = 27.5
     let DETAILS_PADDING_RIGHT: CGFloat = -27.5
     let DETAILS_PADDING_TOP: CGFloat = 15
-    let ACTION_BUTTON_PADDING_TOP: CGFloat = 37.5
+    let ACTION_BUTTON_PADDING_TOP: CGFloat = 27.5
     let ACTION_BUTTON_PADDING_LEFT: CGFloat = 25
     let ACTION_BUTTON_PADDING_RIGHT: CGFloat = -25
-    let ACTION_BUTTON_HEIGHT: CGFloat = 25
+    let ACTION_BUTTON_HEIGHT: CGFloat = 50
     let PROGRESS_SECTION_PADDING_LEFT: CGFloat = 25
     let PROGRESS_SECTION_PADDING_RIGHT: CGFloat = -25
-    let PROGRESS_SECTION_PADDING_TOP: CGFloat = 62.5
-    let PROGRESS_SECTION_PADDING_BOTTOM: CGFloat = 10
+    let PROGRESS_SECTION_PADDING_TOP: CGFloat = 90
+    let PROGRESS_SECTION_PADDING_BOTTOM: CGFloat = 0
 
     let HEIGHT_ZERO: CGFloat = 0
+    let HEIGHT_PROGRESS: CGFloat = 100
     
     var alwaysConstraints: [NSLayoutConstraint] = []
     var closedConstraints: [NSLayoutConstraint] = []
@@ -53,10 +54,10 @@ class ItemCell: UITableViewCell {
         self.backgroundColor = Colors.TABLE_BACKGROUND
         self.selectionStyle = .none
         
-        let progressDelegate = ProgressDelegate(delegate: self, item: item)
+        let progressDelegate = ProgressDelegate(delegate: self, item: item, cellWidth: bounds.width)
         
         border = Border()
-        detailsSection = DetailsSection(delegate: self, item: item.getItemDetailsDto(), cellWidth: bounds.width)
+        detailsSection = progressDelegate.getDetailsSection()
         buttonSection = progressDelegate.getActionButtons()
         progressSection = progressDelegate.getProgressSection()
         
@@ -106,7 +107,7 @@ class ItemCell: UITableViewCell {
     }
     
     func createProgressConstraints() {
-        progressConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: 112))
+        progressConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: HEIGHT_PROGRESS))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -117,8 +118,10 @@ class ItemCell: UITableViewCell {
 extension ItemCell {
     
     func setToClosed() {
+        
         NSLayoutConstraint.activate(alwaysConstraints)
         NSLayoutConstraint.activate(closedConstraints)
+        sendSubviewToBack(progressSection!)
     }
     
     func setToProgress() {
@@ -130,6 +133,7 @@ extension ItemCell {
         NSLayoutConstraint.deactivate(closedConstraints)
         NSLayoutConstraint.activate(progressConstraints)
         delegate.updateCellHeights()
+        self.bringSubviewToFront(self.progressSection!)
         state = .PROGRESS
         delegate.itemCellStateChange(item: item, state: state)
     }
@@ -138,6 +142,7 @@ extension ItemCell {
         NSLayoutConstraint.activate(closedConstraints)
         NSLayoutConstraint.deactivate(progressConstraints)
         delegate.updateCellHeights()
+        self.sendSubviewToBack(self.progressSection!)
         state = .CLOSED
         delegate.itemCellStateChange(item: item, state: state)
     }
@@ -153,6 +158,7 @@ extension ItemCell: ItemCellButtonDelegate {
     }
     
     func PlusOneButtonPressed() {
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
         delegate.recordActivityButtonPressedFor(item: item.getItemDetailsDto())
     }
     
@@ -163,6 +169,10 @@ extension ItemCell: ItemCellButtonDelegate {
         else {
             transitionClosedToProgress()
         }
+    }
+    
+    func ActivityHistoryButtonPressed() {
+        delegate.transitionToActivityHistoryControllerFor(item: item.getItemDetailsDto().getId())
     }
     
     func PerformanceButtonPressed() {

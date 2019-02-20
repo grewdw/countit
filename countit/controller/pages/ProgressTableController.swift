@@ -27,4 +27,6 @@ protocol ProgressTableController {
     func refreshTableData()
     
     func itemPositionsChanged(itemOneRow: Int, itemTwoRow: Int)
+    
+    func transitionToActivityHistoryControllerFor(item: NSManagedObjectID)
 }

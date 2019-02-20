@@ -18,7 +18,7 @@ class ProgressSection: UIView {
     init(activityProgress: CGFloat, timeProgress: CGFloat, color: ProgressBarColor, activityCount: Int, target: Int, remainingSeconds: Int) {
         super.init(frame: CGRect())
 
-        let topPadding = UIView()
+//        let topPadding = UIView()
         let activityProgressBar = GTProgressBarBuilder().with(color: color).with(progress: activityProgress).build()
         let activityProgressLabel = UILabel()
         let timeProgressBar = GTProgressBarBuilder().with(color: .BLUE).with(progress: timeProgress).build()
@@ -34,37 +34,37 @@ class ProgressSection: UIView {
         timeProgressLabel.textAlignment = .center
 //        timeProgressLabel = AccessibilityIdentifiers.ITEM_CELL_PROGRESS_COUNT
         
-        addSubview(topPadding)
+//        addSubview(topPadding)
         addSubview(activityProgressBar)
         addSubview(activityProgressLabel)
         addSubview(timeProgressBar)
         addSubview(timeProgressLabel)
-        topPadding.translatesAutoresizingMaskIntoConstraints = false
+//        topPadding.translatesAutoresizingMaskIntoConstraints = false
         activityProgressBar.translatesAutoresizingMaskIntoConstraints = false
         activityProgressLabel.translatesAutoresizingMaskIntoConstraints = false
         timeProgressBar.translatesAutoresizingMaskIntoConstraints = false
         timeProgressLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            topPadding.topAnchor.constraint(equalTo: topAnchor),
-            topPadding.leftAnchor.constraint(equalTo: leftAnchor),
-            topPadding.rightAnchor.constraint(equalTo: rightAnchor),
-            topPadding.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.20),
+//            topPadding.topAnchor.constraint(equalTo: topAnchor),
+//            topPadding.leftAnchor.constraint(equalTo: leftAnchor),
+//            topPadding.rightAnchor.constraint(equalTo: rightAnchor),
+//            topPadding.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.10),
             activityProgressBar.leftAnchor.constraint(equalTo: leftAnchor),
             activityProgressBar.rightAnchor.constraint(equalTo: rightAnchor),
-            activityProgressBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.18),
-            activityProgressBar.topAnchor.constraint(equalTo: topPadding.bottomAnchor),
+            activityProgressBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.20),
+            activityProgressBar.topAnchor.constraint(equalTo: topAnchor),
             activityProgressLabel.leftAnchor.constraint(equalTo: leftAnchor),
             activityProgressLabel.rightAnchor.constraint(equalTo: rightAnchor),
-            activityProgressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.22),
+            activityProgressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.30),
             activityProgressLabel.topAnchor.constraint(equalTo: activityProgressBar.bottomAnchor),
             timeProgressBar.leftAnchor.constraint(equalTo: leftAnchor),
             timeProgressBar.rightAnchor.constraint(equalTo: rightAnchor),
-            timeProgressBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.18),
+            timeProgressBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.20),
             timeProgressBar.topAnchor.constraint(equalTo: activityProgressLabel.bottomAnchor),
             timeProgressLabel.leftAnchor.constraint(equalTo: leftAnchor),
             timeProgressLabel.rightAnchor.constraint(equalTo: rightAnchor),
-            timeProgressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.22),
+            timeProgressLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.30),
             timeProgressLabel.topAnchor.constraint(equalTo: timeProgressBar.bottomAnchor),
             timeProgressLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])

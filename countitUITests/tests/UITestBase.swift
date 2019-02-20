@@ -48,6 +48,8 @@ class UITestBase: XCTestCase {
     
     var itemTableAddButton: XCUIElement?
     var itemFormSaveButton: XCUIElement?
+    var activityHistoryEditButton: XCUIElement?
+    var activityHistoryDoneButton: XCUIElement?
     var backButton: XCUIElement?
     
     var nameField: XCUIElement?
@@ -90,7 +92,9 @@ class UITestBase: XCTestCase {
     func initialiseXCUIElementsFor(newApp: XCUIApplication) {
         app = newApp
         itemTableAddButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_TABLE].buttons[AI.NAVIGATION_BAR_BUTTON_ADD]
-        itemFormSaveButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_FORM].buttons[AI.NAVIGATION_BAR_BUTTON_SAVE]
+        itemFormSaveButton = newApp.navigationBars[AI.NAVIGATION_BAR_ITEM_FORM].buttons[AI.NAVIGATION_BAR_BUTTON_DONE]
+        activityHistoryEditButton = newApp.navigationBars[AI.NAVIGATION_BAR_ACTIVITY_HISTORY].buttons[AI.NAVIGATION_BAR_BUTTON_EDIT]
+        activityHistoryDoneButton = newApp.navigationBars[AI.NAVIGATION_BAR_ACTIVITY_HISTORY].buttons[AI.NAVIGATION_BAR_BUTTON_DONE]
         backButton = newApp.navigationBars.buttons.element(boundBy: 0)
         nameField = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_NAME_FIELD]
         nameFieldText = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_NAME_FIELD].textFields[AI.TEXT_FIELD_TEXT]

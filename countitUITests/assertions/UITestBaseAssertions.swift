@@ -118,4 +118,23 @@ extension UITestBase {
                       "activity history table count incorrect. Expected \(expectedCount) but was \(actualCount)",
             file: file, line: line)
     }
+    
+    func assertActivityHistoryNavBarButtonIs(expectedButton: String,
+                                             file: StaticString = #file, line: UInt = #line) {
+        if expectedButton == "Done" {
+            XCTAssertTrue(activityHistoryDoneButton!.isEnabled,
+                          "activity history done button not enabled",
+                file: file, line: line)
+        }
+        else if expectedButton == "Edit" {
+            XCTAssertTrue(activityHistoryEditButton!.isEnabled,
+                          "activity history edit button not enabled",
+                          file: file, line: line)
+        }
+        else if expectedButton == "None" {
+            XCTAssertFalse(activityHistoryEditButton!.exists && activityHistoryDoneButton!.exists,
+                          "activity history button is enabled",
+                          file: file, line: line)
+        }
+    }
 }

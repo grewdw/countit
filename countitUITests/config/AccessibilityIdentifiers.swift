@@ -34,6 +34,7 @@ class AccessibilityIdentifiers {
     public static let ITEM_CELL_PERFORMANCE_BUTTON = "performanceButton"
     public static let ITEM_CELL_ADD_BUTTON = "addButton"
     public static let ITEM_CELL_PLUSONE_BUTTON = "plusOneButton"
+    public static let ITEM_CELL_ACTIVITY_HISTORY_BUTTON = "activityHistoryButton"
     public static let ITEM_CELL_PROGRESS_PERCENTAGE = "itemCellProgressPercentage"
     public static let ITEM_CELL_PROGRESS_COUNT = "itemCellProgressCount"
     
@@ -47,7 +48,9 @@ class AccessibilityIdentifiers {
     
     public static let NAVIGATION_BAR_ITEM_TABLE = "countIt"
     public static let NAVIGATION_BAR_ITEM_FORM = "itemForm"
+    public static let NAVIGATION_BAR_ACTIVITY_HISTORY = "activityHistory"
     
     public static let NAVIGATION_BAR_BUTTON_ADD = "Add"
-    public static let NAVIGATION_BAR_BUTTON_SAVE = "Done"
+    public static let NAVIGATION_BAR_BUTTON_DONE = "Done"
+    public static let NAVIGATION_BAR_BUTTON_EDIT = "Edit"
 }

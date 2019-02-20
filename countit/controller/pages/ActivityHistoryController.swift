@@ -12,4 +12,8 @@ import CoreData
 protocol ActivityHistoryController {
     
     func withItem(id: NSManagedObjectID) -> ActivityHistoryController
+    
+    func editButtonPressed()
+    
+    func doneButtonPressed()
 }

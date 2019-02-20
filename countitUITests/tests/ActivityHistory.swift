@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import countit
 
 class ActivityHistory: UITestBase {
     
@@ -29,6 +30,13 @@ class ActivityHistory: UITestBase {
         assertItemFormShowActivityButton(isEnabled: true)
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(0)
+        assertActivityHistoryNavBarButtonIs(expectedButton: "None")
+    }
+    
+    func testAccessActivityHistoryFromItemCell() {
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        clickActivityHistoryButtonFor(cell: 0)
+        assertActivityHistoryTableCountIs(0)
     }
     
     func testActivityHistoryShowsRecordedActivity() {
@@ -40,24 +48,35 @@ class ActivityHistory: UITestBase {
         assertActivityHistoryTableCountIs(2)
         assertActivityHistoryTable(cell: 0, hasValue: "+1")
         assertActivityHistoryTable(cell: 0, hasValue: "+1")
+        assertActivityHistoryNavBarButtonIs(expectedButton: "Edit")
     }
     
-    func testDeleteActivity() {
+    func testDeleteActivitySwipe() {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         select(FIRST_CELL)
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(2)
-        deleteActivityIn(cell: SECOND_CELL)
+        swipeToDeleteActivityIn(cell: SECOND_CELL)
         assertActivityHistoryTableCountIs(1)
         backButton?.tap()
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(1)
-        deleteActivityIn(cell: FIRST_CELL)
+        swipeToDeleteActivityIn(cell: FIRST_CELL)
         assertActivityHistoryTableCountIs(0)
         backButton?.tap()
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(0)
+    }
+    
+    func testDeleteActivityEdit() {
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        clickPlusOneButtonFor(cell: FIRST_CELL)
+        clickActivityHistoryButtonFor(cell: 0)
+        activityHistoryEditButton?.tap()
+        assertActivityHistoryNavBarButtonIs(expectedButton: "Done")
+        activityHistoryDoneButton?.tap()
+        assertActivityHistoryNavBarButtonIs(expectedButton: "Edit")
     }
 }

@@ -28,8 +28,13 @@ class ActivityHistoryControllerImpl: UIViewController {
         if let itemUnwrapped = item {
             activityRecords = activityService.getActivityHistoryFor(item: itemUnwrapped).getActivity()
         }
-        let tableView = ActivityHistoryView(frame: self.view.bounds)
-        tableView.initialiseNavBar(for: self)
+        let tableView = ActivityHistoryView(frame: self.view.bounds, historyViewController: self)
+        if activityRecords.count == 0 {
+            tableView.navBarNoButtons(for: self)
+        }
+        else {
+            tableView.navBarToEdit(for: self)
+        }
         tableView.delegate = self
         tableView.dataSource = self
         self.view = tableView
@@ -57,6 +62,10 @@ extension ActivityHistoryControllerImpl: UITableViewDataSource, UITableViewDeleg
             let _ = self.activityService.delete(activityRecord: self.activityRecords[indexPath.row])
             self.activityRecords.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            if self.activityRecords.count == 0 {
+                let historyView = tableView as? ActivityHistoryView
+                historyView?.navBarNoButtons(for: self)
+            }
         }]
     }
 }
@@ -65,5 +74,17 @@ extension ActivityHistoryControllerImpl: ActivityHistoryController {
     func withItem(id: NSManagedObjectID) -> ActivityHistoryController {
         item = id
         return self
+    }
+    
+    func editButtonPressed() {
+        let tableView = self.view as? ActivityHistoryView
+        tableView?.setEditing(true, animated: true)
+        tableView?.navBarToDone(for: self)
+    }
+    
+    func doneButtonPressed() {
+        let tableView = self.view as? ActivityHistoryView
+        tableView?.setEditing(false, animated: true)
+        tableView?.navBarToEdit(for: self)
     }
 }

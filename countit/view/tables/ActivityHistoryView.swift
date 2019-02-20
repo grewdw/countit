@@ -10,7 +10,10 @@ import UIKit
 
 class ActivityHistoryView: UITableView {
     
-    init(frame: CGRect) {
+    let historyViewController: ActivityHistoryController
+    
+    init(frame: CGRect, historyViewController: ActivityHistoryController) {
+        self.historyViewController = historyViewController
         super.init(frame: frame, style: .plain)
         self.accessibilityIdentifier = AccessibilityIdentifiers.ACTIVITY_HISTORY_TABLE
     }
@@ -18,10 +21,36 @@ class ActivityHistoryView: UITableView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ActivityHistoryView: NavBarButtonDelegate {
     
-    func initialiseNavBar(for controller: UIViewController) {
+    func navBarToEdit(for controller: UIViewController) {
         NavigationItemBuilder(for: controller)
             .with(title: "activityHistory")
+            .with(rightButton: .EDIT, forTarget: self)
             .build()
+    }
+    
+    func navBarToDone(for controller: UIViewController) {
+        NavigationItemBuilder(for: controller)
+            .with(title: "activityHistory")
+            .with(rightButton: .DONE, forTarget: self)
+            .build()
+    }
+    
+    func navBarNoButtons(for controller: UIViewController) {
+        NavigationItemBuilder(for: controller)
+            .with(title: "activityHistory")
+            .with(rightButton: .NONE, forTarget: self)
+            .build()
+    }
+    
+    @objc func editButtonPressed() {
+        historyViewController.editButtonPressed()
+    }
+    
+    @objc func doneButtonPressed() {
+        historyViewController.doneButtonPressed()
     }
 }
