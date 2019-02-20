@@ -15,4 +15,5 @@ enum NavBarButtonType {
     case CANCEL
     case SAVE
     case ADD
+    case NONE
 }

@@ -19,4 +19,6 @@ protocol ItemCellButtonDelegate {
     func ProgressButtonPressed()
     
     func PerformanceButtonPressed()
+    
+    func ActivityHistoryButtonPressed()
 }

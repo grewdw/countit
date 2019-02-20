@@ -136,6 +136,11 @@ extension ProgressTableControllerImpl: ProgressTableController {
         }
     }
     
+    func transitionToActivityHistoryControllerFor(item: NSManagedObjectID) {
+        let historyController = controllerResolver.getActivityHistoryController().withItem(id: item)
+        controllerResolver.getPrimaryNavController().pushViewController(historyController as! UIViewController, animated: true)
+    }
+    
     private func toItemDetails(items: [ItemProgressSummaryDto]) -> [ItemDetailsDto] {
         var itemDetails = [ItemDetailsDto]()
         for item in items {

@@ -11,7 +11,7 @@ import XCTest
 
 extension UITestBase {
     
-    func deleteActivityIn(cell: Int) {
+    func swipeToDeleteActivityIn(cell: Int) {
         activityHistoryTable!.cells.element(boundBy: cell).swipeLeft()
         activityHistoryTable!.cells.element(boundBy: cell).buttons["Delete"].tap()
     }

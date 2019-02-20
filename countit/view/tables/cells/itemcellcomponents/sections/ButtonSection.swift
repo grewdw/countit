@@ -23,7 +23,7 @@ class ButtonSection: UIStackView {
         super.init(frame: CGRect())
         
         axis = .horizontal
-        distribution = .fillProportionally
+        distribution = .fillEqually
         alignment = .center
         
         let progress = ActionButton(buttonPressAction: self.delegate.ProgressButtonPressed,
@@ -32,40 +32,38 @@ class ButtonSection: UIStackView {
         let performance = ActionButton(buttonPressAction: self.delegate.PerformanceButtonPressed,
                                        image: UIImage(named: "StatsIcon")!,
                                        accessibilityIdentifier: AI.ITEM_CELL_PERFORMANCE_BUTTON)
-        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed,
-                               image: UIImage(named: "AddIcon")!,
-                               accessibilityIdentifier: AI.ITEM_CELL_ADD_BUTTON)
         let plusOne = ActionButton(buttonPressAction: self.delegate.PlusOneButtonPressed,
                                    image: UIImage(named: "PlusOneIcon")!,
                                    accessibilityIdentifier: AI.ITEM_CELL_PLUSONE_BUTTON)
-        
-        percentageLabel.text = "\(percentage)%"
-        setPercentage(color: color)
-        percentageLabel.textAlignment = .center
-        percentageLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        percentageLabel.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_CELL_PROGRESS_PERCENTAGE
+        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed,
+                               image: UIImage(named: "AddIcon")!,
+                               accessibilityIdentifier: AI.ITEM_CELL_ADD_BUTTON)
+        let activityHistory = ActionButton(buttonPressAction: self.delegate.ActivityHistoryButtonPressed,
+                                   image: UIImage(named: "ActivityListIcon")!,
+                                   accessibilityIdentifier: AI.ITEM_CELL_ACTIVITY_HISTORY_BUTTON)
         
         addArrangedSubview(progress)
         addArrangedSubview(performance)
-        addArrangedSubview(percentageLabel)
-        addArrangedSubview(add)
         addArrangedSubview(plusOne)
+        addArrangedSubview(add)
+        addArrangedSubview(activityHistory)
+        
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        performance.translatesAutoresizingMaskIntoConstraints = false
+        plusOne.translatesAutoresizingMaskIntoConstraints = false
+        add.translatesAutoresizingMaskIntoConstraints = false
+        activityHistory.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            progress.heightAnchor.constraint(equalTo: performance.heightAnchor),
+            progress.heightAnchor.constraint(equalTo: add.heightAnchor),
+            progress.heightAnchor.constraint(equalTo: performance.heightAnchor),
+            progress.heightAnchor.constraint(equalTo: activityHistory.heightAnchor),
+            progress.heightAnchor.constraint(equalTo: plusOne.heightAnchor, multiplier: 0.4)
+        ])
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    func setPercentage(color: ProgressBarColor) {
-        switch color {
-        case .BLUE:
-            percentageLabel.textColor = Colors.PROGRESS_BLUE
-        case .GREEN:
-            percentageLabel.textColor = Colors.PROGRESS_GREEN
-        case .YELLOW:
-            percentageLabel.textColor = Colors.PROGRESS_YELLOW
-        case .RED:
-            percentageLabel.textColor = Colors.PROGRESS_RED
-        }
     }
 }

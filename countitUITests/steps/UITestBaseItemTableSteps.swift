@@ -54,4 +54,8 @@ extension UITestBase {
     func clickPlusOneButtonFor(cell: Int) {
         itemTable!.cells.element(boundBy: cell).buttons[AI.ITEM_CELL_PLUSONE_BUTTON].tap()
     }
+    
+    func clickActivityHistoryButtonFor(cell: Int) {
+        itemTable!.cells.element(boundBy: cell).buttons[AI.ITEM_CELL_ACTIVITY_HISTORY_BUTTON].tap()
+    }
 }
