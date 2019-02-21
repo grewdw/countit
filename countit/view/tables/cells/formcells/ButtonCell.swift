@@ -14,17 +14,20 @@ class ButtonCell: UITableViewCell {
     let delegate: FormCellDelegate
     let buttonPressAction: () -> Void
     
-    init(buttonText: String, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
+    init(buttonText: String, destructive: Bool, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
         self.delegate = delegate
         self.buttonPressAction = buttonPressAction
         super.init(style: .value1, reuseIdentifier: "buttonCell")
         self.accessibilityIdentifier = accessibilityIdentifier
         self.addSubview(button)
         
+        let textColor = destructive ? UIColor.red : UIColor.blue
+        
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        format(button: button, text: buttonText)
+        format(button: button, text: buttonText, textColor: textColor)
         button.accessibilityIdentifier = AccessibilityIdentifiers.BUTTON_FIELD_BUTTON
         button.translatesAutoresizingMaskIntoConstraints = false
+
         
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
@@ -38,12 +41,12 @@ class ButtonCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func format(button: UIButton, text: String) {
+    private func format(button: UIButton, text: String, textColor: UIColor) {
         let attributedString = NSAttributedString(
             string: text,
             attributes:[
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
-                NSAttributedString.Key.foregroundColor: UIColor.red,
+                NSAttributedString.Key.foregroundColor: textColor,
                 NSAttributedString.Key.underlineStyle: 1.0
             ])
         button.setAttributedTitle(attributedString, for: .normal)

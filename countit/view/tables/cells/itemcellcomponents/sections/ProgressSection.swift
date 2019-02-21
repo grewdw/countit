@@ -15,7 +15,7 @@ class ProgressSection: UIView {
     private let LABEL_PADDING_TOP: CGFloat = 7.5
     private let TIME_PROGRESS_BAR_PADDING_TOP: CGFloat = 7.5
     
-    init(activityProgress: CGFloat, timeProgress: CGFloat, color: ProgressBarColor, activityCount: Int, target: Int, remainingSeconds: Int) {
+    init(activityProgress: CGFloat, timeProgress: CGFloat, color: ProgressColor, activityCount: Int, target: Int, remainingSeconds: Int) {
         super.init(frame: CGRect())
 
 //        let topPadding = UIView()

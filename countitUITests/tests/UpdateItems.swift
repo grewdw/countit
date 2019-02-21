@@ -69,8 +69,15 @@ class UpdateItems: UITestBase {
         assertItemFormSaveButton(isEnabled: false)
     }
     
+    func testCannotSaveIfTargetDeleted() {
+        select(FIRST_CELL)
+        clearFormFields(name: false, description: false, target: true)
+        
+        assertItemFormSaveButton(isEnabled: false)
+    }
+    
     func testChangeItemOrder() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_TWO, description: ITEM_DESCRIPTION_TWO, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         
         moveItem(cell: FIRST_CELL, toCell: SECOND_CELL)
         

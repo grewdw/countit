@@ -25,7 +25,7 @@ class ActivityHistory: UITestBase {
     }
     
     func testActivityHistoryIsEmptyWithNoActivity() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         select(FIRST_CELL)
         assertItemFormShowActivityButton(isEnabled: true)
         clickOnShowActivityButton()
@@ -34,13 +34,13 @@ class ActivityHistory: UITestBase {
     }
     
     func testAccessActivityHistoryFromItemCell() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         clickActivityHistoryButtonFor(cell: 0)
         assertActivityHistoryTableCountIs(0)
     }
     
     func testActivityHistoryShowsRecordedActivity() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         select(FIRST_CELL)
@@ -52,7 +52,7 @@ class ActivityHistory: UITestBase {
     }
     
     func testDeleteActivitySwipe() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         select(FIRST_CELL)
@@ -71,7 +71,7 @@ class ActivityHistory: UITestBase {
     }
     
     func testDeleteActivityEdit() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         clickActivityHistoryButtonFor(cell: 0)
         activityHistoryEditButton?.tap()

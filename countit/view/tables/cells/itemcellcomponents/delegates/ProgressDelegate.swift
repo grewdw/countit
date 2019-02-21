@@ -18,7 +18,7 @@ class ProgressDelegate {
     
     init(delegate: ItemCellButtonDelegate, item: ItemProgressSummaryDto, cellWidth: CGFloat) {
         var activityProgress: CGFloat
-        var color: ProgressBarColor
+        var color: ProgressColor
         
         let timeProgress: CGFloat = CGFloat(item.getActivityPeriodSummaryDto().getElapsedDuration().duration / item.getActivityPeriodSummaryDto().getOverallDuration().duration)
         let timeRemaining = Int(item.getActivityPeriodSummaryDto().getRemainingDuration().duration)

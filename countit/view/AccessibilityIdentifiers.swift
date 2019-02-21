@@ -16,6 +16,7 @@ class AccessibilityIdentifiers {
     public static let ITEM_FORM_TARGET_VALUE_FIELD = "itemFormTargetFields"
     public static let ITEM_FORM_TARGET_TIMEPERIOD_FIELD = "itemFormTargetTimePeriodField"
     public static let ITEM_FORM_SHOW_ACTIVITY_BUTTON = "itemFormShowActivityButton"
+    public static let ITEM_FORM_DELETE_BUTTON = "itemFormDeleteButton"
     
     public static let AT_LEAST = "At least"
     public static let AT_MOST = "At most"

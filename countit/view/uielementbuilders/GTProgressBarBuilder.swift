@@ -29,7 +29,7 @@ class GTProgressBarBuilder {
         progress = 0
     }
     
-    func with(color: ProgressBarColor) -> GTProgressBarBuilder {
+    func with(color: ProgressColor) -> GTProgressBarBuilder {
         switch color {
         case .BLUE:
             return self

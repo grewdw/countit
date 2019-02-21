@@ -50,6 +50,7 @@ class ItemFormControllerImpl: UIViewController {
             initialiseView()
             if selectedItem != nil {
                 sections.updateValue([ItemFormField.SHOW_ACTIVITY], forKey: 2)
+                sections.updateValue([ItemFormField.DELETE_ITEM], forKey: 3)
             }
         }
         else {
@@ -77,7 +78,7 @@ class ItemFormControllerImpl: UIViewController {
     func initialiseView() {
         let formView = ItemFormView(frame: self.view.bounds, delegate: self, dataSource: self, formController: self)
         formView.initialiseNavBar(for: self)
-        validForm = fieldNameToValueMap[.NAME] == "" ? false : true
+        validateForm()
         self.view = formView
     }
 }
@@ -114,7 +115,7 @@ extension ItemFormControllerImpl: UITableViewDataSource {
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_DIRECTION_FIELD)
         case .TARGET_VALUE:
-            return TextEntryFormCell(placeholder: "0", text: fieldNameToValueMap[.TARGET_VALUE],
+            return TextEntryFormCell(placeholder: "1", text: fieldNameToValueMap[.TARGET_VALUE],
                                      fieldName: ItemFormField.TARGET_VALUE.rawValue, numeric: true, delegate: self,
                                      accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_VALUE_FIELD)
         case .TIMEPERIOD:
@@ -123,11 +124,15 @@ extension ItemFormControllerImpl: UITableViewDataSource {
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
         case .SHOW_ACTIVITY:
-            return ButtonCell(buttonText: "Show activity", delegate: self,
+            return ButtonCell(buttonText: "Show activity", destructive: false, delegate: self,
                               buttonPressAction: { () -> Void in self.transitionTo(cellController:
                                 self.controllerResolver.getActivityHistoryController()
                                 .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
+        case .DELETE_ITEM:
+            return ButtonCell(buttonText: "Delete", destructive: true, delegate: self,
+                              buttonPressAction: { self.deleteButtonPressed() },
+                              accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_DELETE_BUTTON )
         }
     }
 }
@@ -147,7 +152,7 @@ extension ItemFormControllerImpl: ItemFormController {
             fieldNameToValueMap[.NAME]!,
             fieldNameToValueMap[.DESCRIPTION]!,
             TargetDirection(rawValue: fieldNameToValueMap[.DIRECTION]!)!,
-            Int(fieldNameToValueMap[.TARGET_VALUE]!) ?? 0,
+            Int(fieldNameToValueMap[.TARGET_VALUE]!) ?? 1,
             TargetTimePeriod(rawValue: fieldNameToValueMap[.TIMEPERIOD]!)!,
             selectedItem?.getListPosition()))
         controllerResolver.getPrimaryNavController().popViewController(animated: true)
@@ -162,8 +167,8 @@ extension ItemFormControllerImpl: FormCellDelegate {
     func selectionChanged(to selection: String, for fieldName: String) {
         if let changedField = ItemFormField.init(rawValue: fieldName) {
             fieldNameToValueMap.updateValue(selection, forKey: changedField)
-            if changedField == ItemFormField.NAME {
-                validForm = selection != ""
+            if changedField == ItemFormField.NAME || changedField == ItemFormField.TARGET_VALUE {
+                validateForm()
             }
         }
     }
@@ -172,6 +177,29 @@ extension ItemFormControllerImpl: FormCellDelegate {
         selectingOption = true
         controllerResolver.getPrimaryNavController()
             .pushViewController(cellController, animated: true)
+    }
+    
+    func validateForm() {
+        validForm = fieldNameToValueMap[ItemFormField.NAME] ?? "" != ""
+            && Int(fieldNameToValueMap[ItemFormField.TARGET_VALUE] ?? "") ?? 0 > 0
+    }
+
+    func deleteButtonPressed() {
+        showConfirmationAlert()
+    }
+    
+    private func showConfirmationAlert() {
+        let alert = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (UIAlertAction) -> Void in self.deleteItem() }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func deleteItem() {
+        if let itemId = selectedItem?.getId() {
+            let _ = itemService.delete(itemWithId: itemId)
+        }
+        controllerResolver.getPrimaryNavController().popViewController(animated: true)
     }
 }
 
@@ -183,4 +211,5 @@ enum ItemFormField: String {
     case TARGET_VALUE = "targetValue"
     case TIMEPERIOD = "timePeriod"
     case SHOW_ACTIVITY = "showActivity"
+    case DELETE_ITEM = "deleteItem"
 }
