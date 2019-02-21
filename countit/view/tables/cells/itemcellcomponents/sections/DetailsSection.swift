@@ -17,7 +17,7 @@ class DetailsSection: UIView {
     
     var cellHeight: CGFloat?
     
-    init(delegate: ItemCellButtonDelegate, item: ItemDetailsDto, percentage: String, percentageColor: ProgressBarColor, cellWidth: CGFloat) {
+    init(delegate: ItemCellButtonDelegate, item: ItemDetailsDto, percentage: String, percentageColor: ProgressColor, cellWidth: CGFloat) {
         super.init(frame: CGRect())
         
         let details = setupDetailsStackView(name: setup(name: item.getName(), cellWidth: cellWidth),
@@ -112,7 +112,7 @@ class DetailsSection: UIView {
         return cellHeight!
     }
     
-    func get(color: ProgressBarColor) -> UIColor {
+    func get(color: ProgressColor) -> UIColor {
         switch color {
         case .BLUE:
             return Colors.PROGRESS_BLUE

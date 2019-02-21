@@ -28,17 +28,7 @@ class CreateItems: UITestBase {
         
         assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: MONTH)
     }
-    
-    func testCreateSingleItemTargetValueDefaultsToZero() {
-        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
-        
-        assertProgressTableCountIs(1)
-        
-        select(FIRST_CELL)
-        
-        assertItemForm(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_ZERO, targetTimePeriod: nil)
-    }
-    
+
     func testCreateMultipleItems() {
         createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: AT_MOST, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: WEEK)
         
@@ -51,9 +41,30 @@ class CreateItems: UITestBase {
     
     func testCannotSaveWithoutItemName() {
         openItemForm()
+        enterNewItemDetailsToFormAndSave(name: nil, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         assertItemFormSaveButton(isEnabled: false)
         
         enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        
+        assertProgressTableCountIs(1)
+    }
+    
+    func testCannotSaveWithoutTargetValue() {
+        openItemForm()
+        enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: nil, targetTimePeriod: nil)
+        assertItemFormSaveButton(isEnabled: false)
+        
+        enterNewItemDetailsToFormAndSave(name: nil, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
+        
+        assertProgressTableCountIs(1)
+    }
+    
+    func testCannotSaveWithTargetValueOfZero() {
+        openItemForm()
+        enterNewItemDetailsToFormAndSave(name: ITEM_NAME_ONE, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_ZERO, targetTimePeriod: nil)
+        assertItemFormSaveButton(isEnabled: false)
+        
+        enterNewItemDetailsToFormAndSave(name: nil, description: ITEM_DESCRIPTION_ONE, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
         
         assertProgressTableCountIs(1)
     }

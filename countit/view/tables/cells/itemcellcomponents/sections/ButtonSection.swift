@@ -17,7 +17,7 @@ class ButtonSection: UIStackView {
     let percentageLabel = UILabel()
     let percentage: String
     
-    init(delegate: ItemCellButtonDelegate, percentage: String, color: ProgressBarColor) {
+    init(delegate: ItemCellButtonDelegate, percentage: String, color: ProgressColor) {
         self.delegate = delegate
         self.percentage = percentage
         super.init(frame: CGRect())

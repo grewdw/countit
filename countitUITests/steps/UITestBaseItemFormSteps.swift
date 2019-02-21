@@ -81,4 +81,16 @@ extension UITestBase {
     func clickOnShowActivityButton() {
         showActivityButton?.tap()
     }
+    
+    func clickOnItemFormDeleteButton() {
+        itemFormDeleteButton?.tap()
+    }
+    
+    func confirmDeleteOfItem() {
+        itemFormDeleteConfirmationAlert?.buttons["Delete"].tap()
+    }
+    
+    func cancelDeleteOfItem() {
+        itemFormDeleteConfirmationAlert?.buttons["Cancel"].tap()
+    }
 }

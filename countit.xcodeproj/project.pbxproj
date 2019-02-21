@@ -22,7 +22,7 @@
 		1D27FBB8220CE3E400F8789B /* ProgressSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBB7220CE3E400F8789B /* ProgressSection.swift */; };
 		1D27FBBC220EFA8100F8789B /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBBB220EFA8100F8789B /* Separator.swift */; };
 		1D27FBC2220F040300F8789B /* GTProgressBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */; };
-		1D27FBC4220F04F300F8789B /* ProgressBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */; };
+		1D27FBC4220F04F300F8789B /* ProgressColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC3220F04F300F8789B /* ProgressColor.swift */; };
 		1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */; };
 		1D27FBC9220F437E00F8789B /* ItemCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27FBC8220F437E00F8789B /* ItemCellState.swift */; };
 		1D49B41521B7FD1A00920CF4 /* ItemFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */; };
@@ -139,7 +139,7 @@
 		1D27FBB7220CE3E400F8789B /* ProgressSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressSection.swift; path = countit/view/tables/cells/itemcellcomponents/sections/ProgressSection.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBBB220EFA8100F8789B /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Separator.swift; path = countit/view/tables/cells/itemcellcomponents/elements/Separator.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBC1220F040300F8789B /* GTProgressBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GTProgressBarBuilder.swift; path = countit/View/UIElementBuilders/GTProgressBarBuilder.swift; sourceTree = SOURCE_ROOT; };
-		1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressBarColor.swift; path = countit/View/Enums/ProgressBarColor.swift; sourceTree = SOURCE_ROOT; };
+		1D27FBC3220F04F300F8789B /* ProgressColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressColor.swift; path = countit/View/Enums/ProgressColor.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBC6220F12FE00F8789B /* ProgressDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProgressDelegate.swift; path = countit/View/Tables/Cells/itemcellcomponents/delegates/ProgressDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1D27FBC8220F437E00F8789B /* ItemCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemCellState.swift; path = countit/View/Enums/ItemCellState.swift; sourceTree = SOURCE_ROOT; };
 		1D49B41421B7FD1A00920CF4 /* ItemFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFormController.swift; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */,
-				1D27FBC3220F04F300F8789B /* ProgressBarColor.swift */,
+				1D27FBC3220F04F300F8789B /* ProgressColor.swift */,
 				1D27FBC8220F437E00F8789B /* ItemCellState.swift */,
 			);
 			path = enums;
@@ -1074,7 +1074,7 @@
 				1D76F06E21BC527700A53853 /* ProgressTableView.swift in Sources */,
 				1DF653FC21FF7CB000AA65C3 /* FormOptionDisplayCell.swift in Sources */,
 				1D7D37DD21C06164000E3621 /* ItemServiceImpl.swift in Sources */,
-				1D27FBC4220F04F300F8789B /* ProgressBarColor.swift in Sources */,
+				1D27FBC4220F04F300F8789B /* ProgressColor.swift in Sources */,
 				1D7D37D621C05EE6000E3621 /* ItemDetailsDto.swift in Sources */,
 				1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */,
 				1DF653F221FE371400AA65C3 /* FormOptionSelectorCell.swif.swift in Sources */,
