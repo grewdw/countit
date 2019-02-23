@@ -13,15 +13,22 @@ class ServiceResolver {
     private let repositoryResolver: RepositoryResolver
     private let clock: Clock
     private let calendar: Calendar
+    private let properties: Properties
+    
+    private let messageBroker: MessageBroker
     
     private var itemService: ItemService?
     private var activityService: ActivityService?
     private var progressService: ProgressService?
+    private var userInstructionService: UserInstructionService
     
-    init(repositoryResolver: RepositoryResolver, clock: Clock, calendar: Calendar) {
+    init(repositoryResolver: RepositoryResolver, clock: Clock, calendar: Calendar, properties: Properties) {
         self.repositoryResolver = repositoryResolver
         self.clock = clock
         self.calendar = calendar
+        self.properties = properties
+        self.messageBroker = MessageBrokerNcImpl()
+        self.userInstructionService = UserInstructionServiceImpl(messageBroker: messageBroker, properties: properties)
     }
     
     func getItemService() -> ItemService {
@@ -30,6 +37,7 @@ class ServiceResolver {
         }
         else {
             itemService = ItemServiceImpl(itemRepository: repositoryResolver.getItemRepository(),
+                                          messageBroker: messageBroker,
                                           clock: clock)
             return itemService!
         }

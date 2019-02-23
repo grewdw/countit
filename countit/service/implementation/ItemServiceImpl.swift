@@ -13,10 +13,12 @@ import UIKit
 class ItemServiceImpl: ItemService {
     
     private let itemRepository: ItemRepository
+    private let messageBroker: MessageBroker
     private let clock: Clock
     
-    init (itemRepository: ItemRepository, clock: Clock) {
+    init (itemRepository: ItemRepository, messageBroker: MessageBroker, clock: Clock) {
         self.itemRepository = itemRepository
+        self.messageBroker = messageBroker
         self.clock = clock
     }
     
@@ -32,7 +34,11 @@ class ItemServiceImpl: ItemService {
     private func create(item: ItemUpdateDto) -> Bool {
         let previousLowestPosition = itemRepository.getLowestListPosition()
         let newLowestPosition = previousLowestPosition != nil ? previousLowestPosition!+1 : 0
-        return itemRepository.createWithTarget(item: item, atPosition: newLowestPosition, withTimestamp: clock.now())
+        let response = itemRepository.createWithTarget(item: item, atPosition: newLowestPosition, withTimestamp: clock.now())
+        if response {
+            messageBroker.post(message: .ITEM_CREATED)
+        }
+        return response
     }
     
     private func updateItem(id: NSManagedObjectID, toItem item: ItemUpdateDto) -> Bool {
@@ -62,7 +68,6 @@ class ItemServiceImpl: ItemService {
             return item
         }
         return nil
-
     }
     
     func getItems() -> [ItemDetailsDto] {

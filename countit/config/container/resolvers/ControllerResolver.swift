@@ -13,13 +13,16 @@ class ControllerResolver {
     
     private let serviceResolver: ServiceResolver
     
+    private let properties: Properties
+    
     private var primaryNavController: UINavigationController?
     private var progressTableController: ProgressTableController?
     private var itemFormController: ItemFormController?
     private var activityHistoryController: ActivityHistoryController?
     
-    init(serviceResolver: ServiceResolver) {
+    init(serviceResolver: ServiceResolver, properties: Properties) {
         self.serviceResolver = serviceResolver
+        self.properties = properties
     }
 
     func getPrimaryNavController() -> UINavigationController {
@@ -38,10 +41,12 @@ class ControllerResolver {
             return progressTableController!
         }
         else {
-            progressTableController = ProgressTableControllerImpl(self,
+            let newController = ProgressTableControllerImpl(self,
                                                                   serviceResolver.getProgressService(),
                                                                   serviceResolver.getItemService(),
                                                                   serviceResolver.getActivityService())
+            newController.set(instructionsDisplayed: properties.getInstructionsDisplayed())
+            progressTableController = newController
             return progressTableController!
         }
     }

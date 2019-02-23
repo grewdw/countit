@@ -71,6 +71,8 @@ class UITestBase: XCTestCase {
     var itemFormDeleteButton: XCUIElement?
     var itemFormDeleteConfirmationAlert: XCUIElement?
     
+    var emptyItemListCell: XCUIElement?
+    
     var itemTable: XCUIElement?
     var itemForm: XCUIElement?
     var formSelectorTable: XCUIElement?
@@ -111,12 +113,12 @@ class UITestBase: XCTestCase {
         showActivityButton = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_SHOW_ACTIVITY_BUTTON].buttons[AI.BUTTON_FIELD_BUTTON]
         itemFormDeleteButton = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_DELETE_BUTTON].buttons[AI.BUTTON_FIELD_BUTTON]
         itemFormDeleteConfirmationAlert = newApp.alerts["Delete"]
+        emptyItemListCell = newApp.tables[AI.ITEM_TABLE].cells[AI.EMPTY_ITEM_LIST_CELL]
         itemTable = newApp.tables[AI.ITEM_TABLE]
         itemForm = newApp.tables[AI.ITEM_FORM_TABLE]
         formSelectorTable = newApp.tables[AI.FORM_SELECTOR_TABLE]
         activityHistoryTable = newApp.tables[AI.ACTIVITY_HISTORY_TABLE]
         searchField = newApp.searchFields["Search items"]
-        newApp.alerts
     }
     
     func deinitialiseXCUIElements() {

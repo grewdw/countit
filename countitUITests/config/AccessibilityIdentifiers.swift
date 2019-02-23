@@ -39,6 +39,8 @@ class AccessibilityIdentifiers {
     public static let ITEM_CELL_PROGRESS_PERCENTAGE = "itemCellProgressPercentage"
     public static let ITEM_CELL_PROGRESS_COUNT = "itemCellProgressCount"
     
+    public static let EMPTY_ITEM_LIST_CELL = "emptyItemListCell"
+    
     public static let ACTIVITY_RECORD_DATE = "activityRecordDate"
     public static let ACTIVITY_RECORD_VALUE = "activityRecordValue"
     

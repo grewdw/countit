@@ -18,12 +18,15 @@ class AppContainer {
     private let clock = Clock()
     private let calendar = Calendar.autoupdatingCurrent
     private let context: NSManagedObjectContext
+    private let properties: Properties
     
-    init(sqlDatabase: Bool) {
-        context = CoreDataConfig.getCoreDataContext(isSQLDatabase: sqlDatabase)
+    init(test: Bool) {
+        context = CoreDataConfig.getCoreDataContext(test: test)
+        properties = test ? TestProperties() : UserDefaultsImpl()
+        
         respositoryResolver = RepositoryResolver(context: context)
-        serviceResolver = ServiceResolver(repositoryResolver: respositoryResolver, clock: clock, calendar: calendar)
-        controllerResolver = ControllerResolver(serviceResolver: serviceResolver)
+        serviceResolver = ServiceResolver(repositoryResolver: respositoryResolver, clock: clock, calendar: calendar, properties: properties)
+        controllerResolver = ControllerResolver(serviceResolver: serviceResolver, properties: properties)
     }
     
     func getControllerResolver() -> ControllerResolver {
