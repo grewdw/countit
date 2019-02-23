@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
  
-        let isSQLDatabase = ProcessInfo.processInfo.arguments.contains("test") ? false : true
+        let test = ProcessInfo.processInfo.arguments.contains("test") ? true : false
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = AppContainer(sqlDatabase: isSQLDatabase).getControllerResolver().getPrimaryNavController()
+        window!.rootViewController = AppContainer(test: test).getControllerResolver().getPrimaryNavController()
         window!.makeKeyAndVisible()
         return true
     }

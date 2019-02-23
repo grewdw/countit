@@ -11,9 +11,9 @@ import CoreData
 
 class CoreDataConfig {
     
-    public static func getCoreDataContext(isSQLDatabase: Bool) -> NSManagedObjectContext {
+    public static func getCoreDataContext(test: Bool) -> NSManagedObjectContext {
         
-        if !isSQLDatabase {
+        if test {
             let managedObjectModel: NSManagedObjectModel = {
                 let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
                 return managedObjectModel

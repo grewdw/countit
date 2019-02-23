@@ -137,4 +137,10 @@ extension UITestBase {
                           file: file, line: line)
         }
     }
+    
+    func assertEmptyTableCellIs(displayed expected: Bool, file: StaticString = #file, line: UInt = #line) {
+        XCTAssertTrue(emptyItemListCell?.exists ?? false == expected,
+                      "empty item list cell is not enabled",
+                      file: file, line: line)
+    }
 }

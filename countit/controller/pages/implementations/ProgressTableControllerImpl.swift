@@ -17,10 +17,9 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     private let activityService: ActivityService
     
     var items: [ItemProgressSummaryDto] = []
-    var filteredItems: [ItemProgressSummaryDto] = []
     var itemToStateMap: [NSManagedObjectID:ItemCellState] = [:]
     
-    var filteringItems: Bool = false
+    var instructionsDisplayed: Bool = true
     
     init(_ controllerResolver: ControllerResolver, _ progressService: ProgressService, _ itemService: ItemService, _ activityService: ActivityService) {
         self.controllerResolver = controllerResolver
@@ -45,8 +44,12 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     
     func initiateView() {
         let tableView = ProgressTableView(delegate: self)
-        tableView.initialiseNavBarWithSearch(for: self, searchResultsUpdater: self)
+        tableView.initialiseNavBar(for: self)
         self.view = tableView
+    }
+    
+    func set(instructionsDisplayed: Bool) {
+        self.instructionsDisplayed = instructionsDisplayed
     }
 }
 
@@ -55,21 +58,24 @@ extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSourc
     func getItems() {
         items = progressService.getItemsProgresss()
     }
-    
-    func filterItems(containing searchText: String) {
-        filteredItems = items.filter({( item : ItemProgressSummaryDto) -> Bool in
-            return item.getItemDetailsDto().getName().lowercased().contains(searchText.lowercased())
-        })
-        let table = self.view as? UITableView
-        table?.reloadData()
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteringItems ? filteredItems.count : items.count
+        if !instructionsDisplayed && items.count == 0 {
+            return 1
+        }
+        instructionsDisplayed = true
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = filteringItems ? filteredItems[indexPath.row] : items[indexPath.row]
+        if !instructionsDisplayed && items.count == 0 {
+            return EmptyItemListCell()
+        }
+        return createItemCellFor(indexPath: indexPath)
+    }
+    
+    func createItemCellFor(indexPath: IndexPath) -> UITableViewCell {
+        let item = items[indexPath.row]
         let state: ItemCellState
         let itemId = item.getItemDetailsDto().getId()
         state = itemToStateMap[itemId] != nil ? itemToStateMap[itemId]! : .CLOSED
@@ -131,9 +137,7 @@ extension ProgressTableControllerImpl: ProgressTableController {
     
     func itemPositionsChanged(itemOneRow: Int, itemTwoRow: Int) {
         self.items.swapAt(itemOneRow, itemTwoRow)
-        if !filteringItems {
-            itemService.persistTableOrder(for: toItemDetails(items: items))
-        }
+        itemService.persistTableOrder(for: toItemDetails(items: items))
     }
     
     func transitionToActivityHistoryControllerFor(item: NSManagedObjectID) {
@@ -159,16 +163,4 @@ extension ProgressTableControllerImpl: ProgressTableController {
     }
 }
 
-extension ProgressTableControllerImpl: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        if searchController.searchBar.text?.isEmpty ?? false || searchController.searchBar.text == "" {
-            filteringItems = false
-            refreshTableData()
-        } else {
-            filteringItems = true
-            filterItems(containing: searchController.searchBar.text!)
-        }
-    }
-}
 

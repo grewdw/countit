@@ -37,6 +37,8 @@
 		1D7D37E221C061FD000E3621 /* ItemRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */; };
 		1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */; };
 		1D886AA222101FE200C002C2 /* ItemUpdateDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AA122101FE200C002C2 /* ItemUpdateDto.swift */; };
+		1D886AA42210574B00C002C2 /* EmptyItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AA32210574B00C002C2 /* EmptyItemListCell.swift */; };
+		1D886AA62212FF3300C002C2 /* UserDefaultsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AA52212FF3300C002C2 /* UserDefaultsImpl.swift */; };
 		1D886AA8221ADCE100C002C2 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AA7221ADCE100C002C2 /* ProgressService.swift */; };
 		1D886AAB221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AAA221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift */; };
 		1D886AAD221ADEA000C002C2 /* ProgressServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D886AAC221ADEA000C002C2 /* ProgressServiceImpl.swift */; };
@@ -65,7 +67,7 @@
 		1DEB4B8321D009B6002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8221D009B6002F09CF /* DeleteItems.swift */; };
 		1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */; };
 		1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */; };
-		1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* SearchItems.swift */; };
+		1DEB4B8921D52F4B002F09CF /* UserInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8821D52F4B002F09CF /* UserInstructions.swift */; };
 		1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */; };
 		1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4B9E21D93921002F09CF /* TargetDirection.swift */; };
 		1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */; };
@@ -103,6 +105,15 @@
 		1DF653FE21FF951500AA65C3 /* FormCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */; };
 		1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF653FF21FF956600AA65C3 /* FormCell.swift */; };
 		1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6540121FFB56700AA65C3 /* ItemFormView.swift */; };
+		1DFB0B052220760D0009959B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B042220760D0009959B /* Message.swift */; };
+		1DFB0B07222078240009959B /* MessageBroker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B06222078240009959B /* MessageBroker.swift */; };
+		1DFB0B09222079100009959B /* MessageBrokerNcImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B08222079100009959B /* MessageBrokerNcImpl.swift */; };
+		1DFB0B0B2220793E0009959B /* MessageListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B0A2220793E0009959B /* MessageListener.swift */; };
+		1DFB0B0D22207CD40009959B /* UserInstructionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B0C22207CD40009959B /* UserInstructionService.swift */; };
+		1DFB0B0F22207CF10009959B /* UserInstructionServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B0E22207CF10009959B /* UserInstructionServiceImpl.swift */; };
+		1DFB0B1122215DA80009959B /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B1022215DA80009959B /* Properties.swift */; };
+		1DFB0B17222161DE0009959B /* TestProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B16222161DE0009959B /* TestProperties.swift */; };
+		1DFB0B192221674A0009959B /* TestProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB0B182221674A0009959B /* TestProperties.swift */; };
 		93D53C87420576BE4227D486 /* Pods_countitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B858F6F70E8087F74BC5551 /* Pods_countitUITests.framework */; };
 		BA0045E4D698F54BF4A79C97 /* Pods_countit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB6459C799994A5979FF6CF /* Pods_countit.framework */; };
 /* End PBXBuildFile section */
@@ -154,6 +165,8 @@
 		1D7D37E121C061FD000E3621 /* ItemRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepositoryImpl.swift; sourceTree = "<group>"; };
 		1D7D37E621C2F2AA000E3621 /* ControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerResolver.swift; sourceTree = "<group>"; };
 		1D886AA122101FE200C002C2 /* ItemUpdateDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateDto.swift; sourceTree = "<group>"; };
+		1D886AA32210574B00C002C2 /* EmptyItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmptyItemListCell.swift; path = countit/View/tables/cells/EmptyItemListCell.swift; sourceTree = SOURCE_ROOT; };
+		1D886AA52212FF3300C002C2 /* UserDefaultsImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsImpl.swift; sourceTree = "<group>"; };
 		1D886AA7221ADCE100C002C2 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		1D886AAA221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPeriodSummaryDto.swift; sourceTree = "<group>"; };
 		1D886AAC221ADEA000C002C2 /* ProgressServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressServiceImpl.swift; sourceTree = "<group>"; };
@@ -188,7 +201,7 @@
 		1DEB4B8221D009B6002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
 		1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItems.swift; sourceTree = "<group>"; };
 		1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItems.swift; sourceTree = "<group>"; };
-		1DEB4B8821D52F4B002F09CF /* SearchItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItems.swift; sourceTree = "<group>"; };
+		1DEB4B8821D52F4B002F09CF /* UserInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInstructions.swift; sourceTree = "<group>"; };
 		1DEB4B8A21D53A5F002F09CF /* XCUIElementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIElementExtension.swift; sourceTree = "<group>"; };
 		1DEB4B9E21D93921002F09CF /* TargetDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDirection.swift; sourceTree = "<group>"; };
 		1DEB4BA021D93972002F09CF /* TargetTimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePeriod.swift; sourceTree = "<group>"; };
@@ -226,6 +239,15 @@
 		1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormCellDelegate.swift; path = countit/controller/protocols/FormCellDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1DF653FF21FF956600AA65C3 /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormCell.swift; path = countit/view/tables/cells/protocols/FormCell.swift; sourceTree = SOURCE_ROOT; };
 		1DF6540121FFB56700AA65C3 /* ItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemFormView.swift; path = countit/View/Tables/ItemFormView.swift; sourceTree = SOURCE_ROOT; };
+		1DFB0B042220760D0009959B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1DFB0B06222078240009959B /* MessageBroker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBroker.swift; sourceTree = "<group>"; };
+		1DFB0B08222079100009959B /* MessageBrokerNcImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBrokerNcImpl.swift; sourceTree = "<group>"; };
+		1DFB0B0A2220793E0009959B /* MessageListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListener.swift; sourceTree = "<group>"; };
+		1DFB0B0C22207CD40009959B /* UserInstructionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInstructionService.swift; sourceTree = "<group>"; };
+		1DFB0B0E22207CF10009959B /* UserInstructionServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInstructionServiceImpl.swift; sourceTree = "<group>"; };
+		1DFB0B1022215DA80009959B /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
+		1DFB0B16222161DE0009959B /* TestProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProperties.swift; sourceTree = "<group>"; };
+		1DFB0B182221674A0009959B /* TestProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestProperties.swift; sourceTree = "<group>"; };
 		2FB6459C799994A5979FF6CF /* Pods_countit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B858F6F70E8087F74BC5551 /* Pods_countitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		503CFEF07DCB8CEBE7936D26 /* Pods-countitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-countitUITests/Pods-countitUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -420,6 +442,7 @@
 				1D1E571B220A2B020081CCE8 /* protocols */,
 				1D9D32A72204526F007C675F /* ActivityRecordCell.swift */,
 				1D1E571D220A2B640081CCE8 /* ItemCell.swift */,
+				1D886AA32210574B00C002C2 /* EmptyItemListCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -441,6 +464,7 @@
 				1D7D37DC21C06164000E3621 /* ItemServiceImpl.swift */,
 				1DEB4BB821E38A99002F09CF /* ActivityServiceImpl.swift */,
 				1D886AAC221ADEA000C002C2 /* ProgressServiceImpl.swift */,
+				1DFB0B0E22207CF10009959B /* UserInstructionServiceImpl.swift */,
 			);
 			path = implementation;
 			sourceTree = "<group>";
@@ -534,6 +558,7 @@
 			children = (
 				1DF653E021ED2BC200AA65C3 /* config */,
 				1DB3903521B5C05B00C11CD7 /* view */,
+				1DFB0B03222075ED0009959B /* messages */,
 				1DB3903721B5C07300C11CD7 /* controller */,
 				1DB3903621B5C06A00C11CD7 /* model */,
 				1DB3903821B5C07900C11CD7 /* service */,
@@ -610,6 +635,7 @@
 				1D7D37D321C05E81000E3621 /* ItemService.swift */,
 				1DEB4BB621E38A45002F09CF /* ActivityService.swift */,
 				1D886AA7221ADCE100C002C2 /* ProgressService.swift */,
+				1DFB0B0C22207CD40009959B /* UserInstructionService.swift */,
 				1D7D37DB21C06152000E3621 /* implementation */,
 			);
 			path = service;
@@ -657,6 +683,7 @@
 				1DB3901E21B5BFD200C11CD7 /* Info.plist */,
 				1DEB4BAA21DBFC4C002F09CF /* ServiceConfig.swift */,
 				1DEB4B7B21CFFB07002F09CF /* TestCoreDataConfig.swift */,
+				1DFB0B16222161DE0009959B /* TestProperties.swift */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -755,7 +782,7 @@
 				1DB3902721B5BFD200C11CD7 /* CreateItems.swift */,
 				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
-				1DEB4B8821D52F4B002F09CF /* SearchItems.swift */,
+				1DEB4B8821D52F4B002F09CF /* UserInstructions.swift */,
 				1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */,
 				1D9D32AD2204B457007C675F /* ActivityHistory.swift */,
 				1DEB4BC621E7926C002F09CF /* UITestBase.swift */,
@@ -766,6 +793,7 @@
 		1DF653E021ED2BC200AA65C3 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				1DFB0B1222215DF40009959B /* properties */,
 				1D1E5713220587170081CCE8 /* container */,
 				1DB3901321B5BFD200C11CD7 /* Info.plist */,
 				1DEB4B7921CFF98B002F09CF /* CoreDataConfig.swift */,
@@ -788,6 +816,27 @@
 				1DF653E521EFD56300AA65C3 /* ActivityServiceTestBase.swift */,
 			);
 			path = contract;
+			sourceTree = "<group>";
+		};
+		1DFB0B03222075ED0009959B /* messages */ = {
+			isa = PBXGroup;
+			children = (
+				1DFB0B042220760D0009959B /* Message.swift */,
+				1DFB0B06222078240009959B /* MessageBroker.swift */,
+				1DFB0B08222079100009959B /* MessageBrokerNcImpl.swift */,
+				1DFB0B0A2220793E0009959B /* MessageListener.swift */,
+			);
+			path = messages;
+			sourceTree = "<group>";
+		};
+		1DFB0B1222215DF40009959B /* properties */ = {
+			isa = PBXGroup;
+			children = (
+				1D886AA52212FF3300C002C2 /* UserDefaultsImpl.swift */,
+				1DFB0B1022215DA80009959B /* Properties.swift */,
+				1DFB0B182221674A0009959B /* TestProperties.swift */,
+			);
+			path = properties;
 			sourceTree = "<group>";
 		};
 		8E80B8A51C85994185774E2B /* Pods */ = {
@@ -1038,6 +1087,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D1E5735220B08450081CCE8 /* ButtonSection.swift in Sources */,
+				1DFB0B09222079100009959B /* MessageBrokerNcImpl.swift in Sources */,
 				1D1E571E220A2B640081CCE8 /* ItemCell.swift in Sources */,
 				1DEB4BB721E38A45002F09CF /* ActivityService.swift in Sources */,
 				1D7D37D421C05E81000E3621 /* ItemService.swift in Sources */,
@@ -1047,8 +1097,10 @@
 				1D27FBB8220CE3E400F8789B /* ProgressSection.swift in Sources */,
 				1D1E5731220B057D0081CCE8 /* ItemCellButtonDelegate.swift in Sources */,
 				1D1E5721220A32520081CCE8 /* Border.swift in Sources */,
+				1D886AA62212FF3300C002C2 /* UserDefaultsImpl.swift in Sources */,
 				1DF6540021FF956600AA65C3 /* FormCell.swift in Sources */,
 				1DEB4B9F21D93921002F09CF /* TargetDirection.swift in Sources */,
+				1DFB0B052220760D0009959B /* Message.swift in Sources */,
 				1D9D32A6220450FF007C675F /* ActivityHistoryDto.swift in Sources */,
 				1DB3900D21B5BFD000C11CD7 /* countit.xcdatamodeld in Sources */,
 				1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */,
@@ -1059,9 +1111,11 @@
 				1DF653FE21FF951500AA65C3 /* FormCellDelegate.swift in Sources */,
 				1DF653EE21FE276700AA65C3 /* FormOptionSelectorController.swift in Sources */,
 				1D9D329E22043988007C675F /* ButtonCell.swift in Sources */,
+				1DFB0B0D22207CD40009959B /* UserInstructionService.swift in Sources */,
 				1DF653F621FE432E00AA65C3 /* PrimaryNavigationController.swift in Sources */,
 				1DEB4BA121D93972002F09CF /* TargetTimePeriod.swift in Sources */,
 				1D7D37DF21C061E3000E3621 /* ItemRepository.swift in Sources */,
+				1DFB0B192221674A0009959B /* TestProperties.swift in Sources */,
 				1DF6540221FFB56700AA65C3 /* ItemFormView.swift in Sources */,
 				1DB3904221B6AC3300C11CD7 /* ViewExtensions.swift in Sources */,
 				1D9D32AA22045472007C675F /* ActivityHistoryControllerImpl.swift in Sources */,
@@ -1070,6 +1124,7 @@
 				1DEB4BBF21E3DCAE002F09CF /* ItemProgressSummaryDto.swift in Sources */,
 				1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */,
 				1D27FBC7220F12FE00F8789B /* ProgressDelegate.swift in Sources */,
+				1D886AA42210574B00C002C2 /* EmptyItemListCell.swift in Sources */,
 				1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */,
 				1D76F06E21BC527700A53853 /* ProgressTableView.swift in Sources */,
 				1DF653FC21FF7CB000AA65C3 /* FormOptionDisplayCell.swift in Sources */,
@@ -1082,6 +1137,7 @@
 				1D27FBC2220F040300F8789B /* GTProgressBarBuilder.swift in Sources */,
 				1D1E5723220A33B60081CCE8 /* DetailsSection.swift in Sources */,
 				1D9D32A022044EEE007C675F /* ActivityHistoryController.swift in Sources */,
+				1DFB0B0B2220793E0009959B /* MessageListener.swift in Sources */,
 				1D9D32AC2204B0A5007C675F /* ActivityHistoryView.swift in Sources */,
 				1DB3900521B5BFD000C11CD7 /* AppDelegate.swift in Sources */,
 				1DF653FA21FF7C9000AA65C3 /* TextEntryFormCell.swift in Sources */,
@@ -1095,12 +1151,15 @@
 				1D7D37E721C2F2AA000E3621 /* ControllerResolver.swift in Sources */,
 				1D886AA222101FE200C002C2 /* ItemUpdateDto.swift in Sources */,
 				1DEB4BBB21E38B01002F09CF /* ActivityRepository.swift in Sources */,
+				1DFB0B1122215DA80009959B /* Properties.swift in Sources */,
 				1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */,
 				1D1E5712220586B80081CCE8 /* ServiceResolver.swift in Sources */,
 				1DEB4B7A21CFF98B002F09CF /* CoreDataConfig.swift in Sources */,
 				1D9D32A82204526F007C675F /* ActivityRecordCell.swift in Sources */,
 				1D886AAB221ADE0B00C002C2 /* ActivityPeriodSummaryDto.swift in Sources */,
 				1D1E570B2204C62A0081CCE8 /* ProgressTableControllerImpl.swift in Sources */,
+				1DFB0B07222078240009959B /* MessageBroker.swift in Sources */,
+				1DFB0B0F22207CF10009959B /* UserInstructionServiceImpl.swift in Sources */,
 				1D886AAD221ADEA000C002C2 /* ProgressServiceImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1109,6 +1168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DFB0B17222161DE0009959B /* TestProperties.swift in Sources */,
 				1DEB4BAD21DBFEF6002F09CF /* ItemServiceContractTestBase.swift in Sources */,
 				1DF653EC21F12F3C00AA65C3 /* AddDeleteActivity.swift in Sources */,
 				1DD1581A221C936E00B95C9C /* TimeCalculations.swift in Sources */,
@@ -1136,7 +1196,7 @@
 				1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */,
 				1D9D32AE2204B457007C675F /* ActivityHistory.swift in Sources */,
 				1D9D32B02204BD4E007C675F /* UITestBaseActivityHistorySteps.swift in Sources */,
-				1DEB4B8921D52F4B002F09CF /* SearchItems.swift in Sources */,
+				1DEB4B8921D52F4B002F09CF /* UserInstructions.swift in Sources */,
 				1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
 				1DF653DC21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift in Sources */,

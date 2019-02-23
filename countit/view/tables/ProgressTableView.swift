@@ -46,11 +46,10 @@ class ProgressTableView: UITableView {
 
 extension ProgressTableView: NavBarButtonDelegate {
     
-    func initialiseNavBarWithSearch(for controller: UIViewController, searchResultsUpdater: UISearchResultsUpdating) {
+    func initialiseNavBar(for controller: UIViewController) {
         NavigationItemBuilder(for: controller)
             .with(rightButton: .ADD, forTarget: self)
             .with(title: "countIt")
-            .withSearchController(searchResultsUpdater: searchResultsUpdater, placeholder: "Search items")
             .build()
     }
     
