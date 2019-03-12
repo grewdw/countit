@@ -13,10 +13,12 @@ class ActivityUpdateDto {
     
     private let item: ItemDetailsDto
     private let value: Int
+    private let timestamp: Date?
     
-    init(item: ItemDetailsDto, value: Int) {
+    init(item: ItemDetailsDto, value: Int, timestamp: Date?) {
         self.item = item
         self.value = value
+        self.timestamp = timestamp
     }
     
     func getItem() -> ItemDetailsDto {
@@ -25,5 +27,9 @@ class ActivityUpdateDto {
     
     func getValue() -> Int {
         return value
+    }
+    
+    func getTimestamp() -> Date? {
+        return timestamp
     }
 }

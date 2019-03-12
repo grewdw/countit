@@ -52,8 +52,8 @@ extension FormOptionDisplayCell: FormCell {
 }
 
 extension FormOptionDisplayCell: FormCellDelegate {
-    func selectionChanged(to selection: String, for fieldName: String) {
-        detailTextLabel?.text = selection
+    func selectionChanged(to selection: Any, for fieldName: String) {
+        detailTextLabel?.text = selection as? String
         delegate.selectionChanged(to: selection, for: self.fieldName)
     }
     

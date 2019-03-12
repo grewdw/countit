@@ -8,18 +8,13 @@
 
 import UIKit
 
-class ItemFormControllerImpl: UIViewController {
+class ItemFormControllerImpl: FormBase {
     
     private let DEFAULT_NAME = ""
     private let DEFAULT_DESCRIPTION = ""
     private let DEFAULT_DIRECTION = TargetDirection.AT_LEAST.rawValue
     private let DEFAULT_TARGET_VALUE = ""
     private let DEFAULT_TIMEPERIOD = TargetTimePeriod.DAY.rawValue
-    
-    private var sections: [Int : [ItemFormField]] = [:]
-    private var fieldToIndexPathMap: [ItemFormField : IndexPath] = [:]
-    private var indexPathToFieldMap: [IndexPath : ItemFormField] = [:]
-    private var fieldNameToValueMap: [ItemFormField : String] = [:]
     
     private let directionOptions = [TargetDirection.AT_LEAST.rawValue, TargetDirection.AT_MOST.rawValue]
     private let timePeriodOptions = [TargetTimePeriod.DAY.rawValue, TargetTimePeriod.WEEK.rawValue, TargetTimePeriod.MONTH.rawValue]
@@ -35,9 +30,9 @@ class ItemFormControllerImpl: UIViewController {
     init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
         self.controllerResolver = controllerResolver
         self.itemService = itemService
-        sections.updateValue([ItemFormField.NAME, ItemFormField.DESCRIPTION], forKey: 0)
-        sections.updateValue([ItemFormField.DIRECTION, ItemFormField.TARGET_VALUE, ItemFormField.TIMEPERIOD], forKey: 1)
         super.init(nibName: nil, bundle: nil)
+        sections.updateValue([FormFields.NAME, FormFields.DESCRIPTION], forKey: 0)
+        sections.updateValue([FormFields.DIRECTION, FormFields.TARGET_VALUE, FormFields.TIMEPERIOD], forKey: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,8 +44,8 @@ class ItemFormControllerImpl: UIViewController {
             updateFieldValues()
             initialiseView()
             if selectedItem != nil {
-                sections.updateValue([ItemFormField.SHOW_ACTIVITY], forKey: 2)
-                sections.updateValue([ItemFormField.DELETE_ITEM], forKey: 3)
+                sections.updateValue([FormFields.SHOW_ACTIVITY], forKey: 2)
+                sections.updateValue([FormFields.DELETE_ITEM], forKey: 3)
             }
         }
         else {
@@ -67,12 +62,12 @@ class ItemFormControllerImpl: UIViewController {
     }
     
     func updateFieldValues() {
-        fieldNameToValueMap.updateValue(selectedItem?.getName() ?? DEFAULT_NAME, forKey: .NAME)
-        fieldNameToValueMap.updateValue(selectedItem?.getDescription() ?? DEFAULT_DESCRIPTION, forKey: .DESCRIPTION)
-        fieldNameToValueMap.updateValue(selectedItem?.getDirection().rawValue ?? DEFAULT_DIRECTION, forKey: .DIRECTION)
+        fieldNameToValueMap.updateValue(selectedItem?.getName() ?? DEFAULT_NAME, forKey: FormFields.NAME)
+        fieldNameToValueMap.updateValue(selectedItem?.getDescription() ?? DEFAULT_DESCRIPTION, forKey: FormFields.DESCRIPTION)
+        fieldNameToValueMap.updateValue(selectedItem?.getDirection().rawValue ?? DEFAULT_DIRECTION, forKey: FormFields.DIRECTION)
         let value = selectedItem != nil ? String(selectedItem!.getValue()) : DEFAULT_TARGET_VALUE
-        fieldNameToValueMap.updateValue(value, forKey: .TARGET_VALUE)
-        fieldNameToValueMap.updateValue(selectedItem?.getTimePeriod().rawValue ?? DEFAULT_TIMEPERIOD, forKey: .TIMEPERIOD)
+        fieldNameToValueMap.updateValue(value, forKey: FormFields.TARGET_VALUE)
+        fieldNameToValueMap.updateValue(selectedItem?.getTimePeriod().rawValue ?? DEFAULT_TIMEPERIOD, forKey: FormFields.TIMEPERIOD)
     }
     
     func initialiseView() {
@@ -81,67 +76,44 @@ class ItemFormControllerImpl: UIViewController {
         validateForm()
         self.view = formView
     }
-}
-
-extension ItemFormControllerImpl: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section]?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let formField: ItemFormField = sections[indexPath.section]![indexPath.row]
-        fieldToIndexPathMap.updateValue(indexPath, forKey: formField)
-        indexPathToFieldMap.updateValue(formField, forKey: indexPath)
-        return createCellFor(formField: formField)
-    }
-    
-    private func createCellFor(formField: ItemFormField) -> UITableViewCell {
+    override func createCellFor(formField: String) -> UITableViewCell {
         switch formField {
-        case .NAME:
-            return TextEntryFormCell(placeholder: "Name", text: fieldNameToValueMap[.NAME],
-                                     fieldName: ItemFormField.NAME.rawValue, numeric: false, delegate: self,
+        case FormFields.NAME:
+            return TextEntryFormCell(placeholder: "Name", text: fieldNameToValueMap[FormFields.NAME] as? String,
+                                     fieldName: FormFields.NAME, numeric: false, delegate: self,
                                      accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_NAME_FIELD)
-        case .DESCRIPTION:
-            return TextEntryFormCell(placeholder: "Description", text: fieldNameToValueMap[.DESCRIPTION],
-                                     fieldName: ItemFormField.DESCRIPTION.rawValue, numeric: false, delegate: self,
+        case FormFields.DESCRIPTION:
+            return TextEntryFormCell(placeholder: "Description", text: fieldNameToValueMap[FormFields.DESCRIPTION] as? String,
+                                     fieldName: FormFields.DESCRIPTION, numeric: false, delegate: self,
                                      accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_DESCRIPTION_FIELD)
-        case .DIRECTION:
-            return FormOptionDisplayCell(label: "Target", currentValue: fieldNameToValueMap[.DIRECTION]!,
-                                         availableValues: directionOptions, fieldName: ItemFormField.DIRECTION.rawValue,
+        case FormFields.DIRECTION:
+            return FormOptionDisplayCell(label: "Target", currentValue: fieldNameToValueMap[FormFields.DIRECTION] as! String,
+                                         availableValues: directionOptions, fieldName: FormFields.DIRECTION,
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_DIRECTION_FIELD)
-        case .TARGET_VALUE:
-            return TextEntryFormCell(placeholder: "1", text: fieldNameToValueMap[.TARGET_VALUE],
-                                     fieldName: ItemFormField.TARGET_VALUE.rawValue, numeric: true, delegate: self,
+        case FormFields.TARGET_VALUE:
+            return TextEntryFormCell(placeholder: "1", text: fieldNameToValueMap[FormFields.TARGET_VALUE] as? String,
+                                     fieldName: FormFields.TARGET_VALUE, numeric: true, delegate: self,
                                      accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_VALUE_FIELD)
-        case .TIMEPERIOD:
-            return FormOptionDisplayCell(label: "Every", currentValue: fieldNameToValueMap[.TIMEPERIOD]!,
-                                         availableValues: timePeriodOptions, fieldName: ItemFormField.TIMEPERIOD.rawValue,
+        case FormFields.TIMEPERIOD:
+            return FormOptionDisplayCell(label: "Every", currentValue: fieldNameToValueMap[FormFields.TIMEPERIOD]! as! String,
+                                         availableValues: timePeriodOptions, fieldName: FormFields.TIMEPERIOD,
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
-        case .SHOW_ACTIVITY:
+        case FormFields.SHOW_ACTIVITY:
             return ButtonCell(buttonText: "Show activity", destructive: false, delegate: self,
                               buttonPressAction: { () -> Void in self.transitionTo(cellController:
                                 self.controllerResolver.getActivityHistoryController()
-                                .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
+                                    .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
-        case .DELETE_ITEM:
+        case FormFields.DELETE_ITEM:
             return ButtonCell(buttonText: "Delete", destructive: true, delegate: self,
                               buttonPressAction: { self.deleteButtonPressed() },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_DELETE_BUTTON )
+        default:
+            return UITableViewCell()
         }
-    }
-}
-
-extension ItemFormControllerImpl: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tableView = view as? UITableView
-        let cell = tableView?.cellForRow(at: indexPath) as? FormCell
-        cell?.selected()
     }
 }
 
@@ -149,11 +121,11 @@ extension ItemFormControllerImpl: ItemFormController {
     func submitForm() {
         let _ = itemService.saveItem(ItemUpdateDto(
             selectedItem?.getId(),
-            fieldNameToValueMap[.NAME]!,
-            fieldNameToValueMap[.DESCRIPTION]!,
-            TargetDirection(rawValue: fieldNameToValueMap[.DIRECTION]!)!,
-            Int(fieldNameToValueMap[.TARGET_VALUE]!) ?? 1,
-            TargetTimePeriod(rawValue: fieldNameToValueMap[.TIMEPERIOD]!)!,
+            fieldNameToValueMap[FormFields.NAME] as! String,
+            fieldNameToValueMap[FormFields.DESCRIPTION] as! String,
+            TargetDirection(rawValue: fieldNameToValueMap[FormFields.DIRECTION] as! String)!,
+            Int(fieldNameToValueMap[FormFields.TARGET_VALUE] as! String) ?? 1,
+            TargetTimePeriod(rawValue: fieldNameToValueMap[FormFields.TIMEPERIOD] as! String)!,
             selectedItem?.getListPosition()))
         controllerResolver.getPrimaryNavController().popViewController(animated: true)
     }
@@ -164,12 +136,10 @@ extension ItemFormControllerImpl: ItemFormController {
 }
 
 extension ItemFormControllerImpl: FormCellDelegate {
-    func selectionChanged(to selection: String, for fieldName: String) {
-        if let changedField = ItemFormField.init(rawValue: fieldName) {
-            fieldNameToValueMap.updateValue(selection, forKey: changedField)
-            if changedField == ItemFormField.NAME || changedField == ItemFormField.TARGET_VALUE {
-                validateForm()
-            }
+    func selectionChanged(to selection: Any, for fieldName: String) {
+        fieldNameToValueMap.updateValue(selection, forKey: fieldName)
+        if fieldName == FormFields.NAME || fieldName == FormFields.TARGET_VALUE {
+            validateForm()
         }
     }
     
@@ -180,8 +150,8 @@ extension ItemFormControllerImpl: FormCellDelegate {
     }
     
     func validateForm() {
-        validForm = fieldNameToValueMap[ItemFormField.NAME] ?? "" != ""
-            && Int(fieldNameToValueMap[ItemFormField.TARGET_VALUE] ?? "") ?? 0 > 0
+        validForm = fieldNameToValueMap[FormFields.NAME] as? String ?? "" != ""
+            && Int(fieldNameToValueMap[FormFields.TARGET_VALUE] as? String ?? "") ?? 0 > 0
     }
 
     func deleteButtonPressed() {
@@ -203,13 +173,3 @@ extension ItemFormControllerImpl: FormCellDelegate {
     }
 }
 
-enum ItemFormField: String {
-    
-    case NAME = "name"
-    case DESCRIPTION = "description"
-    case DIRECTION = "direction"
-    case TARGET_VALUE = "targetValue"
-    case TIMEPERIOD = "timePeriod"
-    case SHOW_ACTIVITY = "showActivity"
-    case DELETE_ITEM = "deleteItem"
-}

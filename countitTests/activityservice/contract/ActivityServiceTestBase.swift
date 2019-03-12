@@ -84,7 +84,7 @@ class ActivityServiceTestBase: XCTestCase {
         for timestamp in timestamps {
             if let date = timeStampStringToDate(timestamp: timestamp) {
                 clock.set(date: date)
-                let _ = activityService?.record(activityUpdate: ActivityUpdateDto(item: item!, value: value))
+                let _ = activityService?.record(activityUpdate: ActivityUpdateDto(item: item!, value: value, timestamp: nil))
             }
         }
     }

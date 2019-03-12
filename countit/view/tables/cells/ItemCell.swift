@@ -28,10 +28,13 @@ class ItemCell: UITableViewCell {
 
     let HEIGHT_ZERO: CGFloat = 0
     let HEIGHT_PROGRESS: CGFloat = 100
+    let HEIGHT_ADD: CGFloat = 250
     
     var alwaysConstraints: [NSLayoutConstraint] = []
+    var currentConstraints: [NSLayoutConstraint] = []
     var closedConstraints: [NSLayoutConstraint] = []
     var progressConstraints: [NSLayoutConstraint] = []
+    var addConstraints: [NSLayoutConstraint] = []
     
     let item: ItemProgressSummaryDto
     let delegate: ProgressTableController
@@ -44,6 +47,7 @@ class ItemCell: UITableViewCell {
     var detailsSectionHeight: CGFloat?
     
     var state: ItemCellState = .CLOSED
+    var currentSection: UIView?
     
     init(item: ItemProgressSummaryDto, delegate: ProgressTableController, state: ItemCellState) {
         self.item = item
@@ -66,7 +70,6 @@ class ItemCell: UITableViewCell {
         self.addSubview(border!)
         self.addSubview(detailsSection!)
         self.addSubview(buttonSection!)
-        self.addSubview(progressSection!)
         border!.translatesAutoresizingMaskIntoConstraints = false
         detailsSection!.translatesAutoresizingMaskIntoConstraints = false
         buttonSection!.translatesAutoresizingMaskIntoConstraints = false
@@ -74,13 +77,14 @@ class ItemCell: UITableViewCell {
         
         createAlwaysConstraints()
         createClosedConstraints()
-        createProgressConstraints()
         
-        if state == .CLOSED {
+        switch state {
+        case .CLOSED:
             setToClosed()
-        }
-        else {
-            setToProgress()
+        case .PROGRESS:
+            setTo(section: progressSection!, height: HEIGHT_PROGRESS)
+        case .PERFORMANCE:
+            setToClosed()
         }
     }
     
@@ -96,18 +100,10 @@ class ItemCell: UITableViewCell {
         alwaysConstraints.append(buttonSection!.leftAnchor.constraint(equalTo: leftAnchor, constant: ACTION_BUTTON_PADDING_LEFT))
         alwaysConstraints.append(buttonSection!.rightAnchor.constraint(equalTo: rightAnchor, constant: ACTION_BUTTON_PADDING_RIGHT))
         alwaysConstraints.append(buttonSection!.heightAnchor.constraint(equalToConstant: ACTION_BUTTON_HEIGHT))
-        alwaysConstraints.append(progressSection!.leftAnchor.constraint(equalTo: leftAnchor, constant: PROGRESS_SECTION_PADDING_LEFT))
-        alwaysConstraints.append(progressSection!.rightAnchor.constraint(equalTo: rightAnchor, constant: PROGRESS_SECTION_PADDING_RIGHT))
-        alwaysConstraints.append(progressSection!.topAnchor.constraint(equalTo: topAnchor, constant: PROGRESS_SECTION_PADDING_TOP + detailsSectionHeight!))
-        alwaysConstraints.append(border!.bottomAnchor.constraint(equalTo: progressSection!.bottomAnchor, constant: PROGRESS_SECTION_PADDING_BOTTOM))
     }
     
     func createClosedConstraints() {
-        closedConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: HEIGHT_ZERO))
-    }
-    
-    func createProgressConstraints() {
-        progressConstraints.append(progressSection!.heightAnchor.constraint(equalToConstant: HEIGHT_PROGRESS))
+        closedConstraints.append(border!.bottomAnchor.constraint(equalTo: topAnchor, constant: PROGRESS_SECTION_PADDING_TOP + detailsSectionHeight!))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -118,64 +114,88 @@ class ItemCell: UITableViewCell {
 extension ItemCell {
     
     func setToClosed() {
-        
         NSLayoutConstraint.activate(alwaysConstraints)
         NSLayoutConstraint.activate(closedConstraints)
-        sendSubviewToBack(progressSection!)
     }
     
-    func setToProgress() {
+    func setTo(section: UIView, height: CGFloat) {
+        addSubview(section)
+        currentSection = section
+        populateCurrentConstraintsFor(section: section, height: height)
         NSLayoutConstraint.activate(alwaysConstraints)
-        NSLayoutConstraint.activate(progressConstraints)
+        NSLayoutConstraint.activate(currentConstraints)
     }
     
-    func transitionClosedToProgress() {
-        NSLayoutConstraint.deactivate(closedConstraints)
-        NSLayoutConstraint.activate(progressConstraints)
-        delegate.updateCellHeights()
-        self.bringSubviewToFront(self.progressSection!)
-        state = .PROGRESS
-        delegate.itemCellStateChange(item: item, state: state)
-    }
-    
-    func transitionProgressToClosed() {
+    func transitionToClosed() {
         NSLayoutConstraint.activate(closedConstraints)
-        NSLayoutConstraint.deactivate(progressConstraints)
+        NSLayoutConstraint.deactivate(currentConstraints)
+        currentSection?.removeFromSuperview()
         delegate.updateCellHeights()
-        self.sendSubviewToBack(self.progressSection!)
         state = .CLOSED
         delegate.itemCellStateChange(item: item, state: state)
+        currentSection = nil
+        currentConstraints.removeAll()
     }
+    
+    func transitionFromClosed(section: UIView, newState: ItemCellState, height: CGFloat) {
+        addSubview(section)
+        currentSection = section
+        populateCurrentConstraintsFor(section: section, height: height)
+        NSLayoutConstraint.activate(currentConstraints)
+        NSLayoutConstraint.deactivate(closedConstraints)
+        delegate.updateCellHeights()
+        state = newState
+        delegate.itemCellStateChange(item: item, state: state)
+    }
+    
+    private func populateCurrentConstraintsFor(section: UIView, height: CGFloat) {
+        currentConstraints.append(border!.bottomAnchor.constraint(equalTo: section.bottomAnchor))
+        currentConstraints.append(section.heightAnchor.constraint(equalToConstant: height))
+        currentConstraints.append(section.leftAnchor.constraint(equalTo: leftAnchor, constant: PROGRESS_SECTION_PADDING_LEFT))
+        currentConstraints.append(section.rightAnchor.constraint(equalTo: rightAnchor, constant: PROGRESS_SECTION_PADDING_RIGHT))
+        currentConstraints.append(section.topAnchor.constraint(equalTo: topAnchor, constant: PROGRESS_SECTION_PADDING_TOP + detailsSectionHeight!))
+    }
+        
 }
 
 extension ItemCell: ItemCellButtonDelegate {
-    func MoreInfoButtonPressed() {
+    func moreInfoButtonPressed() {
         delegate.itemSelected(itemDetails: item.getItemDetailsDto())
     }
     
-    func AddButtonPressed() {
-        print("add")
-    }
-    
-    func PlusOneButtonPressed() {
+    func plusOneButtonPressed() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        delegate.recordActivityButtonPressedFor(item: item.getItemDetailsDto())
+        delegate.recordActivityFor(item: item.getItemDetailsDto(), value: 1, timestamp: nil)
     }
     
-    func ProgressButtonPressed() {
-        if state == .PROGRESS {
-            transitionProgressToClosed()
-        }
-        else {
-            transitionClosedToProgress()
-        }
-    }
-    
-    func ActivityHistoryButtonPressed() {
+    func activityHistoryButtonPressed() {
         delegate.transitionToActivityHistoryControllerFor(item: item.getItemDetailsDto().getId())
     }
     
-    func PerformanceButtonPressed() {
+    func performanceButtonPressed() {
         print("Performance")
+    }
+    
+    func addButtonPressed() {
+        delegate.transitionToRecordActivityFormControllerFor(item: item.getItemDetailsDto())
+    }
+    
+    func progressButtonPressed() {
+        transition(section: progressSection!, state: .PROGRESS, height: HEIGHT_PROGRESS)
+    }
+    
+    private func transition(section: UIView, state: ItemCellState, height: CGFloat) {
+        if let _ = currentSection {
+            if currentSection == section {
+                transitionToClosed()
+            }
+            else {
+                transitionToClosed()
+                transitionFromClosed(section: section, newState: state, height: height)
+            }
+        }
+        else {
+            transitionFromClosed(section: section, newState: state, height: height)
+        }
     }
 }

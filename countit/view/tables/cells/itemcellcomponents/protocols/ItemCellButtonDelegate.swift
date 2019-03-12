@@ -10,15 +10,15 @@ import Foundation
 
 protocol ItemCellButtonDelegate {
     
-    func MoreInfoButtonPressed()
+    func moreInfoButtonPressed()
     
-    func AddButtonPressed()
+    func addButtonPressed()
     
-    func PlusOneButtonPressed()
+    func plusOneButtonPressed()
     
-    func ProgressButtonPressed()
+    func progressButtonPressed()
     
-    func PerformanceButtonPressed()
+    func performanceButtonPressed()
     
-    func ActivityHistoryButtonPressed()
+    func activityHistoryButtonPressed()
 }

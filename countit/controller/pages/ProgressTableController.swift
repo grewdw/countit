@@ -12,13 +12,11 @@ import CoreData
 
 protocol ProgressTableController {
     
-    func addButtonPressed()
+    func addNewItemButtonPressed()
     
     func itemSelected(itemDetails: ItemDetailsDto)
     
-    func recordActivityButtonPressedFor(item: ItemDetailsDto)
-    
-    func subtractActivityButtonPressedFor(item: ItemDetailsDto)
+    func recordActivityFor(item: ItemDetailsDto, value: Int, timestamp: Date?)
     
     func itemCellStateChange(item: ItemProgressSummaryDto, state: ItemCellState)
     
@@ -27,6 +25,8 @@ protocol ProgressTableController {
     func refreshTableData()
     
     func itemPositionsChanged(itemOneRow: Int, itemTwoRow: Int)
+    
+    func transitionToRecordActivityFormControllerFor(item: ItemDetailsDto)
     
     func transitionToActivityHistoryControllerFor(item: NSManagedObjectID)
 }

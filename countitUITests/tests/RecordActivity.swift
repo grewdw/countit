@@ -24,12 +24,18 @@ class RecordActivity: UITestBase {
     func testRecordSingleActivityForFirstItem() {
         clickPlusOneButtonFor(cell: FIRST_CELL)
         
+        clickProgressButtonFor(cell: FIRST_CELL)
+        clickProgressButtonFor(cell: SECOND_CELL)
+        
         assertProgressFor(cell: 0, isPercentage: "10%", withCount: "1 of 10")
         assertProgressFor(cell: 1, isPercentage: "0%", withCount: "0 of 20")
     }
     
     func testRecordSingleActivityForSecondItem() {
         clickPlusOneButtonFor(cell: SECOND_CELL)
+        
+        clickProgressButtonFor(cell: FIRST_CELL)
+        clickProgressButtonFor(cell: SECOND_CELL)
         
         assertProgressFor(cell: 0, isPercentage: "0%", withCount: "0 of 10")
         assertProgressFor(cell: 1, isPercentage: "5%", withCount: "1 of 20")
@@ -40,6 +46,9 @@ class RecordActivity: UITestBase {
         clickPlusOneButtonFor(cell: FIRST_CELL)
         clickPlusOneButtonFor(cell: FIRST_CELL)
         
+        clickProgressButtonFor(cell: FIRST_CELL)
+        clickProgressButtonFor(cell: SECOND_CELL)
+        
         assertProgressFor(cell: 0, isPercentage: "30%", withCount: "3 of 10")
         assertProgressFor(cell: 1, isPercentage: "0%", withCount: "0 of 20")
     }
@@ -49,6 +58,9 @@ class RecordActivity: UITestBase {
         clickPlusOneButtonFor(cell: SECOND_CELL)
         clickPlusOneButtonFor(cell: SECOND_CELL)
         clickPlusOneButtonFor(cell: SECOND_CELL)
+        
+        clickProgressButtonFor(cell: FIRST_CELL)
+        clickProgressButtonFor(cell: SECOND_CELL)
         
         assertProgressFor(cell: 0, isPercentage: "0%", withCount: "0 of 10")
         assertProgressFor(cell: 1, isPercentage: "20%", withCount: "4 of 20")
@@ -65,6 +77,9 @@ class RecordActivity: UITestBase {
         clickPlusOneButtonFor(cell: SECOND_CELL)
         clickPlusOneButtonFor(cell: SECOND_CELL)
         clickPlusOneButtonFor(cell: SECOND_CELL)
+        
+        clickProgressButtonFor(cell: FIRST_CELL)
+        clickProgressButtonFor(cell: SECOND_CELL)
         
         assertProgressFor(cell: 0, isPercentage: "50%", withCount: "5 of 10")
         assertProgressFor(cell: 1, isPercentage: "20%", withCount: "4 of 20")

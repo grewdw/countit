@@ -10,7 +10,7 @@ import UIKit
 
 class ButtonCell: UITableViewCell {
     
-    let button = UIButton()
+    var button: UIButton?
     let delegate: FormCellDelegate
     let buttonPressAction: () -> Void
     
@@ -19,38 +19,25 @@ class ButtonCell: UITableViewCell {
         self.buttonPressAction = buttonPressAction
         super.init(style: .value1, reuseIdentifier: "buttonCell")
         self.accessibilityIdentifier = accessibilityIdentifier
-        self.addSubview(button)
         
-        let textColor = destructive ? UIColor.red : UIColor.blue
+        button = UIButtonBuilder().with(destructive: destructive).with(buttonText: buttonText)
+            .with(accessibilityIdentifier: AccessibilityIdentifiers.BUTTON_FIELD_BUTTON).build()
         
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        format(button: button, text: buttonText, textColor: textColor)
-        button.accessibilityIdentifier = AccessibilityIdentifiers.BUTTON_FIELD_BUTTON
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button!.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button!.translatesAutoresizingMaskIntoConstraints = false
 
+        self.addSubview(button!)
         
         NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
-            button.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button!.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            button!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+            button!.centerYAnchor.constraint(equalTo: centerYAnchor),
+            button!.centerXAnchor.constraint(equalTo: centerXAnchor),
             ])
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func format(button: UIButton, text: String, textColor: UIColor) {
-        let attributedString = NSAttributedString(
-            string: text,
-            attributes:[
-                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
-                NSAttributedString.Key.foregroundColor: textColor,
-                NSAttributedString.Key.underlineStyle: 1.0
-            ])
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.titleLabel?.textAlignment = .center
     }
     
     @objc func buttonPressed() {
