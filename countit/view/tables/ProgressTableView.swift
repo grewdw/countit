@@ -54,7 +54,7 @@ extension ProgressTableView: NavBarButtonDelegate {
     }
     
     @objc func addButtonPressed() {
-       progressTableDelegate.addButtonPressed()
+       progressTableDelegate.addNewItemButtonPressed()
     }
 }
 

@@ -39,7 +39,7 @@ class ProgressTableControllerImpl: UIViewController, UISearchBarDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        refreshTableData()
+        reloadData()
     }
     
     func initiateView() {
@@ -96,21 +96,21 @@ extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSourc
 
 extension ProgressTableControllerImpl: ProgressTableController {
     
-    func addButtonPressed() {
-        toItemController(item: nil)
+    func addNewItemButtonPressed() {
+        toItemFormController(item: nil)
     }
     
     func itemSelected(itemDetails: ItemDetailsDto) {
-        toItemController(item: itemDetails)
+        toItemFormController(item: itemDetails)
     }
     
-    func recordActivityButtonPressedFor(item: ItemDetailsDto) {
-        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: 1))
-        reloadData()
+    func transitionToRecordActivityFormControllerFor(item: ItemDetailsDto) {
+        controllerResolver.getPrimaryNavController().pushViewController(
+            controllerResolver.getRecordActivityFormController(item: item) as! UIViewController, animated: true)
     }
     
-    func subtractActivityButtonPressedFor(item: ItemDetailsDto) {
-        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: -1))
+    func recordActivityFor(item: ItemDetailsDto, value: Int, timestamp: Date?) {
+        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: value, timestamp: timestamp, note: nil))
         reloadData()
     }
     
@@ -153,7 +153,7 @@ extension ProgressTableControllerImpl: ProgressTableController {
         return itemDetails
     }
     
-    private func toItemController(item: ItemDetailsDto?) {
+    private func toItemFormController(item: ItemDetailsDto?) {
         let itemFormController = controllerResolver.getItemFormController()
         if let itemToAdd = item {
             itemFormController.with(item: itemToAdd)

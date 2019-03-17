@@ -62,13 +62,11 @@ class ControllerResolver {
     }
     
     func getActivityHistoryController() -> ActivityHistoryController {
-        if activityHistoryController != nil {
-            return activityHistoryController!
-        }
-        else {
-            activityHistoryController = ActivityHistoryControllerImpl(activityService:
-                serviceResolver.getActivityService())
-            return activityHistoryController!
-        }
+        return ActivityHistoryControllerImpl(activityService:
+            serviceResolver.getActivityService())
+    }
+    
+    func getRecordActivityFormController(item: ItemDetailsDto) -> RecordActivityFormController {
+        return RecordActivityFormControllerImpl(controllerResolver: self, activityService: serviceResolver.getActivityService(), item: item)
     }
 }

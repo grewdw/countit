@@ -39,18 +39,26 @@ class AccessibilityIdentifiers {
     public static let ITEM_CELL_PROGRESS_PERCENTAGE = "itemCellProgressPercentage"
     public static let ITEM_CELL_PROGRESS_COUNT = "itemCellProgressCount"
     
+    public static let RECORD_ACTIVITY_FORM_VALUE = "recordActivityFormValue"
+    public static let RECORD_ACTIVITY_FORM_DATE = "recordActivityFormDate"
+    public static let RECORD_ACTIVITY_FORM_NOTE = "recordActivityFormNote"
+    public static let RECORD_ACTIVITY_FORM_SAVE_BUTTON = "recordActivityFormSaveButton"
+    
     public static let EMPTY_ITEM_LIST_CELL = "emptyItemListCell"
     
     public static let ACTIVITY_RECORD_DATE = "activityRecordDate"
     public static let ACTIVITY_RECORD_VALUE = "activityRecordValue"
+    public static let ACTIVITY_RECORD_NOTE = "activityRecordNote"
     
     public static let ITEM_TABLE = "itemTable"
     public static let ITEM_FORM_TABLE = "itemFormTable"
+    public static let RECORD_ACTIVITY_TABLE = "recordActivityTable"
     public static let FORM_SELECTOR_TABLE = "formSelectorTable"
     public static let ACTIVITY_HISTORY_TABLE = "activityHistoryTable"
     
     public static let NAVIGATION_BAR_ITEM_TABLE = "countIt"
     public static let NAVIGATION_BAR_ITEM_FORM = "itemForm"
+    public static let NAVIGATION_BAR_RECORD_ACTIVITY = "recordActivityForm"
     public static let NAVIGATION_BAR_ACTIVITY_HISTORY = "activityHistory"
     
     public static let NAVIGATION_BAR_BUTTON_ADD = "Add"

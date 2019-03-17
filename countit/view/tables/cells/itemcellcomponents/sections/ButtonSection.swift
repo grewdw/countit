@@ -26,19 +26,19 @@ class ButtonSection: UIStackView {
         distribution = .fillEqually
         alignment = .center
         
-        let progress = ActionButton(buttonPressAction: self.delegate.ProgressButtonPressed,
+        let progress = ActionButton(buttonPressAction: self.delegate.progressButtonPressed,
                                     image: UIImage(named: "ProgressIcon")!,
                                     accessibilityIdentifier: AI.ITEM_CELL_PROGRESS_BUTTON)
-        let performance = ActionButton(buttonPressAction: self.delegate.PerformanceButtonPressed,
+        let performance = ActionButton(buttonPressAction: self.delegate.performanceButtonPressed,
                                        image: UIImage(named: "StatsIcon")!,
                                        accessibilityIdentifier: AI.ITEM_CELL_PERFORMANCE_BUTTON)
-        let plusOne = ActionButton(buttonPressAction: self.delegate.PlusOneButtonPressed,
+        let plusOne = ActionButton(buttonPressAction: self.delegate.plusOneButtonPressed,
                                    image: UIImage(named: "PlusOneIcon")!,
                                    accessibilityIdentifier: AI.ITEM_CELL_PLUSONE_BUTTON)
-        let add = ActionButton(buttonPressAction: self.delegate.AddButtonPressed,
+        let add = ActionButton(buttonPressAction: self.delegate.addButtonPressed,
                                image: UIImage(named: "AddIcon")!,
                                accessibilityIdentifier: AI.ITEM_CELL_ADD_BUTTON)
-        let activityHistory = ActionButton(buttonPressAction: self.delegate.ActivityHistoryButtonPressed,
+        let activityHistory = ActionButton(buttonPressAction: self.delegate.activityHistoryButtonPressed,
                                    image: UIImage(named: "ActivityListIcon")!,
                                    accessibilityIdentifier: AI.ITEM_CELL_ACTIVITY_HISTORY_BUTTON)
         

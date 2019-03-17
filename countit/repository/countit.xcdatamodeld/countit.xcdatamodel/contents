@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ActivityEntity" representedClassName="ActivityEntity" syncable="YES" codeGenerationType="class">
         <attribute name="createdTimestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="activity" inverseEntity="ItemEntity" syncable="YES"/>
     </entity>
@@ -21,8 +22,8 @@
         <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="target" inverseEntity="ItemEntity" syncable="YES"/>
     </entity>
     <elements>
+        <element name="ActivityEntity" positionX="54" positionY="54" width="128" height="105"/>
         <element name="ItemEntity" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="TargetEntity" positionX="134.0546875" positionY="-17.765625" width="128" height="135"/>
-        <element name="ActivityEntity" positionX="54" positionY="54" width="128" height="90"/>
     </elements>
 </model>

@@ -104,12 +104,19 @@ extension UITestBase {
         }
     }
     
-    func assertActivityHistoryTable(cell cellNumber: Int, hasValue expectedValue: String, file: StaticString = #file, line: UInt = #line) {
+    func assertActivityHistoryTable(cell cellNumber: Int, hasValue expectedValue: String, andNote expectedNote: String?, file: StaticString = #file, line: UInt = #line) {
         let cell = activityHistoryTable!.cells.element(boundBy: cellNumber)
         let actualValue = cell.staticTexts[AI.ACTIVITY_RECORD_VALUE].label
         XCTAssertEqual(actualValue, expectedValue,
                        "activity record value incorrect for cell \(cellNumber). Expected \(expectedValue) but was \(actualValue)",
             file: file, line: line)
+        
+        if expectedNote != nil {
+            let actualNote = cell.staticTexts[AI.ACTIVITY_RECORD_NOTE].label
+            XCTAssertEqual(actualNote, expectedNote!,
+                           "activity record note incorrect for cell \(cellNumber). Expected \(expectedNote!) but was \(actualNote)",
+                file: file, line: line)
+        }
     }
     
     func assertActivityHistoryTableCountIs(_ expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
@@ -142,5 +149,13 @@ extension UITestBase {
         XCTAssertTrue(emptyItemListCell?.exists ?? false == expected,
                       "empty item list cell is not enabled",
                       file: file, line: line)
+    }
+    
+    func assertRecordActivityForm(isDisplayed expected: Bool, file: StaticString = #file, line: UInt = #line) {
+        if let actual = recordActivityForm?.exists {
+            XCTAssertEqual(expected, actual,
+                           "record activity form status incorrect. Expected \(expected) but was \(actual)",
+                file: file, line: line)
+        }
     }
 }

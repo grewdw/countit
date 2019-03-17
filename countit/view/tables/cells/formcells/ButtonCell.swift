@@ -10,30 +10,36 @@ import UIKit
 
 class ButtonCell: UITableViewCell {
     
-    let button = UIButton()
-    let delegate: FormCellDelegate
-    let buttonPressAction: () -> Void
+    private var button: UIButton?
+    private let delegate: FormCellDelegate
+    private let buttonPressAction: () -> Void
     
-    init(buttonText: String, destructive: Bool, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
+    private var enabled: Bool
+    private let destructive: Bool
+    
+    init(buttonText: String, destructive: Bool, enabled: Bool, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
         self.delegate = delegate
         self.buttonPressAction = buttonPressAction
+        self.destructive = destructive
+        self.enabled = enabled
         super.init(style: .value1, reuseIdentifier: "buttonCell")
         self.accessibilityIdentifier = accessibilityIdentifier
-        self.addSubview(button)
         
-        let textColor = destructive ? UIColor.red : UIColor.blue
+        let textColor = !enabled ? UIColor.gray : destructive ? UIColor.red : UIColor.blue
         
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        format(button: button, text: buttonText, textColor: textColor)
-        button.accessibilityIdentifier = AccessibilityIdentifiers.BUTTON_FIELD_BUTTON
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button = UIButtonBuilder().with(textColor: textColor).with(buttonText: buttonText)
+            .with(accessibilityIdentifier: AccessibilityIdentifiers.BUTTON_FIELD_BUTTON).build()
+        
+        button!.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button!.translatesAutoresizingMaskIntoConstraints = false
 
+        self.addSubview(button!)
         
         NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
-            button.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button.centerXAnchor.constraint(equalTo: centerXAnchor),
+            button!.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            button!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+            button!.centerYAnchor.constraint(equalTo: centerYAnchor),
+            button!.centerXAnchor.constraint(equalTo: centerXAnchor),
             ])
     }
     
@@ -41,19 +47,19 @@ class ButtonCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func format(button: UIButton, text: String, textColor: UIColor) {
-        let attributedString = NSAttributedString(
-            string: text,
-            attributes:[
-                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
-                NSAttributedString.Key.foregroundColor: textColor,
-                NSAttributedString.Key.underlineStyle: 1.0
-            ])
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.titleLabel?.textAlignment = .center
+    @objc func buttonPressed() {
+        if enabled {
+            buttonPressAction()
+        }
     }
     
-    @objc func buttonPressed() {
-        buttonPressAction()
+    func setEnabled(to newStatus: Bool) {
+        if !newStatus {
+            button?.titleLabel?.textColor = UIColor.gray
+        }
+        else {
+            button?.titleLabel?.textColor = destructive ? UIColor.red : UIColor.blue
+        }
+        enabled = newStatus
     }
 }

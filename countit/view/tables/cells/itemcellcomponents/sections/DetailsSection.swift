@@ -22,7 +22,7 @@ class DetailsSection: UIView {
         
         let details = setupDetailsStackView(name: setup(name: item.getName(), cellWidth: cellWidth),
                                             target: setup(target: "\(item.getDirection().rawValue) \(item.getValue()) a \(item.getTimePeriod().rawValue.lowercased())", cellWidth: cellWidth))
-        let moreInfo = ActionButton(buttonPressAction: delegate.MoreInfoButtonPressed,
+        let moreInfo = ActionButton(buttonPressAction: delegate.moreInfoButtonPressed,
                                     image: UIImage(named: "MoreInfoIcon")!,
                                     accessibilityIdentifier: AccessibilityIdentifiers.ITEM_CELL_MOREINFO_BUTTON)
         let percentageLabel = UILabel()

@@ -73,8 +73,13 @@ class UITestBase: XCTestCase {
     
     var emptyItemListCell: XCUIElement?
     
+    var recordActivityValue: XCUIElement?
+    var recordActivityNote: XCUIElement?
+    var recordActivitySaveButton: XCUIElement?
+    
     var itemTable: XCUIElement?
     var itemForm: XCUIElement?
+    var recordActivityForm: XCUIElement?
     var formSelectorTable: XCUIElement?
     var activityHistoryTable: XCUIElement?
     
@@ -114,6 +119,9 @@ class UITestBase: XCTestCase {
         itemFormDeleteButton = newApp.tables[AI.ITEM_FORM_TABLE].cells[AI.ITEM_FORM_DELETE_BUTTON].buttons[AI.BUTTON_FIELD_BUTTON]
         itemFormDeleteConfirmationAlert = newApp.alerts["Delete"]
         emptyItemListCell = newApp.tables[AI.ITEM_TABLE].cells[AI.EMPTY_ITEM_LIST_CELL]
+        recordActivityValue = newApp.tables[AI.RECORD_ACTIVITY_TABLE].cells[AI.RECORD_ACTIVITY_FORM_VALUE].textFields[AI.TEXT_FIELD_TEXT]
+        recordActivityNote = newApp.tables[AI.RECORD_ACTIVITY_TABLE].cells[AI.RECORD_ACTIVITY_FORM_NOTE].textFields[AI.TEXT_FIELD_TEXT]
+        recordActivitySaveButton = newApp.tables[AI.RECORD_ACTIVITY_TABLE].cells[AI.RECORD_ACTIVITY_FORM_SAVE_BUTTON].buttons[AI.BUTTON_FIELD_BUTTON]
         itemTable = newApp.tables[AI.ITEM_TABLE]
         itemForm = newApp.tables[AI.ITEM_FORM_TABLE]
         formSelectorTable = newApp.tables[AI.FORM_SELECTOR_TABLE]

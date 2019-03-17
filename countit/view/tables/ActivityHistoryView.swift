@@ -16,6 +16,8 @@ class ActivityHistoryView: UITableView {
         self.historyViewController = historyViewController
         super.init(frame: frame, style: .plain)
         self.accessibilityIdentifier = AccessibilityIdentifiers.ACTIVITY_HISTORY_TABLE
+        rowHeight = UITableView.automaticDimension
+        estimatedRowHeight = 22.0
     }
     
     required init?(coder aDecoder: NSCoder) {

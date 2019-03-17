@@ -73,28 +73,52 @@ class ActivityServiceTestBase: XCTestCase {
     }
     
     func recordActivity(withTimestamps timestamps: [String]) {
-        updateActivity(value: 1, forTimestamps: timestamps)
-    }
-    
-    func subtractActivity(withTimestamps timestamps: [String]) {
-        updateActivity(value: -1, forTimestamps: timestamps)
-    }
-    
-    private func updateActivity(value: Int, forTimestamps timestamps: [String]) {
         for timestamp in timestamps {
             if let date = timeStampStringToDate(timestamp: timestamp) {
                 clock.set(date: date)
-                let _ = activityService?.record(activityUpdate: ActivityUpdateDto(item: item!, value: value))
+                let _ = activityService?.record(activityUpdate: ActivityUpdateDto(item: item!, value: 1, timestamp: nil, note: nil))
             }
         }
     }
     
+    func recordActivity(withValue value: Int?, withCustomTimestamps timestamps: [String], withNote note: String?) {
+        for timestamp in timestamps {
+            if let date = timeStampStringToDate(timestamp: timestamp) {
+                let _ = activityService?.record(activityUpdate: ActivityUpdateDto(item: item!, value: value ?? 1, timestamp: date, note: note))
+            }
+        }
+    }
+
     func timeStampStringToDate(timestamp: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         return dateFormatter.date(from: timestamp)
     }
  
+    func assertActivityRecordHas(value expectedValue: Int?, timestamp expectedTimestampString: String?, note expectedNote: String?, file: StaticString = #file, line: UInt = #line) {
+        let activityRecord = activityService!.getActivityHistoryFor(item: item!.getId()).getActivity()[0]
+        
+        if expectedValue != nil {
+            let actualValue = activityRecord.getValue()
+            XCTAssertEqual(actualValue, expectedValue!,
+                           "Incorrect activity value. Expected \(expectedValue!) but was \(actualValue)",
+                file: file, line: line)
+        }
+        if expectedTimestampString != nil {
+            let expectedTimestamp = timeStampStringToDate(timestamp: expectedTimestampString!)!
+            let actualTimestamp = activityRecord.getTimestamp()
+            XCTAssertEqual(actualTimestamp, expectedTimestamp,
+                           "Incorrect activity timestamp. Expected \(expectedTimestamp) but was \(actualTimestamp)",
+                file: file, line: line)
+        }
+        if expectedNote != nil {
+            let actualNote = activityRecord.getNote()
+            XCTAssertEqual(actualNote, expectedNote,
+                           "Incorrect activity note. Expected \(expectedNote!) but was \(actualNote!)",
+                file: file, line: line)
+        }
+    }
+    
     func assertNumberOfActivityRecords(is expectedCount: Int, file: StaticString = #file, line: UInt = #line) {
         let actualCount = activityService!.getActivityHistoryFor(item: item!.getId()).getActivity().count
         

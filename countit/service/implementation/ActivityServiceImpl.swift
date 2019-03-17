@@ -22,7 +22,8 @@ class ActivityServiceImpl: ActivityService {
     }
     
     func record(activityUpdate activity: ActivityUpdateDto) -> Bool {
-        return activityRepository.save(activity: activity, withTimestamp: clock.now())
+        let timestamp = activity.getTimestamp() != nil ? activity.getTimestamp()! : clock.now()
+        return activityRepository.save(activity: activity, withTimestamp: timestamp)
     }
     
     func getActivityCountFor(item: NSManagedObjectID, between: DateInterval) -> Int {

@@ -46,9 +46,20 @@ class ActivityHistory: UITestBase {
         select(FIRST_CELL)
         clickOnShowActivityButton()
         assertActivityHistoryTableCountIs(2)
-        assertActivityHistoryTable(cell: 0, hasValue: "+1")
-        assertActivityHistoryTable(cell: 0, hasValue: "+1")
+        assertActivityHistoryTable(cell: 0, hasValue: "+1", andNote: nil)
+        assertActivityHistoryTable(cell: 0, hasValue: "+1", andNote: nil)
         assertActivityHistoryNavBarButtonIs(expectedButton: "Edit")
+    }
+    
+    func testActivityHistoryDisplaysActivityNotes() {
+        createItemWithDetailsAndSave(name: ITEM_NAME_ONE, description: nil, targetDirection: nil, targetValue: ITEM_TARGET_VALUE_TEN, targetTimePeriod: nil)
+        clickAddButtonFor(cell: FIRST_CELL)
+        updateRecordActivityFormWith(value: "2", note: "newNote")
+        clickSaveButtonOnRecordActivityForm()
+        select(FIRST_CELL)
+        clickOnShowActivityButton()
+        assertActivityHistoryTableCountIs(1)
+        assertActivityHistoryTable(cell: 0, hasValue: "+2", andNote: "newNote")
     }
     
     func testDeleteActivitySwipe() {
