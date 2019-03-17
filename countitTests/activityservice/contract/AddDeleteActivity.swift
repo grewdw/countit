@@ -23,6 +23,8 @@ class AddDeleteActivity: ActivityServiceTestBase {
         createItem(withTargetTimePeriod: .DAY)
         recordActivity(withTimestamps: [TODAY])
         assertNumberOfActivityRecords(is: 1)
+        recordActivity(withTimestamps: [TOMORROW])
+        assertNumberOfActivityRecords(is: 2)
     }
     
     func testRecordActivityWithCustomValue() {
