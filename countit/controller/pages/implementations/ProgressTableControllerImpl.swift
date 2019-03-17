@@ -110,7 +110,7 @@ extension ProgressTableControllerImpl: ProgressTableController {
     }
     
     func recordActivityFor(item: ItemDetailsDto, value: Int, timestamp: Date?) {
-        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: value, timestamp: timestamp))
+        let _ = activityService.record(activityUpdate: ActivityUpdateDto(item: item, value: value, timestamp: timestamp, note: nil))
         reloadData()
     }
     

@@ -19,6 +19,7 @@ class RecordActivityFormView: UITableView {
         self.delegate = delegate
         self.dataSource = dataSource
         keyboardDismissMode = .onDrag
+        accessibilityIdentifier = AccessibilityIdentifiers.RECORD_ACTIVITY_TABLE
     }
     
     required init?(coder aDecoder: NSCoder) {

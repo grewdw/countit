@@ -16,10 +16,12 @@ class DatePickerCell: UITableViewCell {
     private let delegate: FormCellDelegate
     private let fieldName: String
     
-    init(delegate: FormCellDelegate, fieldName: String) {
+    init(delegate: FormCellDelegate, fieldName: String, accessibilityIdentifier: String) {
         self.delegate = delegate
         self.fieldName = fieldName
         super.init(style: .default, reuseIdentifier: "datePickerCell")
+        
+        self.accessibilityIdentifier = accessibilityIdentifier
         
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
         

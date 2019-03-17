@@ -20,5 +20,6 @@ class FormFields {
     
     static let ACTIVITY_VALUE = "activityValue"
     static let ACTIVITY_DATE = "activityDate"
+    static let ACTIVITY_NOTE = "activityNote"
     static let RECORD_ACTIVITY = "recordActivity"
 }

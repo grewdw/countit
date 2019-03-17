@@ -15,8 +15,8 @@ class UIButtonBuilder {
     private var buttonText: String = ""
     private var accessibilityIdentifier: String = ""
     
-    func with(destructive: Bool) -> UIButtonBuilder {
-        textColor = destructive ? UIColor.red : UIColor.blue
+    func with(textColor: UIColor) -> UIButtonBuilder {
+        self.textColor = textColor
         return self
     }
     

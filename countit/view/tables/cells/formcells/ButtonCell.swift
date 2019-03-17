@@ -10,17 +10,24 @@ import UIKit
 
 class ButtonCell: UITableViewCell {
     
-    var button: UIButton?
-    let delegate: FormCellDelegate
-    let buttonPressAction: () -> Void
+    private var button: UIButton?
+    private let delegate: FormCellDelegate
+    private let buttonPressAction: () -> Void
     
-    init(buttonText: String, destructive: Bool, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
+    private var enabled: Bool
+    private let destructive: Bool
+    
+    init(buttonText: String, destructive: Bool, enabled: Bool, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
         self.delegate = delegate
         self.buttonPressAction = buttonPressAction
+        self.destructive = destructive
+        self.enabled = enabled
         super.init(style: .value1, reuseIdentifier: "buttonCell")
         self.accessibilityIdentifier = accessibilityIdentifier
         
-        button = UIButtonBuilder().with(destructive: destructive).with(buttonText: buttonText)
+        let textColor = !enabled ? UIColor.gray : destructive ? UIColor.red : UIColor.blue
+        
+        button = UIButtonBuilder().with(textColor: textColor).with(buttonText: buttonText)
             .with(accessibilityIdentifier: AccessibilityIdentifiers.BUTTON_FIELD_BUTTON).build()
         
         button!.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
@@ -41,6 +48,18 @@ class ButtonCell: UITableViewCell {
     }
     
     @objc func buttonPressed() {
-        buttonPressAction()
+        if enabled {
+            buttonPressAction()
+        }
+    }
+    
+    func setEnabled(to newStatus: Bool) {
+        if !newStatus {
+            button?.titleLabel?.textColor = UIColor.gray
+        }
+        else {
+            button?.titleLabel?.textColor = destructive ? UIColor.red : UIColor.blue
+        }
+        enabled = newStatus
     }
 }

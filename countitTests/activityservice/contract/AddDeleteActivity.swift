@@ -25,6 +25,24 @@ class AddDeleteActivity: ActivityServiceTestBase {
         assertNumberOfActivityRecords(is: 1)
     }
     
+    func testRecordActivityWithCustomValue() {
+        createItem(withTargetTimePeriod: .DAY)
+        recordActivity(withValue: 4, withCustomTimestamps: [TODAY], withNote: nil)
+        assertActivityRecordHas(value: 4, timestamp: TODAY, note: nil)
+    }
+    
+    func testRecordActivityCustomTimestamp() {
+        createItem(withTargetTimePeriod: .DAY)
+        recordActivity(withValue: nil, withCustomTimestamps: [TODAY], withNote: nil)
+        assertActivityRecordHas(value: 1, timestamp: TODAY, note: nil)
+    }
+    
+    func testRecordActivityWithNote() {
+        createItem(withTargetTimePeriod: .DAY)
+        recordActivity(withValue: nil, withCustomTimestamps: [TODAY], withNote: "newNote")
+        assertActivityRecordHas(value: 1, timestamp: TODAY, note: "newNote")
+    }
+    
     func testDeleteActivity() {
         createItem(withTargetTimePeriod: .DAY)
         recordActivity(withTimestamps: [LAST_WEEK, LAST_MONTH, YESTERDAY])

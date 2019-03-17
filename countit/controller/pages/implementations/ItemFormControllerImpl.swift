@@ -102,13 +102,13 @@ class ItemFormControllerImpl: FormBase {
                                          enabled: selectedItem == nil, delegate: self,
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
         case FormFields.SHOW_ACTIVITY:
-            return ButtonCell(buttonText: "Show activity", destructive: false, delegate: self,
+            return ButtonCell(buttonText: "Show activity", destructive: false, enabled: true, delegate: self,
                               buttonPressAction: { () -> Void in self.transitionTo(cellController:
                                 self.controllerResolver.getActivityHistoryController()
                                     .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
         case FormFields.DELETE_ITEM:
-            return ButtonCell(buttonText: "Delete", destructive: true, delegate: self,
+            return ButtonCell(buttonText: "Delete", destructive: true, enabled: true, delegate: self,
                               buttonPressAction: { self.deleteButtonPressed() },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_DELETE_BUTTON )
         default:

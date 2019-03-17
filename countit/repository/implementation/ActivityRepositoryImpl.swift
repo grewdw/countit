@@ -23,6 +23,7 @@ class ActivityRepositoryImpl: ActivityRepository {
             let activityEntity = ActivityEntity(context: context)
             activityEntity.value = Int32(activity.getValue())
             activityEntity.createdTimestamp = timestamp
+            activityEntity.note = activity.getNote()
             item.addToActivity(activityEntity)
             return saveContext()
         }

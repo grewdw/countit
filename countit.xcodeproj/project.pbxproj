@@ -29,6 +29,8 @@
 		1D49B41A21B7FFD200920CF4 /* NavBarButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */; };
 		1D49B41C21B7FFFC00920CF4 /* NavigationItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */; };
 		1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */; };
+		1D640C29223E79CB002618D5 /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D640C28223E79CB002618D5 /* RecordActivity.swift */; };
+		1D640C2B223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D640C2A223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift */; };
 		1D692D8A22370716003FC0CE /* UIButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D692D8922370716003FC0CE /* UIButtonBuilder.swift */; };
 		1D692D8C2237D84C003FC0CE /* RecordActivityFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D692D8B2237D84C003FC0CE /* RecordActivityFormController.swift */; };
 		1D692D8E2237D872003FC0CE /* RecordActivityFormControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D692D8D2237D872003FC0CE /* RecordActivityFormControllerImpl.swift */; };
@@ -91,7 +93,7 @@
 		1DEB4BBB21E38B01002F09CF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */; };
 		1DEB4BBD21E38B4E002F09CF /* ActivityRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */; };
 		1DEB4BBF21E3DCAE002F09CF /* ItemProgressSummaryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BBE21E3DCAE002F09CF /* ItemProgressSummaryDto.swift */; };
-		1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */; };
+		1DEB4BC321E78ED8002F09CF /* PlusOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC221E78ED8002F09CF /* PlusOne.swift */; };
 		1DEB4BC521E78F44002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */; };
 		1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC621E7926C002F09CF /* UITestBase.swift */; };
 		1DEB4BC921E794DB002F09CF /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */; };
@@ -164,6 +166,8 @@
 		1D49B41921B7FFD200920CF4 /* NavBarButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonBuilder.swift; sourceTree = "<group>"; };
 		1D49B41B21B7FFFC00920CF4 /* NavigationItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemBuilder.swift; sourceTree = "<group>"; };
 		1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
+		1D640C28223E79CB002618D5 /* RecordActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
+		1D640C2A223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseRecordActivityFormSteps.swift; sourceTree = "<group>"; };
 		1D692D8922370716003FC0CE /* UIButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIButtonBuilder.swift; path = countit/View/UIElementBuilders/UIButtonBuilder.swift; sourceTree = SOURCE_ROOT; };
 		1D692D8B2237D84C003FC0CE /* RecordActivityFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivityFormController.swift; sourceTree = "<group>"; };
 		1D692D8D2237D872003FC0CE /* RecordActivityFormControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivityFormControllerImpl.swift; sourceTree = "<group>"; };
@@ -232,7 +236,7 @@
 		1DEB4BBA21E38B01002F09CF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1DEB4BBC21E38B4E002F09CF /* ActivityRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryImpl.swift; sourceTree = "<group>"; };
 		1DEB4BBE21E3DCAE002F09CF /* ItemProgressSummaryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProgressSummaryDto.swift; sourceTree = "<group>"; };
-		1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
+		1DEB4BC221E78ED8002F09CF /* PlusOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusOne.swift; sourceTree = "<group>"; };
 		1DEB4BC421E78F44002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = countit/View/AccessibilityIdentifiers.swift; sourceTree = SOURCE_ROOT; };
 		1DEB4BC621E7926C002F09CF /* UITestBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBase.swift; sourceTree = "<group>"; };
 		1DEB4BC821E794DB002F09CF /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
@@ -793,6 +797,7 @@
 				1DF653DB21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift */,
 				1DF653DD21ECBCD400AA65C3 /* UITestBaseItemFormSteps.swift */,
 				1D9D32AF2204BD4E007C675F /* UITestBaseActivityHistorySteps.swift */,
+				1D640C2A223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift */,
 			);
 			path = steps;
 			sourceTree = "<group>";
@@ -812,9 +817,10 @@
 				1DEB4B8421D4FC8B002F09CF /* UpdateItems.swift */,
 				1DEB4B8621D4FC9C002F09CF /* DeleteItems.swift */,
 				1DEB4B8821D52F4B002F09CF /* UserInstructions.swift */,
-				1DEB4BC221E78ED8002F09CF /* RecordActivity.swift */,
+				1DEB4BC221E78ED8002F09CF /* PlusOne.swift */,
 				1D9D32AD2204B457007C675F /* ActivityHistory.swift */,
 				1DEB4BC621E7926C002F09CF /* UITestBase.swift */,
+				1D640C28223E79CB002618D5 /* RecordActivity.swift */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -1233,12 +1239,14 @@
 				1D9D32AE2204B457007C675F /* ActivityHistory.swift in Sources */,
 				1D9D32B02204BD4E007C675F /* UITestBaseActivityHistorySteps.swift in Sources */,
 				1DEB4B8921D52F4B002F09CF /* UserInstructions.swift in Sources */,
-				1DEB4BC321E78ED8002F09CF /* RecordActivity.swift in Sources */,
+				1DEB4BC321E78ED8002F09CF /* PlusOne.swift in Sources */,
 				1DEB4B8721D4FC9C002F09CF /* DeleteItems.swift in Sources */,
 				1DF653DC21ECBCC300AA65C3 /* UITestBaseItemTableSteps.swift in Sources */,
 				1DF653DA21ECBAD700AA65C3 /* UITestBaseAssertions.swift in Sources */,
+				1D640C29223E79CB002618D5 /* RecordActivity.swift in Sources */,
 				1DEB4BC721E7926C002F09CF /* UITestBase.swift in Sources */,
 				1DB3902821B5BFD200C11CD7 /* CreateItems.swift in Sources */,
+				1D640C2B223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift in Sources */,
 				1DEB4B8B21D53A5F002F09CF /* XCUIElementExtension.swift in Sources */,
 				1DEB4B8521D4FC8B002F09CF /* UpdateItems.swift in Sources */,
 			);
