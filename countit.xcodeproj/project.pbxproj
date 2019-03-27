@@ -31,6 +31,7 @@
 		1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */; };
 		1D640C29223E79CB002618D5 /* RecordActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D640C28223E79CB002618D5 /* RecordActivity.swift */; };
 		1D640C2B223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D640C2A223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift */; };
+		1D640C302242E15B002618D5 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D640C2F2242E15B002618D5 /* KeyboardResponder.swift */; };
 		1D692D8A22370716003FC0CE /* UIButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D692D8922370716003FC0CE /* UIButtonBuilder.swift */; };
 		1D692D8C2237D84C003FC0CE /* RecordActivityFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D692D8B2237D84C003FC0CE /* RecordActivityFormController.swift */; };
 		1D692D8E2237D872003FC0CE /* RecordActivityFormControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D692D8D2237D872003FC0CE /* RecordActivityFormControllerImpl.swift */; };
@@ -168,6 +169,7 @@
 		1D49B41E21B8004400920CF4 /* NavBarButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonType.swift; sourceTree = "<group>"; };
 		1D640C28223E79CB002618D5 /* RecordActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivity.swift; sourceTree = "<group>"; };
 		1D640C2A223E7D13002618D5 /* UITestBaseRecordActivityFormSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestBaseRecordActivityFormSteps.swift; sourceTree = "<group>"; };
+		1D640C2F2242E15B002618D5 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		1D692D8922370716003FC0CE /* UIButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIButtonBuilder.swift; path = countit/View/UIElementBuilders/UIButtonBuilder.swift; sourceTree = SOURCE_ROOT; };
 		1D692D8B2237D84C003FC0CE /* RecordActivityFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivityFormController.swift; sourceTree = "<group>"; };
 		1D692D8D2237D872003FC0CE /* RecordActivityFormControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordActivityFormControllerImpl.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF653FD21FF951500AA65C3 /* FormCellDelegate.swift */,
+				1D640C2F2242E15B002618D5 /* KeyboardResponder.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -443,6 +446,13 @@
 				1D27FBC8220F437E00F8789B /* ItemCellState.swift */,
 			);
 			path = enums;
+			sourceTree = "<group>";
+		};
+		1D640C2C2242E0DE002618D5 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		1D692D8F2237DB21003FC0CE /* baaseclasses */ = {
@@ -655,6 +665,7 @@
 		1DB3903721B5C07300C11CD7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				1D640C2C2242E0DE002618D5 /* extensions */,
 				1D1E570E2204FAD30081CCE8 /* protocols */,
 				1D1E570C2204FA630081CCE8 /* pages */,
 				1DF653F521FE432E00AA65C3 /* PrimaryNavigationController.swift */,
@@ -1185,6 +1196,7 @@
 				1D27FBBC220EFA8100F8789B /* Separator.swift in Sources */,
 				1DEB4BB521E3892B002F09CF /* ActivityUpdateDto.swift in Sources */,
 				1D692D8C2237D84C003FC0CE /* RecordActivityFormController.swift in Sources */,
+				1D640C302242E15B002618D5 /* KeyboardResponder.swift in Sources */,
 				1DF653F421FE429000AA65C3 /* Colors.swift in Sources */,
 				1D49B41F21B8004400920CF4 /* NavBarButtonType.swift in Sources */,
 				1D1E5716220587BB0081CCE8 /* RepositoryResolver.swift in Sources */,

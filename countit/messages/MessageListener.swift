@@ -10,5 +10,5 @@ import Foundation
 
 protocol MessageListener {
     
-    func received(message: Message)
+    func received(message: Message, content: Any?)
 }

@@ -19,14 +19,16 @@ class AppContainer {
     private let calendar = Calendar.autoupdatingCurrent
     private let context: NSManagedObjectContext
     private let properties: Properties
+    private let messageBroker: MessageBroker
     
     init(test: Bool) {
         context = CoreDataConfig.getCoreDataContext(test: test)
         properties = test ? TestProperties() : UserDefaultsImpl()
+        messageBroker = MessageBrokerNcImpl()
         
         respositoryResolver = RepositoryResolver(context: context)
-        serviceResolver = ServiceResolver(repositoryResolver: respositoryResolver, clock: clock, calendar: calendar, properties: properties)
-        controllerResolver = ControllerResolver(serviceResolver: serviceResolver, properties: properties)
+        serviceResolver = ServiceResolver(repositoryResolver: respositoryResolver, clock: clock, calendar: calendar, properties: properties, messageBroker: messageBroker)
+        controllerResolver = ControllerResolver(serviceResolver: serviceResolver, properties: properties, messageBroker: messageBroker)
     }
     
     func getControllerResolver() -> ControllerResolver {

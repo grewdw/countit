@@ -14,15 +14,17 @@ class ControllerResolver {
     private let serviceResolver: ServiceResolver
     
     private let properties: Properties
+    private let messageBroker: MessageBroker
     
     private var primaryNavController: UINavigationController?
     private var progressTableController: ProgressTableController?
     private var itemFormController: ItemFormController?
     private var activityHistoryController: ActivityHistoryController?
     
-    init(serviceResolver: ServiceResolver, properties: Properties) {
+    init(serviceResolver: ServiceResolver, properties: Properties, messageBroker: MessageBroker) {
         self.serviceResolver = serviceResolver
         self.properties = properties
+        self.messageBroker = messageBroker
     }
 
     func getPrimaryNavController() -> UINavigationController {
@@ -67,6 +69,9 @@ class ControllerResolver {
     }
     
     func getRecordActivityFormController(item: ItemDetailsDto) -> RecordActivityFormController {
-        return RecordActivityFormControllerImpl(controllerResolver: self, activityService: serviceResolver.getActivityService(), item: item)
+        return RecordActivityFormControllerImpl(controllerResolver: self,
+                                                activityService: serviceResolver.getActivityService(),
+                                                item: item,
+                                                messageBroker: messageBroker)
     }
 }

@@ -22,7 +22,7 @@ class UserInstructionServiceImpl: UserInstructionService {
 
 extension UserInstructionServiceImpl: MessageListener {
     
-    func received(message: Message) {
+    func received(message: Message, content: Any?) {
         if message == .ITEM_CREATED {
             properties.set(instructionsDisplayed: true)
         }

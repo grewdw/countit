@@ -15,7 +15,9 @@ class FormBase: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var fieldToIndexPathMap: [String : IndexPath] = [:]
     var indexPathToFieldMap: [IndexPath : String] = [:]
     var fieldNameToValueMap: [String : Any] = [:]
-
+    
+    var keyboardHeight: CGFloat?
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -47,5 +49,23 @@ class FormBase: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 formCell?.selected()
             }
         }
+    }
+}
+
+extension FormBase: KeyboardResponder {
+    
+    func shrinkBeforeKeyboard(keyboardFrame: CGRect) {
+        let formView = self.view as? UITableView
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height + 10, right: 0)
+        formView?.contentInset = contentInsets
+        if let selectedRow = formView?.indexPathForSelectedRow {
+            formView?.scrollToRow(at: selectedRow, at: .top, animated: true)
+        }
+    }
+    
+    func expandAfterKeyboard() {
+        let formView = self.view as? UITableView
+        formView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0 )
+        keyboardHeight = nil
     }
 }

@@ -17,7 +17,7 @@ class RecordActivityFormControllerImpl: FormBase {
     
     private let item: ItemDetailsDto
     
-    init(controllerResolver: ControllerResolver, activityService: ActivityService, item: ItemDetailsDto) {
+    init(controllerResolver: ControllerResolver, activityService: ActivityService, item: ItemDetailsDto, messageBroker: MessageBroker) {
         self.controllerResolver = controllerResolver
         self.activityService = activityService
         self.item = item
@@ -26,6 +26,9 @@ class RecordActivityFormControllerImpl: FormBase {
         sections.updateValue([FormFields.ACTIVITY_DATE], forKey: 1)
         sections.updateValue([FormFields.ACTIVITY_NOTE], forKey: 2)
         sections.updateValue([FormFields.RECORD_ACTIVITY], forKey: 3)
+        
+        messageBroker.subscribeTo(message: .KEYBOARD_HIDE, for: self)
+        messageBroker.subscribeTo(message: .KEYBOARD_SHOW, for: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,10 +36,10 @@ class RecordActivityFormControllerImpl: FormBase {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let tableView = RecordActivityFormView(
+        let formView = RecordActivityFormView(
             frame: view.bounds, delegate: self, dataSource: self, recordActivityFormController: self)
-        tableView.initialiseNavBar(for: self)
-        self.view = tableView
+        formView.initialiseNavBar(for: self)
+        self.view = formView
     }
     
     override func createCellFor(formField: String) -> UITableViewCell {
@@ -103,6 +106,19 @@ extension RecordActivityFormControllerImpl: RecordActivityFormController {
                  timestamp: fieldNameToValueMap[FormFields.ACTIVITY_DATE] as? Date,
                  note: fieldNameToValueMap[FormFields.ACTIVITY_NOTE] as? String))
             controllerResolver.getPrimaryNavController().popViewController(animated: true)
+        }
+    }
+}
+
+extension RecordActivityFormControllerImpl: MessageListener {
+    
+    func received(message: Message, content: Any?) {
+        if message == .KEYBOARD_HIDE {
+            expandAfterKeyboard()
+        }
+        if message == .KEYBOARD_SHOW {
+            guard let keyboardFrame = content as? CGRect else { return }
+            shrinkBeforeKeyboard(keyboardFrame: keyboardFrame)
         }
     }
 }
