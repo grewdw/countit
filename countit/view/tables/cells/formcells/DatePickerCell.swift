@@ -13,7 +13,7 @@ class DatePickerCell: UITableViewCell {
 
     private let datePicker = UIDatePicker()
     
-    private let delegate: FormCellDelegate
+    private weak var delegate: FormCellDelegate?
     private let fieldName: String
     
     init(delegate: FormCellDelegate, fieldName: String, accessibilityIdentifier: String) {
@@ -41,7 +41,7 @@ class DatePickerCell: UITableViewCell {
     }
     
     @objc func dateChanged() {
-        delegate.selectionChanged(to: datePicker.date, for: fieldName)
+        delegate?.selectionChanged(to: datePicker.date, for: fieldName)
     }
 }
 

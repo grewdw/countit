@@ -10,7 +10,7 @@ import Foundation
 
 protocol MessageBroker {
     
-    func subscribeTo(message: Message, for listener: MessageListener)
-    
+    func subscribeTo(message: Message, withCallback callback: @escaping (Message, Any?) -> Void)
+        
     func post(message: Message)
 }

@@ -18,7 +18,6 @@ class ProgressSection: UIView {
     init(activityProgress: CGFloat, timeProgress: CGFloat, color: ProgressColor, activityCount: Int, target: Int, remainingSeconds: Int) {
         super.init(frame: CGRect())
 
-//        let topPadding = UIView()
         let activityProgressBar = GTProgressBarBuilder().with(color: color).with(progress: activityProgress).build()
         let activityProgressLabel = UILabel()
         let timeProgressBar = GTProgressBarBuilder().with(color: .BLUE).with(progress: timeProgress).build()
@@ -32,24 +31,17 @@ class ProgressSection: UIView {
         timeProgressLabel.text = createTextFor(timeRemaining: remainingSeconds)
         timeProgressLabel.font = UIFont.systemFont(ofSize: 14)
         timeProgressLabel.textAlignment = .center
-//        timeProgressLabel = AccessibilityIdentifiers.ITEM_CELL_PROGRESS_COUNT
         
-//        addSubview(topPadding)
         addSubview(activityProgressBar)
         addSubview(activityProgressLabel)
         addSubview(timeProgressBar)
         addSubview(timeProgressLabel)
-//        topPadding.translatesAutoresizingMaskIntoConstraints = false
         activityProgressBar.translatesAutoresizingMaskIntoConstraints = false
         activityProgressLabel.translatesAutoresizingMaskIntoConstraints = false
         timeProgressBar.translatesAutoresizingMaskIntoConstraints = false
         timeProgressLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-//            topPadding.topAnchor.constraint(equalTo: topAnchor),
-//            topPadding.leftAnchor.constraint(equalTo: leftAnchor),
-//            topPadding.rightAnchor.constraint(equalTo: rightAnchor),
-//            topPadding.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.10),
             activityProgressBar.leftAnchor.constraint(equalTo: leftAnchor),
             activityProgressBar.rightAnchor.constraint(equalTo: rightAnchor),
             activityProgressBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.20),
@@ -85,7 +77,7 @@ class ProgressSection: UIView {
         
         if days > 0 {
             return days != 1
-                ? String.init(format: "%i days remaining", days)
+                ? String.init(format: "%i days %i hours remaining", days, hours)
                 : String.init(format: "%i day %i hours remaining", days, hours)
         }
         else if hours > 0 {

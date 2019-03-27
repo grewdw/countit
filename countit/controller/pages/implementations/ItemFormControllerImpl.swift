@@ -27,12 +27,14 @@ class ItemFormControllerImpl: FormBase {
     let controllerResolver: ControllerResolver
     let itemService: ItemService
     
-    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
+    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService, messageBroker: MessageBroker) {
         self.controllerResolver = controllerResolver
         self.itemService = itemService
         super.init(nibName: nil, bundle: nil)
         sections.updateValue([FormFields.NAME, FormFields.DESCRIPTION], forKey: 0)
         sections.updateValue([FormFields.DIRECTION, FormFields.TARGET_VALUE, FormFields.TIMEPERIOD], forKey: 1)
+//        messageBroker.subscribeTo(message: .KEYBOARD_HIDE, for: self)
+//        messageBroker.subscribeTo(message: .KEYBOARD_SHOW, for: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -147,6 +149,12 @@ extension ItemFormControllerImpl: FormCellDelegate {
         selectingOption = true
         controllerResolver.getPrimaryNavController()
             .pushViewController(cellController, animated: true)
+    }
+    
+    func wasSelected(fieldName: String) {
+        let selectedRow = fieldToIndexPathMap[fieldName]
+        let tableView = self.view as? UITableView
+        tableView?.selectRow(at: selectedRow, animated: true, scrollPosition: .none)
     }
     
     func validateForm() {

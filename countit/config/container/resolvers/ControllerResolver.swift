@@ -58,7 +58,7 @@ class ControllerResolver {
             return itemFormController!
         }
         else {
-            itemFormController = ItemFormControllerImpl(self, serviceResolver.getItemService())
+            itemFormController = ItemFormControllerImpl(self, serviceResolver.getItemService(), messageBroker: messageBroker)
             return itemFormController!
         }
     }

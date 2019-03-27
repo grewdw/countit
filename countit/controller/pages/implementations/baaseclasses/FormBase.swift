@@ -52,14 +52,28 @@ class FormBase: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension FormBase: KeyboardResponder {
+extension FormBase: MessageListener, KeyboardResponder {
+    
+    func received(message: Message, content: Any?) {
+        if message == .KEYBOARD_HIDE {
+            expandAfterKeyboard()
+        }
+        if message == .KEYBOARD_SHOW {
+            guard let keyboardFrame = content as? CGRect else { return }
+            shrinkBeforeKeyboard(keyboardFrame: keyboardFrame)
+        }
+    }
     
     func shrinkBeforeKeyboard(keyboardFrame: CGRect) {
         let formView = self.view as? UITableView
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height + 10, right: 0)
         formView?.contentInset = contentInsets
         if let selectedRow = formView?.indexPathForSelectedRow {
-            formView?.scrollToRow(at: selectedRow, at: .top, animated: true)
+            for row in formView!.indexPathsForSelectedRows! {
+                print(row.section)
+                print(row.row)
+            }
+//            formView?.scrollToRow(at: selectedRow, at: .bottom, animated: true)
         }
     }
     

@@ -11,14 +11,12 @@ import UIKit
 class ButtonCell: UITableViewCell {
     
     private var button: UIButton?
-    private let delegate: FormCellDelegate
     private let buttonPressAction: () -> Void
     
     private var enabled: Bool
     private let destructive: Bool
     
     init(buttonText: String, destructive: Bool, enabled: Bool, delegate: FormCellDelegate, buttonPressAction: @escaping () -> Void, accessibilityIdentifier: String) {
-        self.delegate = delegate
         self.buttonPressAction = buttonPressAction
         self.destructive = destructive
         self.enabled = enabled

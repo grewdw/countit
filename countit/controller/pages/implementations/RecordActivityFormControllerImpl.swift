@@ -27,8 +27,10 @@ class RecordActivityFormControllerImpl: FormBase {
         sections.updateValue([FormFields.ACTIVITY_NOTE], forKey: 2)
         sections.updateValue([FormFields.RECORD_ACTIVITY], forKey: 3)
         
-        messageBroker.subscribeTo(message: .KEYBOARD_HIDE, for: self)
-        messageBroker.subscribeTo(message: .KEYBOARD_SHOW, for: self)
+        messageBroker.subscribeTo(message: .KEYBOARD_HIDE, withCallback:
+            { [weak self] (message: Message, content: Any?) -> Void in self?.received(message: message, content: content) })
+        messageBroker.subscribeTo(message: .KEYBOARD_SHOW, withCallback:
+            { [weak self] (message: Message, content: Any?) -> Void in self?.received(message: message, content: content) })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +39,7 @@ class RecordActivityFormControllerImpl: FormBase {
     
     override func viewWillAppear(_ animated: Bool) {
         let formView = RecordActivityFormView(
-            frame: view.bounds, delegate: self, dataSource: self, recordActivityFormController: self)
+            frame: view.bounds, delegate: self, dataSource: self)
         formView.initialiseNavBar(for: self)
         self.view = formView
     }
@@ -57,7 +59,7 @@ class RecordActivityFormControllerImpl: FormBase {
                                      accessibilityIdentifier: AccessibilityIdentifiers.RECORD_ACTIVITY_FORM_NOTE)
         case FormFields.RECORD_ACTIVITY:
             return ButtonCell(buttonText: "Save", destructive: false, enabled: false, delegate: self,
-                              buttonPressAction: { () -> Void in self.recordActivity() },
+                              buttonPressAction: { [weak self] () -> Void in self?.recordActivity() },
                               accessibilityIdentifier: AccessibilityIdentifiers.RECORD_ACTIVITY_FORM_SAVE_BUTTON )
         default:
             return UITableViewCell()
@@ -95,6 +97,12 @@ extension RecordActivityFormControllerImpl: FormCellDelegate {
     
     func transitionTo(cellController: UIViewController) {
     }
+    
+    func wasSelected(fieldName: String) {
+        let selectedRow = fieldToIndexPathMap[fieldName]
+        let tableView = self.view as? UITableView
+        tableView?.selectRow(at: selectedRow, animated: true, scrollPosition: .none)
+    }
 }
 
 extension RecordActivityFormControllerImpl: RecordActivityFormController {
@@ -110,15 +118,3 @@ extension RecordActivityFormControllerImpl: RecordActivityFormController {
     }
 }
 
-extension RecordActivityFormControllerImpl: MessageListener {
-    
-    func received(message: Message, content: Any?) {
-        if message == .KEYBOARD_HIDE {
-            expandAfterKeyboard()
-        }
-        if message == .KEYBOARD_SHOW {
-            guard let keyboardFrame = content as? CGRect else { return }
-            shrinkBeforeKeyboard(keyboardFrame: keyboardFrame)
-        }
-    }
-}
