@@ -99,7 +99,7 @@ class ProgressServiceTestBase: XCTestCase {
         let actualCount = progressService?.getItemsProgresss()[0].getActivityPeriodSummaryDto().getActivityCount()
         
         XCTAssertEqual(actualCount, expectedCount,
-                       "activityCount incorrect. Expected \(expectedCount) but was \(actualCount)",
+                       "activityCount incorrect. Expected \(expectedCount) but was \(actualCount ?? 0)",
             file: file, line: line)
     }
     

@@ -126,7 +126,7 @@ extension ItemFormControllerImpl: ItemFormController {
         let _ = itemService.saveItem(ItemUpdateDto(
             selectedItem?.getId(),
             fieldNameToValueMap[FormFields.NAME] as! String,
-            fieldNameToValueMap[FormFields.DESCRIPTION] as! String,
+            (fieldNameToValueMap[FormFields.DESCRIPTION] as! String),
             TargetDirection(rawValue: fieldNameToValueMap[FormFields.DIRECTION] as! String)!,
             Int(fieldNameToValueMap[FormFields.TARGET_VALUE] as! String) ?? 1,
             TargetTimePeriod(rawValue: fieldNameToValueMap[FormFields.TIMEPERIOD] as! String)!,

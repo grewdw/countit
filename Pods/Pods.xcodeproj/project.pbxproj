@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,12 +66,12 @@
 		3D4E7C0825347F8ED1D3296247ABBF69 /* GTProgressBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GTProgressBar.modulemap; sourceTree = "<group>"; };
 		3F8EAC848D721277D8855591B5AD5B3C /* Pods-countitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-countitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		461CF58414C107D9E1B5F39A87E1899B /* Pods-countit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-countit.debug.xcconfig"; sourceTree = "<group>"; };
-		4C1AA78E669125B5A05DA69CF4AAD5AA /* Pods_countitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_countitTests.framework; path = "Pods-countitTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1AA78E669125B5A05DA69CF4AAD5AA /* Pods_countitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5982F4202BFCC4EBC9C56E41833C66E1 /* Pods-countitTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-countitTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5D91C982FB7D2501C1BFFDA420ED1CB4 /* Pods-countitTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-countitTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5DA604BFD40191BE172F5B3AD2345C4B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		652822ADEEDDAADD62E40E6CBC750AC7 /* Pods_countit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_countit.framework; path = "Pods-countit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		652822ADEEDDAADD62E40E6CBC750AC7 /* Pods_countit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69954A3C72D8374F8139972A9EE5936B /* GTProgressBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTProgressBar-dummy.m"; sourceTree = "<group>"; };
 		6E56DDFF6EB715915AB06751A479B92C /* Pods-countit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-countit.modulemap"; sourceTree = "<group>"; };
 		6EB9400FB4146006FF914CAB6C05182E /* UIViewExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtensions.swift; path = GTProgressBar/Classes/UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		79D26444F7D72F356C3FD8D9792D9E5E /* FrameCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameCalculator.swift; path = GTProgressBar/Classes/FrameCalculator.swift; sourceTree = "<group>"; };
 		7C3C1AF0F0307B85FBB62915BEE633F2 /* Pods-countit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-countit-umbrella.h"; sourceTree = "<group>"; };
 		7C8099E5CD7C08C51803DE5F40102D81 /* Pods-countitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-countitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7E26B2EC8C04F6C1708C6275DBB36DCE /* Pods_countitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_countitUITests.framework; path = "Pods-countitUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E26B2EC8C04F6C1708C6275DBB36DCE /* Pods_countitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_countitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E30BA436FE048851DE2B06048FE538 /* Pods-countit-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-countit-resources.sh"; sourceTree = "<group>"; };
 		88F450AC1CA6E814658D70C0FE0108F0 /* Pods-countitUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-countitUITests-umbrella.h"; sourceTree = "<group>"; };
 		8FFABD5D070F9B6AB0D6E1B19D674901 /* HorizontalLabelPositionFrameCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalLabelPositionFrameCalculator.swift; path = GTProgressBar/Classes/HorizontalLabelPositionFrameCalculator.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9630FAA86F5DC21F2373E7154070B78F /* Pods-countit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-countit-dummy.m"; sourceTree = "<group>"; };
 		981F762E64C3A904B1A257F3FE62A8D5 /* GTProgressBarLabelPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GTProgressBarLabelPosition.swift; path = GTProgressBar/Classes/GTProgressBarLabelPosition.swift; sourceTree = "<group>"; };
 		98530261B7605845CD51D7CA60411B6E /* VerticalLabelPositionFrameCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VerticalLabelPositionFrameCalculator.swift; path = GTProgressBar/Classes/VerticalLabelPositionFrameCalculator.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		B5FE5A646C824323C80A79AB80938322 /* Pods-countitTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-countitTests-umbrella.h"; sourceTree = "<group>"; };
 		B7156A75E2094FB9906E57E12A4F7E49 /* Pods-countitTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-countitTests-frameworks.sh"; sourceTree = "<group>"; };
 		C4501C22D6E967709A496A359BBA3822 /* Pods-countitUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-countitUITests-dummy.m"; sourceTree = "<group>"; };
-		CBC69F431A161AD48ABFFA9851199FAF /* GTProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTProgressBar.framework; path = GTProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC69F431A161AD48ABFFA9851199FAF /* GTProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFA84E854C89B1F21DE158BDD94108B /* Pods-countitUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-countitUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D3069A48173DBA5D9AD025B3B5DCC967 /* Pods-countitUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-countitUITests-resources.sh"; sourceTree = "<group>"; };
 		DA7FC1FB203076DF301DC680E6CE6C26 /* Pods-countitTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-countitTests.modulemap"; sourceTree = "<group>"; };
@@ -161,7 +161,6 @@
 				98530261B7605845CD51D7CA60411B6E /* VerticalLabelPositionFrameCalculator.swift */,
 				8B8990E861D16E46B3C978EB3F6B8634 /* Support Files */,
 			);
-			name = GTProgressBar;
 			path = GTProgressBar;
 			sourceTree = "<group>";
 		};
@@ -409,14 +408,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = 413D64558ACCD92B3439079CFCB4A9F2 /* Products */;
@@ -546,19 +546,14 @@
 				INFOPLIST_FILE = "Target Support Files/GTProgressBar/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GTProgressBar/GTProgressBar.modulemap";
 				PRODUCT_MODULE_NAME = GTProgressBar;
 				PRODUCT_NAME = GTProgressBar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -585,11 +580,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-countit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-countit/Pods-countit.modulemap";
 				OTHER_LDFLAGS = "";
@@ -599,8 +590,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -626,11 +616,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-countit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-countit/Pods-countit.modulemap";
 				OTHER_LDFLAGS = "";
@@ -666,11 +652,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-countitUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-countitUITests/Pods-countitUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -768,11 +750,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-countitUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-countitUITests/Pods-countitUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -844,6 +822,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -866,11 +845,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-countitTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-countitTests/Pods-countitTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -905,11 +880,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-countitTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-countitTests/Pods-countitTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -942,11 +913,7 @@
 				INFOPLIST_FILE = "Target Support Files/GTProgressBar/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GTProgressBar/GTProgressBar.modulemap";
 				PRODUCT_MODULE_NAME = GTProgressBar;
 				PRODUCT_NAME = GTProgressBar;
