@@ -10,44 +10,42 @@ import UIKit
 
 class ItemCell: UITableViewCell {
     
-    let BORDER_PADDING_TOP: CGFloat = 7.5
-    let BORDER_PADDING_BOTTOM: CGFloat = -7.5
-    let BORDER_PADDING_LEFT: CGFloat = 15
-    let BORDER_PADDING_RIGHT: CGFloat = -15
-    let DETAILS_PADDING_LEFT: CGFloat = 27.5
-    let DETAILS_PADDING_RIGHT: CGFloat = -27.5
-    let DETAILS_PADDING_TOP: CGFloat = 15
-    let ACTION_BUTTON_PADDING_TOP: CGFloat = 27.5
-    let ACTION_BUTTON_PADDING_LEFT: CGFloat = 25
-    let ACTION_BUTTON_PADDING_RIGHT: CGFloat = -25
-    let ACTION_BUTTON_HEIGHT: CGFloat = 50
-    let PROGRESS_SECTION_PADDING_LEFT: CGFloat = 25
-    let PROGRESS_SECTION_PADDING_RIGHT: CGFloat = -25
-    let PROGRESS_SECTION_PADDING_TOP: CGFloat = 90
-    let PROGRESS_SECTION_PADDING_BOTTOM: CGFloat = 0
+    private let BORDER_PADDING_TOP: CGFloat = 7.5
+    private let BORDER_PADDING_BOTTOM: CGFloat = -7.5
+    private let BORDER_PADDING_LEFT: CGFloat = 15
+    private let BORDER_PADDING_RIGHT: CGFloat = -15
+    private let DETAILS_PADDING_LEFT: CGFloat = 27.5
+    private let DETAILS_PADDING_RIGHT: CGFloat = -27.5
+    private let DETAILS_PADDING_TOP: CGFloat = 15
+    private let ACTION_BUTTON_PADDING_TOP: CGFloat = 27.5
+    private let ACTION_BUTTON_PADDING_LEFT: CGFloat = 25
+    private let ACTION_BUTTON_PADDING_RIGHT: CGFloat = -25
+    private let ACTION_BUTTON_HEIGHT: CGFloat = 50
+    private let PROGRESS_SECTION_PADDING_LEFT: CGFloat = 25
+    private let PROGRESS_SECTION_PADDING_RIGHT: CGFloat = -25
+    private let PROGRESS_SECTION_PADDING_TOP: CGFloat = 90
+    private let PROGRESS_SECTION_PADDING_BOTTOM: CGFloat = 0
 
-    let HEIGHT_ZERO: CGFloat = 0
-    let HEIGHT_PROGRESS: CGFloat = 100
-    let HEIGHT_ADD: CGFloat = 250
+    private let HEIGHT_ZERO: CGFloat = 0
+    private let HEIGHT_PROGRESS: CGFloat = 100
+    private let HEIGHT_ADD: CGFloat = 250
     
-    var alwaysConstraints: [NSLayoutConstraint] = []
-    var currentConstraints: [NSLayoutConstraint] = []
-    var closedConstraints: [NSLayoutConstraint] = []
-    var progressConstraints: [NSLayoutConstraint] = []
-    var addConstraints: [NSLayoutConstraint] = []
+    private var alwaysConstraints: [NSLayoutConstraint] = []
+    private var currentConstraints: [NSLayoutConstraint] = []
+    private var closedConstraints: [NSLayoutConstraint] = []
     
-    let item: ItemProgressSummaryDto
-    let delegate: ProgressTableController
+    private var item: ItemProgressSummaryDto
+    private weak var delegate: ProgressTableController?
     
-    var border: Border?
-    var detailsSection: DetailsSection?
-    var buttonSection: ButtonSection?
-    var progressSection: ProgressSection?
+    private var border: Border?
+    private var detailsSection: DetailsSection?
+    private var buttonSection: ButtonSection?
+    private var progressSection: ProgressSection?
     
-    var detailsSectionHeight: CGFloat?
+    private var detailsSectionHeight: CGFloat?
     
-    var state: ItemCellState = .CLOSED
-    var currentSection: UIView?
+    private var state: ItemCellState = .CLOSED
+    private var currentSection: UIView?
     
     init(item: ItemProgressSummaryDto, delegate: ProgressTableController, state: ItemCellState) {
         self.item = item
@@ -58,6 +56,18 @@ class ItemCell: UITableViewCell {
         self.backgroundColor = Colors.TABLE_BACKGROUND
         self.selectionStyle = .none
         
+        initialiseCell()
+    }
+    
+    func with(item: ItemProgressSummaryDto, andState state: ItemCellState) {
+        self.item = item
+        self.state = state
+        
+        deinitialiseCell()
+        initialiseCell()
+    }
+    
+    private func initialiseCell() {
         let progressDelegate = ProgressDelegate(delegate: self, item: item, cellWidth: bounds.width)
         
         border = Border()
@@ -86,6 +96,24 @@ class ItemCell: UITableViewCell {
         case .PERFORMANCE:
             setToClosed()
         }
+    }
+    
+    private func deinitialiseCell() {
+        border?.removeFromSuperview()
+        border = nil
+        detailsSection?.removeFromSuperview()
+        detailsSection = nil
+        buttonSection?.removeFromSuperview()
+        buttonSection = nil
+        progressSection?.removeFromSuperview()
+        progressSection = nil
+        currentSection = nil
+    
+        detailsSectionHeight = nil
+        
+        alwaysConstraints.removeAll()
+        closedConstraints.removeAll()
+        currentConstraints.removeAll()
     }
     
     func createAlwaysConstraints() {
@@ -130,9 +158,9 @@ extension ItemCell {
         NSLayoutConstraint.activate(closedConstraints)
         NSLayoutConstraint.deactivate(currentConstraints)
         currentSection?.removeFromSuperview()
-        delegate.updateCellHeights()
+        delegate?.updateCellHeights()
         state = .CLOSED
-        delegate.itemCellStateChange(item: item, state: state)
+        delegate?.itemCellStateChange(item: item, state: state)
         currentSection = nil
         currentConstraints.removeAll()
     }
@@ -143,9 +171,9 @@ extension ItemCell {
         populateCurrentConstraintsFor(section: section, height: height)
         NSLayoutConstraint.activate(currentConstraints)
         NSLayoutConstraint.deactivate(closedConstraints)
-        delegate.updateCellHeights()
+        delegate?.updateCellHeights()
         state = newState
-        delegate.itemCellStateChange(item: item, state: state)
+        delegate?.itemCellStateChange(item: item, state: state)
     }
     
     private func populateCurrentConstraintsFor(section: UIView, height: CGFloat) {
@@ -160,16 +188,16 @@ extension ItemCell {
 
 extension ItemCell: ItemCellButtonDelegate {
     func moreInfoButtonPressed() {
-        delegate.itemSelected(itemDetails: item.getItemDetailsDto())
+        delegate?.itemSelected(itemDetails: item.getItemDetailsDto())
     }
     
     func plusOneButtonPressed() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        delegate.recordActivityFor(item: item.getItemDetailsDto(), value: 1, timestamp: nil)
+        delegate?.recordActivityFor(item: item.getItemDetailsDto(), value: 1, timestamp: nil)
     }
     
     func activityHistoryButtonPressed() {
-        delegate.transitionToActivityHistoryControllerFor(item: item.getItemDetailsDto().getId())
+        delegate?.transitionToActivityHistoryControllerFor(item: item.getItemDetailsDto().getId())
     }
     
     func performanceButtonPressed() {
@@ -177,7 +205,7 @@ extension ItemCell: ItemCellButtonDelegate {
     }
     
     func addButtonPressed() {
-        delegate.transitionToRecordActivityFormControllerFor(item: item.getItemDetailsDto())
+        delegate?.transitionToRecordActivityFormControllerFor(item: item.getItemDetailsDto())
     }
     
     func progressButtonPressed() {

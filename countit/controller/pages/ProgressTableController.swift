@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol ProgressTableController {
+protocol ProgressTableController: class {
     
     func addNewItemButtonPressed()
     

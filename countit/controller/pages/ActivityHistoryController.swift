@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol ActivityHistoryController {
+protocol ActivityHistoryController: class {
     
     func withItem(id: NSManagedObjectID) -> ActivityHistoryController
     

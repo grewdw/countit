@@ -10,7 +10,7 @@ import UIKit
 
 class ItemFormView: UITableView {
     
-    private let formController: ItemFormController
+    private weak var formController: ItemFormController?
     
     init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource, formController: ItemFormController) {
         self.formController = formController
@@ -36,6 +36,6 @@ extension ItemFormView: NavBarButtonDelegate {
     }
     
     @objc func doneButtonPressed() {
-        formController.submitForm()
+        formController?.submitForm()
     }
 }

@@ -10,9 +10,8 @@ import UIKit
 
 class ActionButton: UIButton {
     
-    let buttonPressAction: () -> Void
-    
-    let image: UIImage
+    private let buttonPressAction: () -> Void
+    private let image: UIImage
     
     init(buttonPressAction: @escaping () -> Void, image: UIImage, accessibilityIdentifier: String) {
         self.buttonPressAction = buttonPressAction

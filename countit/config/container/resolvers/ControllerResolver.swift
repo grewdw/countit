@@ -18,8 +18,6 @@ class ControllerResolver {
     
     private var primaryNavController: UINavigationController?
     private var progressTableController: ProgressTableController?
-    private var itemFormController: ItemFormController?
-    private var activityHistoryController: ActivityHistoryController?
     
     init(serviceResolver: ServiceResolver, properties: Properties, messageBroker: MessageBroker) {
         self.serviceResolver = serviceResolver
@@ -54,13 +52,7 @@ class ControllerResolver {
     }
     
     func getItemFormController() -> ItemFormController {
-        if itemFormController != nil {
-            return itemFormController!
-        }
-        else {
-            itemFormController = ItemFormControllerImpl(self, serviceResolver.getItemService(), messageBroker: messageBroker)
-            return itemFormController!
-        }
+        return ItemFormControllerImpl(self, serviceResolver.getItemService(), messageBroker: messageBroker)
     }
     
     func getActivityHistoryController() -> ActivityHistoryController {

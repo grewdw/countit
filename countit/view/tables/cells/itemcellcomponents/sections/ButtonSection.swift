@@ -13,9 +13,9 @@ class ButtonSection: UIStackView {
     
     typealias AI = AccessibilityIdentifiers
     
-    let delegate: ItemCellButtonDelegate
-    let percentageLabel = UILabel()
-    let percentage: String
+    private weak var delegate: ItemCellButtonDelegate?
+    private let percentageLabel = UILabel()
+    private let percentage: String
     
     init(delegate: ItemCellButtonDelegate, percentage: String, color: ProgressColor) {
         self.delegate = delegate
@@ -26,19 +26,19 @@ class ButtonSection: UIStackView {
         distribution = .fillEqually
         alignment = .center
         
-        let progress = ActionButton(buttonPressAction: self.delegate.progressButtonPressed,
+        let progress = ActionButton(buttonPressAction: { [weak self] () -> Void in self?.delegate?.progressButtonPressed() },
                                     image: UIImage(named: "ProgressIcon")!,
                                     accessibilityIdentifier: AI.ITEM_CELL_PROGRESS_BUTTON)
-        let performance = ActionButton(buttonPressAction: self.delegate.performanceButtonPressed,
+        let performance = ActionButton(buttonPressAction: { [weak self] () -> Void in self?.delegate?.performanceButtonPressed() },
                                        image: UIImage(named: "StatsIcon")!,
                                        accessibilityIdentifier: AI.ITEM_CELL_PERFORMANCE_BUTTON)
-        let plusOne = ActionButton(buttonPressAction: self.delegate.plusOneButtonPressed,
+        let plusOne = ActionButton(buttonPressAction: { [weak self] () -> Void in self?.delegate?.plusOneButtonPressed() },
                                    image: UIImage(named: "PlusOneIcon")!,
                                    accessibilityIdentifier: AI.ITEM_CELL_PLUSONE_BUTTON)
-        let add = ActionButton(buttonPressAction: self.delegate.addButtonPressed,
+        let add = ActionButton(buttonPressAction: { [weak self] () -> Void in self?.delegate?.addButtonPressed() },
                                image: UIImage(named: "AddIcon")!,
                                accessibilityIdentifier: AI.ITEM_CELL_ADD_BUTTON)
-        let activityHistory = ActionButton(buttonPressAction: self.delegate.activityHistoryButtonPressed,
+        let activityHistory = ActionButton(buttonPressAction: { [weak self] () -> Void in self?.delegate?.activityHistoryButtonPressed() },
                                    image: UIImage(named: "ActivityListIcon")!,
                                    accessibilityIdentifier: AI.ITEM_CELL_ACTIVITY_HISTORY_BUTTON)
         

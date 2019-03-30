@@ -10,7 +10,7 @@ import UIKit
 
 class ActivityHistoryView: UITableView {
     
-    let historyViewController: ActivityHistoryController
+    private weak var historyViewController: ActivityHistoryController?
     
     init(frame: CGRect, historyViewController: ActivityHistoryController) {
         self.historyViewController = historyViewController
@@ -49,10 +49,10 @@ extension ActivityHistoryView: NavBarButtonDelegate {
     }
     
     @objc func editButtonPressed() {
-        historyViewController.editButtonPressed()
+        historyViewController?.editButtonPressed()
     }
     
     @objc func doneButtonPressed() {
-        historyViewController.doneButtonPressed()
+        historyViewController?.doneButtonPressed()
     }
 }

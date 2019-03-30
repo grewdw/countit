@@ -71,17 +71,22 @@ extension ProgressTableControllerImpl: UITableViewDelegate, UITableViewDataSourc
         if !instructionsDisplayed && items.count == 0 {
             return EmptyItemListCell()
         }
-        return createItemCellFor(indexPath: indexPath)
+        return createItemCellFor(tableView: tableView, indexPath: indexPath)
     }
     
-    func createItemCellFor(indexPath: IndexPath) -> UITableViewCell {
+    func createItemCellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.row]
         let state: ItemCellState
         let itemId = item.getItemDetailsDto().getId()
         state = itemToStateMap[itemId] != nil ? itemToStateMap[itemId]! : .CLOSED
         itemToStateMap.updateValue(state, forKey: item.getItemDetailsDto().getId())
-        let cell = ItemCell(item: item, delegate: self, state: state)
-        return cell
+        
+        if let dequeCell = tableView.dequeueReusableCell(withIdentifier: "itemCell") {
+            let cell = dequeCell as! ItemCell
+            cell.with(item: item, andState: state)
+            return cell
+        }
+        return ItemCell(item: item, delegate: self, state: state)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
