@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RecordActivityFormController {
+protocol RecordActivityFormController: class {
     
     func recordActivity() 
 }

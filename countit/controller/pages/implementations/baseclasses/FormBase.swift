@@ -15,7 +15,7 @@ class FormBase: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var fieldToIndexPathMap: [String : IndexPath] = [:]
     var indexPathToFieldMap: [IndexPath : String] = [:]
     var fieldNameToValueMap: [String : Any] = [:]
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -47,5 +47,29 @@ class FormBase: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 formCell?.selected()
             }
         }
+    }
+}
+
+extension FormBase: MessageListener, KeyboardResponder {
+    
+    func received(message: Message, content: Any?) {
+        if message == .KEYBOARD_HIDE {
+            expandAfterKeyboard()
+        }
+        if message == .KEYBOARD_SHOW {
+            guard let keyboardFrame = content as? CGRect else { return }
+            shrinkBeforeKeyboard(keyboardFrame: keyboardFrame)
+        }
+    }
+    
+    func shrinkBeforeKeyboard(keyboardFrame: CGRect) {
+        let formView = self.view as? UITableView
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height + 10, right: 0)
+        formView?.contentInset = contentInsets
+    }
+    
+    func expandAfterKeyboard() {
+        let formView = self.view as? UITableView
+        formView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0 )
     }
 }

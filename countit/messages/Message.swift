@@ -11,4 +11,6 @@ import Foundation
 enum Message: String {
 
     case ITEM_CREATED = "itemCreated"
+    case KEYBOARD_SHOW = "UIKeyboardWillShowNotification"
+    case KEYBOARD_HIDE = "UIKeyboardWillHideNotification"
 }

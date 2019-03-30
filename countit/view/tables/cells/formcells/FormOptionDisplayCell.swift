@@ -10,10 +10,10 @@ import UIKit
 
 class FormOptionDisplayCell: UITableViewCell {
     
-    let availableValues: [String]
-    var fieldName: String
-    let enabled: Bool
-    let delegate: FormCellDelegate
+    private let availableValues: [String]
+    private var fieldName: String
+    private let enabled: Bool
+    private weak var delegate: FormCellDelegate?
     
     init(label: String, currentValue: String, availableValues: [String], fieldName: String, enabled: Bool, delegate: FormCellDelegate, accessibilityIdentifier: String) {
         self.availableValues = availableValues
@@ -46,7 +46,7 @@ extension FormOptionDisplayCell: FormCell {
                                          selectedOption: availableValues.firstIndex(of: textLabel?.text ?? "") ?? 0,
                                          delegate: self,
                                          fieldName: fieldName + "selector")
-            delegate.transitionTo(cellController: selectorController)
+            delegate?.transitionTo(cellController: selectorController)
         }
     }
 }
@@ -54,9 +54,12 @@ extension FormOptionDisplayCell: FormCell {
 extension FormOptionDisplayCell: FormCellDelegate {
     func selectionChanged(to selection: Any, for fieldName: String) {
         detailTextLabel?.text = selection as? String
-        delegate.selectionChanged(to: selection, for: self.fieldName)
+        delegate?.selectionChanged(to: selection, for: self.fieldName)
     }
     
     func transitionTo(cellController: UIViewController) {
+    }
+    
+    func wasSelected(fieldName: String) {
     }
 }

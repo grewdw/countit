@@ -8,7 +8,9 @@
 
 import UIKit
 
-protocol FormCellDelegate {
+protocol FormCellDelegate: class {
+    
+    func wasSelected(fieldName: String)
     
     func selectionChanged(to selection: Any, for fieldName: String)
     

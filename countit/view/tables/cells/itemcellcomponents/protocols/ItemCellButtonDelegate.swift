@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ItemCellButtonDelegate {
+protocol ItemCellButtonDelegate: class {
     
     func moreInfoButtonPressed()
     

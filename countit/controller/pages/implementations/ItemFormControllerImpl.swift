@@ -27,12 +27,16 @@ class ItemFormControllerImpl: FormBase {
     let controllerResolver: ControllerResolver
     let itemService: ItemService
     
-    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService) {
+    init(_ controllerResolver: ControllerResolver, _ itemService: ItemService, messageBroker: MessageBroker) {
         self.controllerResolver = controllerResolver
         self.itemService = itemService
         super.init(nibName: nil, bundle: nil)
         sections.updateValue([FormFields.NAME, FormFields.DESCRIPTION], forKey: 0)
         sections.updateValue([FormFields.DIRECTION, FormFields.TARGET_VALUE, FormFields.TIMEPERIOD], forKey: 1)
+        messageBroker.subscribeTo(message: .KEYBOARD_HIDE, withCallback:
+            { [weak self] (message: Message, content: Any?) -> Void in self?.received(message: message, content: content) })
+        messageBroker.subscribeTo(message: .KEYBOARD_SHOW, withCallback:
+            { [weak self] (message: Message, content: Any?) -> Void in self?.received(message: message, content: content) })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -103,13 +107,13 @@ class ItemFormControllerImpl: FormBase {
                                          accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_TARGET_TIMEPERIOD_FIELD)
         case FormFields.SHOW_ACTIVITY:
             return ButtonCell(buttonText: "Show activity", destructive: false, enabled: true, delegate: self,
-                              buttonPressAction: { () -> Void in self.transitionTo(cellController:
-                                self.controllerResolver.getActivityHistoryController()
-                                    .withItem(id: self.selectedItem!.getId()) as! UIViewController) },
+                              buttonPressAction: { [weak self] () -> Void in self?.transitionTo(cellController:
+                                self?.controllerResolver.getActivityHistoryController()
+                                    .withItem(id: self!.selectedItem!.getId()) as! UIViewController) },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_SHOW_ACTIVITY_BUTTON )
         case FormFields.DELETE_ITEM:
             return ButtonCell(buttonText: "Delete", destructive: true, enabled: true, delegate: self,
-                              buttonPressAction: { self.deleteButtonPressed() },
+                              buttonPressAction: { [weak self] () -> Void in self?.deleteButtonPressed() },
                               accessibilityIdentifier: AccessibilityIdentifiers.ITEM_FORM_DELETE_BUTTON )
         default:
             return UITableViewCell()
@@ -122,7 +126,7 @@ extension ItemFormControllerImpl: ItemFormController {
         let _ = itemService.saveItem(ItemUpdateDto(
             selectedItem?.getId(),
             fieldNameToValueMap[FormFields.NAME] as! String,
-            fieldNameToValueMap[FormFields.DESCRIPTION] as! String,
+            (fieldNameToValueMap[FormFields.DESCRIPTION] as! String),
             TargetDirection(rawValue: fieldNameToValueMap[FormFields.DIRECTION] as! String)!,
             Int(fieldNameToValueMap[FormFields.TARGET_VALUE] as! String) ?? 1,
             TargetTimePeriod(rawValue: fieldNameToValueMap[FormFields.TIMEPERIOD] as! String)!,
@@ -147,6 +151,12 @@ extension ItemFormControllerImpl: FormCellDelegate {
         selectingOption = true
         controllerResolver.getPrimaryNavController()
             .pushViewController(cellController, animated: true)
+    }
+    
+    func wasSelected(fieldName: String) {
+        let selectedRow = fieldToIndexPathMap[fieldName]
+        let tableView = self.view as? UITableView
+        tableView?.selectRow(at: selectedRow, animated: true, scrollPosition: .none)
     }
     
     func validateForm() {

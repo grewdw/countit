@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ItemFormController {
+protocol ItemFormController: class {
     
     func submitForm()
     

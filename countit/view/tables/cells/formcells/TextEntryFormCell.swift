@@ -10,9 +10,9 @@ import UIKit
 
 class TextEntryFormCell: UITableViewCell {
     
-    var fieldName: String
-    var textBox = UITextField()
-    let delegate: FormCellDelegate
+    private var fieldName: String
+    private var textBox = UITextField()
+    private weak var delegate: FormCellDelegate?
     
     init(placeholder: String?, text: String?, fieldName: String, numeric: Bool, delegate: FormCellDelegate, accessibilityIdentifier: String) {
         self.fieldName = fieldName
@@ -71,7 +71,7 @@ extension TextEntryFormCell: UITextFieldDelegate {
             if range.location == textArray.count && string != "" {
                 newText.append(contentsOf: Array(string))
             }
-            delegate.selectionChanged(to: String(newText), for: fieldName)
+            delegate?.selectionChanged(to: String(newText), for: fieldName)
             return true
         }
         return true
@@ -80,5 +80,9 @@ extension TextEntryFormCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.wasSelected(fieldName: fieldName)
     }
 }

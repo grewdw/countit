@@ -10,7 +10,7 @@ import UIKit
 
 class ItemFormView: UITableView {
     
-    private let formController: ItemFormController
+    private weak var formController: ItemFormController?
     
     init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource, formController: ItemFormController) {
         self.formController = formController
@@ -18,8 +18,7 @@ class ItemFormView: UITableView {
         self.delegate = delegate
         self.dataSource = dataSource
         self.accessibilityIdentifier = AccessibilityIdentifiers.ITEM_FORM_TABLE
-//        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing(_:))))
-//        self.keyboardDismissMode = .onDrag
+        keyboardDismissMode = .onDrag
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +36,6 @@ extension ItemFormView: NavBarButtonDelegate {
     }
     
     @objc func doneButtonPressed() {
-        formController.submitForm()
+        formController?.submitForm()
     }
 }

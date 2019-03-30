@@ -10,7 +10,7 @@ import UIKit
 
 class ProgressTableView: UITableView {
 
-    var progressTableDelegate: ProgressTableController
+    private weak var progressTableDelegate: ProgressTableController?
     
     init(delegate: ProgressTableController) {
         progressTableDelegate = delegate
@@ -54,14 +54,14 @@ extension ProgressTableView: NavBarButtonDelegate {
     }
     
     @objc func addButtonPressed() {
-       progressTableDelegate.addNewItemButtonPressed()
+       progressTableDelegate?.addNewItemButtonPressed()
     }
 }
 
 extension ProgressTableView {
     
     @objc func refreshTable() {
-        progressTableDelegate.refreshTableData()
+        progressTableDelegate?.refreshTableData()
         refreshControl?.endRefreshing()
     }
 }
@@ -107,7 +107,7 @@ extension ProgressTableView {
             My.cellSnapShot?.center = center!
             if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
                 
-                progressTableDelegate.itemPositionsChanged(itemOneRow: (indexPath?.row)!, itemTwoRow: (Path.initialIndexPath?.row)!)
+                progressTableDelegate?.itemPositionsChanged(itemOneRow: (indexPath?.row)!, itemTwoRow: (Path.initialIndexPath?.row)!)
                 tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                 Path.initialIndexPath = indexPath
             }

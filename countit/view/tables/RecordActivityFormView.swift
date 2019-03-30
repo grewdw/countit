@@ -11,10 +11,7 @@ import UIKit
 
 class RecordActivityFormView: UITableView {
     
-    private let recordActivityFormController: RecordActivityFormController
-    
-    init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource, recordActivityFormController: RecordActivityFormController) {
-        self.recordActivityFormController = recordActivityFormController
+    init(frame: CGRect, delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         super.init(frame: frame, style: .grouped)
         self.delegate = delegate
         self.dataSource = dataSource

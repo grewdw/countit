@@ -22,12 +22,12 @@ class ServiceResolver {
     private var progressService: ProgressService?
     private var userInstructionService: UserInstructionService
     
-    init(repositoryResolver: RepositoryResolver, clock: Clock, calendar: Calendar, properties: Properties) {
+    init(repositoryResolver: RepositoryResolver, clock: Clock, calendar: Calendar, properties: Properties, messageBroker: MessageBroker) {
         self.repositoryResolver = repositoryResolver
         self.clock = clock
         self.calendar = calendar
         self.properties = properties
-        self.messageBroker = MessageBrokerNcImpl()
+        self.messageBroker = messageBroker
         self.userInstructionService = UserInstructionServiceImpl(messageBroker: messageBroker, properties: properties)
     }
     
